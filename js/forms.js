@@ -1,4 +1,4 @@
-
+﻿
 (function(){
   const WA_NUMBER = '573135487027';
   let carouselInterval = null;
@@ -122,9 +122,9 @@
         imgWrap.innerHTML =
           '<div class="modal-carousel">'
           + '<div class="mc-track" id="mcTrack">'
-          + '<div class="mc-slide"><img src="img/Kit1.jpeg" alt="Kit Rutina Completa - foto 1"></div>'
-          + '<div class="mc-slide"><img src="img/Kit2.jpeg" alt="Kit Rutina Completa - foto 2"></div>'
-          + '<div class="mc-slide"><img src="img/Kit3.jpeg" alt="Kit Rutina Completa - foto 3"></div>'
+          + '<div class="mc-slide"><img src="img/Kits/Kit1.jpeg" alt="Kit Rutina Completa - foto 1"></div>'
+          + '<div class="mc-slide"><img src="img/Kits/Kit2.jpeg" alt="Kit Rutina Completa - foto 2"></div>'
+          + '<div class="mc-slide"><img src="img/Kits/Kit3.jpeg" alt="Kit Rutina Completa - foto 3"></div>'
           + '</div>'
           + '<button class="mc-btn mc-prev" aria-label="Anterior">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'

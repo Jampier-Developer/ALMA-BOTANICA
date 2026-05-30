@@ -1,4 +1,4 @@
-
+﻿
 (function () {
   // ─── PALETA (idéntica al sitio web) ──────────────────────────────────────
   const C = {
@@ -391,7 +391,7 @@
     // Foto principal (Kit2 - Romero)
     let img2Loaded = false;
     try {
-      const kitImg = await loadImg('img/Kit2.jpeg');
+      const kitImg = await loadImg('img/Kits/Kit2.jpeg');
       // Banner foto a lo ancho
       doc.addImage(kitImg, 'JPEG', 14, 41, CARD_W, 52, '', 'FAST');
       // Overlay oscuro para texto
@@ -458,7 +458,7 @@
 
     // Foto kit (Kit1)
     try {
-      const kitImg1 = await loadImg('img/Kit1.jpeg');
+      const kitImg1 = await loadImg('img/Kits/Kit1.jpeg');
       doc.addImage(kitImg1, 'JPEG', 14, kitY + 15, 68, 68, '', 'FAST');
     } catch {
       setFill(doc, C.pinkPale);
@@ -538,12 +538,12 @@
     let rosaLoaded = false;
     const rosaW = 72, rosaH = 88;
     try {
-      const rosaImg = await loadImg('img/rosa-perez2.png.jpeg');
+      const rosaImg = await loadImg('img/Fotos%20de%20rosa/Rosa-Perez2.png');
       doc.addImage(rosaImg, 'JPEG', 14, 28, rosaW, rosaH, '', 'FAST');
       rosaLoaded = true;
     } catch {
       try {
-        const rosaImg = await loadImg('img/rosa-perez.png');
+        const rosaImg = await loadImg('img/Fotos%20de%20rosa/Rosa-Perez1.png');
         doc.addImage(rosaImg, 'JPEG', 14, 28, rosaW, rosaH, '', 'FAST');
         rosaLoaded = true;
       } catch {}
@@ -625,7 +625,7 @@
 
     // Foto Kit3 en la parte inferior (si carga)
     try {
-      const kit3 = await loadImg('img/Kit3.jpeg');
+      const kit3 = await loadImg('img/Kits/Kit3.jpeg');
       doc.addImage(kit3, 'JPEG', 14, ctY + 48, CARD_W, 55, '', 'FAST');
     } catch {}
 

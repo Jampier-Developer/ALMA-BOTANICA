@@ -14,7 +14,7 @@ nav{position:fixed;top:3px;left:0;right:0;height:var(--nav-h);z-index:100;backdr
 nav.scrolled{box-shadow:var(--shadow)}
 .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:center;border:2px solid var(--gold);box-shadow:var(--shadow-sm)}
+.nav-logo-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:center;border:2.5px solid #a89a62;box-shadow:var(--shadow-sm)}
 .nav-logo-text{display:flex;flex-direction:column}
 .nav-brand{font-family:var(--font-d);font-size:1.15rem;font-weight:600;letter-spacing:.02em;color:var(--text);line-height:1.2}
 .nav-sub{font-family:var(--font-m);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-m)}
@@ -347,18 +347,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .container{padding:0 1.25rem}
 }
 @media(max-width:500px){
-  .nav-logo-photo{width:38px;height:38px}
-  .products-grid,.benefits-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .hero-title{font-size:2.2rem}
-  .hero-photo{height:340px}
-  .hero-photo-frame{width:min(280px,90%)}
-  .rosa-img{height:auto;object-fit:initial}
-  .hero-stats{padding:1rem 0}
-  .stats-bar{gap:1rem}
-  .stat-val{font-size:1.6rem}
-  .sec-title{font-size:1.7rem}
   /* ── Navegación ── */
+  .nav-logo-photo{width:38px;height:38px}
   .nav-actions .btn-primary{display:none}
 
   /* ── Hero ── */
@@ -374,6 +364,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .stats-bar{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 0}
   .stat-div{display:none}
   .stat-val{font-size:1.6rem}
+  .sec-title{font-size:1.7rem}
 
   /* ── Productos ── */
   .pc-img{height:210px}
