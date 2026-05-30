@@ -38,12 +38,11 @@
     </a>
     <ul class="nav-links">
       <li><a href="#productos">Productos</a></li>
-      <li><a href="#ingredientes">Ingredientes</a></li>
       <li><a href="#nosotras">Nosotras</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn btn-ghost" id="catalogBtn">📩 Catálogo</button>
+      <button class="btn btn-primary" id="catalogBtn">📩 Catálogo</button>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -53,7 +52,6 @@
 </nav>
 <div class="mob-menu" id="mobMenu" aria-hidden="true">
   <a href="#productos" class="mob-link">Productos</a>
-  <a href="#ingredientes" class="mob-link">Ingredientes</a>
   <a href="#nosotras" class="mob-link">Nosotras</a>
   <a href="#faq" class="mob-link">FAQ</a>
   <button class="btn btn-primary btn-lg" id="mobCatalogBtn">📩 Quiero el catálogo</button>
@@ -79,7 +77,7 @@
       </p>
       <div class="hero-btns">
         <a href="#productos" class="btn btn-primary btn-lg">Ver productos →</a>
-        <button class="btn btn-outline btn-lg" id="heroCatalogBtn">📩 Quiero el catálogo</button>
+        <button class="btn btn-primary btn-lg" id="heroCatalogBtn">📩 Quiero el catálogo</button>
       </div>
       <div class="hero-trust">
         <span>✦ Envío gratis desde 0.000</span>
@@ -127,7 +125,7 @@
     <div class="sec-header reveal">
       <span class="kicker">❀ Línea Romero</span>
       <h2 class="sec-title">Nuestros <em>productos</em></h2>
-      <p class="sec-desc">Haz clic en cualquier producto para ver todos los detalles, ingredientes y pedir por WhatsApp.</p>
+      <p class="sec-desc">Haz clic en cualquier producto para ver todos los detalles y pedir por WhatsApp.</p>
     </div>
     <div class="products-grid">
 
@@ -223,34 +221,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- INGREDIENTES -->
-<section class="sec sec-pink" id="ingredientes">
-  <div class="container split-layout">
-    <div class="split-text reveal">
-      <span class="kicker kicker-white">❀ Ingrediente estrella</span>
-      <h2 class="sec-title sec-title-white">El <em class="em-gold">Romero</em>,<br>fuerza de la naturaleza</h2>
-      <p class="body-txt body-txt-white">Utilizado durante siglos, el extracto de romero activa la microcirculación del cuero cabelludo, fortalece la fibra capilar y frena la caída sin los efectos secundarios de los tratamientos sintéticos.</p>
-      <ul class="check-list">
-        <li>✦ Estimula el crecimiento capilar</li>
-        <li>✦ Reduce la caída visible en 4 semanas</li>
-        <li>✦ Equilibra el sebo sin resecar</li>
-        <li>✦ Apto para cuero cabelludo sensible</li>
-      </ul>
-    </div>
-    <div class="split-visual reveal">
-      <div class="ing-visual">
-        <div class="iv-ring iv-r1"></div>
-        <div class="iv-ring iv-r2"></div>
-        <div class="iv-ring iv-r3"></div>
-        <div class="iv-center">
-          <span class="iv-icon">❀</span>
-          <p class="iv-label">Rosmarinus<br>officinalis</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -371,7 +341,7 @@
     <div class="cta-block reveal">
       <span class="kicker kicker-white">❀ Empieza hoy</span>
       <h2 class="cta-title">Tu cabello merece<br>algo <em class="em-gold">verdadero</em></h2>
-      <p class="cta-desc">Recibe el catálogo completo con precios y disponibilidad directamente en tu correo.</p>
+      <p class="cta-desc">Descarga el catálogo completo con todos los productos y precios de Alma Botánica.</p>
       <button class="btn btn-white btn-lg" id="ctaCatalogBtn">📩 Quiero el catálogo gratis</button>
       <div class="cta-trust">
         <span>🔒 Tus datos están seguros</span>
@@ -426,7 +396,6 @@
         <h4 class="footer-col-title">Compañía</h4>
         <ul>
           <li><a href="#nosotras">Sobre Nosotras</a></li>
-          <li><a href="#ingredientes">Ingredientes</a></li>
           <li><a href="#faq">Preguntas Frecuentes</a></li>
           <li><a href="https://wa.me/573135487027" target="_blank">Contacto</a></li>
         </ul>
@@ -457,10 +426,6 @@
         <span class="modal-tag" id="modalTag"></span>
         <h2 class="modal-title" id="modalTitle"></h2>
         <p class="modal-desc" id="modalDesc"></p>
-        <div class="modal-ingredients">
-          <h4>Ingredientes clave</h4>
-          <p id="modalIngredients"></p>
-        </div>
         <div class="modal-benefits">
           <h4>Beneficios</h4>
           <ul id="modalBenefits"></ul>
@@ -484,21 +449,17 @@
     <div class="catalog-modal-content">
       <div class="cm-icon">📩</div>
       <h2 class="cm-title">Recibe el catálogo <em>completo</em></h2>
-      <p class="cm-desc">Te enviamos el catálogo con todos los productos, precios y disponibilidad directamente a tu correo.</p>
+      <p class="cm-desc">Ingresa tu nombre y descarga el catálogo completo con todos los productos y precios.</p>
       <form id="catalogForm" novalidate>
         <div class="cm-field">
           <label for="cmName">Tu nombre</label>
           <input type="text" id="cmName" class="form-input" placeholder="Nombre completo" required>
         </div>
-        <div class="cm-field">
-          <label for="cmEmail">Tu correo</label>
-          <input type="email" id="cmEmail" class="form-input" placeholder="tu@correo.com" required>
-        </div>
         <button type="submit" class="btn btn-primary btn-full" id="cmSubmit">
-          <span id="cmBtnText">Enviar catálogo →</span>
-          <span id="cmBtnLoad" style="display:none">Enviando...</span>
+          <span id="cmBtnText">Descargar catálogo en PDF</span>
+          <span id="cmBtnLoad" style="display:none">Descargando...</span>
         </button>
-        <p class="cm-note">🔒 Tu correo es privado. Sin spam.</p>
+        <p class="cm-note">🌿 Descarga gratuita · Sin compromisos.</p>
       </form>
       <div id="cmSuccess" style="display:none" class="cm-success">
         <div class="cms-icon">🌿</div>
@@ -528,5 +489,6 @@
 <script src="js/interactions.js" defer></script>
 <script src="js/pdf-catalog.js" defer></script>
 <script src="js/forms.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </body>
 </html>
