@@ -309,6 +309,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .hamburger{display:flex}
   .nav-links{display:none}
   .nav-actions .btn-ghost{display:none}
+  .nav-actions #catalogBtn{display:none}
   .nav-logo-photo{width:46px;height:46px}
   .catalog-modal-content{padding:2rem 1.5rem}
   .cm-title{font-size:1.5rem}
