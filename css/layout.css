@@ -72,8 +72,9 @@ nav.scrolled{box-shadow:var(--shadow)}
 .hero-title{font-size:clamp(2.5rem,5.5vw,4.5rem);color:var(--text);margin:.3em 0 .5em;line-height:1.05}
 .hero-lead{font-size:1.08rem;color:var(--text-m);max-width:440px;margin-bottom:2rem;line-height:1.72}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap}
-.hero-trust span{font-family:var(--font-m);font-size:.62rem;letter-spacing:.1em;color:var(--text-m)}
+.hero-trust{display:flex;flex-direction:column;gap:.55rem}
+.hero-trust span{font-family:var(--font-m);font-size:.72rem;letter-spacing:.03em;color:var(--text-m);display:flex;align-items:center;gap:.4rem}
+.hero-trust strong{color:var(--pink-deep);font-weight:600}
 
 /* HERO PHOTO */
 .hero-photo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
@@ -188,7 +189,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
 .footer-brand{}
 .footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
-.footer-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--pink-light)}
+.footer-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;border:2.5px solid #a89a62}
 .footer-brand-name{font-family:var(--font-d);font-size:1.2rem;color:#fff;line-height:1.2}
 .footer-brand-sub{font-family:var(--font-m);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .footer-tagline{font-size:.92rem;color:rgba(255,255,255,.5);font-style:italic;margin-bottom:1.2rem}
@@ -348,6 +349,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 }
 @media(max-width:768px){
   .hero-photo-frame{width:100vw;margin-left:-1.25rem}
+  .hero-trust{align-items:center;text-align:center}
+  .hero-trust span{justify-content:center}
 }
 @media(max-width:500px){
   /* ── Navegación ── */

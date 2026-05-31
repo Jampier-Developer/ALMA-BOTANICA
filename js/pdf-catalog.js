@@ -271,7 +271,7 @@
     // Logo grande
     let logoLoaded = false;
     try {
-      const logoImg = await loadImg('img/LOGO - ALMA BOTANICA.jpg');
+      const logoImg = await loadImg('img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.jpg');
       const logoSize = 78;
       doc.addImage(logoImg, 'JPEG', (W - logoSize) / 2, 22, logoSize, logoSize);
       logoLoaded = true;
