@@ -320,7 +320,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .hero-lead{margin:0 auto 2rem}
   .hero-photo-wrap{order:-1}
   .hero-photo{height:420px}
-  .hero-photo-frame{width:min(540px,97%)}
+  .hero-photo-frame{width:100%}
   .products-grid{grid-template-columns:repeat(2,1fr)}
   .benefits-grid{grid-template-columns:repeat(2,1fr)}
   .testimonials-grid{grid-template-columns:1fr}
@@ -354,7 +354,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* ── Hero ── */
   .hero-title{font-size:2.2rem}
   .hero-photo{height:340px}
-  .hero-photo-frame{width:min(420px,98%)}
+  .hero-photo-frame{width:100%}
   .hero-btns{flex-direction:column;align-items:center}
   .hero-btns .btn{width:100%;max-width:320px;justify-content:center}
   .hero-trust{flex-direction:column;align-items:center;gap:.6rem}
