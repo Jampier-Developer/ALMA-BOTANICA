@@ -320,7 +320,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .hero-lead{margin:0 auto 2rem}
   .hero-photo-wrap{order:-1}
   .hero-photo{height:420px}
-  .hero-photo-frame{width:min(420px,88%)}
+  .hero-photo-frame{width:min(500px,94%)}
   .products-grid{grid-template-columns:repeat(2,1fr)}
   .benefits-grid{grid-template-columns:repeat(2,1fr)}
   .testimonials-grid{grid-template-columns:1fr}
