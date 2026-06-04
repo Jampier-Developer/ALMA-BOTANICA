@@ -120,11 +120,11 @@ nav.scrolled{box-shadow:var(--shadow)}
 .pc-badge-tag{position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.92);color:var(--pink-deep);font-family:var(--font-m);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.25em .75em;border-radius:var(--radius-full);border:1px solid var(--border-pink)}
 .pc-best-badge{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text);font-family:var(--font-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.3em 1em;text-align:center}
 .pc-body{padding:1.2rem}
-.pc-name{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.4rem;line-height:1.25}
+.pc-name{font-family:var(--font-d);font-size:1.28rem;font-weight:800;color:var(--text);margin-bottom:.4rem;line-height:1.25}
 .pc-short{font-size:.85rem;color:var(--text-m);line-height:1.55;margin-bottom:1rem}
 .pc-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
 .pc-price{display:flex;flex-direction:column}
-.pc-price::before{content:'Contenido';font-family:var(--font-m);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-m);display:block;margin-bottom:.15rem}
+.pc-price::before{content:'Contenido';font-family:var(--font-m);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);display:block;margin-bottom:.15rem}
 .pc-price-val{font-family:var(--font-d);font-size:1.15rem;font-weight:600;color:var(--text-m);line-height:1}
 .pc-price-old{font-size:.78rem;color:var(--text-m);text-decoration:line-through;margin-top:.1rem}
 .pc-price-size{font-family:var(--font-m);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m)}
