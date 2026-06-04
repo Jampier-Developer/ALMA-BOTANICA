@@ -173,13 +173,13 @@
           benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo y valorado de la línea']
         },
         {
-          name:'Kits Cebolla', price:'$60.000', icon:'🧅',
+          name:'Kits Cebolla', price:'$64.000', icon:'🧅',
           image:'img/Kits/kit5.jpeg',
           desc:'Kit de la línea Cebolla con varios productos ricos en compuestos sulfurados que estimulan la queratina natural. Estudios clínicos demuestran que el extracto de cebolla reduce la caída en pocas semanas.',
           benefits:['Estimula la producción de queratina natural','Frena la caída con compuestos sulfurados','Aporta densidad y volumen al cabello','Resultados visibles en pocas semanas']
         },
         {
-          name:'Kits Aguacate', price:'$60.000', icon:'🥑',
+          name:'Kits Aguacate', price:'$64.000', icon:'🥑',
           image:'img/Kits/kit6.jpeg',
           desc:'Kit de la línea Aguacate con varios productos ricos en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica del cabello más seco y poroso.',
           benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica capilar','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o muy dañado']

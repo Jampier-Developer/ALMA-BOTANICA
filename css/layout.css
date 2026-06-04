@@ -122,9 +122,10 @@ nav.scrolled{box-shadow:var(--shadow)}
 .pc-body{padding:1.2rem}
 .pc-name{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.4rem;line-height:1.25}
 .pc-short{font-size:.85rem;color:var(--text-m);line-height:1.55;margin-bottom:1rem}
-.pc-footer{display:flex;justify-content:space-between;align-items:center}
+.pc-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
 .pc-price{display:flex;flex-direction:column}
-.pc-price-val{font-family:var(--font-d);font-size:1.35rem;font-weight:600;color:var(--pink-deep);line-height:1}
+.pc-price::before{content:'Contenido';font-family:var(--font-m);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-m);display:block;margin-bottom:.15rem}
+.pc-price-val{font-family:var(--font-d);font-size:1.15rem;font-weight:600;color:var(--text-m);line-height:1}
 .pc-price-old{font-size:.78rem;color:var(--text-m);text-decoration:line-through;margin-top:.1rem}
 .pc-price-size{font-family:var(--font-m);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m)}
 
@@ -398,6 +399,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* ── Productos ── */
   .pc-img{height:210px}
   .pc-name{font-size:1.05rem}
+  .pc-footer{flex-direction:column;align-items:stretch;gap:.5rem}
+  .pc-btn{width:100%;justify-content:center;text-align:center}
 
   /* ── Modales ── */
   .modal-box{border-radius:var(--radius-md)}
