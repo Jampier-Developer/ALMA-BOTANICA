@@ -53,102 +53,115 @@
   // PRODUCTS DATA
   const PRODUCTS = [
     {
-      name:'Shampoo Romero', tag:'Limpieza', price:'$28.000', size:'500 ml',
-      icon:'🌿', bg:'linear-gradient(145deg,#fce4ec,#f8bbd0)',
+      name:'Shampoo Romero', tag:'Limpieza', price:'$32.000', size:'500 ml',
+      bg:'linear-gradient(145deg,#fce4ec,#f8bbd0)',
+      images:['img/Shampoos/shampoo%201.jpeg','img/Shampoos/shampoo%202.jpeg','img/Shampoos/shampoo%203.jpeg'],
       desc:'Limpieza profunda que estimula el crecimiento capilar desde el primer lavado. Formulado sin sulfatos agresivos para respetar el cuero cabelludo mientras elimina impurezas y exceso de sebo.',
-      ingredients:'Extracto de Romero, Agua destilada, Aloe vera, Pantenol (Vitamina B5), Aceite de argán.',
       benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída desde la 1ª semana','Limpieza profunda sin agredir la fibra','Apto para uso diario en todo tipo de cabello']
     },
     {
-      name:'Acondicionador Romero', tag:'Nutrición', price:'$28.000', size:'500 ml',
-      icon:'✿', bg:'linear-gradient(145deg,#f3e5f5,#e1bee7)',
+      name:'Acondicionador Romero', tag:'Nutrición', price:'$32.000', size:'500 ml',
+      bg:'linear-gradient(145deg,#f3e5f5,#e1bee7)',
+      images:['img/acondicionador/acondicionador1.jpeg','img/acondicionador/acondicionador2.jpeg','img/acondicionador/Acondicionador3.jpeg','img/acondicionador/Acondicionador4.jpeg'],
       desc:'Hidratación profunda sin residuos pesados. Sella la cutícula para un brillo duradero y suavidad inmediata. Compatible con cabellos rizados, teñidos y muy procesados.',
-      ingredients:'Extracto de Romero, Manteca de karité, Keratina vegetal, Aceite de coco, Vitamina E.',
       benefits:['Hidratación profunda sin residuos','Sella la cutícula para más brillo','Desenreda sin dañar','Efecto antiestático duradero']
     },
     {
-      name:'Tónico Capilar', tag:'Tratamiento', price:'$32.000', size:'Romero activo',
-      icon:'💧', bg:'linear-gradient(145deg,#e8f5e9,#c8e6c9)',
+      name:'Tónico Capilar', tag:'Tratamiento', price:'$32.000', size:'120 ml',
+      bg:'linear-gradient(145deg,#e8f5e9,#c8e6c9)',
+      images:['img/Tonicos-Capilares/tonico%20capilar%201.jpeg','img/Tonicos-Capilares/tonico%20capilar%202.jpeg','img/Tonicos-Capilares/tonico%20capilar%203.jpeg'],
       desc:'Aplicación directa en raíces 2-4 veces por semana. El romero concentrado activa los folículos pilosos para estimular el crecimiento y reducir la caída estacional. No requiere enjuague.',
-      ingredients:'Extracto concentrado de Romero, Biotina, Zinc, Aceite de ricino, Agua de rosas.',
       benefits:['Activa folículos inactivos','Frena la caída estacional','Estimula el crecimiento capilar','Equilibra la producción de sebo']
     },
     {
-      name:'Gel Fijador Hidratante', tag:'Styling', price:'$25.000', size:'Linaza + Vit E',
-      icon:'✨', bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
+      name:'Gel Fijador Hidratante', tag:'Styling', price:'$25.000', size:'300 ml',
+      bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
+      images:['img/Gel/Gel%201.jpeg'],
       desc:'Define rizos y ondas con fijación duradera sin el efecto cartón. La linaza aporta elasticidad y la Vitamina E protege el cabello mientras mantiene la hidratación.',
-      ingredients:'Gel de linaza, Vitamina E, Aloe vera, Aceite de romero, Glicerina vegetal.',
       benefits:['Define rizos sin efecto plástico','Hidrata mientras fija','Protección antifrizz','Fijación flexible todo el día']
     },
     {
-      name:'Tratamiento Capilar', tag:'Reparación', price:'$35.000', size:'Quinoa · Sábila',
-      icon:'🌸', bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
+      name:'Tratamiento Capilar', tag:'Reparación', price:'$35.000', size:'250 ml',
+      bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
+      images:['img/Tratamientos/tratamiento%201.jpeg'],
       desc:'Mascarilla intensiva para cabellos debilitados por calor, tintura o procesos químicos. La quinoa repara la fibra capilar mientras la sábila hidrata y el romero estimula.',
-      ingredients:'Proteína de Quinoa, Gel de Sábila, Extracto de Romero, Aceite de aguacate, Manteca de cacao.',
       benefits:['Repara daño por calor y química','Hidratación profunda en 15 minutos','Fortalece la fibra capilar','Estimula el crecimiento desde la raíz']
     },
     {
-      name:'Kit Rutina Completa', tag:'Más vendido', price:'$120.000', size:'3 kits disponibles',
-      icon:'🎁', bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
-      desc:'Los 3 kits de la línea Alma Botánica: Romero, Linaza y Nutritivo. Una rutina botánica completa para el cuidado de tu cabello.',
-      ingredients:'Kit Romero: $60.000  ·  Kit Linaza: $75.000  ·  Kit Nutritivo: $130.000',
+      name:'Kit Rutina Completa', tag:'Más vendido', price:'$64.000 - $90.000', size:'500 ml',
+      bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
+      images:['img/Kits/Kit1.jpeg','img/Kits/Kit2.jpeg','img/Kits/Kit3.jpeg','img/Kits/Kits4.jpeg'],
+      desc:'Los kits de la línea Alma Botánica para el cuidado completo de tu cabello. Disponibles en diferentes opciones para adaptarse a tu rutina.',
       benefits:['Te ayuda con el crecimiento de tu cabello','Fortalecimiento de las raíces','Es una bomba hidratante que te ayudará con el brillo, suavidad y reparación de tu cabello']
+    },
+    {
+      name:'Crema para Peinar', tag:'Styling', price:'$28.000', size:'200 ml',
+      bg:'linear-gradient(145deg,#fef9e7,#fde68a)',
+      images:['img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg'],
+      desc:'Crema definidora para peinar y moldear sin rigidez ni residuos. Ideal para todo tipo de cabello, aporta suavidad y control desde la raíz hasta las puntas.',
+      benefits:['Define y moldea sin efecto pesado','Hidratación duradera sin residuos','Facilita el peinado y desenredo','Apto para uso diario']
+    },
+    {
+      name:'Bio Repolarizador', tag:'Tratamiento', price:'$35.000', size:'120 ml',
+      bg:'linear-gradient(145deg,#e0f7fa,#b2ebf2)',
+      images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
+      desc:'Tratamiento intensivo que repolariza y regenera la fibra capilar desde adentro. Devuelve la vitalidad y brillo natural al cabello dañado por calor o químicos.',
+      benefits:['Regenera la fibra capilar dañada','Devuelve brillo y suavidad inmediata','Repolariza el cabello con carga eléctrica neutra','Efecto acumulativo con uso constante']
     },
   ];
 
   // PRODUCT MODAL
+  const svgPrev = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+  const svgNext = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
   document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
       const idx = parseInt(card.dataset.product);
       const p = PRODUCTS[idx];
       if(!p) return;
 
-      document.getElementById('modalTag').textContent         = p.tag;
-      document.getElementById('modalTitle').textContent       = p.name;
-      document.getElementById('modalDesc').textContent        = p.desc;
+      document.getElementById('modalTag').textContent   = p.tag;
+      document.getElementById('modalTitle').textContent = p.name;
+      document.getElementById('modalDesc').textContent  = p.desc;
+
       const priceEl = document.getElementById('modalPrice');
-      priceEl.style.display = 'flex';
-      priceEl.style.alignItems = 'center';
-      priceEl.innerHTML = '<span style="font-size:2.8rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.12))">🌿</span>';
+      priceEl.innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--pink-deep)">${p.price}</span>`;
 
       const imgWrap = document.getElementById('modalImg');
       clearInterval(carouselInterval);
       carouselInterval = null;
 
-      if (idx === 5) {
-        imgWrap.style.background = p.bg;
-        imgWrap.style.fontSize = '';
-        imgWrap.style.position = 'relative';
-        imgWrap.innerHTML =
-          '<div class="modal-carousel">'
-          + '<div class="mc-track" id="mcTrack">'
-          + '<div class="mc-slide"><img src="img/Kits/Kit1.jpeg" alt="Kit Rutina Completa - foto 1"></div>'
-          + '<div class="mc-slide"><img src="img/Kits/Kit2.jpeg" alt="Kit Rutina Completa - foto 2"></div>'
-          + '<div class="mc-slide"><img src="img/Kits/Kit3.jpeg" alt="Kit Rutina Completa - foto 3"></div>'
-          + '</div>'
-          + '<button class="mc-btn mc-prev" aria-label="Anterior">'
-          + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
-          + '</button>'
-          + '<button class="mc-btn mc-next" aria-label="Siguiente">'
-          + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
-          + '</button>'
-          + '<div class="mc-dots">'
-          + '<button class="mc-dot active" data-slide="0" aria-label="Foto 1"></button>'
-          + '<button class="mc-dot" data-slide="1" aria-label="Foto 2"></button>'
-          + '<button class="mc-dot" data-slide="2" aria-label="Foto 3"></button>'
-          + '</div>'
-          + '</div>';
+      const imgs = p.images || [];
+      const multi = imgs.length > 1;
 
+      imgWrap.style.background = imgs.length > 0 ? '#fff' : p.bg;
+      imgWrap.style.position   = 'relative';
+      imgWrap.style.fontSize   = '';
+
+      imgWrap.innerHTML =
+        '<div class="modal-carousel">'
+        + '<div class="mc-track">'
+        + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="${p.name} - foto ${i + 1}"></div>`).join('')
+        + '</div>'
+        + (multi
+            ? `<button class="mc-btn mc-prev" aria-label="Anterior">${svgPrev}</button>`
+              + `<button class="mc-btn mc-next" aria-label="Siguiente">${svgNext}</button>`
+              + '<div class="mc-dots">'
+              + imgs.map((_, i) => `<button class="mc-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Foto ${i + 1}"></button>`).join('')
+              + '</div>'
+            : '')
+        + '</div>';
+
+      if (multi) {
         let cur = 0;
         const slides  = imgWrap.querySelectorAll('.mc-slide');
         const dotBtns = imgWrap.querySelectorAll('.mc-dot');
         const carousel = imgWrap.querySelector('.modal-carousel');
-
-        slides[0].classList.add('active');
+        const total = slides.length;
 
         function goTo(n) {
           slides[cur].classList.remove('active');
-          cur = ((n % 3) + 3) % 3;
+          cur = ((n % total) + total) % total;
           slides[cur].classList.add('active');
           dotBtns.forEach((d, i) => d.classList.toggle('active', i === cur));
         }
@@ -161,25 +174,18 @@
         carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
         carousel.addEventListener('mouseleave', () => { carouselInterval = setInterval(() => goTo(cur + 1), 3500); });
 
-        // Swipe táctil para móvil
         let mcTouchX = 0;
         carousel.addEventListener('touchstart', e => { mcTouchX = e.touches[0].clientX; }, {passive:true});
         carousel.addEventListener('touchend', e => {
           const diff = mcTouchX - e.changedTouches[0].clientX;
           if(Math.abs(diff) > 35) goTo(diff > 0 ? cur + 1 : cur - 1);
         }, {passive:true});
-
-      } else {
-        imgWrap.style.background = p.bg;
-        imgWrap.style.position   = '';
-        imgWrap.textContent      = p.icon;
-        imgWrap.style.fontSize   = '6rem';
       }
 
       const ul = document.getElementById('modalBenefits');
       ul.innerHTML = p.benefits.map(b => `<li>${b}</li>`).join('');
 
-      const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa un kit. ¿Me puedes contar más detalles y disponibilidad?`);
+      const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${p.name}. ¿Me puedes contar más detalles y disponibilidad?`);
       document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
       openModal('productModal');
@@ -270,34 +276,33 @@
     }
   });
 
-  // KIT CARD CAROUSEL
-  (function(){
-    const slides = document.querySelectorAll('#kitCarousel .pcc-slide');
-    const dots   = document.querySelectorAll('#kitCarousel .pcc-dot');
-    const prev   = document.getElementById('kitPrev');
-    const next   = document.getElementById('kitNext');
-    if(!slides.length) return;
+  // CARD CAROUSELS — inicializa todos los carruseles de tarjetas genéricamente
+  document.querySelectorAll('.pc-carousel').forEach(car => {
+    const slides = car.querySelectorAll('.pcc-slide');
+    const dots   = car.querySelectorAll('.pcc-dot');
+    const prev   = car.querySelector('.pcc-prev');
+    const next   = car.querySelector('.pcc-next');
+    if(slides.length <= 1) return;
+    const total = slides.length;
     let cur = 0;
     function goTo(n){
       slides[cur].classList.remove('active');
-      dots[cur].classList.remove('active');
-      cur = ((n % 3) + 3) % 3;
+      dots[cur]?.classList.remove('active');
+      cur = ((n % total) + total) % total;
       slides[cur].classList.add('active');
-      dots[cur].classList.add('active');
+      dots[cur]?.classList.add('active');
     }
-    prev.addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
-    next.addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
+    prev?.addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
+    next?.addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
+    dots.forEach((d, i) => d.addEventListener('click', e => { e.stopPropagation(); goTo(i); }));
     setInterval(() => goTo(cur + 1), 4000);
-
-    // Swipe táctil para móvil
-    const carouselEl = document.getElementById('kitCarousel');
-    let pccTouchX = 0;
-    carouselEl.addEventListener('touchstart', e => { pccTouchX = e.touches[0].clientX; }, {passive:true});
-    carouselEl.addEventListener('touchend', e => {
-      const diff = pccTouchX - e.changedTouches[0].clientX;
+    let tx = 0;
+    car.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+    car.addEventListener('touchend', e => {
+      const diff = tx - e.changedTouches[0].clientX;
       if(Math.abs(diff) > 35) { e.stopPropagation(); goTo(diff > 0 ? cur + 1 : cur - 1); }
     }, {passive:true});
-  })();
+  });
 
   function highlight(id){
     const el = document.getElementById(id);

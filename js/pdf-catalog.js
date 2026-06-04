@@ -21,7 +21,7 @@
     {
       name: 'Shampoo Romero',
       tag: 'Limpieza',
-      price: '$28.000',
+      price: '$32.000',
       size: '500 ml',
       accentRgb: [212, 96, 122],
       desc: 'Limpieza profunda que estimula el crecimiento capilar desde el primer lavado. Formulado sin sulfatos agresivos para respetar el cuero cabelludo mientras elimina impurezas y exceso de sebo.',
@@ -30,7 +30,7 @@
     {
       name: 'Acondicionador Romero',
       tag: 'Nutrición',
-      price: '$28.000',
+      price: '$32.000',
       size: '500 ml',
       accentRgb: [180, 110, 160],
       desc: 'Hidratación profunda sin residuos pesados. Sella la cutícula para un brillo duradero y suavidad inmediata. Compatible con cabellos rizados, teñidos y muy procesados.',
@@ -63,12 +63,29 @@
       desc: 'Mascarilla intensiva para cabellos debilitados por calor, tintura o procesos químicos. La quinoa repara la fibra capilar mientras la sábila hidrata y el romero estimula.',
       benefits: ['Repara daño por calor y química', 'Hidratación profunda en 15 minutos', 'Fortalece la fibra capilar'],
     },
+    {
+      name: 'Crema para Peinar',
+      tag: 'Styling',
+      price: '$28.000',
+      size: '200 ml',
+      accentRgb: [201, 161, 90],
+      desc: 'Crema definidora para peinar y moldear sin rigidez ni residuos. Aporta suavidad y control desde la raíz hasta las puntas para todo tipo de cabello.',
+      benefits: ['Define y moldea sin efecto pesado', 'Hidratación duradera sin residuos', 'Facilita el peinado y desenredo'],
+    },
+    {
+      name: 'Bio Repolarizador',
+      tag: 'Tratamiento',
+      price: '$35.000',
+      size: '120 ml',
+      accentRgb: [56, 150, 140],
+      desc: 'Tratamiento intensivo que repolariza y regenera la fibra capilar desde adentro. Devuelve la vitalidad y brillo natural al cabello dañado por calor o químicos.',
+      benefits: ['Regenera la fibra capilar dañada', 'Devuelve brillo y suavidad inmediata', 'Efecto acumulativo con uso constante'],
+    },
   ];
 
   const KITS = [
-    { name: 'Kit Romero',    price: '$60.000',  desc: 'Shampoo + Acondicionador Romero', color: C.pinkDeep },
-    { name: 'Kit Linaza',    price: '$75.000',  desc: 'Shampoo + Acondicionador + Gel Linaza', color: C.teal },
-    { name: 'Kit Nutritivo', price: '$130.000', desc: 'Línea completa nutritiva capilar', color: [100, 60, 100] },
+    { name: 'Kit Básico',   price: '$64.000', desc: 'Shampoo + Acondicionador Romero', color: C.pinkDeep },
+    { name: 'Kit 4 Premium', price: '$90.000', desc: 'Kit completo con productos de la línea', color: C.teal },
   ];
 
   // ─── HELPERS ──────────────────────────────────────────────────────────────
