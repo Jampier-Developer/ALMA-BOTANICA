@@ -207,6 +207,13 @@
       desc:'Tratamiento que se aplica antes del shampoo para crear una barrera protectora que minimiza el daño del lavado. Mantiene la humedad, aumenta el brillo, mejora la porosidad y reduce el frizz. Especialmente recomendado para cabello rizado, seco o dañado.',
       benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
     },
+    {
+      name:'Pree Poo', tag:'Pre-lavado', price:'$28.000', size:'250 ml',
+      bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
+      images:['img/PREE%20PO/PREE%20PO.jpeg'],
+      desc:'Tratamiento pre-lavado que protege y acondiciona el cabello antes del shampoo. Reduce el daño por fricción, mantiene la humedad y facilita el desenredo.',
+      benefits:['Protege la fibra capilar antes del lavado','Reduce la pérdida de humedad','Facilita el desenredo','Ideal para cabello rizado y muy rizado']
+    },
   ];
 
   // PRODUCT MODAL
