@@ -460,8 +460,9 @@
       lbImg.style.cursor = scale >= 3 ? 'default' : 'zoom-in';
     }
 
-    // Abrir al hacer clic en imagen del modal
+    // Abrir al hacer clic en imagen — solo si el modal ya está abierto
     document.getElementById('modalImg')?.addEventListener('click', e => {
+      if(!document.getElementById('productModal')?.classList.contains('open')) return;
       if(e.target.tagName !== 'IMG') return;
       const allImgs = Array.from(document.querySelectorAll('#modalImg .mc-slide img'));
       const idx = allImgs.indexOf(e.target);
