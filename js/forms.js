@@ -53,60 +53,159 @@
   // PRODUCTS DATA
   const PRODUCTS = [
     {
-      name:'Shampoo Romero', tag:'Limpieza', price:'$32.000', size:'500 ml',
+      name:'Shampoos', tag:'Limpieza', size:'500 ml',
       bg:'linear-gradient(145deg,#fce4ec,#f8bbd0)',
-      images:['img/Shampoos/shampoo%201.jpeg','img/Shampoos/shampoo%202.jpeg','img/Shampoos/shampoo%203.jpeg'],
-      desc:'Limpieza profunda que estimula el crecimiento capilar desde el primer lavado. Formulado sin sulfatos agresivos para respetar el cuero cabelludo mientras elimina impurezas y exceso de sebo.',
-      benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída desde la 1ª semana','Limpieza profunda sin agredir la fibra','Apto para uso diario en todo tipo de cabello']
+      variants:[
+        {
+          name:'Shampoo Romero', price:'$32.000', icon:'🌿',
+          image:'img/Shampoos/shampoo%201.jpeg',
+          desc:'Con extracto de romero rico en ácido rosmarínico que mejora la circulación del cuero cabelludo. Estudios clínicos demuestran que el romero es tan efectivo como el minoxidil para estimular el crecimiento capilar.',
+          benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída bloqueando causas hormonales','Limpieza profunda sin sulfatos agresivos','Apto para uso diario en todo tipo de cabello']
+        },
+        {
+          name:'Shampoo Nutritivo', price:'$32.000', icon:'⭐',
+          image:'img/Shampoos/shampoo%202.jpeg',
+          desc:'Fórmula nutritiva que fortalece la fibra capilar desde el primer lavado. Limpia en profundidad mientras aporta nutrición activa, devolviendo vida y brillo sin residuos pesados.',
+          benefits:['Nutrición activa desde la raíz','Fortalece la fibra capilar debilitada','Brillo y suavidad inmediata','Sin sulfatos ni parabenos']
+        },
+        {
+          name:'Shampoo Aguacate', price:'$32.000', icon:'🥑',
+          image:'img/Shampoos/shampoo%203.jpeg',
+          desc:'Enriquecido con aceite de aguacate, rico en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos monoinsaturados penetran la fibra capilar restaurando la barrera lipídica del cabello seco o poroso.',
+          benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica del cabello','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o dañado']
+        },
+      ]
     },
     {
-      name:'Acondicionador Romero', tag:'Nutrición', price:'$32.000', size:'500 ml',
+      name:'Acondicionadores', tag:'Nutrición', size:'500 ml',
       bg:'linear-gradient(145deg,#f3e5f5,#e1bee7)',
-      images:['img/acondicionador/acondicionador1.jpeg','img/acondicionador/acondicionador2.jpeg','img/acondicionador/Acondicionador3.jpeg','img/acondicionador/Acondicionador4.jpeg'],
-      desc:'Hidratación profunda sin residuos pesados. Sella la cutícula para un brillo duradero y suavidad inmediata. Compatible con cabellos rizados, teñidos y muy procesados.',
-      benefits:['Hidratación profunda sin residuos','Sella la cutícula para más brillo','Desenreda sin dañar','Efecto antiestático duradero']
+      variants:[
+        {
+          name:'Acondicionador Romero', price:'$32.000', icon:'🌿',
+          image:'img/acondicionador/acondicionador1.jpeg',
+          desc:'El romero mejora la circulación del cuero cabelludo y reduce activamente la caída. Sella la cutícula para un brillo duradero y suavidad inmediata sin residuos pesados.',
+          benefits:['Sella la cutícula para más brillo','Reduce la caída activamente','Desenreda sin dañar la fibra','Efecto antiestático duradero']
+        },
+        {
+          name:'Acondicionador Nutritivo', price:'$32.000', icon:'⭐',
+          image:'img/acondicionador/acondicionador2.jpeg',
+          desc:'Fórmula nutritiva concentrada con aminoácidos esenciales que reparan y fortalecen la fibra capilar desde adentro. Ideal para cabello debilitado por tintes o procesos químicos.',
+          benefits:['Reparación profunda de la fibra capilar','Nutrición con aminoácidos esenciales','Fortalece y reduce el quiebre','Compatible con cabello teñido o procesado']
+        },
+        {
+          name:'Acondicionador Aguacate', price:'$32.000', icon:'🥑',
+          image:'img/acondicionador/Acondicionador3.jpeg',
+          desc:'Rico en Omega-9, vitaminas A, B, C y E del aceite de aguacate. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica y devolviendo elasticidad al cabello más seco.',
+          benefits:['Penetra la fibra con Omega-9 y vitaminas','Restaura elasticidad y barrera lipídica','Controla el frizz desde adentro','Ideal para cabello muy seco o poroso']
+        },
+        {
+          name:'Acondicionador Cebolla', price:'$32.000', icon:'🧅',
+          image:'img/acondicionador/Acondicionador4.jpeg',
+          desc:'El extracto de cebolla aporta compuestos sulfurados esenciales para la producción de queratina. Estudios clínicos demuestran que estimula el crecimiento y reduce la caída en pocas semanas de uso.',
+          benefits:['Frena la caída con compuestos sulfurados','Estimula la producción de queratina natural','Aporta densidad y volumen al cabello','Desenreda y suaviza sin residuos']
+        },
+      ]
     },
     {
-      name:'Tónico Capilar', tag:'Tratamiento', price:'$32.000', size:'120 ml',
+      name:'Tónicos Capilares', tag:'Tratamiento', size:'120 ml',
       bg:'linear-gradient(145deg,#e8f5e9,#c8e6c9)',
-      images:['img/Tonicos-Capilares/tonico%20capilar%201.jpeg','img/Tonicos-Capilares/tonico%20capilar%202.jpeg','img/Tonicos-Capilares/tonico%20capilar%203.jpeg'],
-      desc:'Aplicación directa en raíces 2-4 veces por semana. El romero concentrado activa los folículos pilosos para estimular el crecimiento y reducir la caída estacional. No requiere enjuague.',
-      benefits:['Activa folículos inactivos','Frena la caída estacional','Estimula el crecimiento capilar','Equilibra la producción de sebo']
+      variants:[
+        {
+          name:'Tónico Capilar Romero', price:'$32.000', icon:'🌿',
+          image:'img/Tonicos-Capilares/tonico%20capilar%201.jpeg',
+          desc:'Aplicación directa en raíces 2-4 veces por semana. El romero contiene ácido rosmarínico que mejora la circulación del cuero cabelludo, activa los folículos y reduce la caída. No requiere enjuague.',
+          benefits:['Activa folículos pilosos inactivos','Reduce la caída estacional','Mejora la circulación del cuero cabelludo','Sin enjuague — absorción directa']
+        },
+        {
+          name:'Tónico Capilar 7 Aceites', price:'$32.000', icon:'✨',
+          image:'img/Tonicos-Capilares/tonico%20capilar%202.jpeg',
+          desc:'Sinergia de 7 aceites naturales que nutren, fortalecen y revitalizan el cabello desde la raíz. Los lípidos de los aceites vegetales son responsables del brillo y la salud capilar. Aplicación directa sin enjuague.',
+          benefits:['7 aceites naturales en sinergia','Nutrición profunda y brillo intenso','Fortalece la fibra y reduce el quiebre','Revitaliza el cuero cabelludo sin residuos']
+        },
+        {
+          name:'Tónico Bomba', price:'$32.000', icon:'💣',
+          image:'img/Tonicos-Capilares/tonico%20capilar%203.jpeg',
+          desc:'Crecimiento extremo y reparador en una sola fórmula. El tónico más potente de la línea — activa el ciclo capilar, aumenta el flujo sanguíneo al folículo y repara la fibra desde la primera aplicación. Sin enjuague.',
+          benefits:['Crecimiento extremo y reparación simultánea','Activa el ciclo capilar completo','Aumenta el flujo sanguíneo al folículo','Resultados visibles desde la primera semana']
+        },
+      ]
     },
     {
-      name:'Gel Fijador Hidratante', tag:'Styling', price:'$25.000', size:'300 ml',
+      name:'Gel Fijador Hidratante', tag:'Styling', price:'$25.000', size:'300 ml', icon:'✨',
       bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
       images:['img/Gel/Gel%201.jpeg'],
-      desc:'Define rizos y ondas con fijación duradera sin el efecto cartón. La linaza aporta elasticidad y la Vitamina E protege el cabello mientras mantiene la hidratación.',
-      benefits:['Define rizos sin efecto plástico','Hidrata mientras fija','Protección antifrizz','Fijación flexible todo el día']
+      desc:'El gel de linaza contiene mucílagos que recubren la fibra capilar creando una película protectora. Aporta Omega-3, antioxidantes y Vitamina E que protegen contra el daño oxidativo mientras define y fija sin efecto cartón.',
+      benefits:['Define rizos sin efecto plástico ni residuos','Hidratación sin peso con Omega-3 y Vitamina E','Protección antifrizz y antioxidante','Fijación flexible y duradera todo el día']
     },
     {
-      name:'Tratamiento Capilar', tag:'Reparación', price:'$35.000', size:'250 ml',
+      name:'Tratamiento Capilar', tag:'Reparación', price:'$35.000', size:'250 ml', icon:'🌸',
       bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
       images:['img/Tratamientos/tratamiento%201.jpeg'],
-      desc:'Mascarilla intensiva para cabellos debilitados por calor, tintura o procesos químicos. La quinoa repara la fibra capilar mientras la sábila hidrata y el romero estimula.',
-      benefits:['Repara daño por calor y química','Hidratación profunda en 15 minutos','Fortalece la fibra capilar','Estimula el crecimiento desde la raíz']
+      desc:'La proteína de quinoa contiene 9 aminoácidos esenciales que reparan las hebras dañadas, mientras la sábila aporta enzimas proteolíticas, vitaminas y minerales que nutren y protegen. Mascarilla de 15 minutos de acción profunda.',
+      benefits:['Repara hebras dañadas por calor o química','9 aminoácidos esenciales de la quinoa','Nutre y protege con enzimas de sábila','Resultados visibles desde la 1ª aplicación']
     },
     {
-      name:'Kit Rutina Completa', tag:'Más vendido', price:'$64.000 - $90.000', size:'500 ml',
+      name:'Kit Rutina Completa', tag:'Más vendido', size:'500 ml',
       bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
-      images:['img/Kits/Kit1.jpeg','img/Kits/Kit2.jpeg','img/Kits/Kit3.jpeg','img/Kits/Kits4.jpeg'],
-      desc:'Los kits de la línea Alma Botánica para el cuidado completo de tu cabello. Disponibles en diferentes opciones para adaptarse a tu rutina.',
-      benefits:['Te ayuda con el crecimiento de tu cabello','Fortalecimiento de las raíces','Es una bomba hidratante que te ayudará con el brillo, suavidad y reparación de tu cabello']
+      variants:[
+        {
+          name:'Kits Linaza', price:'$64.000', icon:'✨',
+          image:'img/Kits/Kit1.jpeg',
+          desc:'Kit de la línea Linaza con varios productos que definen, hidratan y fortalecen el cabello. El gel de linaza aporta Omega-3 y mucílagos que protegen la fibra capilar sin efecto cartón ni residuos.',
+          benefits:['Define rizos y ondas sin efecto plástico','Hidratación sin peso con Omega-3','Protección antifrizz duradera','Apto para cabello rizado y muy rizado']
+        },
+        {
+          name:'Kits Nutritivo', price:'$64.000', icon:'⭐',
+          image:'img/Kits/Kit2.jpeg',
+          desc:'Kit de la línea Nutritiva con varios productos de nutrición profunda. Sus aminoácidos esenciales reparan y fortalecen la fibra capilar debilitada por calor, tintes o procesos químicos.',
+          benefits:['Nutrición profunda con aminoácidos esenciales','Repara cabello dañado por calor o química','Fortalece y devuelve brillo natural','Compatible con cabello teñido o procesado']
+        },
+        {
+          name:'Kits Romero', price:'$64.000', icon:'🌿',
+          image:'img/Kits/Kit3.jpeg',
+          desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y reducen la caída. El romero mejora la circulación del cuero cabelludo con resultados clínicamente respaldados.',
+          benefits:['Estimula el crecimiento capilar','Reduce la caída desde la primera semana','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
+        },
+        {
+          name:'Kit Capilar Romero Premium', price:'$90.000', icon:'👑',
+          image:'img/Kits/Kits4.jpeg',
+          desc:'El kit más completo de la línea. Incluye Shampoo Romero, Acondicionador Romero, Tónico Capilar y Tratamiento Capilar — todo lo que necesitas para una rutina capilar integral en un solo kit.',
+          benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo y valorado de la línea']
+        },
+        {
+          name:'Kits Cebolla', price:'$64.000', icon:'🧅',
+          image:'img/Kits/kit5.jpeg',
+          desc:'Kit de la línea Cebolla con varios productos ricos en compuestos sulfurados que estimulan la queratina natural. Estudios clínicos demuestran que el extracto de cebolla reduce la caída en pocas semanas.',
+          benefits:['Estimula la producción de queratina natural','Frena la caída con compuestos sulfurados','Aporta densidad y volumen al cabello','Resultados visibles en pocas semanas']
+        },
+        {
+          name:'Kits Aguacate', price:'$64.000', icon:'🥑',
+          image:'img/Kits/kit6.jpeg',
+          desc:'Kit de la línea Aguacate con varios productos ricos en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica del cabello más seco y poroso.',
+          benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica capilar','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o muy dañado']
+        },
+      ]
     },
     {
-      name:'Crema para Peinar', tag:'Styling', price:'$28.000', size:'200 ml',
+      name:'Crema para Peinar', tag:'Styling', price:'$28.000', size:'200 ml', icon:'💆',
       bg:'linear-gradient(145deg,#fef9e7,#fde68a)',
       images:['img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg'],
-      desc:'Crema definidora para peinar y moldear sin rigidez ni residuos. Ideal para todo tipo de cabello, aporta suavidad y control desde la raíz hasta las puntas.',
-      benefits:['Define y moldea sin efecto pesado','Hidratación duradera sin residuos','Facilita el peinado y desenredo','Apto para uso diario']
+      desc:'Crema para peinar que define y moldea sin rigidez ni residuos. Facilita el desenredo, aporta suavidad y control desde la raíz hasta las puntas. Apta para todo tipo de cabello.',
+      benefits:['Define y moldea sin efecto cartón','Facilita el desenredo y peinado','Hidratación sin residuos ni pesadez','Apta para cabello liso, ondulado y rizado']
     },
     {
-      name:'Bio Repolarizador', tag:'Tratamiento', price:'$35.000', size:'120 ml',
+      name:'Bio Repolarizador', tag:'Tratamiento', price:'$35.000', size:'120 ml', icon:'💎',
       bg:'linear-gradient(145deg,#e0f7fa,#b2ebf2)',
       images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
-      desc:'Tratamiento intensivo que repolariza y regenera la fibra capilar desde adentro. Devuelve la vitalidad y brillo natural al cabello dañado por calor o químicos.',
-      benefits:['Regenera la fibra capilar dañada','Devuelve brillo y suavidad inmediata','Repolariza el cabello con carga eléctrica neutra','Efecto acumulativo con uso constante']
+      desc:'Tratamiento intensivo que aplica keratina, colágeno y aceites para restaurar la fibra desde adentro. Sella la cutícula, equilibra la carga electrostática del cabello y reduce significativamente el frizz. Duración 2-4 semanas.',
+      benefits:['Restaura la fibra capilar desde el interior','Sella la cutícula y reduce el frizz','Recupera suavidad, fuerza y brillo','Ideal para cabello dañado por tintes o calor']
+    },
+    {
+      name:'Pree Poo', tag:'Pre-lavado', price:'$28.000', size:'250 ml', icon:'🌱',
+      bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
+      images:['img/PREE%20PO/PREE%20PO.jpeg'],
+      desc:'Tratamiento que se aplica antes del shampoo para crear una barrera protectora que minimiza el daño del lavado. Mantiene la humedad, aumenta el brillo, mejora la porosidad y reduce el frizz. Especialmente recomendado para cabello rizado, seco o dañado.',
+      benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
     },
   ];
 
@@ -120,18 +219,14 @@
       const p = PRODUCTS[idx];
       if(!p) return;
 
-      document.getElementById('modalTag').textContent   = p.tag;
-      document.getElementById('modalTitle').textContent = p.name;
-      document.getElementById('modalDesc').textContent  = p.desc;
-
-      const priceEl = document.getElementById('modalPrice');
-      priceEl.innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--pink-deep)">${p.price}</span>`;
+      document.getElementById('modalTag').textContent = p.tag;
 
       const imgWrap = document.getElementById('modalImg');
       clearInterval(carouselInterval);
       carouselInterval = null;
 
-      const imgs = p.images || [];
+      const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
+      const imgs = hasVariants ? p.variants.map(v => v.image) : (p.images || []);
       const multi = imgs.length > 1;
 
       imgWrap.style.background = imgs.length > 0 ? '#fff' : p.bg;
@@ -141,7 +236,7 @@
       imgWrap.innerHTML =
         '<div class="modal-carousel">'
         + '<div class="mc-track">'
-        + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="${p.name} - foto ${i + 1}"></div>`).join('')
+        + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="foto ${i + 1}"></div>`).join('')
         + '</div>'
         + (multi
             ? `<button class="mc-btn mc-prev" aria-label="Anterior">${svgPrev}</button>`
@@ -152,28 +247,38 @@
             : '')
         + '</div>';
 
+      function updateInfo(info) {
+        const icon = info.icon ? `<span class="modal-icon">${info.icon}</span>` : '';
+        document.getElementById('modalTitle').innerHTML = info.name + icon;
+        document.getElementById('modalDesc').textContent = info.desc;
+        document.getElementById('modalBenefits').innerHTML = info.benefits.map(b => `<li>${b}</li>`).join('');
+        document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--pink-deep)">${info.price}</span>`;
+        const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
+        document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+      }
+
+      updateInfo(hasVariants ? p.variants[0] : p);
+
       if (multi) {
         let cur = 0;
         const slides  = imgWrap.querySelectorAll('.mc-slide');
         const dotBtns = imgWrap.querySelectorAll('.mc-dot');
         const carousel = imgWrap.querySelector('.modal-carousel');
-        const total = slides.length;
+        const total    = slides.length;
 
         function goTo(n) {
           slides[cur].classList.remove('active');
           cur = ((n % total) + total) % total;
           slides[cur].classList.add('active');
           dotBtns.forEach((d, i) => d.classList.toggle('active', i === cur));
+          if (hasVariants) updateInfo(p.variants[cur]);
         }
 
         imgWrap.querySelector('.mc-prev').addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
         imgWrap.querySelector('.mc-next').addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
         dotBtns.forEach(d => d.addEventListener('click', e => { e.stopPropagation(); goTo(+d.dataset.slide); }));
 
-        carouselInterval = setInterval(() => goTo(cur + 1), 3500);
-        carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
-        carousel.addEventListener('mouseleave', () => { carouselInterval = setInterval(() => goTo(cur + 1), 3500); });
-
+        // Sin auto-play en modal — solo navegación manual
         let mcTouchX = 0;
         carousel.addEventListener('touchstart', e => { mcTouchX = e.touches[0].clientX; }, {passive:true});
         carousel.addEventListener('touchend', e => {
@@ -181,12 +286,6 @@
           if(Math.abs(diff) > 35) goTo(diff > 0 ? cur + 1 : cur - 1);
         }, {passive:true});
       }
-
-      const ul = document.getElementById('modalBenefits');
-      ul.innerHTML = p.benefits.map(b => `<li>${b}</li>`).join('');
-
-      const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${p.name}. ¿Me puedes contar más detalles y disponibilidad?`);
-      document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
       openModal('productModal');
     });
