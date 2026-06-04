@@ -210,6 +210,18 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .footer-bottom p{font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.2)}
 .footer-tagline-b{color:var(--pink-light)!important;opacity:.5}
 
+/* LIGHTBOX */
+.lb-overlay{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.lb-overlay.open{opacity:1;pointer-events:all}
+.lb-close{position:absolute;top:1rem;right:1rem;width:46px;height:46px;border-radius:50%;background:var(--pink-deep);color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s,transform .2s;flex-shrink:0}
+.lb-close:hover{background:var(--pink);transform:scale(1.1)}
+.lb-img-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:5rem 1.5rem;box-sizing:border-box;overflow:auto;-webkit-overflow-scrolling:touch}
+.lb-img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:.75rem;transition:transform .25s ease;transform-origin:center center;cursor:zoom-in;box-shadow:0 8px 40px rgba(0,0,0,.6);user-select:none}
+.lb-controls{position:absolute;bottom:max(1.5rem,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:.75rem;z-index:10}
+.lb-zoom{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;backdrop-filter:blur(6px);flex-shrink:0}
+.lb-zoom:hover{background:rgba(255,255,255,.28);transform:scale(1.1)}
+.mc-slide img{cursor:zoom-in}
+
 /* PRODUCT MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(45,21,32,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1.5rem;padding-bottom:max(1.5rem,env(safe-area-inset-bottom));opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .modal-overlay.open{opacity:1;pointer-events:all}

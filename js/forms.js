@@ -410,6 +410,66 @@
     }, {passive:true});
   });
 
+  // LIGHTBOX
+  (function(){
+    const overlay  = document.getElementById('lbOverlay');
+    const lbImg    = document.getElementById('lbImg');
+    const lbClose  = document.getElementById('lbClose');
+    const lbZoomIn = document.getElementById('lbZoomIn');
+    const lbZoomOut= document.getElementById('lbZoomOut');
+    const lbWrap   = document.getElementById('lbImgWrap');
+    if(!overlay) return;
+    let scale = 1;
+
+    function openLb(src, alt){
+      scale = 1;
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lbImg.style.transform = 'scale(1)';
+      lbImg.style.cursor = 'zoom-in';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function setZoom(val){
+      scale = Math.min(3, Math.max(0.5, val));
+      lbImg.style.transform = `scale(${scale})`;
+      lbImg.style.cursor = scale >= 3 ? 'default' : 'zoom-in';
+    }
+
+    // Abrir al hacer clic en imagen del modal
+    document.getElementById('modalImg')?.addEventListener('click', e => {
+      if(e.target.tagName === 'IMG') openLb(e.target.src, e.target.alt);
+    });
+
+    // Cerrar
+    lbClose.addEventListener('click', closeLb);
+    lbWrap.addEventListener('click', e => { if(e.target === lbWrap) closeLb(); });
+    overlay.addEventListener('click', e => { if(e.target === overlay) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && overlay.classList.contains('open')) closeLb();
+    });
+
+    // Clic en imagen → zoom
+    lbImg.addEventListener('click', e => { e.stopPropagation(); setZoom(scale + 0.5); });
+
+    // Botones de zoom
+    lbZoomIn.addEventListener('click',  e => { e.stopPropagation(); setZoom(scale + 0.5); });
+    lbZoomOut.addEventListener('click', e => { e.stopPropagation(); setZoom(scale - 0.5); });
+
+    // Swipe hacia abajo para cerrar en móvil
+    let ty = 0;
+    overlay.addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, {passive:true});
+    overlay.addEventListener('touchend', e => {
+      if(Math.abs(e.changedTouches[0].clientY - ty) > 80) closeLb();
+    }, {passive:true});
+  })();
+
   function highlight(id){
     const el = document.getElementById(id);
     if(!el) return;
