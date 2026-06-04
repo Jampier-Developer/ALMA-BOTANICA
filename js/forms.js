@@ -418,15 +418,33 @@
     const lbZoomIn = document.getElementById('lbZoomIn');
     const lbZoomOut= document.getElementById('lbZoomOut');
     const lbWrap   = document.getElementById('lbImgWrap');
+    const lbPrev   = document.getElementById('lbPrev');
+    const lbNext   = document.getElementById('lbNext');
     if(!overlay) return;
-    let scale = 1;
 
-    function openLb(src, alt){
+    let scale = 1;
+    let imgs  = [];
+    let cur   = 0;
+
+    function updateNav(){
+      const multi = imgs.length > 1;
+      lbPrev.hidden = !multi;
+      lbNext.hidden = !multi;
+    }
+
+    function showImg(idx){
+      cur = ((idx % imgs.length) + imgs.length) % imgs.length;
       scale = 1;
-      lbImg.src = src;
-      lbImg.alt = alt || '';
+      lbImg.src = imgs[cur].src;
+      lbImg.alt = imgs[cur].alt || '';
       lbImg.style.transform = 'scale(1)';
       lbImg.style.cursor = 'zoom-in';
+    }
+
+    function openLb(allImgs, startIdx){
+      imgs = allImgs;
+      updateNav();
+      showImg(startIdx);
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -444,15 +462,25 @@
 
     // Abrir al hacer clic en imagen del modal
     document.getElementById('modalImg')?.addEventListener('click', e => {
-      if(e.target.tagName === 'IMG') openLb(e.target.src, e.target.alt);
+      if(e.target.tagName !== 'IMG') return;
+      const allImgs = Array.from(document.querySelectorAll('#modalImg .mc-slide img'));
+      const idx = allImgs.indexOf(e.target);
+      openLb(allImgs.length ? allImgs : [e.target], Math.max(0, idx));
     });
+
+    // Navegar
+    lbPrev.addEventListener('click', e => { e.stopPropagation(); showImg(cur - 1); });
+    lbNext.addEventListener('click', e => { e.stopPropagation(); showImg(cur + 1); });
 
     // Cerrar
     lbClose.addEventListener('click', closeLb);
     lbWrap.addEventListener('click', e => { if(e.target === lbWrap) closeLb(); });
     overlay.addEventListener('click', e => { if(e.target === overlay) closeLb(); });
     document.addEventListener('keydown', e => {
-      if(e.key === 'Escape' && overlay.classList.contains('open')) closeLb();
+      if(!overlay.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLb();
+      if(e.key === 'ArrowLeft')  { e.preventDefault(); showImg(cur - 1); }
+      if(e.key === 'ArrowRight') { e.preventDefault(); showImg(cur + 1); }
     });
 
     // Clic en imagen → zoom
@@ -462,11 +490,17 @@
     lbZoomIn.addEventListener('click',  e => { e.stopPropagation(); setZoom(scale + 0.5); });
     lbZoomOut.addEventListener('click', e => { e.stopPropagation(); setZoom(scale - 0.5); });
 
-    // Swipe hacia abajo para cerrar en móvil
-    let ty = 0;
-    overlay.addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, {passive:true});
+    // Swipe horizontal para navegar, vertical para cerrar
+    let tx = 0, ty = 0;
+    overlay.addEventListener('touchstart', e => {
+      tx = e.touches[0].clientX;
+      ty = e.touches[0].clientY;
+    }, {passive:true});
     overlay.addEventListener('touchend', e => {
-      if(Math.abs(e.changedTouches[0].clientY - ty) > 80) closeLb();
+      const dx = tx - e.changedTouches[0].clientX;
+      const dy = ty - e.changedTouches[0].clientY;
+      if(Math.abs(dy) > 80 && Math.abs(dy) > Math.abs(dx)) { closeLb(); return; }
+      if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showImg(dx > 0 ? cur + 1 : cur - 1);
     }, {passive:true});
   })();
 
