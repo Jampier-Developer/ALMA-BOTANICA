@@ -63,7 +63,7 @@
           benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída bloqueando causas hormonales','Limpieza profunda sin sulfatos agresivos','Apto para uso diario en todo tipo de cabello']
         },
         {
-          name:'Shampoo Nutritivo', price:'$32.000', icon:'⭐',
+          name:'Shampoo Nutritivo', price:'$34.000', icon:'⭐',
           image:'img/Shampoos/shampoo%202.jpeg',
           desc:'Fórmula nutritiva que fortalece la fibra capilar desde el primer lavado. Limpia en profundidad mientras aporta nutrición activa, devolviendo vida y brillo sin residuos pesados.',
           benefits:['Nutrición activa desde la raíz','Fortalece la fibra capilar debilitada','Brillo y suavidad inmediata','Sin sulfatos ni parabenos']
@@ -87,7 +87,7 @@
           benefits:['Sella la cutícula para más brillo','Reduce la caída activamente','Desenreda sin dañar la fibra','Efecto antiestático duradero']
         },
         {
-          name:'Acondicionador Nutritivo', price:'$32.000', icon:'⭐',
+          name:'Acondicionador Nutritivo', price:'$34.000', icon:'⭐',
           image:'img/acondicionador/acondicionador2.jpeg',
           desc:'Fórmula nutritiva concentrada con aminoácidos esenciales que reparan y fortalecen la fibra capilar desde adentro. Ideal para cabello debilitado por tintes o procesos químicos.',
           benefits:['Reparación profunda de la fibra capilar','Nutrición con aminoácidos esenciales','Fortalece y reduce el quiebre','Compatible con cabello teñido o procesado']
@@ -111,19 +111,19 @@
       bg:'linear-gradient(145deg,#e8f5e9,#c8e6c9)',
       variants:[
         {
-          name:'Tónico Capilar Romero', price:'$32.000', icon:'🌿',
+          name:'Tónico Capilar Romero', price:'$15.000', icon:'🌿',
           image:'img/Tonicos-Capilares/tonico%20capilar%201.jpeg',
           desc:'Aplicación directa en raíces 2-4 veces por semana. El romero contiene ácido rosmarínico que mejora la circulación del cuero cabelludo, activa los folículos y reduce la caída. No requiere enjuague.',
           benefits:['Activa folículos pilosos inactivos','Reduce la caída estacional','Mejora la circulación del cuero cabelludo','Sin enjuague — absorción directa']
         },
         {
-          name:'Tónico Capilar 7 Aceites', price:'$32.000', icon:'✨',
+          name:'Tónico Capilar 7 Aceites', price:'$20.000', icon:'✨',
           image:'img/Tonicos-Capilares/tonico%20capilar%202.jpeg',
           desc:'Sinergia de 7 aceites naturales que nutren, fortalecen y revitalizan el cabello desde la raíz. Los lípidos de los aceites vegetales son responsables del brillo y la salud capilar. Aplicación directa sin enjuague.',
           benefits:['7 aceites naturales en sinergia','Nutrición profunda y brillo intenso','Fortalece la fibra y reduce el quiebre','Revitaliza el cuero cabelludo sin residuos']
         },
         {
-          name:'Tónico Bomba', price:'$32.000', icon:'💣',
+          name:'Tónico Bomba', price:'$25.000', icon:'💣',
           image:'img/Tonicos-Capilares/tonico%20capilar%203.jpeg',
           desc:'Crecimiento extremo y reparador en una sola fórmula. El tónico más potente de la línea — activa el ciclo capilar, aumenta el flujo sanguíneo al folículo y repara la fibra desde la primera aplicación. Sin enjuague.',
           benefits:['Crecimiento extremo y reparación simultánea','Activa el ciclo capilar completo','Aumenta el flujo sanguíneo al folículo','Resultados visibles desde la primera semana']
@@ -131,14 +131,14 @@
       ]
     },
     {
-      name:'Gel Fijador Hidratante', tag:'Styling', price:'$25.000', size:'300 ml', icon:'✨',
+      name:'Gel Fijador Hidratante', tag:'Styling', price:'$13.000', size:'300 ml', icon:'✨',
       bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
       images:['img/Gel/Gel%201.jpeg'],
       desc:'El gel de linaza contiene mucílagos que recubren la fibra capilar creando una película protectora. Aporta Omega-3, antioxidantes y Vitamina E que protegen contra el daño oxidativo mientras define y fija sin efecto cartón.',
       benefits:['Define rizos sin efecto plástico ni residuos','Hidratación sin peso con Omega-3 y Vitamina E','Protección antifrizz y antioxidante','Fijación flexible y duradera todo el día']
     },
     {
-      name:'Tratamiento Capilar', tag:'Reparación', price:'$35.000', size:'250 ml', icon:'🌸',
+      name:'Tratamiento Capilar', tag:'Reparación', price:'$23.000', size:'250 ml', icon:'🌸',
       bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
       images:['img/Tratamientos/tratamiento%201.jpeg'],
       desc:'La proteína de quinoa contiene 9 aminoácidos esenciales que reparan las hebras dañadas, mientras la sábila aporta enzimas proteolíticas, vitaminas y minerales que nutren y protegen. Mascarilla de 15 minutos de acción profunda.',
@@ -149,19 +149,19 @@
       bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
       variants:[
         {
-          name:'Kits Linaza', price:'$64.000', icon:'✨',
+          name:'Kits Linaza', price:'$75.000', icon:'✨',
           image:'img/Kits/Kit1.jpeg',
           desc:'Kit de la línea Linaza con varios productos que definen, hidratan y fortalecen el cabello. El gel de linaza aporta Omega-3 y mucílagos que protegen la fibra capilar sin efecto cartón ni residuos.',
           benefits:['Define rizos y ondas sin efecto plástico','Hidratación sin peso con Omega-3','Protección antifrizz duradera','Apto para cabello rizado y muy rizado']
         },
         {
-          name:'Kits Nutritivo', price:'$64.000', icon:'⭐',
+          name:'Kits Nutritivo', price:'$130.000', icon:'⭐',
           image:'img/Kits/Kit2.jpeg',
           desc:'Kit de la línea Nutritiva con varios productos de nutrición profunda. Sus aminoácidos esenciales reparan y fortalecen la fibra capilar debilitada por calor, tintes o procesos químicos.',
           benefits:['Nutrición profunda con aminoácidos esenciales','Repara cabello dañado por calor o química','Fortalece y devuelve brillo natural','Compatible con cabello teñido o procesado']
         },
         {
-          name:'Kits Romero', price:'$64.000', icon:'🌿',
+          name:'Kits Romero', price:'$60.000', icon:'🌿',
           image:'img/Kits/Kit3.jpeg',
           desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y reducen la caída. El romero mejora la circulación del cuero cabelludo con resultados clínicamente respaldados.',
           benefits:['Estimula el crecimiento capilar','Reduce la caída desde la primera semana','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
@@ -194,25 +194,18 @@
       benefits:['Define y moldea sin efecto cartón','Facilita el desenredo y peinado','Hidratación sin residuos ni pesadez','Apta para cabello liso, ondulado y rizado']
     },
     {
-      name:'Bio Repolarizador', tag:'Tratamiento', price:'$35.000', size:'120 ml', icon:'💎',
+      name:'Bio Repolarizador', tag:'Tratamiento', price:'$32.000', size:'120 ml', icon:'💎',
       bg:'linear-gradient(145deg,#e0f7fa,#b2ebf2)',
       images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
       desc:'Tratamiento intensivo que aplica keratina, colágeno y aceites para restaurar la fibra desde adentro. Sella la cutícula, equilibra la carga electrostática del cabello y reduce significativamente el frizz. Duración 2-4 semanas.',
       benefits:['Restaura la fibra capilar desde el interior','Sella la cutícula y reduce el frizz','Recupera suavidad, fuerza y brillo','Ideal para cabello dañado por tintes o calor']
     },
     {
-      name:'Pree Poo', tag:'Pre-lavado', price:'$28.000', size:'250 ml', icon:'🌱',
+      name:'Pree Poo', tag:'Pre-lavado', price:'$25.000', size:'250 ml', icon:'🌱',
       bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
       images:['img/PREE%20PO/PREE%20PO.jpeg'],
       desc:'Tratamiento que se aplica antes del shampoo para crear una barrera protectora que minimiza el daño del lavado. Mantiene la humedad, aumenta el brillo, mejora la porosidad y reduce el frizz. Especialmente recomendado para cabello rizado, seco o dañado.',
       benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
-    },
-    {
-      name:'Pree Poo', tag:'Pre-lavado', price:'$28.000', size:'250 ml',
-      bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
-      images:['img/PREE%20PO/PREE%20PO.jpeg'],
-      desc:'Tratamiento pre-lavado que protege y acondiciona el cabello antes del shampoo. Reduce el daño por fricción, mantiene la humedad y facilita el desenredo.',
-      benefits:['Protege la fibra capilar antes del lavado','Reduce la pérdida de humedad','Facilita el desenredo','Ideal para cabello rizado y muy rizado']
     },
   ];
 
