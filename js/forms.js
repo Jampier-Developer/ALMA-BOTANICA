@@ -53,14 +53,14 @@
   // PRODUCTS DATA
   const PRODUCTS = [
     {
-      name:'Shampoo Romero', tag:'Limpieza', price:'$32.000', size:'500 ml',
+      name:'Shampoo Romero & Nutritivo', tag:'Limpieza', price:'$32.000', size:'500 ml',
       bg:'linear-gradient(145deg,#fce4ec,#f8bbd0)',
       images:['img/Shampoos/shampoo%201.jpeg','img/Shampoos/shampoo%202.jpeg','img/Shampoos/shampoo%203.jpeg'],
       desc:'Limpieza profunda que estimula el crecimiento capilar desde el primer lavado. Formulado sin sulfatos agresivos para respetar el cuero cabelludo mientras elimina impurezas y exceso de sebo.',
       benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída desde la 1ª semana','Limpieza profunda sin agredir la fibra','Apto para uso diario en todo tipo de cabello']
     },
     {
-      name:'Acondicionador Romero', tag:'Nutrición', price:'$32.000', size:'500 ml',
+      name:'Acondicionador Romero & Nutritivo', tag:'Nutrición', price:'$32.000', size:'500 ml',
       bg:'linear-gradient(145deg,#f3e5f5,#e1bee7)',
       images:['img/acondicionador/acondicionador1.jpeg','img/acondicionador/acondicionador2.jpeg','img/acondicionador/Acondicionador3.jpeg','img/acondicionador/Acondicionador4.jpeg'],
       desc:'Hidratación profunda sin residuos pesados. Sella la cutícula para un brillo duradero y suavidad inmediata. Compatible con cabellos rizados, teñidos y muy procesados.',
@@ -90,7 +90,7 @@
     {
       name:'Kit Rutina Completa', tag:'Más vendido', price:'$64.000 - $90.000', size:'500 ml',
       bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
-      images:['img/Kits/Kit1.jpeg','img/Kits/Kit2.jpeg','img/Kits/Kit3.jpeg','img/Kits/Kits4.jpeg'],
+      images:['img/Kits/Kit1.jpeg','img/Kits/Kit2.jpeg','img/Kits/Kit3.jpeg','img/Kits/Kits4.jpeg','img/Kits/kit5.jpeg','img/Kits/kit6.jpeg'],
       desc:'Los kits de la línea Alma Botánica para el cuidado completo de tu cabello. Disponibles en diferentes opciones para adaptarse a tu rutina.',
       benefits:['Te ayuda con el crecimiento de tu cabello','Fortalecimiento de las raíces','Es una bomba hidratante que te ayudará con el brillo, suavidad y reparación de tu cabello']
     },
@@ -107,6 +107,13 @@
       images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
       desc:'Tratamiento intensivo que repolariza y regenera la fibra capilar desde adentro. Devuelve la vitalidad y brillo natural al cabello dañado por calor o químicos.',
       benefits:['Regenera la fibra capilar dañada','Devuelve brillo y suavidad inmediata','Repolariza el cabello con carga eléctrica neutra','Efecto acumulativo con uso constante']
+    },
+    {
+      name:'Pree Poo', tag:'Pre-lavado', price:'$28.000', size:'250 ml',
+      bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
+      images:['img/PREE%20PO/PREE%20PO.jpeg'],
+      desc:'Tratamiento pre-lavado que protege y acondiciona el cabello antes del shampoo. Reduce el daño por fricción, mantiene la humedad y facilita el desenredo.',
+      benefits:['Protege la fibra capilar antes del lavado','Reduce la pérdida de humedad','Facilita el desenredo','Ideal para cabello rizado y muy rizado']
     },
   ];
 

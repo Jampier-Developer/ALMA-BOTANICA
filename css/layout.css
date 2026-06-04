@@ -114,6 +114,7 @@ nav.scrolled{box-shadow:var(--shadow)}
 .pc-img-6{background:linear-gradient(145deg,var(--pink-pale),var(--pink-light))}
 .pc-img-7{background:linear-gradient(145deg,#fef9e7,#fde68a)}
 .pc-img-8{background:linear-gradient(145deg,#e0f7fa,#b2ebf2)}
+.pc-img-9{background:linear-gradient(145deg,#f1f8e9,#dcedc8)}
 .pc-img-icon{font-size:3.5rem;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))}
 .pc-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;border-radius:0}
 .pc-badge-tag{position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.92);color:var(--pink-deep);font-family:var(--font-m);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.25em .75em;border-radius:var(--radius-full);border:1px solid var(--border-pink)}
