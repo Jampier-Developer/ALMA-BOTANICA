@@ -211,6 +211,59 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .footer-bottom p{font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.2)}
 .footer-tagline-b{color:var(--pink-light)!important;opacity:.5}
 
+/* KIT BORDE DORADO GIRATORIO */
+@property --kit-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.kit-border-wrap{
+  --kit-angle: 0deg;
+  position:relative;
+  border-radius:calc(var(--radius-lg) + 3px);
+  padding:3px;
+  background:conic-gradient(from var(--kit-angle),#7a5510,#c9a15a,#e8c97a,#fffce0,#fff8e1,#e8c97a,#c9a15a,#7a5510);
+  animation:kit-spin 3.5s linear infinite;
+  box-shadow:0 0 7px rgba(201,161,90,.32),0 0 14px rgba(201,161,90,.13);
+  transition:transform var(--dur) var(--ease)
+}
+.kit-border-wrap:hover{transform:translateY(-6px);box-shadow:0 0 11px rgba(201,161,90,.48),0 0 22px rgba(201,161,90,.2)}
+.kit-border-wrap .product-card-featured{border:none !important;border-radius:var(--radius-lg);box-shadow:none !important}
+.kit-border-wrap .product-card-featured:hover{transform:none !important;box-shadow:none !important}
+@keyframes kit-spin{to{--kit-angle:360deg}}
+.modal-box.kit-modal .modal-img-wrap{position:relative;animation:kit-modal-glow 2.5s ease-in-out infinite}
+.modal-box.kit-modal .modal-img-wrap::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  padding:3px;
+  border-radius:inherit;
+  background:conic-gradient(from var(--kit-angle),#7a5510,#c9a15a,#e8c97a,#fffce0,#e8c97a,#c9a15a,#7a5510);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  animation:kit-spin 3.5s linear infinite;
+  pointer-events:none;
+  z-index:20;
+  --kit-angle:0deg
+}
+@keyframes kit-modal-glow{
+  0%,100%{box-shadow:0 0 15px rgba(201,161,90,.4),0 0 30px rgba(201,161,90,.18)}
+  50%{box-shadow:0 0 25px rgba(201,161,90,.65),0 0 50px rgba(201,161,90,.3)}
+}
+
+/* KIT MODAL WRAP — borde dorado de punta a punta */
+#kitModalWrap{max-width:740px;width:100%;border-radius:calc(var(--radius-lg) + 3px)}
+#kitModalWrap .modal-box{max-width:100%}
+#kitModalWrap.kit-active{
+  --kit-angle:0deg;
+  padding:3px;
+  background:conic-gradient(from var(--kit-angle),#7a5510,#c9a15a,#e8c97a,#fffce0,#fff8e1,#e8c97a,#c9a15a,#7a5510);
+  animation:kit-spin 3.5s linear infinite;
+  box-shadow:0 0 9px rgba(201,161,90,.38),0 0 20px rgba(201,161,90,.16)
+}
+
 /* LIGHTBOX */
 .lb-overlay{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .lb-overlay.open{opacity:1;pointer-events:all}
@@ -406,6 +459,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 
   /* ── Modales ── */
   .modal-box{border-radius:var(--radius-md)}
+  #kitModalWrap{border-radius:calc(var(--radius-md) + 3px)}
   .modal-img-wrap{min-height:260px}
   .modal-info{padding:1.2rem}
   .modal-title{font-size:1.3rem}

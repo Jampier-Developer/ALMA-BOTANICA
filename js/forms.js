@@ -25,7 +25,11 @@
   // MODALS
   function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
   function closeModal(id){
-    if(id === 'productModal') clearInterval(carouselInterval);
+    if(id === 'productModal'){
+      clearInterval(carouselInterval);
+      document.querySelector('.modal-box')?.classList.remove('kit-modal');
+      document.getElementById('kitModalWrap')?.classList.remove('kit-active');
+    }
     if(id === 'catalogModal') clearConfetti();
     document.getElementById(id).classList.remove('open');
     document.body.style.overflow='';
@@ -107,7 +111,7 @@
       ]
     },
     {
-      name:'Tónicos Capilares', tag:'Tratamiento', size:'120 ml',
+      name:'Tónicos Capilares', tag:'Crecimiento', size:'120 ml',
       bg:'linear-gradient(145deg,#e8f5e9,#c8e6c9)',
       variants:[
         {
@@ -131,7 +135,7 @@
       ]
     },
     {
-      name:'Gel Fijador Hidratante', tag:'Styling', price:'$13.000', size:'300 ml', icon:'✨',
+      name:'Gel Fijador Hidratante', tag:'Fijador', price:'$13.000', size:'300 ml', icon:'✨',
       bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
       images:['img/Gel/Gel%201.jpeg'],
       desc:'El gel de linaza contiene mucílagos que recubren la fibra capilar creando una película protectora. Aporta Omega-3, antioxidantes y Vitamina E que protegen contra el daño oxidativo mientras define y fija sin efecto cartón.',
@@ -187,14 +191,14 @@
       ]
     },
     {
-      name:'Crema para Peinar', tag:'Styling', price:'$28.000', size:'200 ml', icon:'💆',
+      name:'Crema para Peinar', tag:'Peinado', price:'$28.000', size:'200 ml', icon:'💆',
       bg:'linear-gradient(145deg,#fef9e7,#fde68a)',
       images:['img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg'],
       desc:'Crema para peinar que define y moldea sin rigidez ni residuos. Facilita el desenredo, aporta suavidad y control desde la raíz hasta las puntas. Apta para todo tipo de cabello.',
       benefits:['Define y moldea sin efecto cartón','Facilita el desenredo y peinado','Hidratación sin residuos ni pesadez','Apta para cabello liso, ondulado y rizado']
     },
     {
-      name:'Bio Repolarizador', tag:'Tratamiento', price:'$32.000', size:'120 ml', icon:'💎',
+      name:'Bio Repolarizador', tag:'Reparador', price:'$32.000', size:'120 ml', icon:'💎',
       bg:'linear-gradient(145deg,#e0f7fa,#b2ebf2)',
       images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
       desc:'Tratamiento intensivo que aplica keratina, colágeno y aceites para restaurar la fibra desde adentro. Sella la cutícula, equilibra la carga electrostática del cabello y reduce significativamente el frizz. Duración 2-4 semanas.',
@@ -258,6 +262,12 @@
       }
 
       updateInfo(hasVariants ? p.variants[0] : p);
+
+      // Brillo dorado en el modal solo para Kits
+      const modalBox = document.querySelector('.modal-box');
+      const kitWrap  = document.getElementById('kitModalWrap');
+      if(idx === 5){ modalBox?.classList.add('kit-modal'); kitWrap?.classList.add('kit-active'); }
+      else{ modalBox?.classList.remove('kit-modal'); kitWrap?.classList.remove('kit-active'); }
 
       if (multi) {
         let cur = 0;
