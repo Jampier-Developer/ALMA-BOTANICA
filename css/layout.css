@@ -254,7 +254,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 }
 
 /* KIT MODAL WRAP — borde dorado de punta a punta */
-#kitModalWrap{max-width:740px;width:100%;border-radius:calc(var(--radius-lg) + 3px)}
+#kitModalWrap{max-width:740px;width:100%;border-radius:calc(var(--radius-lg) + 3px);transform:translateY(20px);transition:transform .35s var(--ease)}
+.modal-overlay.open #kitModalWrap{transform:translateY(0)}
 #kitModalWrap .modal-box{max-width:100%}
 #kitModalWrap.kit-active{
   --kit-angle:0deg;
