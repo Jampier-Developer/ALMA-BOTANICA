@@ -4,6 +4,10 @@
   let carouselInterval = null;
   let confettiTimers = [];
 
+  // Producto actualmente visible en el modal (para el carrito)
+  let _cartCurrent = null;
+  function parsePriceNum(str){ return parseInt((str||'').replace(/[^0-9]/g,''),10)||0; }
+
   function clearConfetti() {
     confettiTimers.forEach(t => clearTimeout(t));
     confettiTimers = [];
@@ -259,6 +263,21 @@
         document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--pink-deep)">${info.price}</span>`;
         const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
         document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+
+        // Actualizar datos del carrito con el producto/variante actual
+        const activeImg = document.querySelector('#modalImg .mc-slide.active img');
+        _cartCurrent = {
+          name:     info.name,
+          price:    info.price || '',
+          priceNum: parsePriceNum(info.price || ''),
+          image:    activeImg ? (activeImg.getAttribute('src') || activeImg.src) : '',
+          tag:      p.tag || '',
+        };
+        // Resetear botón si cambió de variante
+        const cartBtn = document.getElementById('modalAddCart');
+        const cartTxt = cartBtn?.querySelector('.cart-btn-text');
+        if(cartBtn){ cartBtn.classList.remove('added'); }
+        if(cartTxt){ cartTxt.textContent = 'Agregar al carrito'; }
       }
 
       updateInfo(hasVariants ? p.variants[0] : p);
@@ -383,6 +402,21 @@
       showToast('Error al generar el PDF. Inténtalo de nuevo.', '⚠️');
       console.warn('PDF error:', err);
     }
+  });
+
+  // BOTÓN AGREGAR AL CARRITO (una sola vez)
+  document.getElementById('modalAddCart')?.addEventListener('click', () => {
+    if(!_cartCurrent) return;
+    if(typeof window.cartAddItem === 'function') window.cartAddItem({ ..._cartCurrent });
+    const btn = document.getElementById('modalAddCart');
+    const txt = btn?.querySelector('.cart-btn-text');
+    if(btn){ btn.classList.add('added'); }
+    if(txt){ txt.textContent = '¡Agregado! ✓'; }
+    clearTimeout(window._addCartResetT);
+    window._addCartResetT = setTimeout(() => {
+      if(btn){ btn.classList.remove('added'); }
+      if(txt){ txt.textContent = 'Agregar al carrito'; }
+    }, 2200);
   });
 
   // CARD CAROUSELS — inicializa todos los carruseles de tarjetas genéricamente
