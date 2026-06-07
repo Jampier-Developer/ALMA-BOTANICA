@@ -331,88 +331,22 @@
     });
   });
 
-  // CATALOG FORM — genera y descarga el PDF
+  // CATALOG FORM — redirige a página de catálogo en proceso
   const catalogForm = document.getElementById('catalogForm');
   const cmSubmit    = document.getElementById('cmSubmit');
   const cmBtnText   = document.getElementById('cmBtnText');
   const cmBtnLoad   = document.getElementById('cmBtnLoad');
-  const cmSuccess   = document.getElementById('cmSuccess');
 
-  let nombreGuardado = '';
-
-  catalogForm?.addEventListener('submit', async(e) => {
+  catalogForm?.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('cmName').value.trim();
-    if(!name){ highlight('cmName'); return; }
-
-    nombreGuardado = name;
-    cmBtnText.style.display = 'none';
-    cmBtnLoad.style.display = 'inline';
-    cmSubmit.disabled = true;
-
-    await new Promise(r => setTimeout(r, 400));
-
-    catalogForm.style.display = 'none';
-    cmSuccess.style.display   = 'block';
-
-    const nameSpan = document.getElementById('cmSuccessName');
-    if(nameSpan) nameSpan.textContent = name;
-
-    cmBtnText.style.display = 'inline';
-    cmBtnLoad.style.display = 'none';
-    cmSubmit.disabled = false;
-
-    showToast('¡Tu catálogo está listo! Descárgalo ahora 🌿', '🌿');
-  });
-
-  // BOTÓN DE DESCARGA
-  document.getElementById('cmDownloadBtn')?.addEventListener('click', async() => {
-    const btn = document.getElementById('cmDownloadBtn');
-    const ok  = document.getElementById('cmDownloadOk');
-
-    btn.disabled = true;
-    btn.style.opacity = '0.85';
-    btn.innerHTML = '<span class="cm-spinner"></span> Generando PDF...';
-
-    try {
-      if(typeof window.generarCatalogoPDF === 'function'){
-        await window.generarCatalogoPDF(nombreGuardado);
-      }
-      btn.innerHTML = '<em class="cm-checkmark">✓</em> ¡Muchas gracias por tu descarga!';
-      btn.style.background = 'linear-gradient(135deg,#2e7d6e,#38756e)';
-      btn.style.opacity = '1';
-      ok.style.display = 'flex';
-      showToast('¡Catálogo descargado! Gracias por tu interés 🌿', '🌿');
-
-      // Confetti 20 segundos — para automáticamente si cierra el modal
-      if(typeof confetti === 'function'){
-        clearConfetti();
-        const K = ['#d4607a','#8b2d45','#c9a15a','#f8bbd0','#fff','#e8c97a'];
-        const wave = (opts, delay) => {
-          confettiTimers.push(setTimeout(() => { if(typeof confetti==='function') confetti(opts); }, delay));
-        };
-        confetti({ particleCount:180, spread:100, origin:{y:.6}, colors:K });
-        wave({ particleCount:140, spread:130, angle:60,  origin:{x:0,  y:.7}, colors:K }, 700);
-        wave({ particleCount:140, spread:130, angle:120, origin:{x:1,  y:.7}, colors:K }, 700);
-        wave({ particleCount:120, spread:90,  origin:{y:.55}, colors:K }, 2500);
-        wave({ particleCount:110, spread:120, angle:70,  origin:{x:.1, y:.6}, colors:K }, 4500);
-        wave({ particleCount:110, spread:120, angle:110, origin:{x:.9, y:.6}, colors:K }, 4500);
-        wave({ particleCount:100, spread:90,  origin:{y:.5},  colors:K }, 7000);
-        wave({ particleCount:90,  spread:110, origin:{y:.6},  colors:K }, 9000);
-        wave({ particleCount:80,  spread:130, angle:60,  origin:{x:0,  y:.7}, colors:K }, 11000);
-        wave({ particleCount:80,  spread:130, angle:120, origin:{x:1,  y:.7}, colors:K }, 11000);
-        wave({ particleCount:70,  spread:90,  origin:{y:.55}, colors:K }, 13500);
-        wave({ particleCount:60,  spread:100, origin:{y:.6},  colors:K }, 16000);
-        wave({ particleCount:50,  spread:120, origin:{y:.5},  colors:K }, 18500);
-        confettiTimers.push(setTimeout(() => clearConfetti(), 21000));
-      }
-    } catch(err) {
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar catálogo PDF`;
-      showToast('Error al generar el PDF. Inténtalo de nuevo.', '⚠️');
-      console.warn('PDF error:', err);
-    }
+    if (!name) { highlight('cmName'); return; }
+    if (cmBtnText) cmBtnText.style.display = 'none';
+    if (cmBtnLoad) cmBtnLoad.style.display = 'inline';
+    if (cmSubmit)  cmSubmit.disabled = true;
+    setTimeout(() => {
+      window.location.href = 'catalogo.html?nombre=' + encodeURIComponent(name);
+    }, 380);
   });
 
   // BOTÓN AGREGAR AL CARRITO (una sola vez)
