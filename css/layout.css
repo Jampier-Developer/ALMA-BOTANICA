@@ -411,7 +411,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 /* Teléfonos ≤600px — sube desde abajo, encima del botón WA */
 @media(max-width:600px){
   .cat-wrap{
-    bottom:5.5rem;left:.75rem;right:.75rem;
+    bottom:6.2rem;left:.75rem;right:.75rem;
     max-width:none;width:auto;
     transform:translateY(calc(100% + 2rem));
     border-radius:var(--radius-md);

@@ -104,10 +104,10 @@ body{
   font-size:1.1rem;
   line-height:1;
 }
-.logo-leaf:nth-child(3){top:-14px;left:50%;transform:translateX(-50%);}
-.logo-leaf:nth-child(4){bottom:-14px;left:50%;transform:translateX(-50%);}
-.logo-leaf:nth-child(5){top:50%;left:-16px;transform:translateY(-50%);}
-.logo-leaf:nth-child(6){top:50%;right:-16px;transform:translateY(-50%);}
+.logo-leaf:nth-child(2){top:-14px;left:50%;transform:translateX(-50%);}
+.logo-leaf:nth-child(3){bottom:-14px;left:50%;transform:translateX(-50%);}
+.logo-leaf:nth-child(4){top:50%;left:-16px;transform:translateY(-50%);}
+.logo-leaf:nth-child(5){top:50%;right:-16px;transform:translateY(-50%);}
 
 .hero-brand{
   position:relative;
