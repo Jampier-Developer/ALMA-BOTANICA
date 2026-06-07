@@ -582,10 +582,36 @@
   </div>
 </div>
 
-<!-- TOAST -->
+<!-- MODAL CONFIRMACIÓN CARRITO -->
+<div class="cart-confirm-overlay" id="cartConfirmOverlay" role="dialog" aria-modal="true" aria-labelledby="cartConfirmTitle">
+  <div class="cart-confirm-box">
+    <div class="ccb-deco"></div>
+    <div class="ccb-icon" id="cartConfirmIcon">🗑️</div>
+    <h3 class="ccb-title" id="cartConfirmTitle">¿Eliminar producto?</h3>
+    <p class="ccb-msg" id="cartConfirmMsg">Este producto se eliminará de tu carrito.</p>
+    <div class="ccb-actions">
+      <button class="ccb-cancel" id="cartConfirmCancel">Cancelar</button>
+      <button class="btn btn-primary ccb-ok" id="cartConfirmOk">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST (catálogo y otras notificaciones) -->
 <div id="toast" role="alert" aria-live="polite">
   <span id="toast-ico">❀</span>
   <span id="toast-msg">¡Listo!</span>
+</div>
+
+<!-- CART ADDED TOAST -->
+<div class="cat-wrap" id="cartAddedToast" role="status" aria-live="polite">
+  <div class="cat-img-wrap" id="catImg"><div class="cat-img-ph">🌿</div></div>
+  <div class="cat-info">
+    <p class="cat-label">Agregado al carrito</p>
+    <p class="cat-name" id="catName"></p>
+  </div>
+  <button class="cat-view-btn" id="catViewBtn">Ver carrito</button>
+  <button class="cat-close" id="catClose" aria-label="Cerrar notificación">✕</button>
+  <div class="cat-bar" id="catBar"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

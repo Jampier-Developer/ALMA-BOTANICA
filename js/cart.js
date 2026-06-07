@@ -8,12 +8,43 @@
   let cart = [];
   try { cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (_) { cart = []; }
 
+  let _confirmCb = null;
+  let _confirmCancelCb = null;
+
   function save() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch (_) {}
   }
 
   function uid() {
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  }
+
+  /* ── MODAL CONFIRMACIÓN ──────────────────────────── */
+  function showConfirm({ icon = '🗑️', title, msg, okLabel = 'Confirmar', cancelLabel = 'Cancelar' }, cb, cancelCb) {
+    _confirmCb       = cb       || null;
+    _confirmCancelCb = cancelCb || null;
+    const ov       = document.getElementById('cartConfirmOverlay');
+    const icoEl    = document.getElementById('cartConfirmIcon');
+    const titEl    = document.getElementById('cartConfirmTitle');
+    const msgEl    = document.getElementById('cartConfirmMsg');
+    const okEl     = document.getElementById('cartConfirmOk');
+    const cancelEl = document.getElementById('cartConfirmCancel');
+    if (!ov) { if (cb) cb(); return; }
+    if (icoEl)    icoEl.textContent    = icon;
+    if (titEl)    titEl.textContent    = title;
+    if (msgEl)    msgEl.textContent    = msg;
+    if (okEl)     okEl.textContent     = okLabel;
+    if (cancelEl) cancelEl.textContent = cancelLabel;
+    ov.classList.add('open');
+  }
+
+  function closeConfirm(run) {
+    const ov = document.getElementById('cartConfirmOverlay');
+    if (ov) ov.classList.remove('open');
+    if (run  && typeof _confirmCb       === 'function') _confirmCb();
+    if (!run && typeof _confirmCancelCb === 'function') _confirmCancelCb();
+    _confirmCb       = null;
+    _confirmCancelCb = null;
   }
 
   /* ── API PÚBLICA ─────────────────────────────────── */
@@ -24,17 +55,18 @@
     } else {
       cart.push({
         id: uid(), qty: 1,
-        name:     item.name     || '',
-        price:    item.price    || '',
-        priceNum: item.priceNum || 0,
-        image:    item.image    || '',
-        tag:      item.tag      || '',
+        name:       item.name       || '',
+        price:      item.price      || '',
+        priceNum:   item.priceNum   || 0,
+        image:      item.image      || '',
+        tag:        item.tag        || '',
+        productIdx: item.productIdx ?? '',
       });
     }
     save();
     updateBadge();
     punchBadge();
-    showAddedToast(item.name);
+    showAddedToast(item.name, item.image || '');
   };
 
   window.cartGetCount = function () {
@@ -58,17 +90,43 @@
     setTimeout(() => btn.classList.remove('cart-btn-pop'), 500);
   }
 
-  /* ── TOAST ───────────────────────────────────────── */
-  function showAddedToast(name) {
+  /* ── TOASTS ─────────────────────────────────────── */
+  function showAddedToast(name, image) {
+    /* Toast simple original (oscuro, centrado abajo) */
     const toast = document.getElementById('toast');
     const ico   = document.getElementById('toast-ico');
     const msg   = document.getElementById('toast-msg');
-    if (!toast || !msg) return;
-    if (ico) ico.textContent = '🛒';
-    msg.textContent = name + ' agregado al carrito';
-    toast.classList.add('vis');
-    clearTimeout(window._cartToastT);
-    window._cartToastT = setTimeout(() => toast.classList.remove('vis'), 3200);
+    if (toast && msg) {
+      if (ico) ico.textContent = '🛒';
+      msg.textContent = name + ' agregado al carrito';
+      toast.classList.add('vis');
+      clearTimeout(window._cartToastT);
+      window._cartToastT = setTimeout(() => toast.classList.remove('vis'), 3200);
+    }
+
+    /* Toast enriquecido con imagen + botón Ver carrito */
+    const wrap    = document.getElementById('cartAddedToast');
+    const nameEl  = document.getElementById('catName');
+    const imgWrap = document.getElementById('catImg');
+    const barEl   = document.getElementById('catBar');
+    if (!wrap) return;
+    if (nameEl)  nameEl.textContent = name;
+    if (imgWrap) imgWrap.innerHTML  = image
+      ? `<img src="${image}" alt="${name}" class="cat-img" loading="lazy">`
+      : `<div class="cat-img-ph">🌿</div>`;
+    if (barEl) {
+      barEl.style.animation = 'none';
+      barEl.offsetHeight;
+      barEl.style.animation = 'cat-shrink 10s linear forwards';
+    }
+    wrap.classList.add('vis');
+    clearTimeout(window._catToastT);
+    window._catToastT = setTimeout(() => wrap.classList.remove('vis'), 10000);
+  }
+
+  function closeCartToast() {
+    document.getElementById('cartAddedToast')?.classList.remove('vis');
+    clearTimeout(window._catToastT);
   }
 
   /* ── UTILIDADES ──────────────────────────────────── */
@@ -108,19 +166,22 @@
 
     body.innerHTML = cart.map(item => `
       <article class="cart-item" data-id="${item.id}">
-        <div class="ci-img-wrap">
-          ${item.image
-            ? `<img src="${item.image}" alt="${item.name}" class="ci-img" loading="lazy">`
-            : `<div class="ci-img-ph">🌿</div>`}
-        </div>
-        <div class="ci-info">
-          ${item.tag ? `<span class="ci-tag">${item.tag}</span>` : ''}
-          <p class="ci-name">${item.name}</p>
-          <p class="ci-unit">${item.price}</p>
-          <div class="ci-qty-row">
-            <button class="ci-q ci-dec" data-id="${item.id}" aria-label="Menos">−</button>
-            <span class="ci-qty-val">${item.qty}</span>
-            <button class="ci-q ci-inc" data-id="${item.id}" aria-label="Más">+</button>
+        <div class="ci-link" data-idx="${item.productIdx ?? ''}" title="Ver producto" role="button" tabindex="0">
+          <div class="ci-img-wrap">
+            ${item.image
+              ? `<img src="${item.image}" alt="${item.name}" class="ci-img" loading="lazy">`
+              : `<div class="ci-img-ph">🌿</div>`}
+          </div>
+          <div class="ci-info">
+            ${item.tag ? `<span class="ci-tag">${item.tag}</span>` : ''}
+            <p class="ci-name">${item.name}</p>
+            <p class="ci-unit">${item.price}</p>
+            <span class="ci-go">Ver producto →</span>
+            <div class="ci-qty-row">
+              <button class="ci-q ci-dec" data-id="${item.id}" aria-label="Menos">−</button>
+              <span class="ci-qty-val">${item.qty}</span>
+              <button class="ci-q ci-inc" data-id="${item.id}" aria-label="Más">+</button>
+            </div>
           </div>
         </div>
         <div class="ci-right">
@@ -136,9 +197,48 @@
       </article>`).join('');
 
     /* eventos items */
-    body.querySelectorAll('.ci-dec').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, -1)));
-    body.querySelectorAll('.ci-inc').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, +1)));
-    body.querySelectorAll('.ci-rm' ).forEach(b => b.addEventListener('click', () => removeItem(b.dataset.id)));
+    /* navegar al producto al hacer click en imagen/nombre */
+    body.querySelectorAll('.ci-link').forEach(link => {
+      const go = () => {
+        let idx = link.dataset.idx;
+
+        // Fallback por nombre: funciona aunque el item sea viejo y no tenga productIdx
+        if ((idx === '' || idx == null) && typeof window._cartFindProductIdx === 'function') {
+          const name = link.querySelector('.ci-name')?.textContent?.trim();
+          if (name) {
+            const found = window._cartFindProductIdx(name);
+            if (found >= 0) idx = String(found);
+          }
+        }
+
+        closeCart();
+        setTimeout(() => {
+          const card = (idx !== '' && idx != null)
+            ? document.querySelector(`[data-product="${idx}"]`)
+            : null;
+          if (!card) {
+            document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => card.click(), 450);
+        }, 370);
+      };
+      link.addEventListener('click', go);
+      link.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+
+    body.querySelectorAll('.ci-dec').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); changeQty(b.dataset.id, -1); }));
+    body.querySelectorAll('.ci-inc').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); changeQty(b.dataset.id, +1); }));
+    body.querySelectorAll('.ci-rm').forEach(b => b.addEventListener('click', () => {
+      const it = cart.find(c => c.id === b.dataset.id);
+      showConfirm({
+        icon: '🗑️',
+        title: '¿Eliminar producto?',
+        msg: it ? `"${it.name}" se quitará de tu carrito.` : 'Este producto se eliminará de tu carrito.',
+        okLabel: 'Sí, eliminar',
+      }, () => removeItem(b.dataset.id));
+    }));
 
     /* footer */
     const total = getTotal();
@@ -158,14 +258,24 @@
         Enviar pedido por WhatsApp
       </button>
       <div class="cart-meta-row">
-        <button class="cart-clear-btn" id="cartClear">Vaciar carrito</button>
-        <button class="cart-keep-btn" id="cartKeepShop">Seguir viendo</button>
+        <button class="cart-clear-btn" id="cartClear">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Vaciar carrito
+        </button>
+        <button class="cart-keep-btn" id="cartKeepShop">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Seguir viendo
+        </button>
       </div>`;
 
     document.getElementById('cartSendWa')?.addEventListener('click', sendToWhatsApp);
     document.getElementById('cartClear')?.addEventListener('click', () => {
-      if (!confirm('¿Seguro que quieres vaciar el carrito?')) return;
-      cart = []; save(); updateBadge(); renderCart();
+      showConfirm({
+        icon: '🛒',
+        title: '¿Vaciar el carrito?',
+        msg: 'Se eliminarán todos los productos que seleccionaste.',
+        okLabel: 'Sí, vaciar',
+      }, () => { cart = []; save(); updateBadge(); renderCart(); });
     });
     document.getElementById('cartKeepShop')?.addEventListener('click', () => {
       closeCart();
@@ -210,6 +320,7 @@
 
   /* ── DRAWER ──────────────────────────────────────── */
   function openCart() {
+    closeCartToast();
     const ov = document.getElementById('cartOverlay');
     if (!ov) return;
     ov.classList.add('open');
@@ -225,8 +336,10 @@
   }
 
   /* Exponer para forms.js */
-  window._cartOpen  = openCart;
-  window._cartClose = closeCart;
+  window._cartOpen         = openCart;
+  window._cartClose        = closeCart;
+  window._cartShowConfirm  = showConfirm;
+  window.cartHasItem       = function (name) { return cart.some(c => c.name === name); };
 
   /* ── INIT ────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
@@ -237,8 +350,24 @@
     document.getElementById('cartOverlay')?.addEventListener('click', e => {
       if (e.target.id === 'cartOverlay') closeCart();
     });
+
+    /* Cart added toast */
+    document.getElementById('catViewBtn')?.addEventListener('click', () => { closeCartToast(); openCart(); });
+    document.getElementById('catClose')?.addEventListener('click', closeCartToast);
+
+    /* Confirmación modal */
+    document.getElementById('cartConfirmOk')?.addEventListener('click', () => closeConfirm(true));
+    document.getElementById('cartConfirmCancel')?.addEventListener('click', () => closeConfirm(false));
+    document.getElementById('cartConfirmOverlay')?.addEventListener('click', e => {
+      if (e.target.id === 'cartConfirmOverlay') closeConfirm(false);
+    });
+
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && document.getElementById('cartOverlay')?.classList.contains('open')) closeCart();
+      if (e.key === 'Escape') {
+        const confirmOpen = document.getElementById('cartConfirmOverlay')?.classList.contains('open');
+        if (confirmOpen) { closeConfirm(false); return; }
+        if (document.getElementById('cartOverlay')?.classList.contains('open')) closeCart();
+      }
     });
   });
 

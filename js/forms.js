@@ -217,6 +217,16 @@
     },
   ];
 
+  // Lookup por nombre de variante o producto — usado por cart.js como fallback
+  window._cartFindProductIdx = function (name) {
+    for (let i = 0; i < PRODUCTS.length; i++) {
+      const p = PRODUCTS[i];
+      if (p.name === name) return i;
+      if (p.variants && p.variants.some(v => v.name === name)) return i;
+    }
+    return -1;
+  };
+
   // PRODUCT MODAL
   const svgPrev = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
   const svgNext = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
@@ -267,11 +277,12 @@
         // Actualizar datos del carrito con el producto/variante actual
         const activeImg = document.querySelector('#modalImg .mc-slide.active img');
         _cartCurrent = {
-          name:     info.name,
-          price:    info.price || '',
-          priceNum: parsePriceNum(info.price || ''),
-          image:    activeImg ? (activeImg.getAttribute('src') || activeImg.src) : '',
-          tag:      p.tag || '',
+          name:       info.name,
+          price:      info.price || '',
+          priceNum:   parsePriceNum(info.price || ''),
+          image:      activeImg ? (activeImg.getAttribute('src') || activeImg.src) : '',
+          tag:        p.tag || '',
+          productIdx: idx,
         };
         // Resetear botón si cambió de variante
         const cartBtn = document.getElementById('modalAddCart');
@@ -406,17 +417,37 @@
 
   // BOTÓN AGREGAR AL CARRITO (una sola vez)
   document.getElementById('modalAddCart')?.addEventListener('click', () => {
-    if(!_cartCurrent) return;
-    if(typeof window.cartAddItem === 'function') window.cartAddItem({ ..._cartCurrent });
-    const btn = document.getElementById('modalAddCart');
-    const txt = btn?.querySelector('.cart-btn-text');
-    if(btn){ btn.classList.add('added'); }
-    if(txt){ txt.textContent = '¡Agregado! ✓'; }
-    clearTimeout(window._addCartResetT);
-    window._addCartResetT = setTimeout(() => {
-      if(btn){ btn.classList.remove('added'); }
-      if(txt){ txt.textContent = 'Agregar al carrito'; }
-    }, 2200);
+    if (!_cartCurrent) return;
+
+    const doAdd = () => {
+      if (typeof window.cartAddItem === 'function') window.cartAddItem({ ..._cartCurrent });
+      const btn = document.getElementById('modalAddCart');
+      const txt = btn?.querySelector('.cart-btn-text');
+      if (btn) btn.classList.add('added');
+      if (txt) txt.textContent = '¡Agregado! ✓';
+      clearTimeout(window._addCartResetT);
+      window._addCartResetT = setTimeout(() => {
+        if (btn) btn.classList.remove('added');
+        if (txt) txt.textContent = 'Agregar al carrito';
+      }, 2200);
+    };
+
+    // Si ya está en el carrito → confirmar antes de agregar otro
+    if (typeof window.cartHasItem === 'function' && window.cartHasItem(_cartCurrent.name)) {
+      window._cartShowConfirm({
+        icon: '🛍️',
+        title: '¿Agregar uno más?',
+        msg: `Ya tienes "${_cartCurrent.name}" en tu carrito. ¿Quieres añadir otro?`,
+        okLabel: 'Sí, agregar otro',
+        cancelLabel: 'Ver mi carrito',
+      }, doAdd, () => {
+        if (typeof window._cartOpen === 'function') window._cartOpen();
+      });
+      return;
+    }
+
+    // Primera vez → agregar directo sin preguntar
+    doAdd();
   });
 
   // CARD CAROUSELS — inicializa todos los carruseles de tarjetas genéricamente
