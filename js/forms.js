@@ -217,6 +217,22 @@
     },
   ];
 
+  // Lista plana de todos los productos para "comprar todo" — usada por cart.js
+  window._allStoreProducts = PRODUCTS.flatMap((p, idx) => {
+    if (p.variants) {
+      return p.variants.map(v => ({
+        name: v.name, price: v.price,
+        priceNum: parseInt((v.price || '').replace(/\D/g, '')) || 0,
+        image: v.image || '', tag: p.tag || '', productIdx: idx,
+      }));
+    }
+    return [{
+      name: p.name, price: p.price,
+      priceNum: parseInt((p.price || '').replace(/\D/g, '')) || 0,
+      image: (p.images && p.images[0]) || '', tag: p.tag || '', productIdx: idx,
+    }];
+  });
+
   // Lookup por nombre de variante o producto — usado por cart.js como fallback
   window._cartFindProductIdx = function (name) {
     for (let i = 0; i < PRODUCTS.length; i++) {
