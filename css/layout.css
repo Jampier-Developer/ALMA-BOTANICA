@@ -595,6 +595,21 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* ── Footer ── */
   .footer-grid{gap:1.5rem}
 
+  /* ── Bold refuerzo en móvil: Jost pequeño sube a 700 ── */
+  .nav-sub,.nav-links a,.kicker,.badge-pill,.hpb-text,.stat-lbl,
+  .pc-badge-tag,.pc-best-badge,.pc-price-size,.rosa-name-tag span:last-child,
+  .rosa-quote cite,.tcard-meta,.cta-trust span,.footer-col-title,
+  .footer-bottom p,.footer-brand-sub,.modal-tag,.modal-ingredients h4,
+  .modal-benefits h4,.cm-field label,.cm-note,.cat-label,
+  .ci-go,.cart-keep-btn,.cart-clear-btn,.ccb-ok,.ccb-cancel{font-weight:700}
+  .btn{font-weight:700}
+  .nav-sub{font-size:.62rem}
+  .stat-lbl{font-size:.66rem}
+  .kicker{font-size:.68rem}
+  .badge-pill{font-size:.68rem}
+  .hpb-text{font-size:.66rem}
+  .modal-tag{font-size:.66rem}
+
   /* ── Catálogo modal ── */
   .modal-overlay{padding:.5rem}
   .modal-box-sm{max-width:100%;border-radius:var(--radius-md)}
@@ -614,7 +629,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .nav-brand{font-size:1rem}
   .hero-title{font-size:1.9rem}
   .stat-val{font-size:1.4rem}
-  .stat-lbl{font-size:.55rem}
+  .stat-lbl{font-size:.64rem;font-weight:700}
   .products-grid{gap:.85rem}
   .pc-name{font-size:1rem}
   .sec-title{font-size:1.5rem}
