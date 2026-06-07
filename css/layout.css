@@ -723,17 +723,6 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .ce-icon{font-size:3.5rem;opacity:.35;line-height:1}
 .ce-title{font-family:var(--font-d);font-size:1.4rem;color:var(--text)}
 .ce-desc{font-size:.88rem;color:var(--text-m);line-height:1.55;max-width:240px}
-.ce-buy-all-btn{
-  margin-top:.5rem;width:100%;max-width:280px;justify-content:center;
-  background:transparent;color:var(--text-m);border:1.5px dashed var(--border-pink);
-  font-size:.72rem;letter-spacing:.1em;opacity:.7;
-  transition:opacity .2s,border-color .2s,color .2s,background .2s;
-}
-.ce-buy-all-btn:hover{opacity:1;border-color:var(--pink);color:var(--pink-deep);background:var(--pink-soft)}
-.ce-buy-all-note{
-  font-size:.8rem;color:var(--pink-deep);font-family:var(--font-d);font-style:italic;
-  opacity:0;transition:opacity .4s;min-height:1.2em;text-align:center;
-}
 
 /* ── Cart Item ── */
 .cart-item{

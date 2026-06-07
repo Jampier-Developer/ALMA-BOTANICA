@@ -155,38 +155,11 @@
           <h3 class="ce-title">Tu carrito está vacío</h3>
           <p class="ce-desc">Explora nuestros productos y añade los que más te gusten.</p>
           <button class="btn btn-primary" id="cartGoShop">Ver productos</button>
-          <button class="btn ce-buy-all-btn" id="cartBuyAll">🛍️ Comprar todos los productos</button>
-          <p class="ce-buy-all-note" id="ceBuyAllNote"></p>
         </div>`;
       footer.innerHTML = '';
       document.getElementById('cartGoShop')?.addEventListener('click', () => {
         closeCart();
         document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
-      });
-      document.getElementById('cartBuyAll')?.addEventListener('click', () => {
-        showConfirm(
-          {
-            icon: '🛍️',
-            title: '¿Comprar todo?',
-            msg: '¿Seguro que quieres comprar todos los productos de la tienda? 😮',
-            okLabel: '¡Sí, los quiero todos!',
-            cancelLabel: 'No, era ilusión 😅',
-          },
-          () => {
-            const all = window._allStoreProducts;
-            if (!all || !all.length) return;
-            all.forEach(p => window.cartAddItem(p));
-            renderCart();
-          },
-          () => {
-            const note = document.getElementById('ceBuyAllNote');
-            if (note) {
-              note.textContent = '😂 Gracias por tu ilusión… ¡vuelve pronto y compra algo!';
-              note.style.opacity = '1';
-              setTimeout(() => { note.style.opacity = '0'; }, 4000);
-            }
-          }
-        );
       });
       return;
     }
