@@ -305,7 +305,7 @@
       return `  ♦ *${i.name}*${qty} — ${i.price}${sub}`;
     });
     const total    = getTotal();
-    const totalLine = total > 0 ? `\n💰 *Total estimado: ${fmtCOP(total)}*` : '';
+    const totalLine = total > 0 ? `\n🤔 *Entonces serían más o menos ${fmtCOP(total)}, ¿verdad?*` : '';
     const msg = [
       '¡Hola Rosa! 🌿 Me interesan estos productos de *Alma Botánica*:',
       '',
