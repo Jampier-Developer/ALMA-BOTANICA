@@ -48,27 +48,77 @@
 
 // ── CAROUSELS DE RESULTADOS + LIGHTBOX ───────────────────
 (function(){
-  const lightbox = document.getElementById('rcLightbox');
-  const lbImg    = document.getElementById('rcLbImg');
-  const lbClose  = document.getElementById('rcLbClose');
+  const lightbox  = document.getElementById('rcLightbox');
+  const lbImg     = document.getElementById('rcLbImg');
+  const lbClose   = document.getElementById('rcLbClose');
+  const lbPrev    = document.getElementById('rcLbPrev');
+  const lbNext    = document.getElementById('rcLbNext');
+  const lbDotsEl  = document.getElementById('rcLbDots');
 
-  function openLb(src, alt){
+  // Estado del lightbox
+  let lbImages  = [];   // [{src, alt}] de las fotos del carousel activo
+  let lbCurrent = 0;
+
+  function buildLbDots(){
+    if(!lbDotsEl) return;
+    lbDotsEl.innerHTML = lbImages.map((_,i)=>
+      `<span class="rc-dot${i===lbCurrent?' rc-dot-active':''}"></span>`
+    ).join('');
+    lbDotsEl.querySelectorAll('.rc-dot').forEach((d,i)=>{
+      d.addEventListener('click', ()=>lbGoTo(i));
+    });
+  }
+
+  function lbGoTo(idx){
+    lbCurrent = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
+    if(lbImg){ lbImg.src = lbImages[lbCurrent].src; lbImg.alt = lbImages[lbCurrent].alt; }
+    lbDotsEl?.querySelectorAll('.rc-dot').forEach((d,i)=>d.classList.toggle('rc-dot-active',i===lbCurrent));
+  }
+
+  function openLb(images, startIdx){
     if(!lightbox||!lbImg) return;
-    lbImg.src = src;
-    lbImg.alt = alt || '';
+    lbImages  = images;
+    lbCurrent = startIdx;
+    lbImg.src = lbImages[lbCurrent].src;
+    lbImg.alt = lbImages[lbCurrent].alt || '';
+    buildLbDots();
+    // Ocultar flechas si solo hay 1 imagen
+    const single = lbImages.length < 2;
+    if(lbPrev) lbPrev.style.display = single ? 'none' : '';
+    if(lbNext) lbNext.style.display = single ? 'none' : '';
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+
   function closeLb(){
     if(!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    lbImages = []; lbCurrent = 0;
   }
 
   lbClose?.addEventListener('click', closeLb);
+  lbPrev?.addEventListener('click',  e=>{ e.stopPropagation(); lbGoTo(lbCurrent-1); });
+  lbNext?.addEventListener('click',  e=>{ e.stopPropagation(); lbGoTo(lbCurrent+1); });
   lightbox?.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLb(); });
 
+  // Swipe en lightbox (móvil)
+  let lbTx = 0;
+  lightbox?.addEventListener('touchstart', e=>{ lbTx=e.touches[0].clientX; }, {passive:true});
+  lightbox?.addEventListener('touchend',   e=>{
+    const diff = lbTx - e.changedTouches[0].clientX;
+    if(Math.abs(diff)>40){ diff>0 ? lbGoTo(lbCurrent+1) : lbGoTo(lbCurrent-1); }
+  });
+
+  // Teclado en lightbox
+  document.addEventListener('keydown', e=>{
+    if(!lightbox?.classList.contains('open')) return;
+    if(e.key==='Escape')      closeLb();
+    if(e.key==='ArrowRight')  lbGoTo(lbCurrent+1);
+    if(e.key==='ArrowLeft')   lbGoTo(lbCurrent-1);
+  });
+
+  // ── Carousels ─────────────────────────────────────────
   document.querySelectorAll('[data-carousel]').forEach(car=>{
     const track  = car.querySelector('.rc-track');
     const slides = car.querySelectorAll('.rc-slide');
@@ -77,12 +127,16 @@
     let current  = 0;
     let timer;
 
+    // Recoge las imágenes de este carousel para el lightbox
+    const carImages = Array.from(slides).map(sl=>{
+      const img = sl.querySelector('img');
+      return { src: img?.src||'', alt: img?.alt||'' };
+    });
+
     function goTo(idx){
       current = ((idx % total) + total) % total;
-      track.style.transform = `translateX(-${current * (100/total)}%)`;
-      dots.forEach((d,i)=>{
-        d.classList.toggle('rc-dot-active', i===current);
-      });
+      track.style.transform = `translateX(-${current*(100/total)}%)`;
+      dots.forEach((d,i)=>d.classList.toggle('rc-dot-active', i===current));
     }
 
     function startAuto(){ timer = setInterval(()=>goTo(current+1), 4500); }
@@ -100,11 +154,10 @@
       });
     });
 
-    // Pause on hover (desktop)
     car.addEventListener('mouseenter', stopAuto);
     car.addEventListener('mouseleave', startAuto);
 
-    // Touch swipe (mobile)
+    // Swipe táctil (móvil)
     let tx=0;
     car.addEventListener('touchstart', e=>{ tx=e.touches[0].clientX; }, {passive:true});
     car.addEventListener('touchend', e=>{
@@ -112,10 +165,9 @@
       if(Math.abs(diff)>42){ stopAuto(); goTo(diff>0?current+1:current-1); startAuto(); }
     });
 
-    // Click on image → lightbox
-    slides.forEach(slide=>{
-      const img = slide.querySelector('img');
-      slide.addEventListener('click', ()=>{ if(img) openLb(img.src, img.alt); });
+    // Click en slide → abre lightbox en la foto correcta
+    slides.forEach((slide, i)=>{
+      slide.addEventListener('click', ()=>openLb(carImages, i));
     });
 
     startAuto();
