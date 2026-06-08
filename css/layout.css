@@ -635,10 +635,14 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 
   /* ── Bold refuerzo en móvil: Jost pequeño sube a 700 ── */
   .nav-sub,.nav-links a,.kicker,.badge-pill,.hpb-text,.stat-lbl,
-  .pc-badge-tag,.pc-best-badge,.pc-price-size,.rosa-name-tag span:last-child,
-  .rosa-quote cite,.rcard-meta,.cta-trust span,.footer-col-title,
-  .footer-bottom p,.footer-brand-sub,.modal-tag,.modal-ingredients h4,
-  .modal-benefits h4,.cm-field label,.cm-note,.cat-label,
+  .pc-badge-tag,.pc-best-badge,.pc-price-size,.pc-short,
+  .rosa-name-tag span:last-child,.rosa-quote cite,
+  .sec-sub,.hero-trust span,.body-txt,
+  .rcard-meta,.cta-trust span,.cta-desc,
+  .footer-col-title,.footer-col a,.footer-bottom p,.footer-brand-sub,
+  .modal-tag,.modal-ingredients h4,.modal-benefits h4,.modal-desc,
+  .cm-field label,.cm-note,.cat-label,.fi-ans p,
+  .cs-note,.ce-desc,
   .ci-go,.cart-keep-btn,.cart-clear-btn,.ccb-ok,.ccb-cancel{font-weight:700}
   .btn{font-weight:700}
   .nav-sub{font-size:.62rem}
@@ -1024,9 +1028,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 }
 /* Lightbox en móvil */
 @media(max-width:600px){
-  .rc-lb-img{max-width:95vw;max-height:78dvh}
-  .rc-lb-close{top:.75rem;right:.75rem;width:40px;height:40px}
-  .rc-lb-arrow{width:40px;height:40px;font-size:1.6rem}
+  .rc-lightbox .lb-img{max-width:95vw;max-height:78dvh}
+  .rc-lightbox .lb-close{top:.75rem;right:.75rem;width:40px;height:40px}
+  .rc-lb-arrow{width:40px;height:40px}
   .rc-lb-prev{left:.5rem}
   .rc-lb-next{right:.5rem}
 }
