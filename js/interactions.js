@@ -45,3 +45,79 @@
     });
   });
 })();
+
+// ── CAROUSELS DE RESULTADOS + LIGHTBOX ───────────────────
+(function(){
+  const lightbox = document.getElementById('rcLightbox');
+  const lbImg    = document.getElementById('rcLbImg');
+  const lbClose  = document.getElementById('rcLbClose');
+
+  function openLb(src, alt){
+    if(!lightbox||!lbImg) return;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    if(!lightbox) return;
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  lbClose?.addEventListener('click', closeLb);
+  lightbox?.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLb(); });
+
+  document.querySelectorAll('[data-carousel]').forEach(car=>{
+    const track  = car.querySelector('.rc-track');
+    const slides = car.querySelectorAll('.rc-slide');
+    const dots   = car.querySelectorAll('.rc-dot');
+    const total  = slides.length;
+    let current  = 0;
+    let timer;
+
+    function goTo(idx){
+      current = ((idx % total) + total) % total;
+      track.style.transform = `translateX(-${current * (100/total)}%)`;
+      dots.forEach((d,i)=>{
+        d.classList.toggle('rc-dot-active', i===current);
+      });
+    }
+
+    function startAuto(){ timer = setInterval(()=>goTo(current+1), 4500); }
+    function stopAuto(){  clearInterval(timer); }
+
+    car.querySelector('.rc-prev')?.addEventListener('click', e=>{
+      e.stopPropagation(); stopAuto(); goTo(current-1); startAuto();
+    });
+    car.querySelector('.rc-next')?.addEventListener('click', e=>{
+      e.stopPropagation(); stopAuto(); goTo(current+1); startAuto();
+    });
+    dots.forEach((dot,i)=>{
+      dot.addEventListener('click', e=>{
+        e.stopPropagation(); stopAuto(); goTo(i); startAuto();
+      });
+    });
+
+    // Pause on hover (desktop)
+    car.addEventListener('mouseenter', stopAuto);
+    car.addEventListener('mouseleave', startAuto);
+
+    // Touch swipe (mobile)
+    let tx=0;
+    car.addEventListener('touchstart', e=>{ tx=e.touches[0].clientX; }, {passive:true});
+    car.addEventListener('touchend', e=>{
+      const diff = tx - e.changedTouches[0].clientX;
+      if(Math.abs(diff)>42){ stopAuto(); goTo(diff>0?current+1:current-1); startAuto(); }
+    });
+
+    // Click on image → lightbox
+    slides.forEach(slide=>{
+      const img = slide.querySelector('img');
+      slide.addEventListener('click', ()=>{ if(img) openLb(img.src, img.alt); });
+    });
+
+    startAuto();
+  });
+})();
