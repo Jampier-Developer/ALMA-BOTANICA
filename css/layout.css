@@ -629,6 +629,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* ── CTA ── */
   .cta-title{font-size:1.9rem}
   .cta-desc{font-size:.9rem;margin-bottom:1.4rem}
+  .cta-block .btn{width:100%;max-width:320px;justify-content:center}
+  .cta-trust{gap:.75rem}
+  .benefit-card{padding:1.35rem 1.1rem}
 
   /* ── Footer ── */
   .footer-grid{grid-template-columns:1fr;gap:1.5rem}
