@@ -54,10 +54,17 @@
   const lbPrev    = document.getElementById('rcLbPrev');
   const lbNext    = document.getElementById('rcLbNext');
   const lbDotsEl  = document.getElementById('rcLbDots');
+  const lbZoomIn  = document.getElementById('rcLbZoomIn');
+  const lbZoomOut = document.getElementById('rcLbZoomOut');
 
-  // Estado del lightbox
-  let lbImages  = [];   // [{src, alt}] de las fotos del carousel activo
+  let lbImages  = [];
   let lbCurrent = 0;
+  let lbScale   = 1;
+
+  function setLbZoom(val){
+    lbScale = Math.min(3, Math.max(0.5, val));
+    if(lbImg){ lbImg.style.transform=`scale(${lbScale})`; lbImg.style.cursor=lbScale>=3?'default':'zoom-in'; }
+  }
 
   function buildLbDots(){
     if(!lbDotsEl) return;
@@ -65,13 +72,14 @@
       `<span class="rc-dot${i===lbCurrent?' rc-dot-active':''}"></span>`
     ).join('');
     lbDotsEl.querySelectorAll('.rc-dot').forEach((d,i)=>{
-      d.addEventListener('click', ()=>lbGoTo(i));
+      d.addEventListener('click', e=>{ e.stopPropagation(); lbGoTo(i); });
     });
   }
 
   function lbGoTo(idx){
     lbCurrent = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
-    if(lbImg){ lbImg.src = lbImages[lbCurrent].src; lbImg.alt = lbImages[lbCurrent].alt; }
+    if(lbImg){ lbImg.src=lbImages[lbCurrent].src; lbImg.alt=lbImages[lbCurrent].alt; }
+    setLbZoom(1);
     lbDotsEl?.querySelectorAll('.rc-dot').forEach((d,i)=>d.classList.toggle('rc-dot-active',i===lbCurrent));
   }
 
@@ -81,8 +89,8 @@
     lbCurrent = startIdx;
     lbImg.src = lbImages[lbCurrent].src;
     lbImg.alt = lbImages[lbCurrent].alt || '';
+    setLbZoom(1);
     buildLbDots();
-    // Ocultar flechas si solo hay 1 imagen
     const single = lbImages.length < 2;
     if(lbPrev) lbPrev.style.display = single ? 'none' : '';
     if(lbNext) lbNext.style.display = single ? 'none' : '';
@@ -94,28 +102,33 @@
     if(!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    lbImages = []; lbCurrent = 0;
+    lbImages=[]; lbCurrent=0; setLbZoom(1);
   }
 
   lbClose?.addEventListener('click', closeLb);
   lbPrev?.addEventListener('click',  e=>{ e.stopPropagation(); lbGoTo(lbCurrent-1); });
   lbNext?.addEventListener('click',  e=>{ e.stopPropagation(); lbGoTo(lbCurrent+1); });
+  lbZoomIn?.addEventListener('click',  e=>{ e.stopPropagation(); setLbZoom(lbScale+0.5); });
+  lbZoomOut?.addEventListener('click', e=>{ e.stopPropagation(); setLbZoom(lbScale-0.5); });
+  lbImg?.addEventListener('click', e=>{ e.stopPropagation(); setLbZoom(lbScale+0.5); });
   lightbox?.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
 
   // Swipe en lightbox (móvil)
-  let lbTx = 0;
+  let lbTx=0;
   lightbox?.addEventListener('touchstart', e=>{ lbTx=e.touches[0].clientX; }, {passive:true});
-  lightbox?.addEventListener('touchend',   e=>{
-    const diff = lbTx - e.changedTouches[0].clientX;
+  lightbox?.addEventListener('touchend', e=>{
+    const diff=lbTx-e.changedTouches[0].clientX;
     if(Math.abs(diff)>40){ diff>0 ? lbGoTo(lbCurrent+1) : lbGoTo(lbCurrent-1); }
   });
 
-  // Teclado en lightbox
+  // Teclado
   document.addEventListener('keydown', e=>{
     if(!lightbox?.classList.contains('open')) return;
-    if(e.key==='Escape')      closeLb();
-    if(e.key==='ArrowRight')  lbGoTo(lbCurrent+1);
-    if(e.key==='ArrowLeft')   lbGoTo(lbCurrent-1);
+    if(e.key==='Escape')     closeLb();
+    if(e.key==='ArrowRight') lbGoTo(lbCurrent+1);
+    if(e.key==='ArrowLeft')  lbGoTo(lbCurrent-1);
+    if(e.key==='+')          setLbZoom(lbScale+0.5);
+    if(e.key==='-')          setLbZoom(lbScale-0.5);
   });
 
   // ── Carousels ─────────────────────────────────────────
