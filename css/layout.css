@@ -678,6 +678,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .modal-title{font-size:1.2rem}
   .wa-btn{width:50px;height:50px;bottom:1.2rem;right:1rem}
   .container{padding:0 .9rem}
+  .fi-btn{font-size:.88rem;padding:1rem 0}
+  .fi-ans p{font-size:.85rem}
 }
 
 /* ═══════════════════════════════════════════════════
