@@ -111,6 +111,9 @@
   lbZoomIn?.addEventListener('click',  e=>{ e.stopPropagation(); setLbZoom(lbScale+0.5); });
   lbZoomOut?.addEventListener('click', e=>{ e.stopPropagation(); setLbZoom(lbScale-0.5); });
   lbImg?.addEventListener('click', e=>{ e.stopPropagation(); setLbZoom(lbScale+0.5); });
+  // Cierra al tocar el fondo (lb-img-wrap cubre todo el overlay, por eso verificamos el wrap también)
+  const lbWrap = document.querySelector('#rcLightbox .lb-img-wrap');
+  lbWrap?.addEventListener('click', e=>{ if(e.target===lbWrap) closeLb(); });
   lightbox?.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
 
   // Swipe en lightbox (móvil)
