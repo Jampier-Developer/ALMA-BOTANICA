@@ -631,7 +631,12 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .cta-desc{font-size:.9rem;margin-bottom:1.4rem}
 
   /* ── Footer ── */
-  .footer-grid{gap:1.5rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .footer-brand{text-align:center}
+  .footer-logo{justify-content:center}
+  .social-icons{justify-content:center}
+  .footer-col{text-align:center}
+  .footer-col ul{align-items:center}
 
   /* ── Bold refuerzo en móvil: Jost pequeño sube a 700 ── */
   .nav-sub,.nav-links a,.kicker,.badge-pill,.hpb-text,.stat-lbl,
@@ -680,6 +685,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .container{padding:0 .9rem}
   .fi-btn{font-size:.88rem;padding:1rem 0}
   .fi-ans p{font-size:.85rem}
+  .hero-photo-frame{margin-left:-.9rem}
+  .benefit-card{padding:1.25rem 1rem}
 }
 
 /* ═══════════════════════════════════════════════════
