@@ -155,7 +155,7 @@
       dots.forEach((d,i)=>d.classList.toggle('rc-dot-active', i===current));
     }
 
-    function startAuto(){ timer = setInterval(()=>goTo(current+1), 4500); }
+    function startAuto(){ timer = setInterval(()=>goTo(current+1), 8000); }
     function stopAuto(){  clearInterval(timer); }
 
     car.querySelector('.rc-prev')?.addEventListener('click', e=>{
