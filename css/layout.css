@@ -1127,13 +1127,39 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   display:block;
 }
 
+.ann-unmute{
+  position:absolute;inset:0;z-index:6;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;
+  background:rgba(20,8,14,.48);
+  cursor:pointer;
+  transition:opacity .35s ease;
+}
+.ann-unmute.out{opacity:0;pointer-events:none}
+.ann-unmute-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--pink-deep);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;flex-shrink:0;
+  box-shadow:0 8px 28px rgba(139,45,69,.55);
+  animation:ann-pulse 2s ease-in-out infinite;
+}
+.ann-unmute:hover .ann-unmute-icon{transform:scale(1.06)}
+@keyframes ann-pulse{
+  0%,100%{box-shadow:0 8px 28px rgba(139,45,69,.55),0 0 0 0 rgba(139,45,69,.38)}
+  55%{box-shadow:0 8px 28px rgba(139,45,69,.55),0 0 0 16px rgba(139,45,69,0)}
+}
+.ann-unmute-txt{
+  font-family:var(--font-m);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.7);
+}
+
 .ann-sound{
   position:absolute;bottom:.75rem;right:.75rem;
   width:36px;height:36px;border-radius:50%;
   background:rgba(0,0,0,.52);color:#fff;border:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   backdrop-filter:blur(8px);transition:background .2s,transform .2s;
-  z-index:5;
+  z-index:7;
 }
 .ann-sound:hover{background:rgba(139,45,69,.85);transform:scale(1.1)}
 

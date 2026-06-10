@@ -201,26 +201,27 @@
   if(!overlay) return;
 
   const DURATION = 50;
-  let autoClose, ticker, muted = false;
+  let autoClose, ticker, muted = true;
 
   const mutedSVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
   const soundSVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
 
-  if(soundBtn) soundBtn.innerHTML = soundSVG;
+  const unmuteEl = document.getElementById('annUnmute');
+  if(soundBtn) soundBtn.innerHTML = mutedSVG;
+
+  function activateSound(){
+    muted = false;
+    if(video) video.muted = false;
+    if(soundBtn){ soundBtn.innerHTML = soundSVG; soundBtn.style.display = ''; }
+    if(unmuteEl){ unmuteEl.classList.add('out'); setTimeout(()=>{ unmuteEl.style.display='none'; }, 380); }
+  }
 
   function openAnn(){
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
-    if(video){
-      video.muted = false;
-      video.play().catch(()=>{
-        // navegador bloquea sonido sin interacción previa → reproducir silenciado
-        video.muted = true;
-        muted = true;
-        if(soundBtn) soundBtn.innerHTML = mutedSVG;
-        video.play().catch(()=>{});
-      });
-    }
+    if(video){ video.muted = true; video.play().catch(()=>{}); }
+    unmuteEl?.addEventListener('click', activateSound, {once:true});
+    unmuteEl?.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' ') activateSound(); }, {once:true});
     let secs = DURATION;
     ticker = setInterval(()=>{
       secs--;
