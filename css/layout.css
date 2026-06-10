@@ -691,6 +691,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .fi-ans p{font-size:.85rem}
   .hero-photo-frame{margin-left:-.9rem}
   .benefit-card{padding:1.25rem 1rem}
+  .benefits-grid{grid-template-columns:1fr}
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1073,10 +1074,11 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   background:#fffaf9;
   border-radius:var(--radius-lg);
   max-width:390px;width:100%;
+  max-height:92dvh;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
   position:relative;
   transform:scale(.84) translateY(28px);
   transition:transform .5s var(--ease);
-  overflow:hidden;
+  overflow-x:hidden;
   box-shadow:0 36px 90px rgba(38,16,26,.38),0 4px 24px rgba(139,45,69,.2);
   border:1px solid var(--border-pink);
 }
@@ -1152,7 +1154,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   background:linear-gradient(90deg,var(--pink-deep),var(--pink),var(--gold));
   border-radius:2px;
   animation:ann-countdown 50s linear forwards;
+  animation-play-state:paused;
 }
+.ann-overlay.open .ann-timer-bar{animation-play-state:running}
 @keyframes ann-countdown{from{width:100%}to{width:0%}}
 .ann-timer-label{
   font-family:var(--font-m);font-size:.6rem;letter-spacing:.1em;
