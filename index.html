@@ -724,6 +724,34 @@
   <div class="cat-bar" id="catBar"></div>
 </div>
 
+<!-- ANNOUNCEMENT MODAL -->
+<div id="annOverlay" class="ann-overlay" role="dialog" aria-modal="true" aria-label="Anuncio Alma Botánica">
+  <div class="ann-box">
+    <div class="ann-accent"></div>
+    <button class="ann-close" id="annClose" aria-label="Cerrar">✕</button>
+    <div class="ann-header">
+      <img src="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.jpg" class="ann-logo" alt="Alma Botánica">
+      <div class="ann-header-text">
+        <span class="ann-brand">Alma Botánica</span>
+        <span class="ann-kicker">⭐ Resultado real · Sin filtros</span>
+      </div>
+    </div>
+    <div class="ann-video-wrap">
+      <video id="annVideo" autoplay muted playsinline>
+        <source src="Video-Anuncio/Video-Clienta-Anuncio.mp4" type="video/mp4">
+      </video>
+      <button class="ann-sound" id="annSound" aria-label="Activar sonido"></button>
+    </div>
+    <div class="ann-footer">
+      <p class="ann-msg">Mira lo que nuestros productos hacen por ti 🌿</p>
+      <div class="ann-timer-wrap">
+        <div class="ann-timer-bar" id="annTimerBar"></div>
+      </div>
+      <p class="ann-timer-label" id="annTimerLabel">Se cierra en <strong>25</strong>s</p>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/scene.js" defer></script>
 <script src="js/interactions.js" defer></script>
