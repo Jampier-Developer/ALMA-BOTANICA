@@ -1151,7 +1151,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   height:100%;width:100%;
   background:linear-gradient(90deg,var(--pink-deep),var(--pink),var(--gold));
   border-radius:2px;
-  animation:ann-countdown 25s linear forwards;
+  animation:ann-countdown 50s linear forwards;
 }
 @keyframes ann-countdown{from{width:100%}to{width:0%}}
 .ann-timer-label{
@@ -1160,10 +1160,34 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 }
 .ann-timer-label strong{color:var(--pink-deep)}
 
+.ann-creator{
+  display:flex;align-items:center;gap:.6rem;
+  background:rgba(212,96,122,.09);
+  border:1.5px solid var(--border-pink);
+  border-radius:var(--radius-full);
+  padding:.42rem .95rem .42rem .55rem;
+  margin:0 auto .75rem;
+  width:fit-content;
+  text-decoration:none;
+}
+.ann-fb{width:22px;height:22px;flex-shrink:0}
+.ann-creator-info{display:flex;flex-direction:column;gap:.05rem}
+.ann-creator-link{display:flex;flex-direction:column;gap:.05rem;text-decoration:none}
+.ann-creator-name{
+  font-family:var(--font-d);font-size:.97rem;font-weight:700;
+  color:var(--pink-deep);line-height:1.2;
+}
+.ann-creator-role{
+  font-family:var(--font-m);font-size:.57rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;
+}
+.ann-creator-link:hover .ann-creator-name{text-decoration:underline;text-underline-offset:2px}
+
 @media(max-width:480px){
   .ann-box{max-width:100%}
   .ann-video-wrap,.ann-video-wrap video{max-height:46vh}
   .ann-msg{font-size:.9rem}
+  .ann-creator-name{font-size:.9rem}
 }
 @media(max-width:360px){
   .ann-video-wrap,.ann-video-wrap video{max-height:40vh}
