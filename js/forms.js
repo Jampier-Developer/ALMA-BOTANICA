@@ -33,6 +33,11 @@
       clearInterval(carouselInterval);
       document.querySelector('.modal-box')?.classList.remove('kit-modal');
       document.getElementById('kitModalWrap')?.classList.remove('kit-active');
+      // Cierra el lightbox interno si quedó abierto
+      const lbOv = document.getElementById('lbOverlay');
+      const lbIm = document.getElementById('lbImg');
+      if(lbOv){ lbOv.classList.remove('open'); }
+      if(lbIm){ lbIm.style.transform=''; lbIm.style.cursor=''; }
     }
     if(id === 'catalogModal') clearConfetti();
     document.getElementById(id).classList.remove('open');
