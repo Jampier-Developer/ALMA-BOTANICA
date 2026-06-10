@@ -189,3 +189,12 @@
     startAuto();
   });
 })();
+
+// ── Footer product links → abre modal del producto ───────
+document.querySelectorAll('[data-open-product]').forEach(el=>{
+  el.addEventListener('click', e=>{
+    e.preventDefault();
+    const idx = el.dataset.openProduct;
+    document.querySelector(`.product-card[data-product="${idx}"]`)?.click();
+  });
+});
