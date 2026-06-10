@@ -454,6 +454,9 @@
     function closeLb(){
       overlay.classList.remove('open');
       document.body.style.overflow = '';
+      scale = 1;
+      lbImg.style.transform = '';
+      lbImg.style.cursor = '';
     }
 
     function setZoom(val){

@@ -102,7 +102,8 @@
     if(!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    lbImages=[]; lbCurrent=0; setLbZoom(1);
+    lbImages=[]; lbCurrent=0; lbScale=1;
+    if(lbImg){ lbImg.style.transform=''; lbImg.style.cursor=''; }
   }
 
   lbClose?.addEventListener('click', closeLb);
