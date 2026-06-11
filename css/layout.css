@@ -1061,8 +1061,6 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .ann-overlay{
   position:fixed;inset:0;z-index:1200;
   background:rgba(38,16,26,.82);
-  backdrop-filter:blur(14px) saturate(160%);
-  -webkit-backdrop-filter:blur(14px) saturate(160%);
   display:flex;align-items:center;justify-content:center;
   padding:1rem;
   opacity:0;pointer-events:none;
