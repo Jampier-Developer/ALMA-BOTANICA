@@ -3,18 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="js/analytics.js"></script>
-<script src="js/hotjar.js"></script>
-<meta name="description" content="Alma Botánica — Cuidado capilar natural por Rosa Pérez. Productos botánicos con romero, libres de sal y parabenos.">
-<title>Alma Botánica · Rosa Pérez</title>
+
+<!-- SEO principal -->
+<title>Alma Botánica · Rosa Pérez — Cosmética Natural Cartagena</title>
+<meta name="description" content="Cosmética capilar natural por Rosa Pérez en Cartagena. Shampoo, acondicionador y tónicos de romero, libres de sal, sulfatos y parabenos. Envíos a domicilio.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alma-botanica.pages.dev/">
+
+<!-- Preload imagen principal — mejora LCP (Largest Contentful Paint) -->
+<link rel="preload" as="image" href="img/Fotos%20de%20rosa/Rosa-Perez2.png" fetchpriority="high">
+
+<!-- Fuentes no bloqueantes — mejora First Contentful Paint -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"></noscript>
+
 <link rel="icon" type="image/jpeg" href="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.jpg">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/animations.css">
+
+<!-- Open Graph — vista previa al compartir en WhatsApp, Instagram y Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alma Botánica">
+<meta property="og:title" content="Alma Botánica · Rosa Pérez — Cosmética Natural Cartagena">
+<meta property="og:description" content="Shampoo, acondicionador y tónicos capilares de romero 100% natural. Sin sulfatos, sin parabenos, sin sal. Envíos a domicilio en Cartagena de Indias.">
+<meta property="og:url" content="https://alma-botanica.pages.dev/">
+<meta property="og:image" content="https://alma-botanica.pages.dev/img/Fotos%20de%20rosa/Rosa-Perez2.png">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alma Botánica · Rosa Pérez — Cosmética Natural">
+<meta name="twitter:description" content="Shampoo y tónicos de romero 100% natural. Sin sulfatos, sin parabenos. Cartagena de Indias, Colombia.">
+<meta name="twitter:image" content="https://alma-botanica.pages.dev/img/Fotos%20de%20rosa/Rosa-Perez2.png">
+
+<!-- Analytics + Hotjar diferidos — no bloquean el renderizado inicial -->
+<script src="js/analytics.js" defer></script>
+<script src="js/hotjar.js" defer></script>
+
+<!-- Datos estructurados JSON-LD — le dice a Google que somos un negocio local con productos -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Alma Botánica",
+  "alternateName": "Alma Botanica Rosa Perez",
+  "description": "Cosmética capilar natural artesanal formulada por Rosa Pérez. Shampoos, acondicionadores, tónicos y tratamientos de romero puro, libres de sal, sulfatos y parabenos.",
+  "url": "https://alma-botanica.pages.dev/",
+  "telephone": "+573135487027",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Barrio El Pozón",
+    "addressLocality": "Cartagena de Indias",
+    "addressRegion": "Bolívar",
+    "addressCountry": "CO"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Rosa Pérez",
+    "jobTitle": "Formuladora Botánica"
+  },
+  "sameAs": [
+    "https://www.instagram.com/almabotanica26",
+    "https://www.facebook.com/profile.php?id=61573483268712",
+    "https://www.tiktok.com/@alma.botnica"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Línea Capilar Alma Botánica",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Shampoo de Romero", "description": "Limpieza profunda que estimula el crecimiento capilar. 500ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Acondicionador de Romero", "description": "Hidratación profunda sin residuos pesados. 500ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Tónico Capilar de Romero", "description": "Activa los folículos y reduce la caída. 120ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Gel Fijador Hidratante", "description": "Define rizos sin efecto cartón. 300ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Tratamiento Capilar", "description": "Mascarilla intensiva con quinoa y sábila. 250ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Kit Capilar Completo", "description": "Rutina completa de cuidado capilar natural Alma Botánica."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Crema para Peinar", "description": "Define y moldea sin residuos ni efecto pesado. 200ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Bio Repolarizador", "description": "Repolariza y regenera la fibra capilar desde adentro. 120ML."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Pree Poo", "description": "Protege y acondiciona el cabello antes del lavado. 250ML."}}
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -99,9 +169,11 @@
         <div class="pd-flowers pd-f3">❋</div>
       </div>
       <div class="hero-photo-frame">
-<img src="img/Fotos%20de%20rosa/Rosa-Perez2.png" 
+<img src="img/Fotos%20de%20rosa/Rosa-Perez2.png"
      alt="Rosa Pérez, fundadora de Alma Botánica"
-     style="width:1000px;">
+     style="width:1000px"
+     fetchpriority="high"
+     loading="eager">
         <div class="hero-photo-badge">
           <span class="hpb-icon">❀</span>
           <span class="hpb-text">Fundadora &amp; Formuladora</span>
@@ -135,7 +207,7 @@
     <div class="products-grid">
 
       <div class="product-card reveal" data-product="0">
-        <div class="pc-img pc-img-1"><div class="pc-carousel" id="shampooCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Shampoos/shampoo%201.jpeg" alt="Shampoo Romero"></div><div class="pcc-slide"><img src="img/Shampoos/shampoo%202.jpeg" alt="Shampoo Romero 2"></div><div class="pcc-slide"><img src="img/Shampoos/shampoo%203.jpeg" alt="Shampoo Romero 3"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Limpieza</span></div>
+        <div class="pc-img pc-img-1"><div class="pc-carousel" id="shampooCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Shampoos/shampoo%201.jpeg" alt="Shampoo Romero" loading="lazy"></div><div class="pcc-slide"><img src="img/Shampoos/shampoo%202.jpeg" alt="Shampoo Romero 2" loading="lazy"></div><div class="pcc-slide"><img src="img/Shampoos/shampoo%203.jpeg" alt="Shampoo Romero 3" loading="lazy"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Limpieza</span></div>
         <div class="pc-body">
           <h3 class="pc-name">Shampoos</h3>
           <p class="pc-short">Limpieza profunda que estimula el crecimiento capilar.</p>
@@ -147,7 +219,7 @@
       </div>
 
       <div class="product-card reveal" data-product="1">
-        <div class="pc-img pc-img-2"><div class="pc-carousel" id="aconCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/acondicionador/acondicionador1.jpeg" alt="Acondicionador Romero"></div><div class="pcc-slide"><img src="img/acondicionador/acondicionador2.jpeg" alt="Acondicionador 2"></div><div class="pcc-slide"><img src="img/acondicionador/Acondicionador3.jpeg" alt="Acondicionador 3"></div><div class="pcc-slide"><img src="img/acondicionador/Acondicionador4.jpeg" alt="Acondicionador 4"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Nutrición</span></div>
+        <div class="pc-img pc-img-2"><div class="pc-carousel" id="aconCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/acondicionador/acondicionador1.jpeg" alt="Acondicionador Romero" loading="lazy"></div><div class="pcc-slide"><img src="img/acondicionador/acondicionador2.jpeg" alt="Acondicionador 2" loading="lazy"></div><div class="pcc-slide"><img src="img/acondicionador/Acondicionador3.jpeg" alt="Acondicionador 3" loading="lazy"></div><div class="pcc-slide"><img src="img/acondicionador/Acondicionador4.jpeg" alt="Acondicionador 4" loading="lazy"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Nutrición</span></div>
         <div class="pc-body">
           <h3 class="pc-name">Acondicionadores</h3>
           <p class="pc-short">Hidratación profunda sin residuos pesados.</p>
@@ -159,7 +231,7 @@
       </div>
 
       <div class="product-card reveal" data-product="2">
-        <div class="pc-img pc-img-3"><div class="pc-carousel" id="tonicoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Tonicos-Capilares/tonico%20capilar%201.jpeg" alt="Tónico Capilar"></div><div class="pcc-slide"><img src="img/Tonicos-Capilares/tonico%20capilar%202.jpeg" alt="Tónico 2"></div><div class="pcc-slide"><img src="img/Tonicos-Capilares/tonico%20capilar%203.jpeg" alt="Tónico 3"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Crecimiento</span></div>
+        <div class="pc-img pc-img-3"><div class="pc-carousel" id="tonicoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Tonicos-Capilares/tonico%20capilar%201.jpeg" alt="Tónico Capilar" loading="lazy"></div><div class="pcc-slide"><img src="img/Tonicos-Capilares/tonico%20capilar%202.jpeg" alt="Tónico 2" loading="lazy"></div><div class="pcc-slide"><img src="img/Tonicos-Capilares/tonico%20capilar%203.jpeg" alt="Tónico 3" loading="lazy"></div></div><button class="pcc-btn pcc-prev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><button class="pcc-btn pcc-next" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><div class="pcc-dots"><span class="pcc-dot active"></span><span class="pcc-dot"></span><span class="pcc-dot"></span></div></div><span class="pc-badge-tag">Crecimiento</span></div>
         <div class="pc-body">
           <h3 class="pc-name">Tónicos Capilares</h3>
           <p class="pc-short">Activa los folículos y reduce la caída.</p>
@@ -172,7 +244,7 @@
 
       <div class="product-card reveal" data-product="3">
         <div class="pc-img pc-img-4">
-          <div class="pc-carousel" id="gelCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Gel/Gel%201.jpeg" alt="Gel Fijador Hidratante"></div></div></div>
+          <div class="pc-carousel" id="gelCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Gel/Gel%201.jpeg" alt="Gel Fijador Hidratante" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Fijador</span>
         </div>
         <div class="pc-body">
@@ -187,7 +259,7 @@
 
       <div class="product-card reveal" data-product="4">
         <div class="pc-img pc-img-5">
-          <div class="pc-carousel" id="tratCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Tratamientos/tratamiento%201.jpeg" alt="Tratamiento Capilar"></div></div></div>
+          <div class="pc-carousel" id="tratCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Tratamientos/tratamiento%201.jpeg" alt="Tratamiento Capilar" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Reparación</span>
         </div>
         <div class="pc-body">
@@ -206,12 +278,12 @@
         <div class="pc-img pc-img-6">
           <div class="pc-carousel" id="kitCarousel">
             <div class="pcc-track" id="kitTrack">
-              <div class="pcc-slide active"><img src="img/Kits/Kit1.jpeg" alt="Kit Rutina - foto 1"></div>
-              <div class="pcc-slide"><img src="img/Kits/Kit2.jpeg" alt="Kit Rutina - foto 2"></div>
-              <div class="pcc-slide"><img src="img/Kits/Kit3.jpeg" alt="Kit Rutina - foto 3"></div>
-              <div class="pcc-slide"><img src="img/Kits/Kits4.jpeg" alt="Kit Rutina - foto 4"></div>
-              <div class="pcc-slide"><img src="img/Kits/kit5.jpeg" alt="Kit Rutina - foto 5"></div>
-              <div class="pcc-slide"><img src="img/Kits/kit6.jpeg" alt="Kit Rutina - foto 6"></div>
+              <div class="pcc-slide active"><img src="img/Kits/Kit1.jpeg" alt="Kit Rutina - foto 1" loading="lazy"></div>
+              <div class="pcc-slide"><img src="img/Kits/Kit2.jpeg" alt="Kit Rutina - foto 2" loading="lazy"></div>
+              <div class="pcc-slide"><img src="img/Kits/Kit3.jpeg" alt="Kit Rutina - foto 3" loading="lazy"></div>
+              <div class="pcc-slide"><img src="img/Kits/Kits4.jpeg" alt="Kit Rutina - foto 4" loading="lazy"></div>
+              <div class="pcc-slide"><img src="img/Kits/kit5.jpeg" alt="Kit Rutina - foto 5" loading="lazy"></div>
+              <div class="pcc-slide"><img src="img/Kits/kit6.jpeg" alt="Kit Rutina - foto 6" loading="lazy"></div>
             </div>
             <button class="pcc-btn pcc-prev" id="kitPrev" aria-label="Anterior"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
             <button class="pcc-btn pcc-next" id="kitNext" aria-label="Siguiente"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -234,7 +306,7 @@
 
       <div class="product-card reveal" data-product="6">
         <div class="pc-img pc-img-7">
-          <div class="pc-carousel" id="cremaCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg" alt="Crema para Peinar"></div></div></div>
+          <div class="pc-carousel" id="cremaCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg" alt="Crema para Peinar" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Peinado</span>
         </div>
         <div class="pc-body">
@@ -249,7 +321,7 @@
 
       <div class="product-card reveal" data-product="7">
         <div class="pc-img pc-img-8">
-          <div class="pc-carousel" id="bioCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg" alt="Bio Repolarizador"></div></div></div>
+          <div class="pc-carousel" id="bioCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg" alt="Bio Repolarizador" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Reparador</span>
         </div>
         <div class="pc-body">
@@ -264,7 +336,7 @@
 
       <div class="product-card reveal" data-product="8">
         <div class="pc-img pc-img-9">
-          <div class="pc-carousel" id="preepoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/PREE%20PO/PREE%20PO.jpeg" alt="Pree Poo"></div></div></div>
+          <div class="pc-carousel" id="preepoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/PREE%20PO/PREE%20PO.jpeg" alt="Pree Poo" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Pre-lavado</span>
         </div>
         <div class="pc-body">
@@ -328,7 +400,7 @@
     </div>
     <div class="split-visual reveal">
       <div class="rosa-frame">
-        <img src="img/Fotos%20de%20rosa/Rosa-Perez1.png" class="rosa-img" alt="Rosa Pérez, fundadora de Alma Botánica">
+        <img src="img/Fotos%20de%20rosa/Rosa-Perez1.png" class="rosa-img" alt="Rosa Pérez, fundadora de Alma Botánica" loading="lazy">
         <div class="rosa-name-tag">
           <span>Rosa Pérez</span>
           <span>Fundadora · Formuladora</span>
@@ -524,7 +596,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#inicio" class="footer-logo">
-          <img src="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.jpg" alt="Alma Botánica" alt="Rosa Pérez" class="footer-photo">
+          <img src="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.jpg" alt="Alma Botánica" class="footer-photo" loading="lazy">
           <div>
             <div class="footer-brand-name">Alma Botánica</div>
             <div class="footer-brand-sub">por Rosa Pérez</div>
@@ -726,11 +798,8 @@
   <div class="cat-bar" id="catBar"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/scene.js" defer></script>
 <script src="js/interactions.js" defer></script>
 <script src="js/cart.js" defer></script>
 <script src="js/forms.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </body>
 </html>

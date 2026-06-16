@@ -642,18 +642,17 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .footer-col{text-align:center}
   .footer-col ul{align-items:center}
 
-  /* ── Bold refuerzo en móvil: Jost pequeño sube a 700 ── */
+  /* ── Bold solo en etiquetas y UI pequeña — no en párrafos de cuerpo ── */
   .nav-sub,.nav-links a,.kicker,.badge-pill,.hpb-text,.stat-lbl,
   .pc-badge-tag,.pc-best-badge,.pc-price-size,.pc-short,
   .rosa-name-tag span:last-child,.rosa-quote cite,
-  .sec-sub,.hero-trust span,.body-txt,
-  .rcard-meta,.cta-trust span,.cta-desc,
+  .sec-sub,.hero-trust span,
+  .rcard-meta,.cta-trust span,
   .footer-col-title,.footer-col a,.footer-bottom p,.footer-brand-sub,
-  .modal-tag,.modal-ingredients h4,.modal-benefits h4,.modal-desc,
-  .cm-field label,.cm-note,.cat-label,.fi-ans p,
-  .cs-note,.ce-desc,
-  .ci-go,.cart-keep-btn,.cart-clear-btn,.ccb-ok,.ccb-cancel{font-weight:700}
-  .btn{font-weight:700}
+  .modal-tag,.modal-ingredients h4,.modal-benefits h4,
+  .cm-field label,.cm-note,.cat-label,
+  .ci-go,.cart-keep-btn,.cart-clear-btn,.ccb-ok,.ccb-cancel{font-weight:600}
+  .btn{font-weight:600}
   .nav-sub{font-size:.62rem}
   .stat-lbl{font-size:.66rem}
   .kicker{font-size:.68rem}
@@ -1050,7 +1049,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 }
 /* Bold refuerzo móvil — resultados */
 @media(max-width:500px){
-  .rcard-quote{font-size:.95rem;font-weight:700}
+  .rcard-quote{font-size:.95rem}
   .rcard-name{font-weight:900}
   .rcard-stars{font-size:1.05rem}
 }
