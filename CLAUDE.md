@@ -18,6 +18,7 @@ Página web de **Alma Botánica**, marca de cosmética capilar natural fundada p
 - **Repositorio:** https://github.com/Jampier-Developer/ALMA-BOTANICA.git
 - **Rama principal:** `main`
 - **Flujo:** Editar localmente → `git add` → `git commit` → `git push origin main` → Cloudflare despliega automáticamente
+- **"actualiza todo"** = push a GitHub + actualizar este CLAUDE.md con los cambios de la sesión
 
 ## Stack técnico
 - HTML5, CSS3, JavaScript vanilla — sin frameworks, sin build tools (no npm, no webpack)
@@ -206,6 +207,12 @@ Se agregaron **3 productos nuevos** al sitio (Termoprotector, Mascarilla Nutriti
 - **Rutas de imagen corregidas:** Mascarilla Nutritiva → `img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.jpeg` · Rescate Supremo → `img/Rescate%20Supremo/Rescate%20Supremo1.jpeg` (las carpetas tienen espacios, no guiones)
 - **Kits7.PNG y Kits8.PNG** agregados al carrusel exterior de la tarjeta Kit, aparecen de primero. Ahora el carrusel tiene 8 slides y 8 dots.
 - **Contador del hero** actualizado de `10` a `12 Productos`.
+- **Kit Cebolla Premium** (Kits7.PNG, $90.000) y **Kit Aguacate Premium** (Kits8.PNG, $90.000) añadidos como primeras 2 variantes en `PRODUCTS[5].variants`.
+
+### Tercera parte — placeholder Termoprotector y fixes
+- **Placeholder Termoprotector:** tarjeta exterior y modal muestran 🛡️ + "Foto próximamente" + "En proceso..." con colores de la página. Sin imagen rota.
+- **Fix imagen modal desktop:** `object-position: center 35%` → `center center` en `.mc-slide img` para que todos los productos se muestren completos en el modal.
+- **Fix imagen tarjeta Mascarilla Nutritiva:** `object-position: center center` en `.pc-img-11 .pcc-slide img`.
 
 ### Pendientes activos
 

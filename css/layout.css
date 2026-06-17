@@ -581,7 +581,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .modal-box{display:block;overflow-y:auto}
   .modal-content{display:grid;grid-template-columns:1fr 1fr;overflow-y:visible;flex:none;min-height:0}
   .modal-img-wrap{border-radius:var(--radius-lg) 0 0 var(--radius-lg);min-height:320px;flex-shrink:1}
-  .mc-slide img{object-fit:cover;object-position:center 35%}
+  .mc-slide img{object-fit:cover;object-position:center center}
   .modal-info{padding:2rem}
   .modal-title{font-size:1.8rem}
   .modal-footer{flex-direction:row;position:static;background:transparent;box-shadow:none;padding:1.2rem 0 0;margin:0;align-items:center}
