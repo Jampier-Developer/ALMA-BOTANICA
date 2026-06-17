@@ -220,6 +220,27 @@
       desc:'Tratamiento que se aplica antes del shampoo para crear una barrera protectora que minimiza el daño del lavado. Mantiene la humedad, aumenta el brillo, mejora la porosidad y reduce el frizz. Especialmente recomendado para cabello rizado, seco o dañado.',
       benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
     },
+    {
+      name:'Termoprotector', tag:'Termoprotector', price:'$25.000', size:'150 ml', icon:'🔥',
+      bg:'linear-gradient(145deg,#fff3e0,#ffcc80)',
+      images:['img/Termoprotector/termoprotector-1.jpeg'],
+      desc:'Escudo térmico de acción inmediata que protege la fibra capilar del daño por calor del secador, plancha y rizador. Su fórmula de ingredientes naturales forma una barrera protectora sobre cada hebra, sellando la cutícula y manteniendo la hidratación durante el estilizado.',
+      benefits:['Protección térmica ante secador, plancha y rizador','Sella la cutícula y reduce el quiebre por calor','Añade brillo y suavidad durante el peinado','Mantiene la hidratación durante el estilizado']
+    },
+    {
+      name:'Mascarilla Nutritiva', tag:'Nutrición Profunda', price:'$25.000', size:'250 ml', icon:'🌺',
+      bg:'linear-gradient(145deg,#fce4ec,#f48fb1)',
+      images:['img/Mascarilla-Nutritiva/mascarilla-nutritiva-1.jpeg'],
+      desc:'Mascarilla de nutrición profunda con proteínas vegetales y mantequillas naturales que penetran la fibra capilar para restaurar el brillo, la elasticidad y la suavidad perdida. Actúa en 15-20 minutos para transformar cabello seco, opaco o dañado.',
+      benefits:['Nutrición profunda con proteínas vegetales','Restaura elasticidad y brillo natural','Suaviza y desenreda cabello seco o dañado','Resultados visibles desde la primera aplicación']
+    },
+    {
+      name:'Rescate Supremo', tag:'Reparación Extrema', price:'$40.000', size:'250 ml', icon:'👑',
+      bg:'linear-gradient(145deg,#ede7f6,#b39ddb)',
+      images:['img/Rescate-Supremo/rescate-supremo-1.jpeg'],
+      desc:'Ayuda a reparar el cabello dañado por el calor, tintes químicos y factores ambientales. Su combinación de ingredientes naturales aportan una sensación de cabello más manejable, brillante y saludable.',
+      benefits:['Repara daño por calor, tintes y agentes externos','Cabello más manejable desde la primera aplicación','Brillo y suavidad con ingredientes 100% naturales','Tratamiento intensivo de rescate capilar']
+    },
   ];
 
   // Lookup por nombre de variante o producto — usado por cart.js como fallback
