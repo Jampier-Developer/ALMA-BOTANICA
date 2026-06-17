@@ -290,7 +290,7 @@
       imgWrap.style.fontSize   = '';
 
       imgWrap.innerHTML = imgs.length === 0
-      ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p></div>'
+      ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p><p class="mcp-sub">En proceso...</p></div>'
       : '<div class="modal-carousel">'
         + '<div class="mc-track">'
         + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="foto ${i + 1}"></div>`).join('')
