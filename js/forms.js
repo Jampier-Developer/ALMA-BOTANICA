@@ -231,7 +231,7 @@
       name:'Mascarilla Nutritiva', tag:'Nutrición Profunda', price:'$25.000', size:'120 ml', icon:'🍯',
       bg:'linear-gradient(145deg,#fce4ec,#f48fb1)',
       images:['img/Mascarilla-Nutritiva/mascarilla-nutritiva-1.jpeg'],
-      desc:'Mascarilla de nutrición profunda con proteínas vegetales y mantequillas naturales que penetran la fibra capilar para restaurar el brillo, la elasticidad y la suavidad perdida. Actúa en 15-20 minutos para transformar cabello seco, opaco o dañado.',
+      desc:'Mascarilla de nutrición profunda con proteínas vegetales y mantequillas naturales que penetran la fibra capilar para restaurar el brillo, la elasticidad y la suavidad perdida. Se aplica después del shampoo y actúa en 15-20 minutos para transformar cabello seco, opaco o dañado.',
       benefits:['Nutrición profunda con proteínas vegetales','Restaura elasticidad y brillo natural','Suaviza y desenreda cabello seco o dañado','Resultados visibles desde la primera aplicación']
     },
     {
