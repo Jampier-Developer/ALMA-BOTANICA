@@ -1058,3 +1058,33 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .rcard-name{font-weight:900}
   .rcard-stars{font-size:1.05rem}
 }
+
+/* ── Mascarilla Nutritiva — ajuste recorte imagen ── */
+.pc-img-11 .pcc-slide img{object-position:center center}
+
+/* ── Placeholder "foto próximamente" — tarjeta exterior ── */
+.pc-coming-soon{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.55rem;
+}
+.pcs-icon{font-size:2.4rem;opacity:.65}
+.pcs-line1{
+  font-family:var(--font-m);font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:700;color:#a06030;
+}
+.pcs-line2{
+  font-family:var(--font-m);font-size:.52rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#c08040;font-weight:500;
+}
+
+/* ── Placeholder "foto próximamente" — modal interior ── */
+.mc-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.85rem;padding:2rem;width:100%;
+}
+.mcp-icon{font-size:3.2rem;opacity:.6}
+.mcp-txt{
+  font-family:var(--font-m);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:700;color:#a06030;
+}

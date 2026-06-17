@@ -162,6 +162,18 @@
       bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
       variants:[
         {
+          name:'Kit Cebolla Premium', price:'$90.000', icon:'🧅',
+          image:'img/Kits/Kits7.PNG',
+          desc:'Kit completo de la línea Cebolla con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Los compuestos sulfurados del extracto de cebolla estimulan la producción natural de queratina y reducen la caída. Estudios clínicos respaldan su eficacia para el crecimiento capilar desde las primeras semanas de uso.',
+          benefits:['Frena la caída con compuestos sulfurados naturales','Estimula la producción de queratina y densidad','Aporta volumen, brillo y fortaleza desde la raíz','Incluye Mascarilla Nutritiva para nutrición profunda']
+        },
+        {
+          name:'Kit Aguacate Premium', price:'$90.000', icon:'🥑',
+          image:'img/Kits/Kits8.PNG',
+          desc:'Kit completo de la línea Aguacate con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Rico en Omega-9 y vitaminas A, B, C y E del aceite de aguacate que penetran la fibra capilar restaurando la barrera lipídica. Ideal para cabello seco, poroso o muy dañado que necesita hidratación profunda.',
+          benefits:['Hidratación profunda con Omega-9 y vitaminas A, B, C y E','Restaura la barrera lipídica y elasticidad capilar','Controla el frizz y encrespamiento desde adentro','Incluye Mascarilla Nutritiva para nutrición profunda']
+        },
+        {
           name:'Kits Linaza', price:'$75.000', icon:'✨',
           image:'img/Kits/Kit1.jpeg',
           desc:'Kit de la línea Linaza con varios productos que definen, hidratan y fortalecen el cabello. El gel de linaza aporta Omega-3 y mucílagos que protegen la fibra capilar sin efecto cartón ni residuos.',
@@ -223,21 +235,21 @@
     {
       name:'Termoprotector', tag:'Termoprotector', price:'$25.000', size:'200 ml', icon:'🛡️',
       bg:'linear-gradient(145deg,#fff3e0,#ffcc80)',
-      images:['img/Termoprotector/termoprotector-1.jpeg'],
+      images:[], // TODO imagen pendiente: cambiar a ['img/Termoprotector/termoprotector-1.jpeg'] cuando esté lista
       desc:'Escudo térmico de acción inmediata que protege la fibra capilar del daño por calor del secador, plancha y rizador. Su fórmula de ingredientes naturales forma una barrera protectora sobre cada hebra, sellando la cutícula y manteniendo la hidratación durante el estilizado.',
       benefits:['Protección térmica ante secador, plancha y rizador','Sella la cutícula y reduce el quiebre por calor','Añade brillo y suavidad durante el peinado','Mantiene la hidratación durante el estilizado']
     },
     {
       name:'Mascarilla Nutritiva', tag:'Nutrición Profunda', price:'$25.000', size:'120 ml', icon:'🍯',
       bg:'linear-gradient(145deg,#fce4ec,#f48fb1)',
-      images:['img/Mascarilla-Nutritiva/mascarilla-nutritiva-1.jpeg'],
+      images:['img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.jpeg'],
       desc:'Mascarilla de nutrición profunda con proteínas vegetales y mantequillas naturales que penetran la fibra capilar para restaurar el brillo, la elasticidad y la suavidad perdida. Se aplica después del shampoo y actúa en 15-20 minutos para transformar cabello seco, opaco o dañado.',
       benefits:['Nutrición profunda con proteínas vegetales','Restaura elasticidad y brillo natural','Suaviza y desenreda cabello seco o dañado','Resultados visibles desde la primera aplicación']
     },
     {
       name:'Rescate Supremo', tag:'Reparación Extrema', price:'$40.000', size:'500 ml', icon:'💫',
       bg:'linear-gradient(145deg,#ede7f6,#b39ddb)',
-      images:['img/Rescate-Supremo/rescate-supremo-1.jpeg'],
+      images:['img/Rescate%20Supremo/Rescate%20Supremo1.jpeg'],
       desc:'Ayuda a reparar el cabello dañado por el calor, tintes químicos y factores ambientales. Su combinación de ingredientes naturales aportan una sensación de cabello más manejable, brillante y saludable.',
       benefits:['Repara daño por calor, tintes y agentes externos','Cabello más manejable desde la primera aplicación','Brillo y suavidad con ingredientes 100% naturales','Tratamiento intensivo de rescate capilar']
     },
@@ -277,8 +289,9 @@
       imgWrap.style.position   = 'relative';
       imgWrap.style.fontSize   = '';
 
-      imgWrap.innerHTML =
-        '<div class="modal-carousel">'
+      imgWrap.innerHTML = imgs.length === 0
+      ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p></div>'
+      : '<div class="modal-carousel">'
         + '<div class="mc-track">'
         + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="foto ${i + 1}"></div>`).join('')
         + '</div>'
