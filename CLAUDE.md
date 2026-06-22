@@ -21,6 +21,8 @@ Página web de **Alma Botánica**, marca de cosmética capilar natural fundada p
 - **"actualiza todo"** = 1) actualizar este CLAUDE.md con los cambios de la sesión, 2) actualizar README.md para que refleje el estado actual del sitio, 3) hacer push a GitHub. Siempre en ese orden, nunca antes.
 - **"continuemos"** = el usuario quiere seguir trabajando en este proyecto. Leer este CLAUDE.md, entender el estado actual y preguntar qué sigue.
 - **Documentar siempre:** cada vez que se agregue o modifique código importante (nuevo producto, nueva sección, nuevo componente CSS/JS, decisión de diseño), actualizar este CLAUDE.md para que futuros chats tengan el contexto completo.
+- **Consistencia de diseño:** todo código nuevo (modales, secciones, componentes, anuncios) debe usar las mismas variables CSS del sitio (`--pink`, `--gold`, `--font-d`, `--font-b`, `--radius-lg`, etc.), las mismas fuentes (Cormorant Garamond para títulos, Jost para cuerpo) y el mismo estilo visual. Nunca introducir estilos ajenos al diseño existente.
+- **Quitar promo cuando el usuario lo indique:** cuando diga que se acabó la promoción, eliminar TODO sin dejar rastro: 1) bloque `<!-- PROMO MODAL — Nuevos Productos -->` completo en `index.html`, 2) el `<script>` del promo al fondo de `index.html`, 3) en `layout.css`: `@keyframes cardJump`, `.card-jump`, `#promoModal`, y todos los estilos `.promo-*`. Cero residuos.
 
 ## Stack técnico
 - HTML5, CSS3, JavaScript vanilla — sin frameworks, sin build tools (no npm, no webpack)
@@ -223,21 +225,30 @@ El hero muestra **12 Productos** — ya actualizado.
 - **Underline deslizante** en links del nav: línea rosa que aparece de izquierda a derecha al hover (CSS puro con `::after` + `scaleX`)
 - CSS clases `pc-img-10`, `pc-img-11`, `pc-img-12` agregadas a `layout.css`
 
-#### Infraestructura y documentación
+#### Modal promocional — 3 productos nuevos
+- **Promo modal** (`#promoModal`) en `index.html`: aparece 1.4s después de cargar la página, **siempre en cada visita** (sin sessionStorage)
+- **Barra de cuenta regresiva** de 10 segundos (degradado dorado→rosa) — el modal se cierra solo al llegar a 0
+- Se puede cerrar antes con: ✕, "No, gracias", clic fuera del modal, tecla Escape
+- Botón "Ver los nuevos productos" → cierra el modal, baja a `#productos` y dispara animación en los 3 cards nuevos
+- **`@keyframes cardJump`** + `.card-jump`: los 3 cards saltan suavemente en lugar (escala + flotación) con retardo escalonado de 140ms entre cada uno
+- Todos los estilos en `layout.css` bajo el comentario `/* ── PROMO MODAL — Nuevos Productos ── */`
+- El script está al fondo de `index.html` antes de `</body>`
+
+#### Documentación e infraestructura
 - **README.md** creado con documentación completa del proyecto
-- **CLAUDE.md** actualizado con palabras clave `continuemos` y `actualiza`
-- **Git credentials** configuradas: token de Jampier-Developer embebido en la URL del remote para separar las dos cuentas de GitHub sin interferencias
-- Regla: `actualiza` = actualizar CLAUDE.md + README.md + push
+- **CLAUDE.md** actualizado con reglas: `actualiza todo`, `continuemos`, documentar siempre, consistencia de diseño, quitar promo completa cuando se indique
+- **Git credentials**: token de Jampier-Developer embebido en la URL del remote para separar cuentas sin interferencias
 
 ### Pendientes activos
 
 #### Imágenes de los 3 productos nuevos
-Cuando Rosa envíe las fotos, agregarlas a sus carpetas:
+Cuando Rosa envíe las fotos, agregarlas a sus carpetas y actualizar `src` en `index.html` y `images:[]` en `js/forms.js`:
 - `img/Termoprotector/termoprotector-1.jpeg`
 - `img/Mascarilla-Nutritiva/mascarilla-nutritiva-1.jpeg`
 - `img/Rescate-Supremo/rescate-supremo-1.jpeg`
 
-Las tarjetas ya están listas — solo falta la imagen. Cuando el usuario avise que tiene las fotos, preguntar el nombre exacto del archivo y actualizar `src` en `index.html` y el array `images:[]` en `js/forms.js`.
+#### Quitar el promo modal cuando la promoción termine
+Ver regla en sección Despliegue — eliminar TODO (HTML, script y CSS) sin residuos.
 
 #### Dominio propio pendiente
 Cuando se compre `almabotanica.co`, actualizar en `index.html`:

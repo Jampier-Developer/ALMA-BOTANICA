@@ -98,6 +98,14 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Underline deslizante** en la navegación: línea rosa que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
 - **Borde dorado animado** exclusivo en la tarjeta de Kits Completos
 - **Reveal animations** al hacer scroll con `IntersectionObserver`
+- **Animación de salto** en los 3 productos nuevos al navegar desde el modal promocional
+
+### 📢 Modal promocional
+- Aparece automáticamente **1.4 segundos** después de cargar la página
+- Promueve los 3 productos nuevos: Termoprotector 🛡️, Mascarilla Nutritiva 🍯, Rescate Supremo 💫
+- **Barra de cuenta regresiva** de 10 segundos — se cierra solo al terminar
+- Cierre manual: botón ✕, "No, gracias", clic fuera, tecla Escape
+- Al hacer clic en "Ver los nuevos productos" → baja a la sección y los 3 cards hacen una animación de salto escalonada
 
 ---
 
