@@ -19,6 +19,7 @@ Página web de **Alma Botánica**, marca de cosmética capilar natural fundada p
 - **Rama principal:** `main`
 - **Flujo:** Editar localmente → `git add` → `git commit` → `git push origin main` → Cloudflare despliega automáticamente
 - **"actualiza todo"** = push a GitHub + actualizar este CLAUDE.md con los cambios de la sesión
+- **"continuemos"** = el usuario quiere seguir trabajando en este proyecto. Leer este CLAUDE.md, entender el estado actual y preguntar qué sigue.
 
 ## Stack técnico
 - HTML5, CSS3, JavaScript vanilla — sin frameworks, sin build tools (no npm, no webpack)
