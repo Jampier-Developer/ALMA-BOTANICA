@@ -240,4 +240,3 @@ La carpeta `img/Termoprotector/` existe pero la imagen no está lista aún. Mien
    (ajustar el nombre del archivo si difiere de `termoprotector-1.jpeg`)
 
 4. Si hay más de 1 imagen: agregar más `.pcc-slide` y los dots correspondientes igual que los otros productos con múltiples fotos.
-test
