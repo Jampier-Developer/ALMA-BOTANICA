@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.pages.dev](https://alma-botanica.pages.dev/)
+**🌐 URL en vivo:** [alma-botanica.pages.dev](https://alma-botanica.pages.dev/) · **Última actualización:** Junio 2026
 
 ---
 
@@ -93,6 +93,11 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
 - 22+ imágenes con `loading="lazy"`
 - Analytics y Hotjar con atributo `defer`
+
+### 🎨 Efectos visuales
+- **Underline deslizante** en la navegación: línea rosa que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
+- **Borde dorado animado** exclusivo en la tarjeta de Kits Completos
+- **Reveal animations** al hacer scroll con `IntersectionObserver`
 
 ---
 

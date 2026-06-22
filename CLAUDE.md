@@ -18,7 +18,7 @@ Página web de **Alma Botánica**, marca de cosmética capilar natural fundada p
 - **Repositorio:** https://github.com/Jampier-Developer/ALMA-BOTANICA.git
 - **Rama principal:** `main`
 - **Flujo:** Editar localmente → `git add` → `git commit` → `git push origin main` → Cloudflare despliega automáticamente
-- **"actualiza todo"** = push a GitHub + actualizar este CLAUDE.md con los cambios de la sesión
+- **"actualiza"** = 1) actualizar este CLAUDE.md con los cambios de la sesión, 2) actualizar README.md para que refleje el estado actual del sitio, 3) hacer push a GitHub. Siempre en ese orden.
 - **"continuemos"** = el usuario quiere seguir trabajando en este proyecto. Leer este CLAUDE.md, entender el estado actual y preguntar qué sigue.
 - **Documentar siempre:** cada vez que se agregue o modifique código importante (nuevo producto, nueva sección, nuevo componente CSS/JS, decisión de diseño), actualizar este CLAUDE.md para que futuros chats tengan el contexto completo.
 
@@ -200,44 +200,47 @@ El hero muestra **12 Productos** — ya actualizado.
 
 ---
 
-## Última sesión de edición (17/06/2026)
+## Última sesión de edición (22/06/2026)
 
-### Primera parte — productos nuevos
-Se agregaron **3 productos nuevos** al sitio (Termoprotector, Mascarilla Nutritiva, Rescate Supremo) con sus tarjetas, datos en `forms.js`, clases CSS y entradas en el footer y JSON-LD.
+### Cambios realizados en esta sesión
 
-### Segunda parte — imágenes y kits
-- **Rutas de imagen corregidas:** Mascarilla Nutritiva → `img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.jpeg` · Rescate Supremo → `img/Rescate%20Supremo/Rescate%20Supremo1.jpeg` (las carpetas tienen espacios, no guiones)
-- **Kits7.PNG y Kits8.PNG** agregados al carrusel exterior de la tarjeta Kit, aparecen de primero. Ahora el carrusel tiene 8 slides y 8 dots.
-- **Contador del hero** actualizado de `10` a `12 Productos`.
-- **Kit Cebolla Premium** (Kits7.PNG, $90.000) y **Kit Aguacate Premium** (Kits8.PNG, $90.000) añadidos como primeras 2 variantes en `PRODUCTS[5].variants`.
+#### Rendimiento y SEO (sesión anterior)
+- Eliminó Three.js (~600KB), canvas-confetti y referencias a CSS inexistentes
+- Fuentes Google no bloqueantes, analytics/hotjar con `defer`
+- `fetchpriority="high"` en imagen LCP, `loading="lazy"` en 22 imágenes
+- SEO completo: canonical, Open Graph, Twitter Card, JSON-LD `WebSite` + `LocalBusiness`
+- Fix font-weight mobile: quitó `font-weight:700` de párrafos de cuerpo
 
-### Tercera parte — placeholder Termoprotector y fixes
-- **Placeholder Termoprotector:** tarjeta exterior y modal muestran 🛡️ + "Foto próximamente" + "En proceso..." con colores de la página. Sin imagen rota.
-- **Fix imagen modal desktop:** `object-position: center 35%` → `center center` en `.mc-slide img` para que todos los productos se muestren completos en el modal.
-- **Fix imagen tarjeta Mascarilla Nutritiva:** `object-position: center center` en `.pc-img-11 .pcc-slide img`.
+#### 3 productos nuevos agregados
+- **Termoprotector** (idx 9) — $25.000 · 200ml · 🛡️ · `pc-img-10` (ámbar) — imagen pendiente
+- **Mascarilla Nutritiva** (idx 10) — $25.000 · 120ml · 🍯 · `pc-img-11` (rosa) — imagen pendiente
+- **Rescate Supremo** (idx 11) — $40.000 · 500ml · 💫 · `pc-img-12` (lila) — imagen pendiente
+- Aparecen **primeros** en el grid con badge dorado `🌿 Nuevo`
+- Agregados al footer (con link que abre su modal) y al JSON-LD de Google
+- Stats bar del hero muestra **12 Productos**
+
+#### Diseño
+- **Underline deslizante** en links del nav: línea rosa que aparece de izquierda a derecha al hover (CSS puro con `::after` + `scaleX`)
+- CSS clases `pc-img-10`, `pc-img-11`, `pc-img-12` agregadas a `layout.css`
+
+#### Infraestructura y documentación
+- **README.md** creado con documentación completa del proyecto
+- **CLAUDE.md** actualizado con palabras clave `continuemos` y `actualiza`
+- **Git credentials** configuradas: token de Jampier-Developer embebido en la URL del remote para separar las dos cuentas de GitHub sin interferencias
+- Regla: `actualiza` = actualizar CLAUDE.md + README.md + push
 
 ### Pendientes activos
 
-#### Termoprotector — imagen pendiente (instrucciones exactas para el próximo chat)
-La carpeta `img/Termoprotector/` existe pero la imagen no está lista aún. Mientras tanto se muestra un placeholder estilizado con los colores de la página ("🛡️ Foto próximamente").
+#### Imágenes de los 3 productos nuevos
+Cuando Rosa envíe las fotos, agregarlas a sus carpetas:
+- `img/Termoprotector/termoprotector-1.jpeg`
+- `img/Mascarilla-Nutritiva/mascarilla-nutritiva-1.jpeg`
+- `img/Rescate-Supremo/rescate-supremo-1.jpeg`
 
-**Cuando el usuario diga que tiene la imagen lista, hacer exactamente esto:**
+Las tarjetas ya están listas — solo falta la imagen. Cuando el usuario avise que tiene las fotos, preguntar el nombre exacto del archivo y actualizar `src` en `index.html` y el array `images:[]` en `js/forms.js`.
 
-1. **Verificar nombre del archivo** — preguntar cómo se llama la imagen que subió a `img/Termoprotector/`
-
-2. **`js/forms.js` línea con `// TODO imagen pendiente`** — cambiar:
-   ```js
-   images:[], // TODO imagen pendiente: cambiar a ['img/Termoprotector/termoprotector-1.jpeg'] cuando esté lista
-   ```
-   por (con el nombre real del archivo):
-   ```js
-   images:['img/Termoprotector/termoprotector-1.jpeg'],
-   ```
-
-3. **`index.html` — tarjeta del Termoprotector** — reemplazar el div `.pc-coming-soon` por el carrusel real:
-   ```html
-   <div class="pc-carousel" id="termoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Termoprotector/termoprotector-1.jpeg" alt="Termoprotector" loading="lazy"></div></div></div>
-   ```
-   (ajustar el nombre del archivo si difiere de `termoprotector-1.jpeg`)
-
-4. Si hay más de 1 imagen: agregar más `.pcc-slide` y los dots correspondientes igual que los otros productos con múltiples fotos.
+#### Dominio propio pendiente
+Cuando se compre `almabotanica.co`, actualizar en `index.html`:
+- `<link rel="canonical">`
+- `og:url`, `og:image`, `twitter:image`
+- Los dos bloques JSON-LD (`WebSite` y `LocalBusiness`)
