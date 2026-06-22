@@ -18,7 +18,7 @@ Página web de **Alma Botánica**, marca de cosmética capilar natural fundada p
 - **Repositorio:** https://github.com/Jampier-Developer/ALMA-BOTANICA.git
 - **Rama principal:** `main`
 - **Flujo:** Editar localmente → `git add` → `git commit` → `git push origin main` → Cloudflare despliega automáticamente
-- **"actualiza"** = 1) actualizar este CLAUDE.md con los cambios de la sesión, 2) actualizar README.md para que refleje el estado actual del sitio, 3) hacer push a GitHub. Siempre en ese orden.
+- **"actualiza todo"** = 1) actualizar este CLAUDE.md con los cambios de la sesión, 2) actualizar README.md para que refleje el estado actual del sitio, 3) hacer push a GitHub. Siempre en ese orden, nunca antes.
 - **"continuemos"** = el usuario quiere seguir trabajando en este proyecto. Leer este CLAUDE.md, entender el estado actual y preguntar qué sigue.
 - **Documentar siempre:** cada vez que se agregue o modifique código importante (nuevo producto, nueva sección, nuevo componente CSS/JS, decisión de diseño), actualizar este CLAUDE.md para que futuros chats tengan el contexto completo.
 
