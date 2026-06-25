@@ -196,13 +196,20 @@ El hero muestra **12 Productos** — ya actualizado.
 
 ## SEO / Meta
 - Canonical: `https://alma-botanica.pages.dev/` (actualizar cuando haya dominio propio)
-- JSON-LD: `WebSite` + `LocalBusiness` con los 12 productos y fundadora
+- JSON-LD: `WebSite` + `LocalBusiness` con los 12 productos, fundadora, `areaServed` y `knowsAbout`
 - OG + Twitter Card configurados
-- Cuando se compre dominio propio: actualizar canonical, og:url, og:image, twitter:image y los dos JSON-LD
+- `<meta name="keywords">` con 14 términos clave
+- `<meta name="robots">` con `max-snippet:-1, max-image-preview:large, max-video-preview:-1`
+- Geo tags: `geo.region=CO-BOL`, `geo.placename=Cartagena de Indias`, coordenadas `10.3910,-75.4794`
+- `sitemap.xml` en la raíz — incluye `/` (priority 1.0) y `/catalogo.html` (priority 0.8)
+- `robots.txt` en la raíz — permite todo y apunta al sitemap
+- **Google Search Console**: propiedad verificada con archivo HTML, sitemap enviado el 25/06/2026
+- Archivo de verificación: `googleb9bed816d05afe45.html` (no eliminar)
+- Cuando se compre dominio propio: actualizar canonical, og:url, og:image, twitter:image, los dos JSON-LD, `sitemap.xml` y `robots.txt`
 
 ---
 
-## Última sesión de edición (22/06/2026)
+## Última sesión de edición (25/06/2026)
 
 ### Cambios realizados en esta sesión
 
@@ -238,6 +245,18 @@ El hero muestra **12 Productos** — ya actualizado.
 - **README.md** creado con documentación completa del proyecto
 - **CLAUDE.md** actualizado con reglas: `actualiza todo`, `continuemos`, documentar siempre, consistencia de diseño, quitar promo completa cuando se indique
 - **Git credentials**: token de Jampier-Developer embebido en la URL del remote para separar cuentas sin interferencias
+
+#### SEO profesional completo (25/06/2026)
+- `<title>` actualizado: nombre + cargo + ciudad
+- `<meta keywords>` con 14 términos clave capilares y locales
+- `<meta robots>` mejorado con directivas de snippet e imagen
+- Geo tags añadidos: región, ciudad y coordenadas de Cartagena
+- JSON-LD `LocalBusiness` mejorado: `areaServed` (Cartagena) + `knowsAbout` de Rosa
+- `sitemap.xml` creado en raíz con las 2 páginas del sitio
+- `robots.txt` creado en raíz apuntando al sitemap
+- `<link rel="sitemap">` añadido al `<head>`
+- **Google Search Console** configurado: propiedad verificada, sitemap enviado
+- Archivo de verificación `googleb9bed816d05afe45.html` en la raíz — **no eliminar nunca**
 
 ### Pendientes activos
 

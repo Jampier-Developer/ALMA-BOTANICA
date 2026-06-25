@@ -80,12 +80,18 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - Solo una pregunta abierta a la vez
 
 ### 🔍 SEO
-- `<title>` y `<meta description>` optimizados con palabras clave locales
+- `<title>` optimizado: nombre + cargo + ciudad
+- `<meta description>` natural, 154 caracteres, con palabras clave locales
+- `<meta keywords>` con 14 términos clave capilares y de ubicación
+- `<meta robots>` con directivas avanzadas: `max-snippet:-1`, `max-image-preview:large`
+- **Geo tags** de posicionamiento local: región, ciudad y coordenadas de Cartagena de Indias
 - `<link rel="canonical">` apuntando a la URL oficial
 - **Open Graph** completo para previsualizaciones en WhatsApp, Facebook e Instagram
 - **Twitter Card** configurado
-- **JSON-LD** con esquemas `WebSite` + `LocalBusiness` para Google Rich Results
-- Incluye dirección, teléfono, fundadora y catálogo de productos en datos estructurados
+- **JSON-LD** `WebSite` + `LocalBusiness` con dirección, teléfono, fundadora, `areaServed` y `knowsAbout`
+- **`sitemap.xml`** en la raíz con las 2 páginas del sitio
+- **`robots.txt`** en la raíz permitiendo todo el rastreo
+- **Google Search Console** verificado y sitemap enviado el 25/06/2026
 
 ### ⚡ Rendimiento
 - Sin frameworks ni librerías pesadas (sin jQuery, sin React, sin Three.js)
