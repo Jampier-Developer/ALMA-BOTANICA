@@ -92,6 +92,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **`sitemap.xml`** en la raíz con las 2 páginas del sitio
 - **`robots.txt`** en la raíz permitiendo todo el rastreo
 - **Google Search Console** verificado y sitemap enviado el 25/06/2026
+- **JSON-LD productos** con precio (COP) y disponibilidad — permite a Google mostrar precios en resultados de búsqueda
 
 ### ⚡ Rendimiento
 - Sin frameworks ni librerías pesadas (sin jQuery, sin React, sin Three.js)
