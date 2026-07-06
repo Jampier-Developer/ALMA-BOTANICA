@@ -2,13 +2,13 @@
 
 > Cosmética capilar 100% natural formulada por **Rosa Pérez** en Cartagena de Indias, Colombia.
 
-[![Estado](https://img.shields.io/badge/Estado-En%20producci%C3%B3n-brightgreen)](https://alma-botanica.pages.dev/)
-[![Hosting](https://img.shields.io/badge/Hosting-Cloudflare%20Pages-orange)](https://alma-botanica.pages.dev/)
+[![Estado](https://img.shields.io/badge/Estado-En%20producci%C3%B3n-brightgreen)](https://alma-botanica.store/)
+[![Hosting](https://img.shields.io/badge/Hosting-Cloudflare%20Pages-orange)](https://alma-botanica.store/)
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](/)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.pages.dev](https://alma-botanica.pages.dev/) · **Última actualización:** Junio 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** Julio 2026
 
 ---
 
@@ -237,10 +237,8 @@ git push origin main
 ## 📊 SEO y Analytics
 
 - **Google Analytics:** `G-D9VGNFGPMP`
-- **Canonical URL:** `https://alma-botanica.pages.dev/`
-- **Dominio propio:** pendiente — objetivo `almabotanica.co`
-
-> Cuando se compre el dominio propio, actualizar: `canonical`, `og:url`, `og:image`, `twitter:image` y los dos bloques JSON-LD en el `<head>` de `index.html`.
+- **Canonical URL:** `https://alma-botanica.store/`
+- **Dominio propio:** `alma-botanica.store` (comprado el 06/07/2026, DNS conectado a Cloudflare)
 
 ---
 
