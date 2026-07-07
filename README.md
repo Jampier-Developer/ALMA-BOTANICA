@@ -86,7 +86,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - `<meta robots>` con directivas avanzadas: `max-snippet:-1`, `max-image-preview:large`
 - **Geo tags** de posicionamiento local: región, ciudad y coordenadas de Cartagena de Indias
 - `<link rel="canonical">` apuntando a la URL oficial
-- **Open Graph** completo para previsualizaciones en WhatsApp, Facebook e Instagram
+- **Open Graph** completo para previsualizaciones en WhatsApp, Facebook e Instagram — imagen: logo de Alma Botánica
 - **Twitter Card** configurado
 - **JSON-LD** `WebSite` + `LocalBusiness` con dirección, teléfono, fundadora, `areaServed` y `knowsAbout`
 - **`sitemap.xml`** en la raíz con las 2 páginas del sitio
