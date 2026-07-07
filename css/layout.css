@@ -252,7 +252,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .footer-col a{font-size:.88rem;color:rgba(255,255,255,.45);transition:color .2s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;flex-wrap:wrap;gap:.5rem}
-.footer-bottom p{font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.2);font-weight:600}
+.footer-bottom p{font-family:var(--font-m);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.55);font-weight:700}
 .footer-tagline-b{color:var(--pink-light)!important;opacity:.5}
 
 /* KIT BORDE DORADO GIRATORIO */
@@ -589,9 +589,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .modal-price{display:flex;justify-content:flex-start;width:auto}
 }
 
-/* ── TABLETA PEQUEÑA 600px–767px: 3 columnas de productos ── */
+/* ── TABLETA PEQUEÑA 600px–767px: 2 columnas de productos ── */
 @media(min-width:600px) and (max-width:767px){
-  .products-grid{grid-template-columns:repeat(3,1fr)}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
   .results-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:500px){
@@ -649,7 +649,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 
   /* ── Bold solo en etiquetas y UI pequeña — no en párrafos de cuerpo ── */
   .nav-sub,.nav-links a,.kicker,.badge-pill,.hpb-text,.stat-lbl,
-  .pc-badge-tag,.pc-best-badge,.pc-price-size,.pc-short,
+  .pc-badge-tag,.pc-best-badge,.pc-price-size,
   .rosa-name-tag span:last-child,.rosa-quote cite,
   .sec-sub,.hero-trust span,
   .rcard-meta,.cta-trust span,
@@ -1062,6 +1062,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 /* ── Mascarilla Nutritiva — ajuste recorte imagen ── */
 .pc-img-11 .pcc-slide img{object-position:center center}
 
+/* ── Termoprotector — muestra frascos centrados ── */
+.pc-img-10 .pcc-slide img{object-position:center 50%}
+
 /* ── Placeholder "foto próximamente" — tarjeta exterior ── */
 .pc-coming-soon{
   position:absolute;inset:0;
@@ -1125,23 +1128,29 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   color:var(--text);margin-bottom:.5rem;line-height:1.12;
 }
 .promo-sub{font-size:.88rem;color:var(--text-m);margin-bottom:1.5rem;line-height:1.5}
-.promo-grid{display:flex;gap:.625rem;margin-bottom:1.5rem}
-.promo-card{
-  flex:1;background:var(--white);border:1.5px solid var(--border-pink);
-  border-radius:var(--radius-md);padding:.9rem .4rem .75rem;
-  display:flex;flex-direction:column;align-items:center;gap:.25rem;
-  transition:border-color var(--dur-f),box-shadow var(--dur-f);
+.promo-img-wrap{
+  width:100%;border-radius:var(--radius-md);overflow:hidden;
+  margin:.5rem 0 .875rem;box-shadow:0 6px 22px rgba(0,0,0,.11);
+  animation:promoImgIn .55s var(--ease) .2s both;
 }
-.promo-card:hover{border-color:var(--pink-light);box-shadow:var(--shadow-sm)}
-.promo-icon{font-size:1.75rem;margin-bottom:.15rem}
-.promo-name{
-  font-family:var(--font-d);font-size:.95rem;font-weight:600;
-  color:var(--text);line-height:1.2;
+.promo-product-img{
+  width:100%;height:230px;object-fit:cover;
+  object-position:center 33%;display:block;
 }
-.promo-ml{font-size:.7rem;color:var(--text-m);font-family:var(--font-b)}
-.promo-price{
-  font-family:var(--font-m);font-size:.7rem;letter-spacing:.08em;
-  color:var(--pink-deep);font-weight:700;margin-top:.1rem;
+@keyframes promoImgIn{
+  from{opacity:0;transform:scale(.96) translateY(6px)}
+  to{opacity:1;transform:none}
+}
+.promo-sub{margin-bottom:.625rem}
+.promo-specs{
+  display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.promo-specs span{
+  font-family:var(--font-b);font-size:.7rem;font-weight:500;
+  color:var(--gold);background:rgba(180,140,60,.07);
+  border:1px solid rgba(180,140,60,.22);
+  border-radius:var(--radius-full);padding:.2rem .65rem;
 }
 .promo-cta{display:block;width:100%;text-align:center;margin-bottom:.75rem;font-size:.9rem}
 .promo-skip{
@@ -1170,19 +1179,15 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 @media(max-width:480px){
   .promo-box{padding:2rem 1.1rem 1.4rem}
   .promo-title{font-size:1.65rem}
-  .promo-grid{flex-direction:column;gap:.45rem}
-  .promo-card{flex-direction:row;justify-content:flex-start;gap:.85rem;
-    padding:.65rem .9rem;text-align:left;align-items:center}
-  .promo-icon{font-size:1.4rem;flex-shrink:0}
-  .promo-name{font-size:.88rem}
   .promo-close{top:.65rem;right:.65rem;padding:.5rem}
+  .promo-product-img{height:200px}
+  .promo-specs{gap:.3rem}
+  .promo-specs span{font-size:.65rem;padding:.18rem .55rem}
 }
 @media(max-width:380px){
   .promo-box{padding:1.6rem .9rem 1.2rem}
   .promo-title{font-size:1.42rem}
-  .promo-sub{font-size:.82rem;margin-bottom:1.1rem}
-  .promo-card{gap:.65rem;padding:.55rem .75rem}
-  .promo-icon{font-size:1.25rem}
-  .promo-name{font-size:.82rem}
+  .promo-sub{font-size:.82rem}
+  .promo-product-img{height:170px}
   .promo-cta{font-size:.84rem}
 }

@@ -238,14 +238,7 @@
 
       <div class="product-card reveal" data-product="9">
         <div class="pc-best-badge">🌿 Nuevo</div>
-        <div class="pc-img pc-img-10">
-          <div class="pc-coming-soon">
-            <span class="pcs-icon">🛡️</span>
-            <span class="pcs-line1">Foto próximamente</span>
-            <span class="pcs-line2">En proceso...</span>
-          </div>
-          <span class="pc-badge-tag">Termoprotector</span>
-        </div>
+        <div class="pc-img pc-img-10"><div class="pc-carousel" id="termoCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Termoprotector/Termoprotector%202%20Important.jpeg" alt="Termoprotector Alma Botánica" loading="lazy"></div></div></div><span class="pc-badge-tag">Termoprotector</span></div>
         <div class="pc-body">
           <h3 class="pc-name">Termoprotector</h3>
           <p class="pc-short">Protege tu cabello del daño por calor del secador y la plancha.</p>
@@ -257,7 +250,6 @@
       </div>
 
       <div class="product-card reveal" data-product="10">
-        <div class="pc-best-badge">🌿 Nuevo</div>
         <div class="pc-img pc-img-11">
           <div class="pc-carousel" id="mascarillaCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.jpeg" alt="Mascarilla Nutritiva" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Nutrición Profunda</span>
@@ -273,7 +265,6 @@
       </div>
 
       <div class="product-card reveal" data-product="11">
-        <div class="pc-best-badge">🌿 Nuevo</div>
         <div class="pc-img pc-img-12">
           <div class="pc-carousel" id="rescateCar"><div class="pcc-track"><div class="pcc-slide active"><img src="img/Rescate%20Supremo/Rescate%20Supremo1.jpeg" alt="Rescate Supremo" loading="lazy"></div></div></div>
           <span class="pc-badge-tag">Reparación Extrema</span>
@@ -738,44 +729,32 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Alma Botánica · Rosa Pérez · Todos los derechos reservados.</p>
+      <p>© 2026 Alma Botánica · Rosa Pérez · Todos los derechos reservados.</p>
       <p class="footer-tagline-b">Belleza natural que te hace única ❀</p>
       <p class="footer-tagline-b">📍 Barrio El Pozón, Cartagena de Indias · Colombia</p>
     </div>
   </div>
 </footer>
 
-<!-- PROMO MODAL — Nuevos Productos -->
-<div class="modal-overlay" id="promoModal" role="dialog" aria-modal="true" aria-label="Nuevos lanzamientos Alma Botánica">
+<!-- PROMO MODAL — Termoprotector -->
+<div class="modal-overlay" id="promoModal" role="dialog" aria-modal="true" aria-label="Nuevo Termoprotector Alma Botánica">
   <div class="promo-box">
     <button class="promo-close" id="promoClose" aria-label="Cerrar">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="promo-timer"><div class="promo-timer-bar" id="promoTimerBar"></div></div>
-    <div class="promo-kicker">✦ Recién llegados</div>
-    <h2 class="promo-title">Tres nuevos <em>tesoros</em><br>para tu cabello</h2>
-    <p class="promo-sub">Los últimos lanzamientos de Alma Botánica ya están disponibles</p>
-    <div class="promo-grid">
-      <div class="promo-card">
-        <span class="promo-icon">🛡️</span>
-        <span class="promo-name">Termoprotector</span>
-        <span class="promo-ml">200 ml</span>
-        <span class="promo-price">$25.000</span>
-      </div>
-      <div class="promo-card">
-        <span class="promo-icon">🍯</span>
-        <span class="promo-name">Mascarilla Nutritiva</span>
-        <span class="promo-ml">120 ml</span>
-        <span class="promo-price">$25.000</span>
-      </div>
-      <div class="promo-card">
-        <span class="promo-icon">💫</span>
-        <span class="promo-name">Rescate Supremo</span>
-        <span class="promo-ml">500 ml</span>
-        <span class="promo-price">$40.000</span>
-      </div>
+    <div class="promo-kicker">✦ Recién llegado · Alma Botánica</div>
+    <h2 class="promo-title">El escudo natural<br><em>de tu cabello</em></h2>
+    <div class="promo-img-wrap">
+      <img src="img/Termoprotector/Termoprotector%202%20Important.jpeg" alt="Termoprotector Alma Botánica" class="promo-product-img" loading="eager">
     </div>
-    <a href="#productos" class="btn btn-primary promo-cta" id="promoCta">Ver los nuevos productos</a>
+    <p class="promo-sub">Protege tu cabello del calor del secador, plancha y rizador. Reduce el frizz y aporta suavidad, brillo y un acabado saludable.</p>
+    <div class="promo-specs">
+      <span>🛡️ Protección térmica</span>
+      <span>✨ Sin residuos</span>
+      <span>200 ml · <strong>$25.000</strong></span>
+    </div>
+    <a href="#productos" class="btn btn-primary promo-cta" id="promoCta">Ver producto nuevo</a>
     <button class="promo-skip" id="promoSkip">No, gracias</button>
   </div>
 </div>
@@ -924,7 +903,7 @@
 <script src="js/cart.js" defer></script>
 <script src="js/forms.js" defer></script>
 <script>
-/* Promo modal — 3 nuevos productos — cierre automático 10 seg */
+/* Promo modal — Termoprotector — cierre automático 10 seg */
 (function(){
   var m=document.getElementById('promoModal');
   if(!m)return;
@@ -942,7 +921,7 @@
       document.body.style.overflow='';
     }
     function jumpNuevos(){
-      var cards=document.querySelectorAll('[data-product="9"],[data-product="10"],[data-product="11"]');
+      var cards=document.querySelectorAll('[data-product="9"]');
       cards.forEach(function(card,i){
         setTimeout(function(){
           card.classList.add('card-jump');

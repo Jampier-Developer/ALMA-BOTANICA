@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** Julio 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 6 Julio 2026
 
 ---
 
@@ -105,14 +105,14 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Underline deslizante** en la navegación: línea rosa que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
 - **Borde dorado animado** exclusivo en la tarjeta de Kits Completos
 - **Reveal animations** al hacer scroll con `IntersectionObserver`
-- **Animación de salto** en los 3 productos nuevos al navegar desde el modal promocional
+- **Animación de salto** en el Termoprotector al navegar desde el modal promocional
 
 ### 📢 Modal promocional
 - Aparece automáticamente **1.4 segundos** después de cargar la página
-- Promueve los 3 productos nuevos: Termoprotector 🛡️, Mascarilla Nutritiva 🍯, Rescate Supremo 💫
+- Promueve el **Termoprotector** 🛡️ con imagen y descripción del producto
 - **Barra de cuenta regresiva** de 10 segundos — se cierra solo al terminar
 - Cierre manual: botón ✕, "No, gracias", clic fuera, tecla Escape
-- Al hacer clic en "Ver los nuevos productos" → baja a la sección y los 3 cards hacen una animación de salto escalonada
+- Al hacer clic en "Ver producto nuevo" → baja a `#productos` y la tarjeta del Termoprotector hace una animación de salto
 
 ---
 
@@ -238,7 +238,8 @@ git push origin main
 
 - **Google Analytics:** `G-D9VGNFGPMP`
 - **Canonical URL:** `https://alma-botanica.store/`
-- **Dominio propio:** `alma-botanica.store` (comprado el 06/07/2026, DNS conectado a Cloudflare)
+- **Dominio propio:** `alma-botanica.store` — activo desde 06/07/2026 (DNS en Cloudflare, 301 redirect desde `pages.dev`)
+- **Google Search Console:** propiedad `https://alma-botanica.store/` verificada, sitemap enviado el 06/07/2026
 
 ---
 

@@ -235,8 +235,8 @@
     {
       name:'Termoprotector', tag:'Termoprotector', price:'$25.000', size:'200 ml', icon:'🛡️',
       bg:'linear-gradient(145deg,#fff3e0,#ffcc80)',
-      images:[], // TODO imagen pendiente: cambiar a ['img/Termoprotector/termoprotector-1.jpeg'] cuando esté lista
-      desc:'Escudo térmico de acción inmediata que protege la fibra capilar del daño por calor del secador, plancha y rizador. Su fórmula de ingredientes naturales forma una barrera protectora sobre cada hebra, sellando la cutícula y manteniendo la hidratación durante el estilizado.',
+      images:['img/Termoprotector/Termoprotector%201.jpeg','img/Termoprotector/Termoprotector%202%20Important.jpeg'],
+      desc:'Nuestro Termoprotector Alma Botánica crea una barrera protectora contra el calor del secador, la plancha y el rizador, ayudando a reducir el frizz mientras aporta suavidad, brillo y un acabado saludable. Ideal para todo tipo de cabello.',
       benefits:['Protección térmica ante secador, plancha y rizador','Sella la cutícula y reduce el quiebre por calor','Añade brillo y suavidad durante el peinado','Mantiene la hidratación durante el estilizado']
     },
     {
