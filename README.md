@@ -238,7 +238,8 @@ git push origin main
 
 - **Google Analytics:** `G-D9VGNFGPMP`
 - **Canonical URL:** `https://alma-botanica.store/`
-- **Dominio propio:** `alma-botanica.store` — activo desde 06/07/2026 (DNS en Cloudflare, 301 redirect desde `pages.dev`)
+- **Dominio propio:** `alma-botanica.store` — activo desde 06/07/2026 (DNS en Cloudflare)
+- **Redirect:** `alma-botanica.pages.dev` → `alma-botanica.store` vía `functions/_middleware.js` (301)
 - **Google Search Console:** propiedad `https://alma-botanica.store/` verificada, sitemap enviado el 06/07/2026
 
 ---
