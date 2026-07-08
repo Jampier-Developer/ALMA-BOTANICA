@@ -233,7 +233,7 @@
       benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
     },
     {
-      name:'Termoprotector', tag:'Termoprotector', price:'$25.000', size:'200 ml', icon:'🛡️',
+      name:'Termoprotector', tag:'Termoprotector', price:'$28.000', size:'250 ml', icon:'🛡️',
       bg:'linear-gradient(145deg,#fff3e0,#ffcc80)',
       images:['img/Termoprotector/Termoprotector%201.jpeg','img/Termoprotector/Termoprotector%202%20Important.jpeg'],
       desc:'Nuestro Termoprotector Alma Botánica crea una barrera protectora contra el calor del secador, la plancha y el rizador, ayudando a reducir el frizz mientras aporta suavidad, brillo y un acabado saludable. Ideal para todo tipo de cabello.',
