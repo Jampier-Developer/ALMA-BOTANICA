@@ -151,7 +151,7 @@
       benefits:['Define rizos sin efecto plástico ni residuos','Hidratación sin peso con Omega-3 y Vitamina E','Protección antifrizz y antioxidante','Fijación flexible y duradera todo el día']
     },
     {
-      name:'Tratamiento Capilar', tag:'Reparación', price:'$23.000', size:'250 ml', icon:'🌸',
+      name:'Tratamiento Capilar', tag:'Reparación', price:'$25.000', size:'250 ml', icon:'🌸',
       bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
       images:['img/Tratamientos/tratamiento%201.jpeg'],
       desc:'La proteína de quinoa contiene 9 aminoácidos esenciales que reparan las hebras dañadas, mientras la sábila aporta enzimas proteolíticas, vitaminas y minerales que nutren y protegen. Mascarilla de 15 minutos de acción profunda.',

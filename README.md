@@ -122,14 +122,14 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 
 | # | Producto | Precio | Contenido | Variantes |
 |---|---|---|---|---|
-| 1 | **Termoprotector** *(Nuevo)* | $25.000 | 200ml | — |
+| 1 | **Termoprotector** *(Nuevo)* | $28.000 | 250ml | — |
 | 2 | **Mascarilla Nutritiva** *(Nuevo)* | $25.000 | 120ml | — |
 | 3 | **Rescate Supremo** *(Nuevo)* | $40.000 | 500ml | — |
 | 4 | Shampoos | desde $32.000 | 500ml | Romero · Nutritivo · Aguacate |
 | 5 | Acondicionadores | desde $32.000 | 500ml | Romero · Nutritivo · Aguacate · Cebolla |
 | 6 | Tónicos Capilares | desde $15.000 | 120ml | Romero · 7 Aceites · Bomba |
 | 7 | Gel Fijador Hidratante | $13.000 | 300ml | — |
-| 8 | Tratamiento Capilar | $23.000 | 250ml | — |
+| 8 | Tratamiento Capilar | $25.000 | 250ml | — |
 | 9 | Kit Rutina Completa 🌟 | desde $60.000 | 500ml | 8 variantes |
 | 10 | Crema para Peinar | $28.000 | 200ml | — |
 | 11 | Bio Repolarizador | $32.000 | 120ml | — |
