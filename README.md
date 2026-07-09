@@ -107,6 +107,13 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Reveal animations** al hacer scroll con `IntersectionObserver`
 - **Animación de salto** en el Termoprotector al navegar desde el modal promocional
 
+### 🌿 Testimonio de Rosa
+- Sección entre "Nosotras" y "Resultados" con la foto antes/después de Rosa publicada en IG/FB
+- Imagen con `mix-blend-mode:multiply` — fondo blanco desaparece y se integra con el fondo de la página
+- Badge "Rosa Pérez / Formuladora · Botánica / 🌿 Antes · Después ✨" — idéntico al de la sección Nosotras
+- Texto original de Rosa sin modificar + botones de Instagram y Facebook con SVG inline
+- Clases: `.testi-layout`, `.testi-img-wrap`, `.testi-img`, `.testi-badge`, `.testi-social`, `.testi-link`
+
 ### 📢 Modal promocional
 - Aparece automáticamente **1.4 segundos** después de cargar la página
 - Promueve el **Termoprotector** 🛡️ con imagen y descripción del producto

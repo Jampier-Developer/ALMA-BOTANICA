@@ -155,12 +155,41 @@ nav.scrolled{box-shadow:var(--shadow)}
 .rosa-deco{position:absolute;font-size:2rem;color:var(--pink);animation:float 3s ease-in-out infinite}
 .rosa-d1{top:-1rem;right:-1rem;animation-delay:0s}
 .rosa-d2{bottom:4rem;left:-1rem;animation-delay:1.5s;color:var(--gold)}
-.rosa-name-tag{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid var(--border-pink);border-radius:var(--radius-full);padding:.55rem 1.3rem;display:flex;flex-direction:column;align-items:center;gap:.1rem;white-space:nowrap;box-shadow:var(--shadow)}
-.rosa-name-tag span:first-child{font-family:var(--font-d);font-size:1rem;font-weight:600;color:var(--text)}
-.rosa-name-tag span:last-child{font-family:var(--font-m);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-m);font-weight:600}
+.rosa-name-tag{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid var(--border-pink);border-radius:var(--radius-full);padding:.38rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.08rem;white-space:nowrap;box-shadow:var(--shadow)}
+.rosa-name-tag span:first-child{font-family:var(--font-d);font-size:.88rem;font-weight:600;color:var(--text)}
+.rosa-name-tag span:last-child{font-family:var(--font-m);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-m);font-weight:600}
 .rosa-quote{margin-top:1.5rem;padding:.8rem 1.2rem;border-left:3px solid var(--pink);background:var(--pink-soft);border-radius:0 var(--radius-md) var(--radius-md) 0}
 .rosa-quote blockquote{font-family:var(--font-d);font-size:1.1rem;color:var(--pink-deep);line-height:1.55;margin-bottom:.4rem}
 .rosa-quote cite{font-family:var(--font-m);font-size:.6rem;letter-spacing:.12em;color:var(--text-m);font-style:normal;font-weight:600}
+
+/* ── TESTIMONIO ROSA ── */
+.testi-sec{background:var(--bg)}
+.testi-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.testi-img-wrap{position:relative;border-radius:var(--radius-lg)}
+.testi-img{width:100%;display:block;mix-blend-mode:multiply}
+.testi-badge{
+  position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--border-pink);border-radius:var(--radius-lg);
+  padding:.38rem 1rem;display:flex;flex-direction:column;align-items:center;
+  gap:.08rem;white-space:nowrap;box-shadow:var(--shadow);
+}
+.testi-badge span:first-child{font-family:var(--font-d);font-size:.88rem;font-weight:600;color:var(--text)}
+.testi-badge span:nth-child(2){font-family:var(--font-m);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-m);font-weight:600}
+.testi-badge-sub{font-family:var(--font-m);font-size:.47rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);font-weight:600}
+.testi-content .kicker{display:block;margin-bottom:1.25rem}
+.testi-content .body-txt:last-of-type{margin-bottom:0}
+.testi-social{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.testi-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.6rem 1.2rem;border-radius:var(--radius-full);
+  font-family:var(--font-b);font-size:.82rem;font-weight:600;
+  transition:transform var(--dur-f),box-shadow var(--dur-f);
+  letter-spacing:.01em;
+}
+.testi-link:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.testi-link-ig{background:#E1306C;color:#fff}
+.testi-link-fb{background:#1877F2;color:#fff}
 
 /* RESULTADOS REALES — CAROUSEL CARDS */
 .sec-sub{font-family:var(--font-m);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-m);margin-top:.4rem;font-weight:600}
@@ -530,6 +559,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .split-r .split-text,.split-r .split-visual{order:unset}
   .rosa-frame{width:100%;max-width:100%;margin:0 auto}
   .rosa-img{height:auto;object-fit:initial;width:100%}
+  .testi-layout{grid-template-columns:1fr;gap:2rem}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .modal-box{display:flex;flex-direction:column;overflow-y:hidden}
   .modal-content{grid-template-columns:1fr;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
@@ -569,10 +599,11 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .benefits-grid{grid-template-columns:repeat(4,1fr)}
   .results-grid{grid-template-columns:repeat(2,1fr)}
 
-  /* Sección Rosa */
+  /* Sección Rosa y Testimonio */
   .split-layout{grid-template-columns:1fr 1fr;gap:3rem}
   .split-r .split-text{order:2}
   .split-r .split-visual{order:1}
+  .testi-layout{grid-template-columns:1fr 1fr;gap:3rem}
 
   /* Footer — 4 columnas */
   .footer-grid{grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
@@ -617,6 +648,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* ── Productos ── */
   .pc-img{height:210px}
   .pc-name{font-size:1.05rem}
+  .testi-content .body-txt{font-size:.92rem}
+  .testi-link{padding:.55rem 1rem;font-size:.78rem}
   .pc-footer{flex-direction:column;align-items:stretch;gap:.5rem}
   .pc-btn{width:100%;justify-content:center;text-align:center}
   .pc-price::before{font-size:.72rem;font-weight:700;letter-spacing:.08em}
@@ -1177,6 +1210,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   border-radius:var(--radius-full);
 }
 @media(max-width:480px){
+  .testi-social{flex-direction:column;align-items:stretch}
+  .testi-link{justify-content:center;font-size:.8rem}
   .promo-box{padding:2rem 1.1rem 1.4rem}
   .promo-title{font-size:1.65rem}
   .promo-close{top:.65rem;right:.65rem;padding:.5rem}
@@ -1190,4 +1225,8 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .promo-sub{font-size:.82rem}
   .promo-product-img{height:170px}
   .promo-cta{font-size:.84rem}
+  .testi-badge{white-space:normal;text-align:center;width:min(200px,75%);bottom:1rem}
+  .testi-badge span{white-space:normal}
+  .testi-badge span:first-child{font-size:.8rem}
+  .testi-badge span:nth-child(2),.testi-badge-sub{font-size:.44rem;letter-spacing:.1em}
 }
