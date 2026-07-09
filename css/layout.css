@@ -1134,7 +1134,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .promo-box{
   background:var(--bg-cream);border-radius:var(--radius-lg);
   padding:2.5rem 2rem 1.75rem;max-width:460px;width:calc(100% - 2rem);
-  position:relative;box-shadow:var(--shadow-modal);
+  position:relative;box-shadow:var(--shadow-modal);overflow:hidden;
   border:1px solid var(--border-pink);text-align:center;
   animation:promoIn .45s var(--ease) both;
 }
