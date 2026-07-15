@@ -766,32 +766,10 @@
       <p>© 2026 Alma Botánica · Rosa Pérez · Todos los derechos reservados.</p>
       <p class="footer-tagline-b">Belleza natural que te hace única ❀</p>
       <p class="footer-tagline-b">📍 Barrio El Pozón, Cartagena de Indias · Colombia</p>
+      <p class="footer-dev"><span class="footer-dev-txt">Diseño y desarrollo:</span> <span class="footer-dev-jx">JX</span> <span class="footer-dev-co">Company</span></p>
     </div>
   </div>
 </footer>
-
-<!-- PROMO MODAL — Termoprotector -->
-<div class="modal-overlay" id="promoModal" role="dialog" aria-modal="true" aria-label="Nuevo Termoprotector Alma Botánica">
-  <div class="promo-box">
-    <button class="promo-close" id="promoClose" aria-label="Cerrar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="promo-timer"><div class="promo-timer-bar" id="promoTimerBar"></div></div>
-    <div class="promo-kicker">✦ Recién llegado · Alma Botánica</div>
-    <h2 class="promo-title">El escudo natural<br><em>de tu cabello</em></h2>
-    <div class="promo-img-wrap">
-      <img src="img/Termoprotector/Termoprotector%202%20Important.jpeg" alt="Termoprotector Alma Botánica" class="promo-product-img" loading="eager">
-    </div>
-    <p class="promo-sub">Protege tu cabello del calor del secador, plancha y rizador. Reduce el frizz y aporta suavidad, brillo y un acabado saludable.</p>
-    <div class="promo-specs">
-      <span>🛡️ Protección térmica</span>
-      <span>✨ Sin residuos</span>
-      <span>250 ml · <strong>$28.000</strong></span>
-    </div>
-    <a href="#productos" class="btn btn-primary promo-cta" id="promoCta">Ver producto nuevo</a>
-    <button class="promo-skip" id="promoSkip">No, gracias</button>
-  </div>
-</div>
 
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-label="Detalle de producto">
@@ -936,43 +914,5 @@
 <script src="js/interactions.js" defer></script>
 <script src="js/cart.js" defer></script>
 <script src="js/forms.js" defer></script>
-<script>
-/* Promo modal — Termoprotector — cierre automático 10 seg */
-(function(){
-  var m=document.getElementById('promoModal');
-  if(!m)return;
-  var DURACION=10000;
-  setTimeout(function(){
-    m.classList.add('open');
-    document.body.style.overflow='hidden';
-    var bar=document.getElementById('promoTimerBar');
-    bar.style.transition='width '+DURACION+'ms linear';
-    requestAnimationFrame(function(){requestAnimationFrame(function(){bar.style.width='0%';});});
-    var auto=setTimeout(close,DURACION);
-    function close(){
-      clearTimeout(auto);
-      m.classList.remove('open');
-      document.body.style.overflow='';
-    }
-    function jumpNuevos(){
-      var cards=document.querySelectorAll('[data-product="9"]');
-      cards.forEach(function(card,i){
-        setTimeout(function(){
-          card.classList.add('card-jump');
-          card.addEventListener('animationend',function(){card.classList.remove('card-jump');},{once:true});
-        },i*140);
-      });
-    }
-    document.getElementById('promoClose').addEventListener('click',close);
-    document.getElementById('promoSkip').addEventListener('click',close);
-    document.getElementById('promoCta').addEventListener('click',function(){
-      close();
-      setTimeout(jumpNuevos,520);
-    });
-    m.addEventListener('click',function(e){if(e.target===m)close();});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  },1400);
-})();
-</script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 6 Julio 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 15 Julio 2026
 
 ---
 
@@ -114,12 +114,8 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - Texto original de Rosa sin modificar + botones de Instagram y Facebook con SVG inline
 - Clases: `.testi-layout`, `.testi-img-wrap`, `.testi-img`, `.testi-badge`, `.testi-social`, `.testi-link`
 
-### 📢 Modal promocional
-- Aparece automáticamente **1.4 segundos** después de cargar la página
-- Promueve el **Termoprotector** 🛡️ con imagen y descripción del producto
-- **Barra de cuenta regresiva** de 10 segundos — se cierra solo al terminar
-- Cierre manual: botón ✕, "No, gracias", clic fuera, tecla Escape
-- Al hacer clic en "Ver producto nuevo" → baja a `#productos` y la tarjeta del Termoprotector hace una animación de salto
+### 🏷️ Crédito de desarrollo
+- Footer incluye "Diseño y desarrollo: JX Company" con identidad visual propia (plateado + dorado)
 
 ---
 
