@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 15 Julio 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 24 Julio 2026
 
 ---
 
@@ -80,7 +80,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - Solo una pregunta abierta a la vez
 
 ### 🔍 SEO
-- `<title>` optimizado: nombre + cargo + ciudad
+- `<title>` optimizado: nombre + cargo + ciudad + barrio del punto físico (`Cartagena de Indias, Barrio El Pozón`) — ayuda a la gente a ubicarse desde el resultado de búsqueda
 - `<meta description>` natural, 154 caracteres, con palabras clave locales
 - `<meta keywords>` con 14 términos clave capilares y de ubicación
 - `<meta robots>` con directivas avanzadas: `max-snippet:-1`, `max-image-preview:large`
