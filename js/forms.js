@@ -71,19 +71,19 @@
       variants:[
         {
           name:'Shampoo Romero', price:'$32.000', icon:'🌿',
-          image:'img/Shampoos/shampoo%201.jpeg',
+          image:'img/Shampoos/shampoo%201.webp',
           desc:'Con extracto de romero rico en ácido rosmarínico que mejora la circulación del cuero cabelludo. Estudios clínicos demuestran que el romero es tan efectivo como el minoxidil para estimular el crecimiento capilar.',
           benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída bloqueando causas hormonales','Limpieza profunda sin sulfatos agresivos','Apto para uso diario en todo tipo de cabello']
         },
         {
           name:'Shampoo Nutritivo', price:'$34.000', icon:'⭐',
-          image:'img/Shampoos/shampoo%202.jpeg',
+          image:'img/Shampoos/shampoo%202.webp',
           desc:'Fórmula nutritiva que fortalece la fibra capilar desde el primer lavado. Limpia en profundidad mientras aporta nutrición activa, devolviendo vida y brillo sin residuos pesados.',
           benefits:['Nutrición activa desde la raíz','Fortalece la fibra capilar debilitada','Brillo y suavidad inmediata','Sin sulfatos ni parabenos']
         },
         {
           name:'Shampoo Aguacate', price:'$32.000', icon:'🥑',
-          image:'img/Shampoos/shampoo%203.jpeg',
+          image:'img/Shampoos/shampoo%203.webp',
           desc:'Enriquecido con aceite de aguacate, rico en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos monoinsaturados penetran la fibra capilar restaurando la barrera lipídica del cabello seco o poroso.',
           benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica del cabello','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o dañado']
         },
@@ -95,25 +95,25 @@
       variants:[
         {
           name:'Acondicionador Romero', price:'$32.000', icon:'🌿',
-          image:'img/acondicionador/acondicionador1.jpeg',
+          image:'img/acondicionador/acondicionador1.webp',
           desc:'El romero mejora la circulación del cuero cabelludo y reduce activamente la caída. Sella la cutícula para un brillo duradero y suavidad inmediata sin residuos pesados.',
           benefits:['Sella la cutícula para más brillo','Reduce la caída activamente','Desenreda sin dañar la fibra','Efecto antiestático duradero']
         },
         {
           name:'Acondicionador Nutritivo', price:'$34.000', icon:'⭐',
-          image:'img/acondicionador/acondicionador2.jpeg',
+          image:'img/acondicionador/acondicionador2.webp',
           desc:'Fórmula nutritiva concentrada con aminoácidos esenciales que reparan y fortalecen la fibra capilar desde adentro. Ideal para cabello debilitado por tintes o procesos químicos.',
           benefits:['Reparación profunda de la fibra capilar','Nutrición con aminoácidos esenciales','Fortalece y reduce el quiebre','Compatible con cabello teñido o procesado']
         },
         {
           name:'Acondicionador Aguacate', price:'$32.000', icon:'🥑',
-          image:'img/acondicionador/Acondicionador3.jpeg',
+          image:'img/acondicionador/Acondicionador3.webp',
           desc:'Rico en Omega-9, vitaminas A, B, C y E del aceite de aguacate. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica y devolviendo elasticidad al cabello más seco.',
           benefits:['Penetra la fibra con Omega-9 y vitaminas','Restaura elasticidad y barrera lipídica','Controla el frizz desde adentro','Ideal para cabello muy seco o poroso']
         },
         {
           name:'Acondicionador Cebolla', price:'$32.000', icon:'🧅',
-          image:'img/acondicionador/Acondicionador4.jpeg',
+          image:'img/acondicionador/Acondicionador4.webp',
           desc:'El extracto de cebolla aporta compuestos sulfurados esenciales para la producción de queratina. Estudios clínicos demuestran que estimula el crecimiento y reduce la caída en pocas semanas de uso.',
           benefits:['Frena la caída con compuestos sulfurados','Estimula la producción de queratina natural','Aporta densidad y volumen al cabello','Desenreda y suaviza sin residuos']
         },
@@ -125,19 +125,19 @@
       variants:[
         {
           name:'Tónico Capilar Romero', price:'$15.000', icon:'🌿',
-          image:'img/Tonicos-Capilares/tonico%20capilar%201.jpeg',
+          image:'img/Tonicos-Capilares/tonico%20capilar%201.webp',
           desc:'Aplicación directa en raíces 2-4 veces por semana. El romero contiene ácido rosmarínico que mejora la circulación del cuero cabelludo, activa los folículos y reduce la caída. No requiere enjuague.',
           benefits:['Activa folículos pilosos inactivos','Reduce la caída estacional','Mejora la circulación del cuero cabelludo','Sin enjuague — absorción directa']
         },
         {
           name:'Tónico Capilar 7 Aceites', price:'$20.000', icon:'✨',
-          image:'img/Tonicos-Capilares/tonico%20capilar%202.jpeg',
+          image:'img/Tonicos-Capilares/tonico%20capilar%202.webp',
           desc:'Sinergia de 7 aceites naturales que nutren, fortalecen y revitalizan el cabello desde la raíz. Los lípidos de los aceites vegetales son responsables del brillo y la salud capilar. Aplicación directa sin enjuague.',
           benefits:['7 aceites naturales en sinergia','Nutrición profunda y brillo intenso','Fortalece la fibra y reduce el quiebre','Revitaliza el cuero cabelludo sin residuos']
         },
         {
           name:'Tónico Bomba', price:'$25.000', icon:'💣',
-          image:'img/Tonicos-Capilares/tonico%20capilar%203.jpeg',
+          image:'img/Tonicos-Capilares/tonico%20capilar%203.webp',
           desc:'Crecimiento extremo y reparador en una sola fórmula. El tónico más potente de la línea — activa el ciclo capilar, aumenta el flujo sanguíneo al folículo y repara la fibra desde la primera aplicación. Sin enjuague.',
           benefits:['Crecimiento extremo y reparación simultánea','Activa el ciclo capilar completo','Aumenta el flujo sanguíneo al folículo','Resultados visibles desde la primera semana']
         },
@@ -146,14 +146,14 @@
     {
       name:'Gel Fijador Hidratante', tag:'Fijador', price:'$13.000', size:'300 ml', icon:'✨',
       bg:'linear-gradient(145deg,#fff8e1,#ffecb3)',
-      images:['img/Gel/Gel%201.jpeg'],
+      images:['img/Gel/Gel%201.webp'],
       desc:'El gel de linaza contiene mucílagos que recubren la fibra capilar creando una película protectora. Aporta Omega-3, antioxidantes y Vitamina E que protegen contra el daño oxidativo mientras define y fija sin efecto cartón.',
       benefits:['Define rizos sin efecto plástico ni residuos','Hidratación sin peso con Omega-3 y Vitamina E','Protección antifrizz y antioxidante','Fijación flexible y duradera todo el día']
     },
     {
       name:'Tratamiento Capilar', tag:'Reparación', price:'$25.000', size:'250 ml', icon:'🌸',
       bg:'linear-gradient(145deg,#fce4ec,#ffcdd2)',
-      images:['img/Tratamientos/tratamiento%201.jpeg'],
+      images:['img/Tratamientos/tratamiento%201.webp'],
       desc:'La proteína de quinoa contiene 9 aminoácidos esenciales que reparan las hebras dañadas, mientras la sábila aporta enzimas proteolíticas, vitaminas y minerales que nutren y protegen. Mascarilla de 15 minutos de acción profunda.',
       benefits:['Repara hebras dañadas por calor o química','9 aminoácidos esenciales de la quinoa','Nutre y protege con enzimas de sábila','Resultados visibles desde la 1ª aplicación']
     },
@@ -163,49 +163,49 @@
       variants:[
         {
           name:'Kit Cebolla Premium', price:'$90.000', icon:'🧅',
-          image:'img/Kits/Kits7.PNG',
+          image:'img/Kits/Kits7.webp',
           desc:'Kit completo de la línea Cebolla con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Los compuestos sulfurados del extracto de cebolla estimulan la producción natural de queratina y reducen la caída. Estudios clínicos respaldan su eficacia para el crecimiento capilar desde las primeras semanas de uso.',
           benefits:['Frena la caída con compuestos sulfurados naturales','Estimula la producción de queratina y densidad','Aporta volumen, brillo y fortaleza desde la raíz','Incluye Mascarilla Nutritiva para nutrición profunda']
         },
         {
           name:'Kit Aguacate Premium', price:'$90.000', icon:'🥑',
-          image:'img/Kits/Kits8.PNG',
+          image:'img/Kits/Kits8.webp',
           desc:'Kit completo de la línea Aguacate con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Rico en Omega-9 y vitaminas A, B, C y E del aceite de aguacate que penetran la fibra capilar restaurando la barrera lipídica. Ideal para cabello seco, poroso o muy dañado que necesita hidratación profunda.',
           benefits:['Hidratación profunda con Omega-9 y vitaminas A, B, C y E','Restaura la barrera lipídica y elasticidad capilar','Controla el frizz y encrespamiento desde adentro','Incluye Mascarilla Nutritiva para nutrición profunda']
         },
         {
           name:'Kits Linaza', price:'$75.000', icon:'✨',
-          image:'img/Kits/Kit1.jpeg',
+          image:'img/Kits/Kit1.webp',
           desc:'Kit de la línea Linaza con varios productos que definen, hidratan y fortalecen el cabello. El gel de linaza aporta Omega-3 y mucílagos que protegen la fibra capilar sin efecto cartón ni residuos.',
           benefits:['Define rizos y ondas sin efecto plástico','Hidratación sin peso con Omega-3','Protección antifrizz duradera','Apto para cabello rizado y muy rizado']
         },
         {
           name:'Kits Nutritivo', price:'$130.000', icon:'⭐',
-          image:'img/Kits/Kit2.jpeg',
+          image:'img/Kits/Kit2.webp',
           desc:'Kit de la línea Nutritiva con varios productos de nutrición profunda. Sus aminoácidos esenciales reparan y fortalecen la fibra capilar debilitada por calor, tintes o procesos químicos.',
           benefits:['Nutrición profunda con aminoácidos esenciales','Repara cabello dañado por calor o química','Fortalece y devuelve brillo natural','Compatible con cabello teñido o procesado']
         },
         {
           name:'Kits Romero', price:'$60.000', icon:'🌿',
-          image:'img/Kits/Kit3.jpeg',
+          image:'img/Kits/Kit3.webp',
           desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y reducen la caída. El romero mejora la circulación del cuero cabelludo con resultados clínicamente respaldados.',
           benefits:['Estimula el crecimiento capilar','Reduce la caída desde la primera semana','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
         },
         {
           name:'Kit Capilar Romero Premium', price:'$90.000', icon:'👑',
-          image:'img/Kits/Kits4.jpeg',
+          image:'img/Kits/Kits4.webp',
           desc:'El kit más completo de la línea. Incluye Shampoo Romero, Acondicionador Romero, Tónico Capilar y Tratamiento Capilar — todo lo que necesitas para una rutina capilar integral en un solo kit.',
           benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo y valorado de la línea']
         },
         {
           name:'Kits Cebolla', price:'$64.000', icon:'🧅',
-          image:'img/Kits/kit5.jpeg',
+          image:'img/Kits/kit5.webp',
           desc:'Kit de la línea Cebolla con varios productos ricos en compuestos sulfurados que estimulan la queratina natural. Estudios clínicos demuestran que el extracto de cebolla reduce la caída en pocas semanas.',
           benefits:['Estimula la producción de queratina natural','Frena la caída con compuestos sulfurados','Aporta densidad y volumen al cabello','Resultados visibles en pocas semanas']
         },
         {
           name:'Kits Aguacate', price:'$64.000', icon:'🥑',
-          image:'img/Kits/kit6.jpeg',
+          image:'img/Kits/kit6.webp',
           desc:'Kit de la línea Aguacate con varios productos ricos en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica del cabello más seco y poroso.',
           benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica capilar','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o muy dañado']
         },
@@ -214,42 +214,42 @@
     {
       name:'Crema para Peinar', tag:'Peinado', price:'$28.000', size:'200 ml', icon:'💆',
       bg:'linear-gradient(145deg,#fef9e7,#fde68a)',
-      images:['img/Crema%20para%20Peinar/crema%20de%20peinar%201.jpeg'],
+      images:['img/Crema%20para%20Peinar/crema%20de%20peinar%201.webp'],
       desc:'Crema para peinar que define y moldea sin rigidez ni residuos. Facilita el desenredo, aporta suavidad y control desde la raíz hasta las puntas. Apta para todo tipo de cabello.',
       benefits:['Define y moldea sin efecto cartón','Facilita el desenredo y peinado','Hidratación sin residuos ni pesadez','Apta para cabello liso, ondulado y rizado']
     },
     {
       name:'Bio Repolarizador', tag:'Reparador', price:'$32.000', size:'120 ml', icon:'💎',
       bg:'linear-gradient(145deg,#e0f7fa,#b2ebf2)',
-      images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.jpeg'],
+      images:['img/BIO%20REPOLARIZADOR/BIO%20REPOLARIZADOR%201.webp'],
       desc:'Tratamiento intensivo que aplica keratina, colágeno y aceites para restaurar la fibra desde adentro. Sella la cutícula, equilibra la carga electrostática del cabello y reduce significativamente el frizz. Duración 2-4 semanas.',
       benefits:['Restaura la fibra capilar desde el interior','Sella la cutícula y reduce el frizz','Recupera suavidad, fuerza y brillo','Ideal para cabello dañado por tintes o calor']
     },
     {
       name:'Pree Poo', tag:'Pre-lavado', price:'$25.000', size:'250 ml', icon:'🌱',
       bg:'linear-gradient(145deg,#f1f8e9,#dcedc8)',
-      images:['img/PREE%20PO/PREE%20PO.jpeg'],
+      images:['img/PREE%20PO/PREE%20PO.webp'],
       desc:'Tratamiento que se aplica antes del shampoo para crear una barrera protectora que minimiza el daño del lavado. Mantiene la humedad, aumenta el brillo, mejora la porosidad y reduce el frizz. Especialmente recomendado para cabello rizado, seco o dañado.',
       benefits:['Protege contra la sequedad del champú','Aumenta brillo, suavidad y elasticidad','Mejora la porosidad y reduce el frizz','Especialmente recomendado para rizos y cabello seco']
     },
     {
       name:'Termoprotector', tag:'Termoprotector', price:'$28.000', size:'250 ml', icon:'🛡️',
       bg:'linear-gradient(145deg,#fff3e0,#ffcc80)',
-      images:['img/Termoprotector/Termoprotector%201.jpeg','img/Termoprotector/Termoprotector%202%20Important.jpeg'],
+      images:['img/Termoprotector/Termoprotector%201.webp','img/Termoprotector/Termoprotector%202%20Important.webp'],
       desc:'Nuestro Termoprotector Alma Botánica crea una barrera protectora contra el calor del secador, la plancha y el rizador, ayudando a reducir el frizz mientras aporta suavidad, brillo y un acabado saludable. Ideal para todo tipo de cabello.',
       benefits:['Protección térmica ante secador, plancha y rizador','Sella la cutícula y reduce el quiebre por calor','Añade brillo y suavidad durante el peinado','Mantiene la hidratación durante el estilizado']
     },
     {
       name:'Mascarilla Nutritiva', tag:'Nutrición Profunda', price:'$25.000', size:'120 ml', icon:'🍯',
       bg:'linear-gradient(145deg,#fce4ec,#f48fb1)',
-      images:['img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.jpeg'],
+      images:['img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.webp'],
       desc:'Mascarilla de nutrición profunda con proteínas vegetales y mantequillas naturales que penetran la fibra capilar para restaurar el brillo, la elasticidad y la suavidad perdida. Se aplica después del shampoo y actúa en 15-20 minutos para transformar cabello seco, opaco o dañado.',
       benefits:['Nutrición profunda con proteínas vegetales','Restaura elasticidad y brillo natural','Suaviza y desenreda cabello seco o dañado','Resultados visibles desde la primera aplicación']
     },
     {
       name:'Rescate Supremo', tag:'Reparación Extrema', price:'$40.000', size:'500 ml', icon:'💫',
       bg:'linear-gradient(145deg,#ede7f6,#b39ddb)',
-      images:['img/Rescate%20Supremo/Rescate%20Supremo1.jpeg'],
+      images:['img/Rescate%20Supremo/Rescate%20Supremo1.webp'],
       desc:'Ayuda a reparar el cabello dañado por el calor, tintes químicos y factores ambientales. Su combinación de ingredientes naturales aportan una sensación de cabello más manejable, brillante y saludable.',
       benefits:['Repara daño por calor, tintes y agentes externos','Cabello más manejable desde la primera aplicación','Brillo y suavidad con ingredientes 100% naturales','Tratamiento intensivo de rescate capilar']
     },
@@ -309,7 +309,7 @@
         document.getElementById('modalTitle').innerHTML = info.name + icon;
         document.getElementById('modalDesc').textContent = info.desc;
         document.getElementById('modalBenefits').innerHTML = info.benefits.map(b => `<li>${b}</li>`).join('');
-        document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--pink-deep)">${info.price}</span>`;
+        document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--bronze)">${info.price}</span>`;
         const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
         document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 

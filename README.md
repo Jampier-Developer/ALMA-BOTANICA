@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 24 Julio 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 13 Agosto 2026
 
 ---
 
@@ -96,13 +96,19 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 
 ### ⚡ Rendimiento
 - Sin frameworks ni librerías pesadas (sin jQuery, sin React, sin Three.js)
+- **Todas las imágenes en formato WebP** (29MB → 8.4MB, -72%) — sin `.jpeg`/`.jpg`/`.png` en el sitio
 - Fuentes Google cargadas de forma no bloqueante (`preload` + `onload`)
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
 - 22+ imágenes con `loading="lazy"`
 - Analytics y Hotjar con atributo `defer`
 
+### 🎨 Paleta e identidad visual
+- Colores tomados directamente del logo: **verde salvia** (acentos interactivos), **bronce** (texto de énfasis y botones), **dorado** (detalles premium, badge de Kits) y **marfil** (fondos)
+- Tipografía: **Marcellus** (títulos, la más parecida a las letras del logo) + **Poppins** (cuerpo)
+- El botón de WhatsApp usa el bronce del sitio en vez del verde oficial de WhatsApp, por decisión de marca — Instagram y Facebook conservan sus colores oficiales
+
 ### 🎨 Efectos visuales
-- **Underline deslizante** en la navegación: línea rosa que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
+- **Underline deslizante** en la navegación: línea que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
 - **Borde dorado animado** exclusivo en la tarjeta de Kits Completos
 - **Reveal animations** al hacer scroll con `IntersectionObserver`
 - **Animación de salto** en el Termoprotector al navegar desde el modal promocional
@@ -152,8 +158,9 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 | **Cloudflare Pages** | Hosting y despliegue continuo |
 | **Google Analytics** | Métricas de tráfico (`G-D9VGNFGPMP`) |
 | **ContentSquare / Hotjar** | Mapas de calor y grabaciones de sesión |
-| **Cormorant Garamond** | Fuente de títulos (Google Fonts) |
-| **Jost** | Fuente de cuerpo (Google Fonts) |
+| **Marcellus** | Fuente de títulos (Google Fonts) |
+| **Poppins** | Fuente de cuerpo (Google Fonts) |
+| **WebP** | Formato de todas las imágenes del sitio |
 
 > Sin frameworks, sin npm, sin webpack, sin dependencias externas. Solo archivos estáticos.
 
