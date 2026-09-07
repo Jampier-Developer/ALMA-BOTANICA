@@ -27,8 +27,14 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap"></noscript>
 
-<link rel="icon" type="image/webp" href="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp">
-<link rel="apple-touch-icon" href="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp">
+<!-- Iconos. EXCEPCIÓN a la regla WebP del proyecto: los favicons NO van
+     en .webp porque Safari y los navegadores antiguos no los renderizan.
+     El .ico es el respaldo universal; el .png lo usan los navegadores
+     modernos y el apple-touch-icon es para la pantalla de inicio de iOS. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/layout.css">
 
@@ -45,9 +51,12 @@
 <meta name="twitter:description" content="Shampoo y tónicos de romero 100% natural. Sin sulfatos, sin parabenos. Cartagena de Indias, Colombia.">
 <meta name="twitter:image" content="https://alma-botanica.store/img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp">
 
-<!-- Analytics + Hotjar diferidos — no bloquean el renderizado inicial -->
-<script src="js/analytics.js" defer></script>
-<script src="js/hotjar.js" defer></script>
+<!-- Consentimiento de cookies.
+     IMPORTANTE: js/analytics.js y js/hotjar.js YA NO se enlazan aquí.
+     Los inyecta js/cookies.js y solo después de que la persona acepte,
+     como exige la Resolución 32.126 de 2022 de la SIC (consentimiento
+     previo, expreso e informado). No volver a ponerlos en el <head>. -->
+<script src="js/cookies.js" defer></script>
 
 <!-- Datos estructurados JSON-LD — le dice a Google que somos un negocio local con productos -->
 <script type="application/ld+json">
@@ -115,8 +124,107 @@
   }
 }
 </script>
+
+<!-- Preguntas frecuentes en datos estructurados.
+     Son EXACTAMENTE las 10 preguntas y respuestas que están visibles en la
+     sección #faq de esta misma página: Google exige que coincidan con el
+     contenido visible, si no, penaliza. Si se edita una pregunta abajo,
+     hay que editarla aquí también. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Para qué tipo de cabello son los productos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Toda la línea está formulada para cualquier textura: liso, ondulado, rizado y muy rizado. Gracias al extracto de romero puro y la ausencia de sal y parabenos, el resultado —más fuerza, menos caída y mejor hidratación— es consistente en todos los tipos de cabello."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo empiezo a ver resultados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La hidratación y suavidad se sienten desde el primer lavado. La reducción de caída y el fortalecimiento del cabello aparecen entre la segunda y cuarta semana de uso constante. Los mejores resultados se ven con uso regular y continuo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Son compatibles con cabello teñido o alisado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, totalmente. Al estar libres de sulfatos, sal y parabenos, son ideales para cabellos con coloración, alisados químicos o permanentes. No aceleran la pérdida del color ni dañan el tratamiento previo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo hago mi pedido?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tienes dos formas: agrega los productos al carrito directamente desde la página y luego haz clic en \"Pedir por WhatsApp\", o escríbele directamente a Rosa usando el botón de WhatsApp. Ella te atiende personalmente y confirma tu pedido contigo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hacen entregas a domicilio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por ahora entregamos únicamente en Cartagena de Indias, a domicilio y contra entrega. Enviamos desde el Barrio El Pozón a cualquier sector de Cartagena. Pagas al recibir tu pedido — sin adelantos, sin complicaciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los productos son naturales? ¿Tienen químicos dañinos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y con la tranquilidad de que cada producto es elaborado desde cero por Rosa misma. No hay fábricas externas ni intermediarios — Rosa controla personalmente cada ingrediente y cada paso de la formulación. Toda la línea usa extracto puro de romero y activos botánicos seleccionados: sin sulfatos, sin parabenos, sin sal. Nada dañino, nada innecesario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tienen kit o combo para empezar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "¡Sí! Contamos con un Kit Capilar Completo que incluye los productos más populares a un precio especial. Es la opción perfecta si es tu primera vez con Alma Botánica y quieres probar la rutina completa. Lo encuentras directo en la sección de productos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo contactar a Rosa directamente si tengo dudas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "¡Claro que sí! Rosa atiende personalmente por WhatsApp. Puedes preguntarle qué producto es mejor para tu tipo de cabello, cómo usar cada uno, o simplemente hacer tu pedido. Haz clic en el botón de WhatsApp y escríbele cuando quieras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo dura un producto una vez abierto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con uso regular, cada producto dura entre 4 y 8 semanas aproximadamente. Para conservarlos mejor, guárdalos en un lugar fresco y seco, fuera de la ducha directamente. Recuerda cerrar bien el envase después de cada uso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es seguro para cuero cabelludo sensible o con caspa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Al no tener sal, sulfatos ni parabenos, los productos son suaves y no irritan el cuero cabelludo. El romero tiene propiedades antiinflamatorias que pueden ayudar a calmar el cuero sensible. Si tienes alguna condición específica, consúltale a Rosa antes de tu pedido."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
+
+<!-- Enlace de salto — primer elemento enfocable de la página.
+     Invisible con el mouse; aparece al navegar con el tabulador y
+     permite saltarse el menú para ir directo al contenido. -->
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
 
 <!-- SCROLL PROGRESS -->
 <div id="prog"><div id="progBar"></div></div>
@@ -162,7 +270,7 @@
   <button class="btn btn-primary btn-lg" id="mobCatalogBtn">📩 Quiero el catálogo</button>
 </div>
 
-<main>
+<main id="contenido">
 
 <!-- HERO -->
 <section class="hero" id="inicio">
@@ -669,11 +777,11 @@
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa1"><span>¿Para qué tipo de cabello son los productos?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa1"><p>Toda la línea está formulada para cualquier textura: liso, ondulado, rizado y muy rizado. Gracias al extracto de romero puro y la ausencia de sal y parabenos, el resultado —más fuerza, menos caída y mejor hidratación— es consistente en todos los tipos de cabello.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa2"><span>¿Cuándo empiezo a ver resultados?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa2"><p>La hidratación y suavidad se sienten desde el primer lavado. La reducción de caída y el fortalecimiento del cabello aparecen entre la segunda y cuarta semana de uso constante. Los mejores resultados se ven con uso regular y continuo.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa3"><span>¿Son compatibles con cabello teñido o alisado?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa3"><p>Sí, totalmente. Al estar libres de sulfatos, sal y parabenos, son ideales para cabellos con coloración, alisados químicos o permanentes. No aceleran la pérdida del color ni dañan el tratamiento previo.</p></div></div>
-      <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa4"><span>¿Cómo hago mi pedido?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa4"><p>Tienes dos formas: agrega los productos al carrito directamente desde la página y luego haz clic en "Pedir por WhatsApp", o escríbele directamente a Rosa usando el botón verde de WhatsApp. Ella te atiende personalmente y confirma tu pedido contigo.</p></div></div>
+      <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa4"><span>¿Cómo hago mi pedido?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa4"><p>Tienes dos formas: agrega los productos al carrito directamente desde la página y luego haz clic en "Pedir por WhatsApp", o escríbele directamente a Rosa usando el botón de WhatsApp. Ella te atiende personalmente y confirma tu pedido contigo.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa5"><span>¿Hacen entregas a domicilio?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa5"><p>Por ahora entregamos únicamente en Cartagena de Indias, a domicilio y contra entrega. Enviamos desde el Barrio El Pozón a cualquier sector de Cartagena. Pagas al recibir tu pedido — sin adelantos, sin complicaciones.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa6"><span>¿Los productos son naturales? ¿Tienen químicos dañinos?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa6"><p>Sí, y con la tranquilidad de que cada producto es elaborado desde cero por Rosa misma. No hay fábricas externas ni intermediarios — Rosa controla personalmente cada ingrediente y cada paso de la formulación. Toda la línea usa extracto puro de romero y activos botánicos seleccionados: sin sulfatos, sin parabenos, sin sal. Nada dañino, nada innecesario.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa7"><span>¿Tienen kit o combo para empezar?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa7"><p>¡Sí! Contamos con un Kit Capilar Completo que incluye los productos más populares a un precio especial. Es la opción perfecta si es tu primera vez con Alma Botánica y quieres probar la rutina completa. Lo encuentras directo en la sección de productos.</p></div></div>
-      <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa8"><span>¿Puedo contactar a Rosa directamente si tengo dudas?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa8"><p>¡Claro que sí! Rosa atiende personalmente por WhatsApp. Puedes preguntarle qué producto es mejor para tu tipo de cabello, cómo usar cada uno, o simplemente hacer tu pedido. Haz clic en el botón verde de WhatsApp y escríbele cuando quieras.</p></div></div>
+      <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa8"><span>¿Puedo contactar a Rosa directamente si tengo dudas?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa8"><p>¡Claro que sí! Rosa atiende personalmente por WhatsApp. Puedes preguntarle qué producto es mejor para tu tipo de cabello, cómo usar cada uno, o simplemente hacer tu pedido. Haz clic en el botón de WhatsApp y escríbele cuando quieras.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa9"><span>¿Cuánto tiempo dura un producto una vez abierto?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa9"><p>Con uso regular, cada producto dura entre 4 y 8 semanas aproximadamente. Para conservarlos mejor, guárdalos en un lugar fresco y seco, fuera de la ducha directamente. Recuerda cerrar bien el envase después de cada uso.</p></div></div>
       <div class="fi reveal"><button class="fi-btn" aria-expanded="false" aria-controls="fa10"><span>¿Es seguro para cuero cabelludo sensible o con caspa?</span><span class="fi-ico">+</span></button><div class="fi-ans" id="fa10"><p>Sí. Al no tener sal, sulfatos ni parabenos, los productos son suaves y no irritan el cuero cabelludo. El romero tiene propiedades antiinflamatorias que pueden ayudar a calmar el cuero sensible. Si tienes alguna condición específica, consúltale a Rosa antes de tu pedido.</p></div></div>
     </div>
@@ -692,6 +800,53 @@
         <span>🔒 Tus datos están seguros</span>
         <span>✦ Sin spam</span>
         <span>✦ Cancela cuando quieras</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN — mapa del barrio.
+     El mapa está centrado en el Barrio El Pozón, NO en una dirección exacta:
+     esa dirección todavía no está confirmada y no se inventa.
+     El iframe de Google pone cookies de terceros, así que NO se carga solo:
+     js/cookies.js lo inyecta en el data-mapa cuando hay consentimiento, o
+     cuando la persona pulsa "Ver mapa" en el marcador de posición. -->
+<section class="sec sec-cream" id="ubicacion">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Dónde estamos</span>
+      <h2 class="sec-title">Nuestro <em>punto físico</em></h2>
+      <p class="sec-desc">Estamos en el Barrio El Pozón, en Cartagena de Indias. Escríbele a Rosa por WhatsApp para coordinar tu visita o tu entrega.</p>
+    </div>
+
+    <div class="mapa-layout reveal">
+      <!-- Contenedor del mapa. El aspect-ratio evita que la página “salte”
+           cuando el iframe termina de cargar. -->
+      <div class="mapa-caja"
+           data-mapa="https://www.google.com/maps?q=El+Poz%C3%B3n,+Cartagena+de+Indias,+Bol%C3%ADvar,+Colombia&amp;output=embed">
+        <!-- Marcador de posición mientras no haya consentimiento de cookies -->
+        <div class="mapa-ph">
+          <span class="mapa-ph-icono" aria-hidden="true">📍</span>
+          <p class="mapa-ph-txt">El mapa lo carga Google y usa cookies de terceros.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-cookie-settings>Ver mapa</button>
+        </div>
+      </div>
+
+      <!-- Datos de la ubicación. Los horarios todavía no están confirmados:
+           van marcados y visibles, nunca inventados. -->
+      <div class="mapa-info">
+        <h3 class="mapa-info-titulo">Alma Botánica</h3>
+        <dl class="mapa-datos">
+          <dt>Dirección</dt>
+          <dd>Barrio El Pozón<br>Cartagena de Indias, Bolívar<br>Colombia</dd>
+          <dt>Horarios</dt>
+          <dd><span class="pendiente">{POR CONFIRMAR}</span></dd>
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/573135487027" target="_blank" rel="noopener">+57 313 548 7027</a></dd>
+        </dl>
+        <a class="btn btn-primary"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=El+Poz%C3%B3n%2C+Cartagena+de+Indias%2C+Bol%C3%ADvar%2C+Colombia"
+           target="_blank" rel="noopener" data-como-llegar>Cómo llegar →</a>
       </div>
     </div>
   </div>
@@ -762,8 +917,18 @@
         </ul>
       </div>
     </div>
+    <!-- Enlaces legales — obligatorios y accesibles desde cualquier página.
+         El botón de cookies no navega: reabre el banner (lo maneja js/cookies.js). -->
+    <nav class="footer-legal" aria-label="Documentos legales">
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="cookies.html">Política de cookies</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="ventas.html">Políticas de venta</a>
+      <button type="button" class="footer-legal-btn" data-cookie-settings>Configuración de cookies</button>
+    </nav>
     <div class="footer-bottom">
-      <p>© 2026 Alma Botánica · Rosa Pérez · Todos los derechos reservados.</p>
+      <!-- El año lo escribe js/cookies.js para que no vuelva a quedarse viejo -->
+      <p>© <span data-year>2026</span> Alma Botánica · Rosa Pérez · Todos los derechos reservados.</p>
       <p class="footer-tagline-b">Belleza natural que te hace única ❀</p>
       <p class="footer-tagline-b">📍 Barrio El Pozón, Cartagena de Indias · Colombia</p>
       <p class="footer-dev"><span class="footer-dev-txt">Diseño y desarrollo:</span> <span class="footer-dev-jx">JX</span> <span class="footer-dev-co">Company</span></p>

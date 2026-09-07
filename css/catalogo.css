@@ -406,6 +406,72 @@ body{
   color:var(--text-mid);
 }
 
+/* ── ENLACE DE SALTO (accesibilidad) ─────────────────────────────
+   Fuera de pantalla hasta que se enfoca con el tabulador. Se repite
+   aquí porque catalogo.html no carga layout.css. */
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:1000;
+  background:var(--bronze);color:#fff;
+  font-family:var(--font-m);font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  padding:.9rem 1.4rem;border-radius:0 0 var(--radius-md) 0;
+  text-decoration:none;
+}
+.skip-link:focus{left:0}
+
+/* ── ENLACES LEGALES DEL PIE ─────────────────────────────────────
+   Mismo contenido que en index.html, adaptado al pie claro del
+   catálogo. El último es un <button> porque reabre el banner de
+   cookies en vez de navegar. */
+.cat-legal{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.3rem 1.15rem;
+  margin-top:.75rem;padding-top:.85rem;
+  border-top:1px solid var(--border-sage);
+  width:100%;max-width:420px;
+}
+.cat-legal a,
+.cat-legal-btn{
+  font-family:var(--font-m);
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-mid);
+  background:none;border:none;padding:.55rem .1rem;
+  cursor:pointer;transition:color .2s;
+}
+@media (hover:hover){
+  .cat-legal a:hover,
+  .cat-legal-btn:hover{color:var(--bronze)}
+}
+.cat-footer-copy{
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.08em;
+  color:var(--text-mid);
+  margin-top:.5rem;
+}
+
+/* ── CRÉDITO JX COMPANY ──────────────────────────────────────────
+   Regla del proyecto: sobre pie OSCURO, "Diseño y desarrollo:" va en
+   plateado; sobre pie CLARO como este, va en negro. "JX Company"
+   siempre en dorado, sin excepción. */
+.footer-dev{
+  width:100%;text-align:center;margin-top:.5rem;
+  font-family:var(--font-m);font-size:.62rem;
+  letter-spacing:.18em;font-weight:800;
+}
+.footer-dev-txt{color:#111}
+.footer-dev-jx,
+.footer-dev-co{
+  background:linear-gradient(180deg,#E8C86A,#C9A84C);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+@media(max-width:480px){
+  .cat-legal{gap:.2rem .85rem}
+  .cat-legal a,.cat-legal-btn{font-size:.58rem;letter-spacing:.08em}
+}
+
 /* WA float */
 .wa-float{
   position:fixed;bottom:1.5rem;right:1.5rem;z-index:99;

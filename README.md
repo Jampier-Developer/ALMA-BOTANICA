@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 13 Agosto 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 6 Septiembre 2026
 
 ---
 
@@ -17,6 +17,10 @@
 - [Sobre el proyecto](#-sobre-el-proyecto)
 - [Sobre la marca](#-sobre-la-marca)
 - [Características del sitio](#-características-del-sitio)
+- [Páginas legales](#-páginas-legales)
+- [Cómo funciona el banner de cookies](#-cómo-funciona-el-banner-de-cookies)
+- [Dónde ve Rosa su tráfico](#-dónde-ve-rosa-su-tráfico-en-simple)
+- [Propiedad](#-propiedad)
 - [Productos](#-productos)
 - [Stack tecnológico](#-stack-tecnológico)
 - [Estructura de archivos](#-estructura-de-archivos)
@@ -122,6 +126,75 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 
 ### 🏷️ Crédito de desarrollo
 - Footer incluye "Diseño y desarrollo: JX Company" con identidad visual propia (plateado + dorado)
+
+---
+
+## 📄 Páginas legales
+
+El sitio tiene cuatro documentos legales, redactados según la ley **colombiana** (no según el RGPD europeo, que aquí no aplica). Todos llevan `noindex`: existen para quien los busque, pero no compiten en Google con la página principal.
+
+| Página | Qué cubre | Norma |
+|---|---|---|
+| `privacidad.html` | Qué datos se recogen, para qué, con quién se comparten y cómo ejercer tus derechos | Ley 1581 de 2012 · Decreto 1377 de 2013 |
+| `cookies.html` | Qué cookies usa el sitio, en tabla, y cómo aceptarlas o rechazarlas | Resolución 32.126 de 2022 de la SIC |
+| `terminos.html` | Condiciones de uso y propiedad intelectual de textos, fotos, logo y marca | — |
+| `ventas.html` | Cómo comprar, envíos, garantía, cambios y derecho de retracto | Ley 1480 de 2011 (Estatuto del Consumidor) |
+
+> ⚠️ **Estos textos deben ser revisados por un abogado antes de considerarse definitivos.** Son un estándar de trabajo profesional, no asesoría legal.
+
+> 📌 Hay **25 datos marcados como `{POR CONFIRMAR}`** dentro de las páginas (cédula, correo de habeas data, horarios, datos de envío). Aparecen resaltados en amarillo a propósito, para que nadie los pase por alto. Cuando Rosa los confirme, se reemplazan.
+
+---
+
+## 🍪 Cómo funciona el banner de cookies
+
+En Colombia el consentimiento debe ser **previo, expreso e informado**: no vale asumir que la persona acepta por seguir navegando, y no hay cookies "exentas" como en Europa.
+
+Por eso el sitio funciona así:
+
+1. La primera vez que alguien entra, aparece un banner abajo con dos botones: **Aceptar** y **Rechazar**, del mismo tamaño y con el mismo peso visual.
+2. **Hasta que no elija, no se carga nada**: ni Google Analytics, ni ContentSquare, ni el mapa de Google.
+3. Si acepta, se activan en ese momento. Si rechaza, no se activa nada y el banner no vuelve a aparecer.
+4. La decisión se guarda en su propio navegador y puede cambiarla cuando quiera con el enlace **"Configuración de cookies"** que está en el pie de todas las páginas.
+
+Todo eso vive en `js/cookies.js`. **Importante para quien edite el sitio:** `js/analytics.js` y `js/hotjar.js` ya no se enlazan en el `<head>`. Si alguien los vuelve a poner ahí, el sitio deja de cumplir la norma.
+
+---
+
+## 📈 Dónde ve Rosa su tráfico (en simple)
+
+El sitio mide visitas con Google Analytics. Para revisarlo:
+
+1. Entra a [analytics.google.com](https://analytics.google.com) con la cuenta de Google del negocio.
+2. Elige la propiedad de **Alma Botánica**.
+
+Lo más útil de mirar:
+
+| Quiero saber... | Dónde |
+|---|---|
+| Cuánta gente entró y en qué días | **Informes → Adquisición → Visión general** |
+| De dónde llegan (Instagram, Google, WhatsApp, directo) | **Informes → Adquisición → Adquisición de tráfico** |
+| Desde qué ciudad entran | **Informes → Usuario → Datos demográficos** |
+| Si entran desde celular o computador | **Informes → Usuario → Tecnología** |
+| **Cuánta gente escribió por WhatsApp** | **Informes → Interacción → Eventos** |
+
+En Eventos aparecen estos nombres, que son los que de verdad importan porque miden ventas potenciales:
+
+- `whatsapp_flotante` — clics en el botón flotante de WhatsApp (el redondo de la esquina)
+- `pedido_whatsapp` — clics en "Pedir por WhatsApp" desde el carrito o desde un producto
+- `whatsapp_enlace` — cualquier otro enlace a WhatsApp del sitio
+- `como_llegar_mapa` — clics en "Cómo llegar" en el mapa
+
+> Ojo: solo se mide a quienes **aceptaron las cookies**. Los números reales de visitas siempre son un poco más altos que lo que muestra Analytics.
+
+---
+
+## 🔑 Propiedad
+
+- **El código y todo el contenido del sitio son propiedad de Alma Botánica (Rosa Pérez).** JX Company lo desarrolló; la marca, los textos y las fotografías son del cliente.
+- **Dominio** `alma-botanica.store`: registrado en GoDaddy, a nombre del cliente.
+- **DNS y hosting:** Cloudflare (Cloudflare Pages), a nombre del cliente.
+- **Repositorio:** GitHub, cuenta `Jampier-Developer`.
 
 ---
 

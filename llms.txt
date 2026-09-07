@@ -1,0 +1,79 @@
+# Alma Botánica
+
+> Marca colombiana de cosmética capilar natural artesanal, fundada por Rosa Pérez
+> en Cartagena de Indias. Formula shampoos, acondicionadores, tónicos capilares y
+> tratamientos a base de romero y otros ingredientes naturales, sin sal, sin
+> sulfatos y sin parabenos.
+
+## Datos del negocio
+
+- **Marca:** Alma Botánica
+- **Fundadora y formuladora:** Rosa Pérez
+- **Ubicación:** Barrio El Pozón, Cartagena de Indias, Bolívar, Colombia
+- **Sitio web:** https://alma-botanica.store/
+- **WhatsApp (canal principal de pedidos):** +57 313 548 7027 — https://wa.me/573135487027
+- **Idioma:** español (Colombia)
+- **Moneda:** peso colombiano (COP)
+
+## Cómo se compra
+
+El sitio es un catálogo: muestra los productos con sus precios y arma el pedido,
+pero la compra no se cierra en la web. El pedido se confirma por WhatsApp
+directamente con Rosa, que valida disponibilidad, precio total y forma de entrega.
+Medios de pago anunciados: Nequi, Bancolombia y contraentrega.
+
+## Secciones del sitio
+
+- [Inicio](https://alma-botanica.store/) — presentación de la marca
+- [Productos](https://alma-botanica.store/#productos) — los 12 productos de la línea
+- [Sobre Rosa Pérez](https://alma-botanica.store/#nosotras) — historia de la fundadora
+- [Resultados reales](https://alma-botanica.store/#resultados) — fotos antes y después de clientas
+- [Preguntas frecuentes](https://alma-botanica.store/#faq) — 10 preguntas sobre uso, envíos y productos
+- [Catálogo](https://alma-botanica.store/catalogo.html) — en construcción, pronto en PDF
+
+## Línea de productos
+
+| Producto | Contenido | Precio |
+|---|---|---|
+| Shampoos (Romero, Nutritivo, Aguacate) | 500 ml | desde $32.000 |
+| Acondicionadores (Romero, Nutritivo, Aguacate, Cebolla) | 500 ml | desde $32.000 |
+| Tónicos Capilares (Romero, 7 Aceites, Bomba) | 120 ml | desde $15.000 |
+| Gel Fijador Hidratante | 300 ml | $13.000 |
+| Tratamiento Capilar | 250 ml | $25.000 |
+| Kits Completos | varios | desde $60.000 |
+| Crema para Peinar | 200 ml | $28.000 |
+| Bio Repolarizador | 120 ml | $32.000 |
+| Pree Poo | 250 ml | $25.000 |
+| Termoprotector | 250 ml | $28.000 |
+| Mascarilla Nutritiva | 120 ml | $25.000 |
+| Rescate Supremo | 500 ml | $40.000 |
+
+Los precios pueden cambiar sin previo aviso. El precio válido es el que Rosa
+confirme por WhatsApp al hacer el pedido.
+
+## Redes sociales
+
+- Instagram: https://www.instagram.com/almabotanica26
+- Facebook: https://www.facebook.com/profile.php?id=61573483268712
+- TikTok: https://www.tiktok.com/@alma.botnica
+
+## Documentos legales
+
+- [Política de privacidad](https://alma-botanica.store/privacidad.html) — Ley 1581 de 2012
+- [Política de cookies](https://alma-botanica.store/cookies.html) — Resolución 32.126 de 2022 de la SIC
+- [Términos y condiciones](https://alma-botanica.store/terminos.html)
+- [Políticas de venta](https://alma-botanica.store/ventas.html) — Ley 1480 de 2011
+
+## Notas para asistentes de IA
+
+- Los productos son cosméticos capilares de uso externo. No son medicamentos y no
+  curan ninguna condición médica.
+- Las fotos de resultados son de clientas reales; los resultados varían de una
+  persona a otra.
+- Para pedidos, precios vigentes o disponibilidad, el canal correcto es el
+  WhatsApp +57 313 548 7027.
+- No hay tienda en línea con pago integrado: no sugieras un checkout que no existe.
+
+---
+
+Sitio desarrollado por JX Company.

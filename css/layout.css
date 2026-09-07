@@ -10,8 +10,14 @@
 .wa-btn:hover{background:linear-gradient(135deg,var(--bronze),var(--bronze-deep));transform:scale(1.1) translateY(-3px);box-shadow:0 8px 32px rgba(139,90,60,.5)}
 
 /* NAV */
-nav{position:fixed;top:3px;left:0;right:0;height:var(--nav-h);z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(255,250,251,.92);border-bottom:1px solid var(--border);transition:box-shadow var(--dur-f) var(--ease)}
-nav.scrolled{box-shadow:var(--shadow)}
+/* OJO: este bloque va acotado a #mainNav, NO al elemento <nav> suelto.
+   Antes era `nav{...}` y le pegaba position:fixed a CUALQUIER <nav> de
+   la página: el índice de las páginas legales y la fila de enlaces
+   legales del pie salían flotando arriba en vez de quedarse en su
+   sitio. Si se agrega otro <nav> (migas de pan, índices, pies), no
+   heredará nada de esto. */
+#mainNav{position:fixed;top:3px;left:0;right:0;height:var(--nav-h);z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(255,250,251,.92);border-bottom:1px solid var(--border);transition:box-shadow var(--dur-f) var(--ease)}
+#mainNav.scrolled{box-shadow:var(--shadow)}
 .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
 .nav-logo{display:flex;align-items:center;gap:10px}
 .nav-logo-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:center;border:2.5px solid #a89a62;box-shadow:var(--shadow-sm)}
@@ -288,6 +294,135 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .footer-dev-txt{background:linear-gradient(180deg,#F0F0F0,#A8A8A8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .footer-dev-jx{background:linear-gradient(180deg,#E8C86A,#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .footer-dev-co{background:linear-gradient(180deg,#E8C86A,#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── SECCIÓN DE UBICACIÓN Y MAPA ────────────────────────────────
+   El mapa a la izquierda y los datos a la derecha. El iframe no se
+   carga hasta que hay consentimiento de cookies: hasta entonces se ve
+   el marcador de posición .mapa-ph con el botón "Ver mapa". */
+.mapa-layout{
+  display:grid;grid-template-columns:1.6fr 1fr;
+  gap:2rem;align-items:stretch;
+}
+.mapa-caja{
+  position:relative;
+  aspect-ratio:16/10;              /* reserva el alto: la página no salta al cargar el iframe */
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1.5px solid var(--border-sage);
+  box-shadow:var(--shadow-sm);
+  background:var(--sage-pale);
+}
+.mapa-caja iframe{
+  width:100%;height:100%;border:0;display:block;
+}
+/* Marcador de posición: explica por qué el mapa no está cargado todavía */
+.mapa-ph{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:.85rem;padding:1.5rem;text-align:center;
+  background:linear-gradient(145deg,var(--sage-soft),var(--sage-pale));
+}
+.mapa-ph-icono{font-size:2.2rem;line-height:1}
+.mapa-ph-txt{
+  font-size:.88rem;color:var(--text-m);
+  line-height:1.6;max-width:34ch;margin:0;
+}
+/* Ficha de datos al lado del mapa */
+.mapa-info{
+  background:#fff;
+  border:1.5px solid var(--border-sage);
+  border-radius:var(--radius-lg);
+  padding:1.75rem 1.5rem;
+  box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;
+  align-items:flex-start;gap:1.1rem;
+}
+.mapa-info-titulo{
+  font-family:var(--font-d);font-size:1.35rem;
+  font-weight:600;color:var(--text);line-height:1.2;
+}
+.mapa-datos{display:flex;flex-direction:column;gap:.9rem;margin:0}
+.mapa-datos dt{
+  font-family:var(--font-m);font-size:.58rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-m);font-weight:700;margin-bottom:.2rem;
+}
+.mapa-datos dd{
+  font-size:.92rem;color:var(--text);line-height:1.55;margin:0;
+}
+.mapa-datos dd a{color:var(--bronze);text-decoration:underline;text-underline-offset:.2em}
+
+/* ── MARCA {POR CONFIRMAR} ──────────────────────────────────────
+   Igual que en css/legal.css. Se repite aquí porque index.html no
+   carga legal.css, y el dato pendiente tiene que saltar a la vista
+   en ambos sitios. Si se cambia el estilo, cambiarlo en los dos. */
+.pendiente{
+  display:inline-block;
+  font-family:var(--font-m);font-size:.72em;font-weight:700;
+  letter-spacing:.06em;
+  color:#8a5a00;background:#fff4d6;
+  border:1px dashed #d9a441;border-radius:var(--radius);
+  padding:.1em .5em;white-space:nowrap;
+}
+
+@media(max-width:900px){
+  .mapa-layout{grid-template-columns:1fr;gap:1.25rem}
+  .mapa-caja{aspect-ratio:16/11}
+}
+@media(max-width:500px){
+  .mapa-caja{aspect-ratio:4/3}
+  .mapa-info{padding:1.35rem 1.15rem;width:100%}
+  .mapa-info .btn{width:100%;justify-content:center}
+}
+@media(max-width:380px){
+  .mapa-ph-txt{font-size:.82rem}
+  .mapa-info-titulo{font-size:1.2rem}
+}
+
+/* ── ENLACE DE SALTO (accesibilidad) ────────────────────────────
+   Está fuera de la pantalla hasta que alguien lo enfoca con el
+   tabulador. Sirve para saltarse el menú y llegar directo al
+   contenido, que es la primera cosa que necesita quien navega con
+   teclado o lector de pantalla. */
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:1000;
+  background:var(--bronze);color:#fff;
+  font-family:var(--font-m);font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  padding:.9rem 1.4rem;border-radius:0 0 var(--radius-md) 0;
+  text-decoration:none;
+}
+.skip-link:focus{left:0}
+
+/* ── ENLACES LEGALES DEL FOOTER ─────────────────────────────────
+   Fila de texto pequeño encima del copyright. El último elemento es
+   un <button> y no un <a> porque no navega: reabre el banner de
+   cookies (lo conecta js/cookies.js). Se le da la misma apariencia
+   que a los enlaces para que la fila se vea pareja. */
+.footer-legal{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.4rem 1.5rem;
+  padding:1.5rem 0 .25rem;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-legal a,
+.footer-legal-btn{
+  font-family:var(--font-m);font-size:.62rem;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.5);
+  background:none;border:none;padding:.55rem .1rem;
+  cursor:pointer;transition:color .2s;
+  text-align:center;
+}
+@media (hover:hover){
+  .footer-legal a:hover,
+  .footer-legal-btn:hover{color:var(--gold-light)}
+}
+@media(max-width:500px){
+  .footer-legal{gap:.2rem 1rem}
+  .footer-legal a,.footer-legal-btn{font-size:.58rem;letter-spacing:.1em}
+}
 
 /* KIT BORDE DORADO GIRATORIO */
 @property --kit-angle {

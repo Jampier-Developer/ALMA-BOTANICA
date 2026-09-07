@@ -5,13 +5,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Catálogo Alma Botánica — Rosa Pérez. Pronto disponible en PDF.">
 <title>Catálogo · Alma Botánica</title>
+
+<!-- noindex mientras el catálogo esté en construcción: no conviene que
+     Google indexe una página que todavía no tiene el PDF. Cuando esté
+     lista, se quita esta línea y se vuelve a añadir al sitemap.xml. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://alma-botanica.store/catalogo.html">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/webp" href="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp">
+
+<!-- Iconos. EXCEPCIÓN a la regla WebP del proyecto: Safari y los
+     navegadores antiguos no renderizan favicons en .webp. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
 <link rel="stylesheet" href="css/catalogo.css">
+
+<!-- Banner de cookies. Esta página no carga Analytics por su cuenta:
+     si la persona ya aceptó, lo inyecta js/cookies.js. -->
+<script src="js/cookies.js" defer></script>
 </head>
 <body>
+
+<!-- Enlace de salto: primer elemento enfocable, visible solo con teclado -->
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
 
 <!-- WA FLOAT -->
 <a class="wa-float" href="https://wa.me/573135487027?text=Hola%20Rosa!%20Quiero%20saber%20m%C3%A1s%20sobre%20el%20cat%C3%A1logo%20de%20Alma%20Bot%C3%A1nica%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
@@ -41,7 +62,7 @@
 </div>
 
 <!-- MAIN -->
-<main class="main">
+<main class="main" id="contenido">
 
   <div class="greeting-block fade-up">
     <p class="greeting-hi" id="greetingHi">¡Hola!</p>
@@ -100,6 +121,20 @@
   <p class="cat-footer-brand">Alma Botánica</p>
   <p class="cat-footer-txt">Rosa Pérez · Cosmética Natural</p>
   <p class="cat-footer-txt">📍 Barrio El Pozón, Cartagena de Indias · Colombia</p>
+
+  <!-- Enlaces legales — los mismos que en el resto del sitio.
+       El botón de cookies no navega: reabre el banner (js/cookies.js). -->
+  <nav class="cat-legal" aria-label="Documentos legales">
+    <a href="privacidad.html">Privacidad</a>
+    <a href="cookies.html">Cookies</a>
+    <a href="terminos.html">Términos</a>
+    <a href="ventas.html">Políticas de venta</a>
+    <button type="button" class="cat-legal-btn" data-cookie-settings>Configuración de cookies</button>
+  </nav>
+
+  <!-- El año lo escribe js/cookies.js para que no se quede viejo -->
+  <p class="cat-footer-copy">© <span data-year>2026</span> Alma Botánica · Todos los derechos reservados.</p>
+  <p class="footer-dev"><span class="footer-dev-txt">Diseño y desarrollo:</span> <span class="footer-dev-jx">JX</span> <span class="footer-dev-co">Company</span></p>
 </footer>
 
 <script src="js/catalogo.js"></script>

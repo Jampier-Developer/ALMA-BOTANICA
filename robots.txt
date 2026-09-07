@@ -1,4 +1,36 @@
+# robots.txt · Alma Botánica
+# https://alma-botanica.store/
+#
+# Se permite el rastreo de todo el sitio. Las páginas legales, la 404 y el
+# catálogo llevan su propia etiqueta <meta name="robots" content="noindex">
+# en el HTML, que es lo que de verdad evita que se indexen. No se bloquean
+# aquí a propósito: si se bloquearan con Disallow, el rastreador no podría
+# leer ese noindex.
+
 User-agent: *
+Allow: /
+
+# ── Bots de inteligencia artificial ─────────────────────────────────────
+# Se permiten explícitamente para que Alma Botánica pueda aparecer cuando
+# alguien pregunta por productos capilares naturales en Cartagena a un
+# asistente de IA. Es una decisión de visibilidad, no un descuido.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://alma-botanica.store/sitemap.xml

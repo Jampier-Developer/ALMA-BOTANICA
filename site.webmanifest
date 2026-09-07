@@ -1,0 +1,31 @@
+{
+  "name": "Alma Botánica · Rosa Pérez",
+  "short_name": "Alma Botánica",
+  "description": "Cosmética capilar natural artesanal formulada por Rosa Pérez en Cartagena de Indias.",
+  "lang": "es-CO",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#8b5a3c",
+  "background_color": "#fbf6ea",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
