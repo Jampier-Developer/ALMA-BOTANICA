@@ -1,18 +1,11 @@
-﻿
+
 (function(){
   const WA_NUMBER = '573135487027';
   let carouselInterval = null;
-  let confettiTimers = [];
 
   // Producto actualmente visible en el modal (para el carrito)
   let _cartCurrent = null;
   function parsePriceNum(str){ return parseInt((str||'').replace(/[^0-9]/g,''),10)||0; }
-
-  function clearConfetti() {
-    confettiTimers.forEach(t => clearTimeout(t));
-    confettiTimers = [];
-    if(typeof confetti === 'function') confetti.reset();
-  }
 
   // TOAST
   const toast    = document.getElementById('toast');
@@ -39,7 +32,6 @@
       if(lbOv){ lbOv.classList.remove('open'); }
       if(lbIm){ lbIm.style.transform=''; lbIm.style.cursor=''; }
     }
-    if(id === 'catalogModal') clearConfetti();
     document.getElementById(id).classList.remove('open');
     document.body.style.overflow='';
   }

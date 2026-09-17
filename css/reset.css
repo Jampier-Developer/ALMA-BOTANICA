@@ -4,7 +4,6 @@
   --bg:#fbf6ea;
   --bg-cream:#f7f1e0;
   --bg-sage:#e6eadd;
-  --bg-deep-sage:#d7ddc7;
 
   --sage:#77836a;
   --sage-deep:#4c5641;
@@ -24,7 +23,6 @@
   --text:#2a2318;
   --text-m:#6c5f49;
   --text-l:#ffffff;
-  --text-f:rgba(255,255,255,.6);
 
   --border:rgba(119,131,106,.16);
   --border-sage:rgba(119,131,106,.32);
@@ -56,6 +54,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:op
 @media(max-width:768px){html{-webkit-font-smoothing:auto}}
 body{font-family:var(--font-b);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
 img,svg,video,canvas{display:block;max-width:100%}
+img{height:auto}
 ul{list-style:none}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit}
