@@ -30,17 +30,28 @@
         var esDespues = badge && /despu[eé]s/i.test(badge.textContent);
         var img = sl.querySelector('img');
         if (!img) return;
-        if (esDespues && !despues) despues = img.getAttribute('src');
-        else if (!esDespues && !antes) antes = img.getAttribute('src');
+        /* Se copian también width y height: el navegador reserva el sitio
+           antes de que la foto cargue y la página no da un salto. */
+        var datos = {
+          src: img.getAttribute('src'),
+          w: img.getAttribute('width') || '',
+          h: img.getAttribute('height') || ''
+        };
+        if (esDespues && !despues) despues = datos;
+        else if (!esDespues && !antes) antes = datos;
       });
       if (!antes || !despues) return;
+
+      function medidas(d) {
+        return (d.w ? ' width="' + d.w + '"' : '') + (d.h ? ' height="' + d.h + '"' : '');
+      }
 
       var caja = document.createElement('div');
       caja.className = 'cmp';
       caja.innerHTML =
         '<div class="cmp-marco">' +
-          '<img class="cmp-antes" src="' + antes + '" alt="Antes de usar los productos" loading="lazy">' +
-          '<div class="cmp-despues-wrap"><img class="cmp-despues" src="' + despues + '" alt="Después de usar los productos" loading="lazy"></div>' +
+          '<img class="cmp-antes" src="' + antes.src + '" alt="Antes de usar los productos" loading="lazy"' + medidas(antes) + '>' +
+          '<div class="cmp-despues-wrap"><img class="cmp-despues" src="' + despues.src + '" alt="Después de usar los productos" loading="lazy"' + medidas(despues) + '></div>' +
           '<span class="cmp-etq cmp-etq-a">Antes</span>' +
           '<span class="cmp-etq cmp-etq-d">Después</span>' +
           '<div class="cmp-tirador" aria-hidden="true"><span></span></div>' +
