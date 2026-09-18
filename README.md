@@ -8,17 +8,70 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 18 Septiembre 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 18 de septiembre de 2026, 14:53 (hora de Colombia)
+
+---
+
+## 🗓️ Estado del proyecto
+
+> **Para quien retome esto más adelante (persona o sesión nueva): empieza por aquí.**
+
+**Última sesión de trabajo:** 17–18 de septiembre de 2026
+**Rama de esa sesión:** `claude/gifted-tesla-e6s1lj` · 18 commits sobre `main`
+**Qué se hizo:** revisión completa del sitio, limpieza, el catálogo en PDF, el
+anuncio en video y doce funciones nuevas.
+
+### ✅ Terminado y probado
+
+| | |
+|---|---|
+| **Limpieza** | CSS muerto, imagen huérfana, BOM, código de confetti, un conflicto de breakpoints a 768px |
+| **Rendimiento** | `width`/`height` en las 44 imágenes con medida (CLS), caché de un año versionada con `?v=` |
+| **Catálogo en PDF** | 16 páginas, 5,7 MB, generado desde los datos del sitio. El botón por fin lo entrega |
+| **Precios a la vista** | En las 12 tarjetas del grid, no solo dentro del modal |
+| **Anuncio en video** | Vuelve, con el video del 18/09. Una vez por visita, espera al banner de cookies |
+| **12 funciones nuevas** | Ver la tabla de "Qué puede hacer la página" |
+
+### ⏳ Pendiente — hace falta que Rosa aporte datos
+
+1. **Los 4 datos que faltan.** Quedan **23 marcadores `{POR CONFIRMAR}`** en las
+   páginas legales (la portada ya está limpia). Los 23 se resuelven con solo
+   cuatro datos:
+
+   | Dato | Dónde aparece |
+   |---|---|
+   | Cédula de Rosa | privacidad, términos y cookies (3 veces) |
+   | Un correo de contacto | 5 veces — obligatorio para habeas data (Ley 1581) |
+   | Horario de atención | `ventas.html` |
+   | Datos de envío | cobertura, transportadora, costo, tiempos, garantía y retracto — 13 veces en `ventas.html` |
+
+2. **Pedidos reales** en `js/pedidos.js` → enciende el aviso de pedidos recientes.
+3. **Reseñas reales** en `js/resenas-datos.js` → enciende la sección de reseñas
+   y manda la nota media a Google.
+
+> Los puntos 2 y 3 hoy traen contenido de ejemplo que **no se le muestra a
+> nadie**. Ver "Contenido de ejemplo" más abajo.
+
+### 💡 Ideas que quedaron fuera
+
+Ninguna pendiente: se propusieron doce y están las doce hechas. Si surgen
+nuevas, este es el sitio para anotarlas.
 
 ---
 
 ## 📋 Tabla de Contenidos
 
+- [Estado del proyecto](#-estado-del-proyecto) ← **empieza aquí**
 - [Sobre el proyecto](#-sobre-el-proyecto)
 - [Sobre la marca](#-sobre-la-marca)
+- [Qué puede hacer la página](#-qué-puede-hacer-la-página)
 - [Características del sitio](#-características-del-sitio)
 - [Páginas legales](#-páginas-legales)
 - [Cómo funciona el banner de cookies](#-cómo-funciona-el-banner-de-cookies)
+- [Contenido de ejemplo](#-contenido-de-ejemplo--leer-antes-de-tocarlo)
+- [Cosas que hay que recordar al editar](#-cosas-que-hay-que-recordar-al-editar)
+- [El catálogo en PDF](#-el-catálogo-en-pdf)
+- [Si editas CSS o JavaScript: sube la versión](#-si-editas-css-o-javascript-sube-la-versión)
 - [Dónde ve Rosa su tráfico](#-dónde-ve-rosa-su-tráfico-en-simple)
 - [Propiedad](#-propiedad)
 - [Productos](#-productos)
@@ -27,6 +80,7 @@
 - [Cómo correr localmente](#-cómo-correr-localmente)
 - [Flujo de despliegue](#-flujo-de-despliegue)
 - [SEO y Analytics](#-seo-y-analytics)
+- [Cómo se comprueba que nada se rompió](#-cómo-se-comprueba-que-nada-se-rompió)
 - [Contacto](#-contacto)
 
 ---
@@ -253,21 +307,42 @@ ALMA-BOTANICA/
 ├── ventas.html             # Políticas de venta (noindex)
 ├── 404.html                # Página de error propia (noindex)
 │
+├── catalogo-alma-botanica.pdf  # El catálogo que descarga la gente (16 pág.)
+├── sw.js                   # Service worker: hace que funcione sin internet
+│
 ├── css/
 │   ├── reset.css           # Variables CSS globales y reset base
-│   ├── layout.css          # Estilos de index.html (1245 líneas)
+│   ├── layout.css          # Estilos de index.html
 │   ├── legal.css           # Estilos de las 4 páginas legales y la 404
 │   └── catalogo.css        # Estilos exclusivos de catalogo.html
 │
 ├── js/
-│   ├── forms.js            # Array PRODUCTS[], modales, carrito desde modal
-│   ├── cart.js             # Carrito completo con localStorage y WhatsApp
-│   ├── interactions.js     # Nav, FAQ, carruseles, lightbox de resultados
+│   ├── forms.js            # Array PRODUCTS[], modales. Lo comparte en
+│   │                       # window.ALMA_PRODUCTS para el test y los filtros
+│   ├── cart.js             # Carrito, localStorage y el mensaje del pedido
+│   ├── interactions.js     # Nav, FAQ, carruseles, lightbox y el anuncio
 │   ├── cookies.js          # Banner de consentimiento; inyecta analytics y
 │   │                       # hotjar SOLO si la persona acepta
+│   ├── quiz.js             # El test "¿cuál es para mí?"
+│   ├── filtros.js          # Buscador y filtros del grid
+│   ├── whatsapp.js         # Mensaje del botón flotante según la sección
+│   ├── social.js           # Aviso de pedidos recientes
+│   ├── pedidos.js          # ← LOS DATOS de esos pedidos (los pone Rosa)
+│   ├── resenas.js          # Sección de reseñas y su JSON-LD
+│   ├── resenas-datos.js    # ← LAS RESEÑAS (las pone Rosa)
+│   ├── rutina.js           # Rutina paso a paso y fichas de ingredientes
+│   ├── extras.js           # Comparador, calculadora, regalo y entrega
+│   ├── pwa.js              # Registra sw.js y ofrece instalar la página
 │   ├── analytics.js        # Google Analytics (lo carga cookies.js)
 │   ├── hotjar.js           # ContentSquare/Hotjar (lo carga cookies.js)
 │   └── catalogo.js         # Saludo personalizado en catalogo.html
+│
+├── video/
+│   └── anuncio-alma-botanica.mp4   # El del modal de bienvenida (1,5 MB)
+│
+├── tools/
+│   └── catalogo-pdf/       # Genera el PDF desde los datos del sitio.
+│                           # NO forma parte de la web. Tiene su README.
 │
 ├── functions/
 │   └── _middleware.js      # Redirect 301 pages.dev -> alma-botanica.store
@@ -338,6 +413,72 @@ Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
 > le muestra a nadie: solo aparece abriendo la página con `?demo=1`. Cuando
 > Rosa ponga datos reales en `js/pedidos.js` y `js/resenas-datos.js` y les
 > quite el `ejemplo:true`, se encienden solos.
+
+---
+
+## 🧪 Contenido de ejemplo — leer antes de tocarlo
+
+Dos archivos traen datos de muestra para que se vea cómo queda la sección
+antes de tener contenido real:
+
+| Archivo | Qué guarda |
+|---|---|
+| `js/pedidos.js` | Los pedidos del aviso de abajo a la izquierda |
+| `js/resenas-datos.js` | Las reseñas con estrellas |
+
+**Tres puertas impiden que eso salga a producción por accidente:**
+
+1. Cada entrada lleva `ejemplo:true`
+2. Se muestran con la palabra **"Ejemplo"** a la vista
+3. Solo aparecen abriendo la página con **`?demo=1`** al final de la dirección
+
+Para verlos: [alma-botanica.store/?demo=1](https://alma-botanica.store/?demo=1)
+
+**Para encenderlos de verdad:** Rosa escribe entradas reales y se les quita el
+`ejemplo:true`. No hay que tocar nada más — la sección aparece sola.
+
+> ⚠️ **Mientras quede una sola entrada de ejemplo, la nota media de las reseñas
+> NO se le manda a Google.** Publicar valoraciones inventadas en los datos
+> estructurados va contra las normas de Google (puede costar los resultados
+> enriquecidos para siempre) y es publicidad engañosa según la **Ley 1480 de
+> 2011**. La comprobación está en `js/resenas.js` y no se debe quitar.
+
+Lo mismo con los pedidos: inventarlos es publicidad engañosa. Rosa anota los
+suyos y conviene repasarlos de vez en cuando — un pedido de "hace 3 días" que
+lleve un mes ahí se nota.
+
+---
+
+## ⚙️ Cosas que hay que recordar al editar
+
+Tres reglas que, si se olvidan, rompen algo sin avisar:
+
+### 1. Al tocar `css/` o `js/`: subir el `?v=`
+
+```bash
+sed -i 's/?v=[0-9]\{8\}/?v=20260920/g' *.html js/cookies.js
+```
+
+Si no se sube, quien ya visitó el sitio sigue viendo la versión vieja durante
+un año. El `?v=` de `js/cookies.js` también cuenta: ese archivo inyecta
+analytics y hotjar por su cuenta y lleva su propia copia del número.
+
+### 2. Al tocar `css/` o `js/`: subir también la `VERSION` de `sw.js`
+
+Está en la primera línea del archivo. El service worker guarda copia del sitio
+para que funcione sin internet; si no se sube su versión, sigue sirviendo los
+archivos viejos aunque el `?v=` haya cambiado.
+
+### 3. Los precios viven en TRES sitios
+
+| Dónde | Qué es |
+|---|---|
+| `PRODUCTS[]` en `js/forms.js` | El detalle del modal y la fuente del resto |
+| Las tarjetas de `index.html` (`.pc-price-amount`) | Lo que se ve en el grid |
+| El JSON-LD `hasOfferCatalog` del `<head>` | Lo que lee Google |
+
+Tienen que coincidir. Después hay que **regenerar el PDF** (ver más abajo) y
+actualizar la línea de vigencia de su última página.
 
 ---
 
@@ -429,6 +570,49 @@ git push origin main
 
 ---
 
+## 🧭 Cómo se comprueba que nada se rompió
+
+No hay tests automáticos en el repo, pero esta es la rutina que se siguió y que
+conviene repetir antes de cualquier push a `main`. Se hace con un navegador de
+verdad (Chromium + Playwright), no leyendo el código:
+
+| Qué se mira | Cómo |
+|---|---|
+| **Responsive** | Las 7 páginas a 14 anchos distintos (320 → 1920px), buscando desbordes horizontales |
+| **Errores** | Consola del navegador y peticiones fallidas en cada combinación |
+| **Imágenes** | Que ninguna referencia apunte a un archivo que no existe, y que no sobre ninguna |
+| **Carrito** | Abrir producto → agregar → badge → drawer → total → mensaje de WhatsApp |
+| **Cookies** | Que Analytics **no** cargue antes de aceptar (esto es lo que hace que el sitio cumpla la norma) |
+| **Sin internet** | Apagar la red y recargar: la página tiene que abrir |
+| **Contraste** | Relación de contraste del texto contra su fondo real (mínimo 4.5:1) |
+| **Teclado** | Que el test, los filtros, la calculadora y el comparador se usen sin ratón |
+
+> **Ojo con el navegador de pruebas:** el Chromium de Playwright **no trae el
+> códec H.264**, así que el video del anuncio no se reproduce ahí. Eso no es un
+> fallo del sitio — en cualquier navegador real funciona. Para probar la lógica
+> del anuncio hay que simular el elemento `<video>`.
+
+### Fallos que se encontraron probando (no leyendo)
+
+Se dejan anotados porque son el tipo de cosa que vuelve a aparecer:
+
+- **Una imagen borrada por error.** `Termoprotector 1.webp` se dio por huérfana
+  y sí se usaba: es la primera foto de su carrusel, y su ruta vive dentro de
+  `js/forms.js`, no en un `src=` del HTML. **Al buscar imágenes sin usar hay que
+  mirar también dentro del JavaScript.**
+- **Tarjetas invisibles al filtrar.** Las tarjetas llevan `.reveal`, que las deja
+  en `opacity:0` hasta que entran en pantalla. Una tarjeta ocultada por el filtro
+  antes de haber entrado nunca recibía la clase, y al volver a mostrarla dejaba
+  el hueco sin el producto. La clase correcta es **`.on`**, no `.visible`.
+- **La barra de navegación desbordaba** 104px entre 768 y 900px al añadirle dos
+  enlaces: en esa franja se enseñan todos sin hamburguesa.
+- **El modal del video se quedaba colgado** si el video no cargaba: sin duración
+  no hay evento `ended` ni cuenta atrás.
+- **`[hidden]` no escondía nada** en los campos del modo regalo, porque una clase
+  con `display:flex` le gana al `[hidden]` del navegador.
+
+---
+
 ## 📞 Contacto
 
 **Rosa Pérez — Alma Botánica**
@@ -441,5 +625,7 @@ git push origin main
 ---
 
 <p align="center">
-  Hecho con 🌿 para <strong>Alma Botánica</strong> · Cartagena de Indias, Colombia
+  Hecho con 🌿 para <strong>Alma Botánica</strong> · Cartagena de Indias, Colombia<br>
+  <sub>Este README se actualizó por última vez el <strong>18 de septiembre de 2026 a las 14:53</strong> (hora de Colombia).<br>
+  Si vuelves a trabajar en el proyecto, empieza por «Estado del proyecto», arriba del todo.</sub>
 </p>

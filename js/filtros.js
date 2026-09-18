@@ -88,10 +88,14 @@
       var pasaTexto = !busca || c._busca.indexOf(busca) !== -1;
       var ok = pasaFiltro && pasaTexto;
       c.hidden = !ok;
-      /* La clase 'reveal' anima al entrar en pantalla; si la tarjeta
-         estuvo oculta nunca se activó, así que se fuerza visible. */
-      if (ok) c.classList.add('visible');
-      if (ok) visibles++;
+      /* Las tarjetas llevan .reveal, que las deja en opacity:0 hasta que
+         entran en pantalla y js/interactions.js les pone .on. Una tarjeta
+         que se ocultó por el filtro antes de haber entrado nunca recibe
+         esa clase, y al volver a mostrarla quedaría invisible: se ve el
+         hueco pero no el producto. Por eso se le pone .on a mano.
+         (La clase es 'on', no 'visible' — se probó con 'visible' y seis
+         productos desaparecían al quitar un filtro.) */
+      if (ok) { c.classList.add('on'); visibles++; }
     });
 
     grid.classList.toggle('sin-resultados', visibles === 0);
