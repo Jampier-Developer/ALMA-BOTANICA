@@ -335,6 +335,31 @@
 </section>
 
 <!-- PRODUCTOS E-COMMERCE -->
+<!-- QUIZ "¿CUÁL ES PARA MÍ?".
+     Va justo antes del grid a propósito: quien llega hasta aquí ya tiene
+     interés, y lo que lo frena es no saber cuál de los doce le sirve.
+     Todo el contenido lo pinta js/quiz.js. -->
+<section class="sec sec-cream" id="test">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Te ayudamos a elegir</span>
+      <h2 class="sec-title">¿Cuál es <em>para mí</em>?</h2>
+      <p class="sec-desc">Cuatro preguntas rápidas y te decimos qué le conviene a tu cabello. Es lo mismo que te preguntaría Rosa por WhatsApp.</p>
+    </div>
+    <div id="quiz" class="quiz-wrap reveal">
+      <!-- Sin JavaScript no hay test, pero sí queda el camino a Rosa -->
+      <noscript>
+        <div class="qz-card qz-final">
+          <div class="qz-ico">🌿</div>
+          <h3 class="qz-pregunta">Escríbele a Rosa</h3>
+          <p class="qz-pie">El test necesita JavaScript. Pero Rosa te atiende personalmente y te recomienda igual de bien.</p>
+          <a class="btn btn-wa" href="https://wa.me/573135487027" target="_blank" rel="noopener">Preguntarle a Rosa</a>
+        </div>
+      </noscript>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="productos">
   <div class="container">
     <div class="sec-header reveal">
@@ -1163,5 +1188,6 @@
 <script src="js/interactions.js?v=20260919" defer></script>
 <script src="js/cart.js?v=20260919" defer></script>
 <script src="js/forms.js?v=20260919" defer></script>
+<script src="js/quiz.js?v=20260919" defer></script>
 </body>
 </html>

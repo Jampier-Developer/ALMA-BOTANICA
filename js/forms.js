@@ -247,6 +247,11 @@
     },
   ];
 
+  /* El quiz de js/quiz.js necesita estos mismos datos para recomendar.
+     Se comparte el array en vez de copiarlo, para que un cambio de precio
+     no deje dos versiones distintas del catálogo dando vueltas. */
+  window.ALMA_PRODUCTS = PRODUCTS;
+
   // Lookup por nombre de variante o producto — usado por cart.js como fallback
   window._cartFindProductIdx = function (name) {
     for (let i = 0; i < PRODUCTS.length; i++) {
