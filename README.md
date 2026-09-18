@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 6 Septiembre 2026
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 18 Septiembre 2026
 
 ---
 
@@ -93,17 +93,18 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Open Graph** completo para previsualizaciones en WhatsApp, Facebook e Instagram — imagen: logo de Alma Botánica
 - **Twitter Card** configurado
 - **JSON-LD** `WebSite` + `LocalBusiness` con dirección, teléfono, fundadora, `areaServed` y `knowsAbout`
-- **`sitemap.xml`** en la raíz con las 2 páginas del sitio
+- **`sitemap.xml`** en la raíz solo con la portada — el resto de páginas llevan `noindex`
 - **`robots.txt`** en la raíz permitiendo todo el rastreo
 - **Google Search Console** verificado y sitemap enviado el 25/06/2026
 - **JSON-LD productos** con precio (COP) y disponibilidad — permite a Google mostrar precios en resultados de búsqueda
 
 ### ⚡ Rendimiento
 - Sin frameworks ni librerías pesadas (sin jQuery, sin React, sin Three.js)
-- **Todas las imágenes en formato WebP** (29MB → 8.4MB, -72%) — sin `.jpeg`/`.jpg`/`.png` en el sitio
+- **Todas las imágenes en formato WebP** (29MB → 8.1MB, -72%) — sin `.jpeg`/`.jpg`/`.png` en el sitio
 - Fuentes Google cargadas de forma no bloqueante (`preload` + `onload`)
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
-- 22+ imágenes con `loading="lazy"`
+- 35 imágenes con `loading="lazy"`
+- Las 37 imágenes de la portada llevan `width` y `height` — el navegador reserva el espacio antes de que carguen y la página no da saltos al abrirse (CLS, que Google mide en Core Web Vitals)
 - Analytics y Hotjar con atributo `defer`
 
 ### 🎨 Paleta e identidad visual
@@ -242,23 +243,40 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 ## 📁 Estructura de archivos
 
 ```
-Botanica/
+ALMA-BOTANICA/
 │
 ├── index.html              # Página principal (landing page)
-├── catalogo.html           # Página de catálogo (en construcción)
+├── catalogo.html           # Página de catálogo (en construcción, noindex)
+├── privacidad.html         # Política de privacidad (noindex)
+├── cookies.html            # Política de cookies (noindex)
+├── terminos.html           # Términos y condiciones (noindex)
+├── ventas.html             # Políticas de venta (noindex)
+├── 404.html                # Página de error propia (noindex)
 │
 ├── css/
 │   ├── reset.css           # Variables CSS globales y reset base
-│   ├── layout.css          # Todos los estilos (1050+ líneas)
+│   ├── layout.css          # Estilos de index.html (1245 líneas)
+│   ├── legal.css           # Estilos de las 4 páginas legales y la 404
 │   └── catalogo.css        # Estilos exclusivos de catalogo.html
 │
 ├── js/
 │   ├── forms.js            # Array PRODUCTS[], modales, carrito desde modal
 │   ├── cart.js             # Carrito completo con localStorage y WhatsApp
 │   ├── interactions.js     # Nav, FAQ, carruseles, lightbox de resultados
-│   ├── analytics.js        # Carga async Google Analytics
-│   ├── hotjar.js           # Carga async ContentSquare/Hotjar
-│   └── catalogo.js         # Lógica de catalogo.html
+│   ├── cookies.js          # Banner de consentimiento; inyecta analytics y
+│   │                       # hotjar SOLO si la persona acepta
+│   ├── analytics.js        # Google Analytics (lo carga cookies.js)
+│   ├── hotjar.js           # ContentSquare/Hotjar (lo carga cookies.js)
+│   └── catalogo.js         # Saludo personalizado en catalogo.html
+│
+├── functions/
+│   └── _middleware.js      # Redirect 301 pages.dev -> alma-botanica.store
+│
+├── _headers                # Cache-Control de Cloudflare Pages para css/ y js/
+├── robots.txt              # Permite todo el rastreo, incluidos bots de IA
+├── sitemap.xml             # Solo la portada (el resto lleva noindex)
+├── llms.txt                # Resumen del negocio para asistentes de IA
+├── site.webmanifest        # Iconos y datos de PWA
 │
 └── img/
     ├── Shampoos/
@@ -271,9 +289,9 @@ Botanica/
     ├── BIO REPOLARIZADOR/
     ├── PREE PO/
     ├── Termoprotector/
-    ├── Mascarilla-Nutritiva/
-    ├── Rescate-Supremo/
-    ├── Fotos de rosa/
+    ├── Mascarilla Nutritiva/
+    ├── Rescate Supremo/
+    ├── Rosa-Perez-Fundadora/
     ├── Img Logo/
     └── Clientes y Resultados/
 ```
