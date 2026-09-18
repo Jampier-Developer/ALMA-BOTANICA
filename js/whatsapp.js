@@ -21,6 +21,10 @@
     nosotras:   'Hola Rosa! 👋 Me encantó conocer tu historia. Quiero probar tus productos 🌿',
     resultados: 'Hola Rosa! 👋 Vi los resultados de tus clientas y quiero saber qué me recomiendas a mí 🌿',
     faq:        'Hola Rosa! 👋 Tengo una pregunta que no encontré en las frecuentes 🌿',
+    'rutina-sec':      'Hola Rosa! 👋 Vi la rutina de la página y quiero que me ayudes a armar la mía 🌿',
+    'ingredientes-sec':'Hola Rosa! 👋 Estaba leyendo sobre los ingredientes y quiero saber cuál me conviene 🌿',
+    'resenas-sec':     'Hola Rosa! 👋 Vi las reseñas y quiero probar los productos 🌿',
+    dura:       'Hola Rosa! 👋 Quiero saber cuánto me rendiría un producto para mi cabello 🌿',
     ubicacion:  'Hola Rosa! 👋 Quiero saber el horario y cómo hago para recibir mi pedido 🌿'
   };
 

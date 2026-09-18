@@ -713,10 +713,15 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 
 /* ── TABLETA 768px–900px: nav completo, 3 columnas, modal desktop ── */
 @media(min-width:768px) and (max-width:900px){
-  /* Nav — completo, sin hamburguesa */
+  /* Nav — con los enlaces a la vista, sin hamburguesa.
+     El boton de Catálogo se esconde en esta franja: con cinco enlaces
+     ya no cabe y la barra se desbordaba 104px. No se pierde nada, el
+     mismo boton está en el hero y en el cierre de la página. */
   .hamburger{display:none}
-  .nav-links{display:flex}
-  .nav-actions #catalogBtn{display:block}
+  .nav-links{display:flex;gap:1.1rem}
+  .nav-links a{font-size:.82rem}
+  .nav-actions #catalogBtn{display:none}
+  .nav-logo-text{max-width:none}
 
   /* Grids */
   .products-grid{grid-template-columns:repeat(3,1fr)}

@@ -314,6 +314,33 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 ---
 
+## ✨ Qué puede hacer la página
+
+Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
+
+| | Qué hace | Dónde vive |
+|---|---|---|
+| **Test "¿cuál es para mí?"** | Cuatro preguntas y recomienda 2 o 3 productos con el motivo de cada uno | `js/quiz.js` |
+| **Buscador y filtros** | Busca por ingrediente y filtra por necesidad sin recargar | `js/filtros.js` |
+| **Pedidos recientes** | Aviso discreto de lo que otras personas acaban de pedir | `js/social.js` + `js/pedidos.js` |
+| **WhatsApp con contexto** | El mensaje cambia según la sección y avisa de lo que hay en el carrito | `js/whatsapp.js` |
+| **Calculadora de duración** | Cuánto dura un producto y a cuánto sale cada lavado | `js/extras.js` |
+| **Reseñas** | Con nota media y estrellas en Google cuando sean reales | `js/resenas.js` |
+| **Sin internet + instalable** | La página abre sin señal y se puede instalar como app | `sw.js` + `js/pwa.js` |
+| **Antes / después** | Barra que se arrastra para comparar las fotos de las clientas | `js/extras.js` |
+| **Rutina paso a paso** | Los siete pasos en orden, con el porqué de cada uno | `js/rutina.js` |
+| **Datos de entrega** | Nombre, barrio y dirección dentro del mensaje del pedido | `js/extras.js` |
+| **Ingredientes** | Seis fichas de los activos botánicos de la línea | `js/rutina.js` |
+| **Modo regalo** | Casilla, destinatario y dedicatoria, dentro del pedido | `js/extras.js` |
+| **Anuncio en video** | Se abre una vez por visita y se cierra al acabar el video | `js/interactions.js` |
+
+> **Los pedidos recientes y las reseñas traen contenido de ejemplo.** No se
+> le muestra a nadie: solo aparece abriendo la página con `?demo=1`. Cuando
+> Rosa ponga datos reales en `js/pedidos.js` y `js/resenas-datos.js` y les
+> quite el `ejemplo:true`, se encienden solos.
+
+---
+
 ## 📕 El catálogo en PDF
 
 `catalogo-alma-botanica.pdf` (16 páginas, 5,7 MB) es el archivo que descarga
