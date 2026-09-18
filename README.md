@@ -17,7 +17,7 @@
 > **Para quien retome esto más adelante (persona o sesión nueva): empieza por aquí.**
 
 **Última sesión de trabajo:** 17–18 de septiembre de 2026
-**Rama de esa sesión:** `claude/gifted-tesla-e6s1lj` · 18 commits sobre `main`
+**Rama de esa sesión:** `claude/gifted-tesla-e6s1lj` · 17 commits sobre `main`
 **Qué se hizo:** revisión completa del sitio, limpieza, el catálogo en PDF, el
 anuncio en video y doce funciones nuevas.
 
