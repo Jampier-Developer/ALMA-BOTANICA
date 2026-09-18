@@ -44,9 +44,14 @@
   var RECHAZADO = 'rechazado';
 
   /* Rutas de los scripts de medición. Son relativas porque todas las
-     páginas que cargan este archivo están en la raíz del sitio. */
-  var SCRIPT_ANALYTICS = 'js/analytics.js';
-  var SCRIPT_CONTENTSQUARE = 'js/hotjar.js';
+     páginas que cargan este archivo están en la raíz del sitio.
+
+     El ?v= tiene que coincidir con el que llevan los <link> y <script>
+     del HTML: js/ se guarda en caché para siempre y la versión es lo
+     único que hace que el navegador vuelva a pedir el archivo. */
+  var VERSION = '20260918';
+  var SCRIPT_ANALYTICS = 'js/analytics.js?v=' + VERSION;
+  var SCRIPT_CONTENTSQUARE = 'js/hotjar.js?v=' + VERSION;
 
   /* ── Lectura y escritura de la decisión ─────────────────────────
      Todo va envuelto en try/catch: en navegación privada o con las

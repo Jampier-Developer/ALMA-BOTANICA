@@ -314,6 +314,36 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 ---
 
+## ⚠️ Si editas CSS o JavaScript: sube la versión
+
+Los archivos de `css/` y `js/` se guardan en el navegador de quien visita
+durante un año, porque van marcados con `?v=` en el HTML. Eso hace que el
+sitio cargue mucho más rápido en la segunda visita.
+
+El precio de eso es una regla que **no se puede olvidar**: si cambias un
+archivo de `css/` o `js/` y no subes el número, quien ya entró antes sigue
+viendo la versión vieja. No es que el cambio no se haya subido — es que su
+navegador no vuelve a pedir el archivo.
+
+Para subir la versión en todo el sitio de una sola vez:
+
+```bash
+# Cambia la fecha por la de hoy (formato AAAAMMDD)
+sed -i 's/?v=[0-9]\{8\}/?v=20260920/g' *.html js/cookies.js
+```
+
+Luego haz commit y push como siempre. Comprueba que quedó parejo con:
+
+```bash
+grep -oh '?v=[0-9]*' *.html js/cookies.js | sort -u
+# debe imprimir una sola línea
+```
+
+> El `?v=` de `js/cookies.js` también cuenta: ese archivo carga Analytics
+> y ContentSquare por su cuenta y lleva su propia copia del número.
+
+---
+
 ## 🚀 Flujo de despliegue
 
 El sitio se despliega automáticamente en Cloudflare Pages cada vez que se hace push a la rama `main`.

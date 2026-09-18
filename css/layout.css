@@ -128,9 +128,13 @@
 .pc-name{font-family:var(--font-d);font-size:1.28rem;font-weight:800;color:var(--text);margin-bottom:.4rem;line-height:1.25}
 .pc-short{font-size:.85rem;color:var(--text-m);line-height:1.55;margin-bottom:1rem}
 .pc-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
-.pc-price{display:flex;flex-direction:column}
-.pc-price::before{content:'Contenido';font-family:var(--font-m);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-m);display:block;margin-bottom:.15rem}
-.pc-price-val{font-family:var(--font-d);font-size:1.15rem;font-weight:600;color:var(--text-m);line-height:1}
+/* Precio de la tarjeta. El importe se escribe en el HTML pero sale del
+   array PRODUCTS[] de js/forms.js: si cambia un precio alli, hay que
+   cambiarlo tambien aqui y en el JSON-LD de productos del <head>. */
+.pc-price{display:flex;flex-direction:column;line-height:1.1}
+.pc-price-from{font-family:var(--font-m);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.12rem}
+.pc-price-amount{font-family:var(--font-d);font-size:1.45rem;font-weight:600;color:var(--bronze);line-height:1}
+.pc-price-size{font-family:var(--font-m);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-m);margin-top:.22rem}
 
 /* SPLIT */
 .split-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
@@ -772,8 +776,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .testi-link{padding:.55rem 1rem;font-size:.78rem}
   .pc-footer{flex-direction:column;align-items:stretch;gap:.5rem}
   .pc-btn{width:100%;justify-content:center;text-align:center}
-  .pc-price::before{font-size:.72rem;font-weight:700;letter-spacing:.08em}
-  .pc-price-val{font-size:1.2rem}
+  .pc-price-from{font-size:.62rem;letter-spacing:.1em}
+  .pc-price-amount{font-size:1.5rem}
+  .pc-price-size{font-size:.64rem;letter-spacing:.08em}
 
   /* ── Modales ── */
   .modal-box{border-radius:var(--radius-md)}

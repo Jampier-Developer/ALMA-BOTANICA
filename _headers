@@ -1,5 +1,32 @@
-/css/*
-  Cache-Control: no-cache
+# Reglas de cache para Cloudflare Pages.
+#
+# IMPORTANTE — si editas cualquier archivo de css/ o js/, sube el numero
+# de ?v= en TODAS las paginas HTML que lo enlazan. Si no lo subes, quien
+# ya visito el sitio seguira viendo la version vieja durante un año.
+# El comando para subirlo de golpe esta en el README.
 
+# Imagenes: el nombre del archivo no cambia nunca, asi que se pueden
+# guardar para siempre. Aqui esta el grueso del peso del sitio (8 MB).
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Iconos y manifiesto
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+/site.webmanifest
+  Cache-Control: public, max-age=604800
+
+# CSS y JS: se guardan para siempre porque van versionados con ?v=
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
 /js/*
-  Cache-Control: no-cache
+  Cache-Control: public, max-age=31536000, immutable
+
+# El HTML se revalida siempre: es lo que hace que un cambio se vea al
+# instante, porque trae dentro los ?v= nuevos de css y js.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
