@@ -855,6 +855,51 @@
   </div>
 </section>
 
+<!-- RESEÑAS.
+     La sección se esconde sola si no hay reseñas reales, y la nota media
+     solo viaja a Google cuando ninguna es de ejemplo. La pinta
+     js/resenas.js con los datos de js/resenas-datos.js. -->
+<section class="sec sec-cream" id="resenas-sec">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Lo que dicen</span>
+      <h2 class="sec-title">Reseñas de <em>clientas</em></h2>
+      <p class="sec-desc">Escritas por ellas, publicadas con su permiso.</p>
+    </div>
+    <div id="resenas" class="rs-wrap reveal"></div>
+  </div>
+</section>
+
+<!-- LA RUTINA PASO A PASO.
+     El orden no es obvio: ¿el pre-poo va antes o después del shampoo?
+     ¿el tónico se enjuaga? Puesta en orden se entiende que los productos
+     no compiten, se complementan. La pinta js/rutina.js. -->
+<section class="sec sec-cream" id="rutina-sec">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Paso a paso</span>
+      <h2 class="sec-title">Tu rutina, en <em>orden</em></h2>
+      <p class="sec-desc">Qué va primero, qué se enjuaga y por qué. Con explicarlo una vez, ya no se olvida.</p>
+    </div>
+    <div id="rutina" class="rt-wrap reveal"></div>
+  </div>
+</section>
+
+<!-- LOS INGREDIENTES.
+     Refuerzan el "100% natural" con algo concreto, y traen visitas de
+     Google: mucha gente busca "para qué sirve el romero en el cabello"
+     antes de comprar nada. -->
+<section class="sec" id="ingredientes-sec">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Lo que lleva dentro</span>
+      <h2 class="sec-title">Los <em>ingredientes</em></h2>
+      <p class="sec-desc">Qué hace cada activo botánico y por qué está donde está.</p>
+    </div>
+    <div id="ingredientes" class="ing-wrap reveal"></div>
+  </div>
+</section>
+
 <!-- CALCULADORA "¿CUÁNTO ME DURA?".
      Un shampoo de $32.000 parece caro al lado de uno de supermercado,
      hasta que se ve lo que cuesta cada lavado. La pinta js/extras.js. -->
@@ -1213,6 +1258,9 @@
 <script src="js/pedidos.js?v=20260919" defer></script>
 <script src="js/social.js?v=20260919" defer></script>
 <script src="js/extras.js?v=20260919" defer></script>
+<script src="js/rutina.js?v=20260919" defer></script>
+<script src="js/resenas-datos.js?v=20260919" defer></script>
+<script src="js/resenas.js?v=20260919" defer></script>
 <script src="js/pwa.js?v=20260919" defer></script>
 </body>
 </html>

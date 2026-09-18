@@ -306,6 +306,18 @@
     });
     const total    = getTotal();
     const totalLine = total > 0 ? `\n🤔 *Entonces serían más o menos ${fmtCOP(total)}, ¿verdad?*` : '';
+    /* Datos de entrega: los pone el formulario del carrito
+       (js/extras.js). Van al final del mensaje para que Rosa los tenga
+       sin tener que pedirlos en cuatro mensajes más. */
+    const entrega = window.ALMA_ENTREGA;
+    const lineasEntrega = [];
+    if (entrega) {
+      lineasEntrega.push('', '📍 *Mis datos de entrega*');
+      if (entrega.nombre) lineasEntrega.push(`  Nombre: ${entrega.nombre}`);
+      if (entrega.barrio) lineasEntrega.push(`  Barrio: ${entrega.barrio}`);
+      if (entrega.dir)    lineasEntrega.push(`  Dirección: ${entrega.dir}`);
+    }
+
     /* Modo regalo: lo pone la casilla del carrito (js/extras.js) y se
        cuela aquí porque el mensaje de WhatsApp es donde Rosa lo lee. */
     const regalo = window.ALMA_REGALO;
@@ -323,6 +335,7 @@
       ...lines,
       totalLine,
       ...lineasRegalo,
+      ...lineasEntrega,
       '',
       '¿Están disponibles? ¿Me confirmas disponibilidad y formas de pago? ¡Muchas gracias! 😊',
     ].join('\n');

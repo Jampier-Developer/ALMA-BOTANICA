@@ -174,10 +174,70 @@
     });
   }
 
+  /* ══ 4. DATOS DE ENTREGA ═══════════════════════════════════════
+     Antes, el pedido llegaba a Rosa sin saber a quién ni adónde, y ella
+     tenía que pedir nombre, barrio y dirección en cuatro mensajes más.
+     Con tres campos cortos, el pedido llega completo al primer mensaje.
+
+     No se guarda nada en ningún servidor: lo que se escriba viaja
+     dentro del mensaje de WhatsApp y se queda en el navegador para no
+     tener que repetirlo la próxima vez. */
+  function montarEntrega() {
+    var drawer = document.getElementById('cartDrawer');
+    if (!drawer) return;
+    var CLAVE = 'botanica_entrega_v1';
+
+    document.addEventListener('click', function (ev) {
+      if (!ev.target.closest('#cartBtn') && !ev.target.closest('.cart-btn')) return;
+      setTimeout(function () {
+        if (drawer.querySelector('.en-bloque')) return;
+        var pie = drawer.querySelector('#cartSendWa');
+        if (!pie) return;
+
+        var guardado = {};
+        try { guardado = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (_) {}
+
+        var bloque = document.createElement('div');
+        bloque.className = 'en-bloque';
+        bloque.innerHTML =
+          '<p class="en-t">¿A dónde te lo llevamos?</p>' +
+          '<p class="en-d">Opcional, pero así Rosa no tiene que preguntártelo.</p>' +
+          '<label class="visually-hidden" for="enNombre">Tu nombre</label>' +
+          '<input type="text" id="enNombre" class="en-input" placeholder="Tu nombre" maxlength="50" autocomplete="name">' +
+          '<label class="visually-hidden" for="enBarrio">Tu barrio</label>' +
+          '<input type="text" id="enBarrio" class="en-input" placeholder="Tu barrio" maxlength="60" autocomplete="address-level3">' +
+          '<label class="visually-hidden" for="enDir">Dirección</label>' +
+          '<input type="text" id="enDir" class="en-input" placeholder="Dirección y punto de referencia" maxlength="120" autocomplete="street-address">';
+        pie.parentNode.insertBefore(bloque, pie);
+
+        ['Nombre', 'Barrio', 'Dir'].forEach(function (c) {
+          var el = bloque.querySelector('#en' + c);
+          if (guardado[c.toLowerCase()]) el.value = guardado[c.toLowerCase()];
+        });
+
+        function recoger() {
+          return {
+            nombre: bloque.querySelector('#enNombre').value.trim(),
+            barrio: bloque.querySelector('#enBarrio').value.trim(),
+            dir:    bloque.querySelector('#enDir').value.trim()
+          };
+        }
+        function volcar() {
+          var d = recoger();
+          window.ALMA_ENTREGA = (d.nombre || d.barrio || d.dir) ? d : null;
+          try { localStorage.setItem(CLAVE, JSON.stringify(d)); } catch (_) {}
+        }
+        bloque.addEventListener('input', volcar);
+        volcar();
+      }, 120);
+    });
+  }
+
   function arrancar() {
     montarComparadores();
     montarCalculadora();
     montarRegalo();
+    montarEntrega();
   }
 
   if (document.readyState === 'loading') {
