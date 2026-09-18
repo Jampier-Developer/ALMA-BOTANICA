@@ -369,6 +369,33 @@
 
   // CATALOG FORM — entrega el PDF del catálogo
   const CATALOGO_PDF = 'catalogo-alma-botanica.pdf';
+  let _nombreCatalogo = '';
+  /* El nombre va en el nombre del archivo que se descarga. Si alguien
+     escribe su nombre, lo minimo es que el archivo le pertenezca:
+     "Jampier - Catalogo Alma Botanica.pdf" en vez de un generico.
+
+     Las tildes y la ñ se quitan a proposito. No es un capricho: si el
+     atributo download lleva un caracter fuera del ASCII, el navegador
+     descarta el nombre entero y el archivo acaba llamandose "download".
+     Con medio pais llamandose Maria, Jose o Muñoz, eso no es un caso
+     raro. Ademas, un archivo sin tildes viaja sin romperse por WhatsApp
+     y se abre igual en Windows, Android y iPhone.
+
+     Tambien se quita lo que los sistemas de archivos no admiten y se
+     recorta, porque nada impide escribir una frase entera en ese campo. */
+  function nombreArchivo(persona) {
+    var base = 'Catalogo Alma Botanica - Rosa Perez.pdf';
+    var limpio = (persona || '')
+      .normalize('NFD')                  // separa la letra de su tilde
+      .replace(/[̀-ͯ]/g, '')   // y borra la tilde
+      .replace(/[^\x20-\x7E]/g, '')      // cualquier otro no-ASCII fuera
+      .replace(/[\\/:*?"<>|]/g, '')      // lo que no admite un sistema de archivos
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 40)
+      .trim();
+    return limpio ? limpio + ' - ' + base : base;
+  }
   const catalogForm = document.getElementById('catalogForm');
   const cmSubmit    = document.getElementById('cmSubmit');
   const cmBtnText   = document.getElementById('cmBtnText');
@@ -386,6 +413,7 @@
       // Saludo con el nombre que escribió y paso al botón de descarga
       const nombreEl = document.getElementById('cmSuccessName');
       if (nombreEl) nombreEl.textContent = name;
+      _nombreCatalogo = name;
       catalogForm.style.display = 'none';
       const ok = document.getElementById('cmSuccess');
       if (ok) ok.style.display = 'block';
@@ -399,17 +427,122 @@
 
   // Descarga del PDF. Se crea un <a download> al vuelo en vez de navegar,
   // para que la persona no pierda la página en la que está.
-  document.getElementById('cmDownloadBtn')?.addEventListener('click', () => {
+  /* Descarga el archivo, ya sea el original o el personalizado */
+  function entregar(blobOrUrl) {
     const a = document.createElement('a');
-    a.href = CATALOGO_PDF;
-    a.download = 'Catalogo-Alma-Botanica.pdf';
+    const esBlob = typeof blobOrUrl !== 'string';
+    a.href = esBlob ? URL.createObjectURL(blobOrUrl) : blobOrUrl;
+    a.download = nombreArchivo(_nombreCatalogo);
     document.body.appendChild(a);
     a.click();
     a.remove();
+    if (esBlob) setTimeout(() => URL.revokeObjectURL(a.href), 60000);
     const okMsg = document.getElementById('cmDownloadOk');
     if (okMsg) okMsg.style.display = 'flex';
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'catalogo_descarga', { origen: 'modal' });
+    }
+  }
+
+  /* pdf-lib solo se pide cuando hace falta: son 500 KB y no tienen por
+     qué cargarlos quienes nunca descargan el catálogo. */
+  let _pdfLibCargando = null;
+  function cargarPdfLib() {
+    if (window.PDFLib) return Promise.resolve(window.PDFLib);
+    if (_pdfLibCargando) return _pdfLibCargando;
+    _pdfLibCargando = new Promise((ok, mal) => {
+      const s = document.createElement('script');
+      s.src = 'js/vendor/pdf-lib.min.js?v=20260922';
+      s.onload = () => window.PDFLib ? ok(window.PDFLib) : mal(new Error('sin PDFLib'));
+      s.onerror = () => mal(new Error('no cargó'));
+      document.head.appendChild(s);
+    });
+    return _pdfLibCargando;
+  }
+
+  /* Escribe el nombre de la persona en la portada, justo encima del logo.
+
+     Va en la tipografía mono y en el dorado de la marca, que es el mismo
+     estilo del "ROSA PÉREZ · COSMÉTICA NATURAL" que ya está en la
+     portada: así el saludo se ve parte del diseño y no pegado encima.
+
+     Las coordenadas salen de medir la portada: el logo empieza a 646 pt
+     del borde inferior en una A4 de 841,89 pt de alto. */
+  async function personalizar(nombre) {
+    const PDFLib = await cargarPdfLib();
+    const bytes = await fetch(CATALOGO_PDF).then(r => {
+      if (!r.ok) throw new Error('no se pudo traer el catálogo');
+      return r.arrayBuffer();
+    });
+    const doc = await PDFLib.PDFDocument.load(bytes);
+    const portada = doc.getPage(0);
+    const fuente = await doc.embedFont(PDFLib.StandardFonts.CourierBold);
+
+    /* Courier solo entiende Latin-1: si alguien escribe un emoji o un
+       carácter de otro alfabeto, pdf-lib lanza y perderíamos la descarga
+       entera por un adorno. Se limpia a lo que la fuente sí sabe pintar. */
+    const limpio = (nombre || '')
+      .replace(/[^ -~ -ÿ]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 28)
+      .toUpperCase();
+    if (!limpio) throw new Error('nombre vacío');
+
+    const texto = 'PARA ' + limpio;
+    const tam = 11;
+    const espaciado = 2.6;           /* el mismo aire entre letras de la portada */
+    const dorado = PDFLib.rgb(0.910, 0.788, 0.478);   /* --gold-light #e8c97a */
+    const y = 668;                   /* 22 pt por encima del logo */
+
+    /* Se dibuja letra a letra en vez de con characterSpacing.
+       Se probó con esa opción y pdf-lib no llegaba a escribir el Tc en el
+       PDF: el texto salía junto y, como el centrado sí contaba con ese
+       aire, quedaba 18 pt corrido a la derecha. Dibujando cada carácter
+       el espaciado es real y el centrado, exacto. */
+    const anchos = [];
+    let ancho = 0;
+    for (let i = 0; i < texto.length; i++) {
+      const w = fuente.widthOfTextAtSize(texto[i], tam);
+      anchos.push(w);
+      ancho += w + (i < texto.length - 1 ? espaciado : 0);
+    }
+
+    let x = (portada.getWidth() - ancho) / 2;
+    const xInicio = x;
+    for (let i = 0; i < texto.length; i++) {
+      if (texto[i] !== ' ') {
+        portada.drawText(texto[i], { x: x, y: y, size: tam, font: fuente, color: dorado });
+      }
+      x += anchos[i] + espaciado;
+    }
+
+    /* La hojita de la marca, dibujada a la izquierda del texto. Es el
+       mismo trazo que ya usa el separador de la portada; un emoji no se
+       puede, porque las fuentes del PDF no traen emojis. */
+    portada.drawSvgPath(
+      'M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z',
+      { x: xInicio - 17, y: y + 11, scale: 0.42, color: dorado }
+    );
+
+    return new Blob([await doc.save()], { type: 'application/pdf' });
+  }
+
+  document.getElementById('cmDownloadBtn')?.addEventListener('click', async (ev) => {
+    const btn = ev.currentTarget;
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Preparando tu catálogo…';
+    try {
+      entregar(await personalizar(_nombreCatalogo));
+    } catch (_) {
+      /* Si algo falla —no llegó pdf-lib, el nombre no era pintable, el
+         navegador es viejo— se entrega el catálogo tal cual. Perder el
+         saludo es un detalle; perder la descarga, no. */
+      entregar(CATALOGO_PDF);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = original;
     }
   });
 

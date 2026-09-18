@@ -154,7 +154,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **JSON-LD productos** con precio (COP) y disponibilidad — permite a Google mostrar precios en resultados de búsqueda
 
 ### ⚡ Rendimiento
-- Sin frameworks ni librerías pesadas (sin jQuery, sin React, sin Three.js)
+- Sin frameworks (sin jQuery, sin React, sin Three.js). La única librería de terceros es `pdf-lib`, y solo se descarga al pulsar el botón del catálogo
 - **Todas las imágenes en formato WebP** (29MB → 8.1MB, -72%) — sin `.jpeg`/`.jpg`/`.png` en el sitio
 - Fuentes Google cargadas de forma no bloqueante (`preload` + `onload`)
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
@@ -291,7 +291,13 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 | **Poppins** | Fuente de cuerpo (Google Fonts) |
 | **WebP** | Formato de todas las imágenes del sitio |
 
-> Sin frameworks, sin npm, sin webpack, sin dependencias externas. Solo archivos estáticos.
+> Sin frameworks, sin npm, sin webpack, sin paso de compilación. Solo archivos estáticos.
+>
+> **Una sola librería de terceros:** `js/vendor/pdf-lib.min.js` (513 KB, MIT),
+> que escribe el nombre de la persona en la portada del catálogo. Se guarda en
+> el repositorio en vez de traerla de un CDN, y **no se carga al abrir ninguna
+> página**: `js/forms.js` la pide solo cuando alguien pulsa "Descargar catálogo
+> PDF". Si no llega, el catálogo se descarga igual, sin el saludo.
 
 ---
 
@@ -420,7 +426,7 @@ Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
 ## 🏷️ Versión de la página
 
 En la portada, encima de la píldora de "100% Natural", hay un distintivo
-pequeño: **🌿 v1.0**. Sirve para saber de un vistazo qué versión está
+pequeño: **🌿 v1.2**. Sirve para saber de un vistazo qué versión está
 publicada, sin tener que mirar el repositorio.
 
 ### Dónde se cambia
@@ -429,7 +435,7 @@ publicada, sin tener que mirar el repositorio.
 
 ```html
 <span class="version-pill" title="Versión publicada el 18 de septiembre de 2026">
-  <span aria-hidden="true">🌿</span> v1.0
+  <span aria-hidden="true">🌿</span> v1.2
 </span>
 ```
 
@@ -441,14 +447,20 @@ dejar el cursor encima).
 **Se sube en cada publicación a `main`**, porque cada push a `main` sale en
 vivo. Si no cambia nada visible, no hace falta.
 
-| Cuánto sube | Cuándo | Ejemplo |
-|---|---|---|
-| **v1.0 → v1.1** | Algo nuevo que la gente nota: una sección, una función, productos nuevos | Se añade un buscador |
-| **v1.0 → v1.0.1** | Un arreglo, un texto corregido, un precio actualizado | Se corrige un precio |
-| **v1.x → v2.0** | Un rediseño grande o un cambio de fondo en cómo funciona la página | Cambia toda la identidad visual |
+**Dos números, nada más.** En cada publicación sube el segundo:
 
-> No hace falta ser estricto. La regla práctica: **si Rosa notaría el cambio
-> al abrir la página, sube el primer número; si no, sube el último.**
+```
+v1.0  →  v1.1  →  v1.2  →  v1.3  →  v1.4  …
+```
+
+No se usan terceros números (nada de `v1.0.1`). Da igual si el cambio fue
+grande o pequeño: **cada publicación a `main` es una versión nueva** y el
+historial de abajo cuenta qué trajo.
+
+| Cuánto sube | Cuándo |
+|---|---|
+| **v1.4 → v1.5** | Cualquier publicación: una función nueva, un arreglo, un texto, un precio |
+| **v1.x → v2.0** | Solo un rediseño grande o un cambio de fondo en cómo funciona la página |
 
 ### Al subir la versión, acuérdate de
 
@@ -461,7 +473,8 @@ vivo. Si no cambia nada visible, no hace falta.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
-| **v1.0.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
+| **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
+| **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
 | **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video, y doce funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, calculadora de duración, reseñas, funcionamiento sin internet e instalable, comparador antes/después, rutina paso a paso, datos de entrega, ingredientes y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
 
 > Antes de la v1.0 el sitio no llevaba número. Lo publicado hasta el 8 de
@@ -543,6 +556,35 @@ la gente desde el botón "Catálogo" de la portada y desde `catalogo.html`.
 Lleva portada, la página de Rosa, una ficha por cada uno de los 12 productos
 con foto, descripción, beneficios y **precios de las 26 presentaciones**, y
 una última página con cómo pedir y los datos de contacto.
+
+### Lleva el nombre de quien lo descarga
+
+El modal pide el nombre, así que el nombre se honra en dos sitios:
+
+1. **En el archivo:** `Maria Jose - Catalogo Alma Botanica - Rosa Perez.pdf`
+2. **En la portada del PDF:** un `🌿 PARA MARÍA JOSÉ` en dorado, justo encima
+   del logo, en la misma tipografía mono y con el mismo espaciado que el
+   "ROSA PÉREZ · COSMÉTICA NATURAL" que ya estaba ahí.
+
+Lo hace `js/forms.js` con `pdf-lib`, en el navegador de la persona. El PDF que
+está en el servidor **nunca cambia**: se le añade el saludo al vuelo, tarda
+menos de medio segundo y el archivo no engorda.
+
+Dos detalles que parecen caprichos y no lo son:
+
+- **En el nombre del archivo se quitan las tildes y la ñ.** Si el atributo
+  `download` lleva un carácter fuera del ASCII, el navegador descarta el nombre
+  entero y el archivo acaba llamándose `download`. Con medio país llamándose
+  María, José o Muñoz, eso no es un caso raro. **Dentro del PDF sí se
+  conservan**, porque ahí no hay esa limitación.
+- **El saludo se dibuja letra a letra.** Se intentó con la opción
+  `characterSpacing` de pdf-lib y no llegaba a escribirse en el archivo: el
+  texto salía junto y, como el centrado sí contaba con ese aire, quedaba 18 pt
+  corrido a la derecha.
+
+Si algo falla —no llega la librería, el navegador es viejo, el nombre no se
+puede pintar— **se entrega el catálogo tal cual**. Perder el saludo es un
+detalle; perder la descarga, no.
 
 **No se escribió a mano.** Se genera a partir del array `PRODUCTS[]` de
 `js/forms.js` y de las fotos de `img/`, con la misma paleta y las mismas

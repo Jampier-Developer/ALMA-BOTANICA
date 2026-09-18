@@ -140,7 +140,10 @@
 .pc-badge-tag{position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.92);color:var(--bronze);font-family:var(--font-m);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.25em .75em;border-radius:var(--radius-full);border:1px solid var(--border-sage);font-weight:600}
 .pc-best-badge{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--text);font-family:var(--font-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.3em 1em;text-align:center;font-weight:600}
 .pc-body{padding:1.2rem}
-.pc-name{font-family:var(--font-d);font-size:1.28rem;font-weight:800;color:var(--text);margin-bottom:.4rem;line-height:1.25}
+/* El overflow-wrap es una red de seguridad: "Acondicionadores" es una
+   sola palabra y a 320px se salía del borde derecho de la tarjeta.
+   Sin esto, cualquier nombre largo que se añada volvería a salirse. */
+.pc-name{font-family:var(--font-d);font-size:1.28rem;font-weight:800;color:var(--text);margin-bottom:.4rem;line-height:1.25;overflow-wrap:break-word;hyphens:auto}
 .pc-short{font-size:.85rem;color:var(--text-m);line-height:1.55;margin-bottom:1rem}
 .pc-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
 /* Precio de la tarjeta. El importe se escribe en el HTML pero sale del
@@ -347,15 +350,25 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   font-family:var(--font-d);font-size:1.35rem;
   font-weight:600;color:var(--text);line-height:1.2;
 }
-.mapa-datos{display:flex;flex-direction:column;gap:.9rem;margin:0}
+/* Cada etiqueta y su dato forman un grupo, y como grupo tienen que
+   leerse. Antes el <dl> era flex con un hueco igual entre todos los
+   hijos: la etiqueta quedaba a 18px de su propio dato y a 14px del
+   grupo de arriba, o sea más cerca de lo ajeno que de lo suyo. Se ve
+   como si "Horarios" perteneciera a la dirección.
+   Ahora la etiqueta se pega a su dato y son los grupos los que se
+   separan entre sí. */
+.mapa-datos{display:block;margin:0}
 .mapa-datos dt{
   font-family:var(--font-m);font-size:.58rem;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--text-m);font-weight:700;margin-bottom:.2rem;
+  color:var(--text-m);font-weight:700;
+  margin:0 0 .3rem;
 }
 .mapa-datos dd{
-  font-size:.92rem;color:var(--text);line-height:1.55;margin:0;
+  font-size:.92rem;color:var(--text);line-height:1.55;
+  margin:0 0 1.35rem;
 }
+.mapa-datos dd:last-child{margin-bottom:0}
 .mapa-datos dd a{color:var(--bronze);text-decoration:underline;text-underline-offset:.2em}
 
 /* ── MARCA {POR CONFIRMAR} ──────────────────────────────────────
@@ -864,7 +877,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .stat-val{font-size:1.4rem}
   .stat-lbl{font-size:.64rem;font-weight:700}
   .products-grid{gap:.85rem}
-  .pc-name{font-size:1rem}
+  .pc-name{font-size:.92rem}
   .sec-title{font-size:1.5rem}
   .modal-title{font-size:1.2rem}
   .wa-btn{width:50px;height:50px;bottom:1.2rem;right:1rem}
