@@ -306,12 +306,23 @@
     });
     const total    = getTotal();
     const totalLine = total > 0 ? `\n🤔 *Entonces serían más o menos ${fmtCOP(total)}, ¿verdad?*` : '';
+    /* Modo regalo: lo pone la casilla del carrito (js/extras.js) y se
+       cuela aquí porque el mensaje de WhatsApp es donde Rosa lo lee. */
+    const regalo = window.ALMA_REGALO;
+    const lineasRegalo = [];
+    if (regalo) {
+      lineasRegalo.push('', '🎁 *Es un regalo*');
+      if (regalo.para) lineasRegalo.push(`  Para: ${regalo.para}`);
+      if (regalo.nota) lineasRegalo.push(`  Dedicatoria: "${regalo.nota}"`);
+    }
+
     const msg = [
       '¡Hola Rosa! 🌿 Me interesan estos productos de *Alma Botánica*:',
       '',
       '🛒 *Mi pedido:*',
       ...lines,
       totalLine,
+      ...lineasRegalo,
       '',
       '¿Están disponibles? ¿Me confirmas disponibilidad y formas de pago? ¡Muchas gracias! 😊',
     ].join('\n');

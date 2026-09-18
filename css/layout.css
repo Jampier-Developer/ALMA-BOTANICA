@@ -1589,3 +1589,92 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 body.ck-abierto .ps-aviso{bottom:9.5rem}
 @media(max-width:600px){ body.ck-abierto .ps-aviso{bottom:13rem} }
 @media (prefers-reduced-motion:reduce){ .ps-aviso{transition:opacity .3s ease} }
+
+/* ═══════════════════════════════════════════════════
+   COMPARADOR ANTES / DESPUÉS
+   ═══════════════════════════════════════════════════ */
+.rcard-carousel-oculto{display:none}
+.cmp{position:relative;border-radius:var(--radius-lg) var(--radius-lg) 0 0;overflow:hidden}
+.cmp-marco{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--bg-cream);touch-action:pan-y}
+.cmp-marco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.cmp-despues-wrap{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+.cmp-etq{
+  position:absolute;top:.85rem;z-index:3;
+  font-family:var(--font-m);font-size:.56rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.28rem .7rem;border-radius:var(--radius-full);
+  backdrop-filter:blur(6px);
+}
+.cmp-etq-a{left:.85rem;background:rgba(42,35,24,.62);color:#fff}
+.cmp-etq-d{right:.85rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bronze-deep)}
+.cmp-tirador{
+  position:absolute;top:0;bottom:0;width:3px;z-index:4;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 0 12px rgba(0,0,0,.4);
+  transform:translateX(-50%);pointer-events:none;
+}
+.cmp-tirador span{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:38px;height:38px;border-radius:50%;
+  background:var(--white);box-shadow:0 3px 14px rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;
+}
+.cmp-tirador span::before{content:'⟺';font-size:.95rem;color:var(--bronze);font-weight:700}
+/* El input es la zona que se arrastra: invisible pero por encima */
+.cmp-rango{
+  position:absolute;inset:0;width:100%;height:100%;z-index:5;
+  margin:0;opacity:0;cursor:ew-resize;
+  -webkit-appearance:none;appearance:none;background:transparent;
+}
+.cmp-rango::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;cursor:ew-resize}
+.cmp-rango::-moz-range-thumb{width:44px;height:100%;border:none;background:transparent;cursor:ew-resize}
+.cmp-rango:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}
+
+/* ═══════════════════════════════════════════════════
+   CALCULADORA "¿CUÁNTO ME DURA?"
+   ═══════════════════════════════════════════════════ */
+.cal-wrap{max-width:720px;margin:0 auto}
+.cal-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.2rem;box-shadow:var(--shadow)}
+.cal-campos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem}
+.cal-campo{display:flex;flex-direction:column;gap:.4rem}
+.cal-campo label{font-family:var(--font-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-m);font-weight:700}
+.cal-campo select{
+  padding:.65rem .8rem;border-radius:var(--radius);
+  border:1.5px solid var(--border);background:var(--white);
+  font-size:.88rem;color:var(--text);cursor:pointer;
+  transition:border-color .2s var(--ease);
+}
+.cal-campo select:focus{outline:none;border-color:var(--sage)}
+.cal-res{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.2rem}
+.cal-dato{text-align:center;padding:1.1rem .7rem;background:var(--sage-soft);border-radius:var(--radius-md)}
+.cal-dato strong{display:block;font-family:var(--font-d);font-size:1.9rem;color:var(--sage-deep);line-height:1}
+.cal-dato span{display:block;margin-top:.35rem;font-family:var(--font-m);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);font-weight:600}
+.cal-dato-destacado{background:var(--gold-pale);border:1px solid var(--border-gold)}
+.cal-dato-destacado strong{color:var(--bronze)}
+.cal-nota{font-size:.78rem;color:var(--text-m);text-align:center;line-height:1.5}
+
+/* ═══════════════════════════════════════════════════
+   MODO REGALO EN EL CARRITO
+   ═══════════════════════════════════════════════════ */
+.rg-bloque{margin:.9rem 0;padding:.85rem;background:var(--gold-pale);border:1px solid var(--border-gold);border-radius:var(--radius-md)}
+.rg-check{display:flex;align-items:center;gap:.55rem;cursor:pointer;font-size:.88rem;font-weight:500;color:var(--text)}
+.rg-check input{width:17px;height:17px;accent-color:var(--bronze);cursor:pointer}
+.rg-campos{display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem}
+/* El [hidden] del navegador pierde contra una clase, hay que repetirlo */
+.rg-campos[hidden]{display:none}
+.rg-input{
+  width:100%;padding:.55rem .7rem;border-radius:var(--radius);
+  border:1.5px solid var(--border-gold);background:var(--white);
+  font-size:.85rem;color:var(--text);resize:vertical;
+}
+.rg-input:focus{outline:none;border-color:var(--bronze)}
+
+@media(max-width:600px){
+  .cal-card{padding:1.4rem 1.1rem}
+  .cal-campos{grid-template-columns:1fr;gap:.8rem;margin-bottom:1.4rem}
+  .cal-res{grid-template-columns:1fr;gap:.7rem}
+  .cal-dato{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem;text-align:left}
+  .cal-dato strong{font-size:1.5rem}
+  .cal-dato span{margin-top:0}
+  .cmp-tirador span{width:32px;height:32px}
+}
