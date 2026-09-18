@@ -10,6 +10,11 @@
 /img/*
   Cache-Control: public, max-age=31536000, immutable
 
+# El video del anuncio: se revalida cada dia, como el PDF, para poder
+# cambiarlo por otro sin que la gente siga viendo el anterior un año.
+/video/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
 # Iconos y manifiesto
 /*.png
   Cache-Control: public, max-age=31536000, immutable

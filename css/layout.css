@@ -1248,3 +1248,133 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   .testi-badge span:first-child{font-size:.8rem}
   .testi-badge span:nth-child(2),.testi-badge-sub{font-size:.44rem;letter-spacing:.1em}
 }
+
+/* ═══════════════════════════════════════════════════
+   ANUNCIO EN VIDEO
+   Reescrito con la paleta del logo. La versión anterior usaba
+   --pink / --border-pink, variables que desaparecieron con el
+   rebranding de agosto.
+   ═══════════════════════════════════════════════════ */
+.ann-overlay{
+  position:fixed;inset:0;z-index:1200;
+  background:rgba(38,30,15,.84);
+  display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+  opacity:0;pointer-events:none;
+  transition:opacity .45s var(--ease);
+}
+.ann-overlay.open{opacity:1;pointer-events:all}
+
+.ann-box{
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  max-width:352px;width:100%;
+  max-height:94dvh;max-height:94vh;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-gold);
+  box-shadow:var(--shadow-modal);
+  transform:scale(.86) translateY(26px);
+  transition:transform .45s var(--ease);
+}
+.ann-overlay.open .ann-box{transform:scale(1) translateY(0)}
+.ann-accent{height:4px;background:linear-gradient(90deg,var(--bronze),var(--gold),var(--sage));flex-shrink:0}
+
+.ann-close{
+  position:absolute;top:.7rem;right:.7rem;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(42,35,24,.55);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;z-index:20;
+  backdrop-filter:blur(6px);
+  transition:background .2s,transform .2s;
+}
+
+.ann-header{display:flex;align-items:center;gap:.7rem;padding:.85rem 1.1rem .65rem;flex-shrink:0}
+.ann-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--border-gold);flex-shrink:0}
+.ann-header-text{display:flex;flex-direction:column;gap:.1rem}
+.ann-brand{font-family:var(--font-d);font-size:1rem;color:var(--text)}
+.ann-kicker{font-family:var(--font-m);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+
+/* El video es vertical 9:16. La proporción se fija aquí para que el hueco
+   esté reservado antes de que cargue y la tarjeta no dé un salto. */
+.ann-video-wrap{
+  position:relative;background:#1a1510;
+  width:100%;aspect-ratio:9/16;max-height:58vh;
+  overflow:hidden;flex:1;min-height:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.ann-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+.ann-unmute{
+  position:absolute;inset:0;z-index:6;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;
+  background:rgba(26,21,16,.42);cursor:pointer;
+  transition:opacity .35s ease;
+}
+.ann-unmute.out{opacity:0;pointer-events:none}
+.ann-unmute-icon{
+  width:70px;height:70px;border-radius:50%;
+  background:var(--bronze);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  box-shadow:var(--shadow-bronze);
+  animation:ann-pulse 2s ease-in-out infinite;
+  transition:transform .2s var(--ease);
+}
+@keyframes ann-pulse{
+  0%,100%{box-shadow:var(--shadow-bronze),0 0 0 0 rgba(139,90,60,.42)}
+  55%{box-shadow:var(--shadow-bronze),0 0 0 16px rgba(139,90,60,0)}
+}
+.ann-unmute-txt{font-family:var(--font-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+
+.ann-sound{
+  position:absolute;bottom:.7rem;right:.7rem;z-index:7;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(26,21,16,.55);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);
+  transition:background .2s,transform .2s;
+}
+
+.ann-footer{padding:.85rem 1.1rem 1rem;background:linear-gradient(to bottom,var(--white),var(--bg-cream));flex-shrink:0}
+.ann-msg{font-family:var(--font-d);font-size:.97rem;color:var(--text);text-align:center;line-height:1.45;margin-bottom:.7rem}
+.ann-cta{
+  display:block;text-align:center;
+  background:linear-gradient(135deg,var(--bronze),var(--bronze-deep));color:var(--white);
+  border-radius:var(--radius-full);padding:.6rem 1.2rem;margin-bottom:.8rem;
+  font-family:var(--font-b);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  box-shadow:0 4px 16px rgba(139,90,60,.3);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+}
+.ann-timer-wrap{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:.4rem}
+/* El ancho lo va bajando el JavaScript al ritmo del video, no una
+   animación con duración fija: así la barra siempre coincide con lo que
+   queda de video aunque tarde en cargar. */
+.ann-timer-bar{height:100%;width:100%;border-radius:2px;background:linear-gradient(90deg,var(--bronze),var(--gold),var(--sage))}
+.ann-timer-label{font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:var(--text-m);text-align:center;font-weight:600}
+.ann-timer-label strong{color:var(--bronze)}
+
+@media (hover:hover){
+  .ann-close:hover{background:var(--bronze);transform:scale(1.08)}
+  .ann-sound:hover{background:var(--bronze);transform:scale(1.08)}
+  .ann-unmute:hover .ann-unmute-icon{transform:scale(1.06)}
+  .ann-cta:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(139,90,60,.38)}
+}
+@media(max-width:480px){
+  .ann-overlay{padding:.6rem}
+  .ann-box{max-width:100%}
+  .ann-video-wrap{max-height:52vh}
+  .ann-msg{font-size:.9rem}
+}
+@media(max-width:380px){
+  .ann-video-wrap{max-height:46vh}
+  .ann-header{padding:.65rem .9rem .5rem}
+  .ann-footer{padding:.7rem .9rem .85rem}
+  .ann-close{width:32px;height:32px;font-size:.8rem}
+  .ann-unmute-icon{width:60px;height:60px}
+}
+/* Quien pide menos movimiento no recibe el latido del botón de sonido */
+@media (prefers-reduced-motion:reduce){
+  .ann-unmute-icon{animation:none}
+  .ann-overlay,.ann-box{transition:none}
+}

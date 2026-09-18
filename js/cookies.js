@@ -371,6 +371,20 @@
     document.body.classList.remove('ck-abierto');
     limpiarEspacioInferior();
     window.removeEventListener('resize', ajustarEspacioInferior);
+    avisarViaLibre();
+  }
+
+  /* Aviso de que ya no hay banner tapando la pantalla.
+     Lo escucha js/interactions.js para abrir el anuncio en video: mientras
+     se pide el consentimiento no puede haber nada encima, porque la norma
+     exige que la persona pueda decidir sin obstáculos. */
+  function avisarViaLibre() {
+    try {
+      document.dispatchEvent(new CustomEvent('alma:cookies-resueltas'));
+    } catch (_) {
+      /* Navegadores muy antiguos sin CustomEvent: el anuncio se abrirá
+         igualmente por el plazo de respaldo que tiene interactions.js. */
+    }
   }
 
   /* ── Enlace "Configuración de cookies" del pie ────────────────── */
