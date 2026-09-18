@@ -1543,3 +1543,49 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 @media(max-width:380px){
   .fl-chip{padding:.4rem .65rem;font-size:.7rem;gap:.25rem}
 }
+
+/* ═══════════════════════════════════════════════════
+   AVISO DE PEDIDOS RECIENTES
+   ═══════════════════════════════════════════════════ */
+.ps-aviso{
+  position:fixed;left:1.2rem;bottom:1.5rem;z-index:900;
+  display:flex;align-items:center;gap:.8rem;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:.75rem .9rem;
+  box-shadow:var(--shadow-lg);
+  max-width:315px;
+  opacity:0;transform:translateY(14px) scale(.96);
+  pointer-events:none;
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+.ps-aviso.vis{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.ps-demo{
+  position:absolute;top:-8px;left:.8rem;
+  background:var(--gold);color:var(--bronze-deep);
+  font-family:var(--font-m);font-size:.5rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.16rem .5rem;border-radius:99px;
+}
+.ps-img{width:44px;height:44px;border-radius:var(--radius);overflow:hidden;flex-shrink:0;background:var(--bg-cream)}
+.ps-img img{width:44px;height:44px;object-fit:cover}
+.ps-img-hoja{display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:var(--sage-pale)}
+.ps-txt{min-width:0;flex:1}
+.ps-linea{font-size:.8rem;color:var(--text);line-height:1.3}
+.ps-linea strong{font-weight:600}
+.ps-prod{font-size:.78rem;color:var(--text-m);line-height:1.3}
+.ps-cuando{font-family:var(--font-m);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-top:.15rem}
+.ps-cerrar{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;align-self:flex-start;
+  background:var(--border);color:var(--text-m);font-size:.55rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+@media (hover:hover){ .ps-cerrar:hover{background:var(--bronze);color:var(--white)} }
+/* En móvil se aparta del botón de WhatsApp y del banner de cookies */
+@media(max-width:600px){
+  .ps-aviso{left:.7rem;right:.7rem;max-width:none;bottom:1rem;padding:.65rem .75rem}
+  .ps-linea,.ps-prod{font-size:.75rem}
+}
+body.ck-abierto .ps-aviso{bottom:9.5rem}
+@media(max-width:600px){ body.ck-abierto .ps-aviso{bottom:13rem} }
+@media (prefers-reduced-motion:reduce){ .ps-aviso{transition:opacity .3s ease} }
