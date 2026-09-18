@@ -68,6 +68,7 @@ nuevas, este es el sitio para anotarlas.
 - [Características del sitio](#-características-del-sitio)
 - [Páginas legales](#-páginas-legales)
 - [Cómo funciona el banner de cookies](#-cómo-funciona-el-banner-de-cookies)
+- [Versión de la página](#-versión-de-la-página)
 - [Contenido de ejemplo](#-contenido-de-ejemplo--leer-antes-de-tocarlo)
 - [Cosas que hay que recordar al editar](#-cosas-que-hay-que-recordar-al-editar)
 - [El catálogo en PDF](#-el-catálogo-en-pdf)
@@ -413,6 +414,57 @@ Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
 > le muestra a nadie: solo aparece abriendo la página con `?demo=1`. Cuando
 > Rosa ponga datos reales en `js/pedidos.js` y `js/resenas-datos.js` y les
 > quite el `ejemplo:true`, se encienden solos.
+
+---
+
+## 🏷️ Versión de la página
+
+En la portada, encima de la píldora de "100% Natural", hay un distintivo
+pequeño: **🌿 v1.0**. Sirve para saber de un vistazo qué versión está
+publicada, sin tener que mirar el repositorio.
+
+### Dónde se cambia
+
+**Un solo sitio.** En `index.html`, dentro de `.hero-content`:
+
+```html
+<span class="version-pill" title="Versión publicada el 18 de septiembre de 2026">
+  <span aria-hidden="true">🌿</span> v1.0
+</span>
+```
+
+Se cambia el número **y también la fecha del `title`** (es lo que se ve al
+dejar el cursor encima).
+
+### Cuándo se sube, y cuánto
+
+**Se sube en cada publicación a `main`**, porque cada push a `main` sale en
+vivo. Si no cambia nada visible, no hace falta.
+
+| Cuánto sube | Cuándo | Ejemplo |
+|---|---|---|
+| **v1.0 → v1.1** | Algo nuevo que la gente nota: una sección, una función, productos nuevos | Se añade un buscador |
+| **v1.0 → v1.0.1** | Un arreglo, un texto corregido, un precio actualizado | Se corrige un precio |
+| **v1.x → v2.0** | Un rediseño grande o un cambio de fondo en cómo funciona la página | Cambia toda la identidad visual |
+
+> No hace falta ser estricto. La regla práctica: **si Rosa notaría el cambio
+> al abrir la página, sube el primer número; si no, sube el último.**
+
+### Al subir la versión, acuérdate de
+
+1. Cambiar el número **y la fecha del `title`** en `index.html`
+2. Añadir la fila al **historial de aquí abajo**, contando qué trajo
+3. Subir el `?v=` de CSS y JS, y la `VERSION` de `sw.js` (ver "Cosas que hay
+   que recordar al editar")
+
+### Historial de versiones
+
+| Versión | Fecha | Qué trajo |
+|---|---|---|
+| **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video, y doce funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, calculadora de duración, reseñas, funcionamiento sin internet e instalable, comparador antes/después, rutina paso a paso, datos de entrega, ingredientes y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
+
+> Antes de la v1.0 el sitio no llevaba número. Lo publicado hasta el 8 de
+> septiembre de 2026 se puede considerar la v0.
 
 ---
 

@@ -18,12 +18,12 @@
    Al cambiar la VERSION de aquí abajo se borran las copias viejas. Hay
    que subirla cuando se suba el ?v= del HTML. */
 
-const VERSION = 'alma-v20260919';
+const VERSION = 'alma-v20260920';
 const ESENCIALES = [
   '/',
   '/index.html',
-  '/css/reset.css?v=20260919',
-  '/css/layout.css?v=20260919',
+  '/css/reset.css?v=20260920',
+  '/css/layout.css?v=20260920',
   '/img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp',
   '/favicon.ico',
   '/site.webmanifest'

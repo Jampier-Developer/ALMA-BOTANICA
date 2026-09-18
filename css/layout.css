@@ -71,6 +71,21 @@
 .hc3{width:300px;height:300px;background:radial-gradient(circle,var(--gold-pale),transparent);right:30%;top:60%}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}
 .hero-content{}
+/* Versión del sitio. Deliberadamente discreto: está para saber qué hay
+   publicado, no para competir con el titular. Va un punto más pequeño
+   que la píldora de abajo y en salvia en vez de bronce. */
+.version-pill{
+  /* flex (no inline-flex) para que ocupe su propia línea sin obligar a
+     tocar la píldora de abajo, que ya estaba bien */
+  display:flex;width:fit-content;align-items:center;gap:.35em;
+  background:var(--sage-soft);color:var(--sage-deep);
+  border:1px solid var(--border-sage);
+  padding:.25em .75em;border-radius:var(--radius-full);
+  font-family:var(--font-m);font-size:.56rem;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  margin-bottom:.7rem;
+}
+.version-pill span{font-size:.72rem;line-height:1}
 .badge-pill{display:inline-flex;align-items:center;gap:.4em;background:rgba(119,131,106,.1);color:var(--bronze);border:1px solid var(--border-sage);padding:.35em 1em;border-radius:var(--radius-full);font-family:var(--font-m);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:600}
 .hero-title{font-size:clamp(2.5rem,5.5vw,4.5rem);color:var(--text);margin:.3em 0 .5em;line-height:1.05}
 .hero-title-br{display:none}
