@@ -35,8 +35,8 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="css/reset.css?v=20260920">
-<link rel="stylesheet" href="css/layout.css?v=20260920">
+<link rel="stylesheet" href="css/reset.css?v=20260921">
+<link rel="stylesheet" href="css/layout.css?v=20260921">
 
 <!-- Open Graph — vista previa al compartir en WhatsApp, Instagram y Facebook -->
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
      Los inyecta js/cookies.js y solo después de que la persona acepte,
      como exige la Resolución 32.126 de 2022 de la SIC (consentimiento
      previo, expreso e informado). No volver a ponerlos en el <head>. -->
-<script src="js/cookies.js?v=20260920" defer></script>
+<script src="js/cookies.js?v=20260921" defer></script>
 
 <!-- Datos estructurados JSON-LD — le dice a Google que somos un negocio local con productos -->
 <script type="application/ld+json">
@@ -246,8 +246,8 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#test">Test</a></li>
       <li><a href="#productos">Productos</a></li>
+      <li><a href="#test">Test</a></li>
       <li><a href="#rutina-sec">Rutina</a></li>
       <li><a href="#nosotras">Nosotras</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -266,8 +266,8 @@
   </div>
 </nav>
 <div class="mob-menu" id="mobMenu" aria-hidden="true">
-  <a href="#test" class="mob-link">¿Cuál es para mí?</a>
   <a href="#productos" class="mob-link">Productos</a>
+  <a href="#test" class="mob-link">¿Cuál es para mí?</a>
   <a href="#rutina-sec" class="mob-link">Tu rutina</a>
   <a href="#ingredientes-sec" class="mob-link">Ingredientes</a>
   <a href="#nosotras" class="mob-link">Nosotras</a>
@@ -290,7 +290,7 @@
            escribe el número: el README explica cuándo toca cada salto y
            el historial de lo que trajo cada versión. -->
       <span class="version-pill" title="Versión publicada el 18 de septiembre de 2026">
-        <span aria-hidden="true">🌿</span> v1.0
+        <span aria-hidden="true">🌿</span> v1.0.1
       </span>
       <span class="badge-pill">🌿 100% Natural · Sin parabenos · Sin sulfatos</span>
       <h1 class="hero-title">
@@ -348,31 +348,6 @@
 </section>
 
 <!-- PRODUCTOS E-COMMERCE -->
-<!-- QUIZ "¿CUÁL ES PARA MÍ?".
-     Va justo antes del grid a propósito: quien llega hasta aquí ya tiene
-     interés, y lo que lo frena es no saber cuál de los doce le sirve.
-     Todo el contenido lo pinta js/quiz.js. -->
-<section class="sec sec-cream" id="test">
-  <div class="container">
-    <div class="sec-header reveal">
-      <span class="kicker">❀ Te ayudamos a elegir</span>
-      <h2 class="sec-title">¿Cuál es <em>para mí</em>?</h2>
-      <p class="sec-desc">Cuatro preguntas rápidas y te decimos qué le conviene a tu cabello. Es lo mismo que te preguntaría Rosa por WhatsApp.</p>
-    </div>
-    <div id="quiz" class="quiz-wrap reveal">
-      <!-- Sin JavaScript no hay test, pero sí queda el camino a Rosa -->
-      <noscript>
-        <div class="qz-card qz-final">
-          <div class="qz-ico">🌿</div>
-          <h3 class="qz-pregunta">Escríbele a Rosa</h3>
-          <p class="qz-pie">El test necesita JavaScript. Pero Rosa te atiende personalmente y te recomienda igual de bien.</p>
-          <a class="btn btn-wa" href="https://wa.me/573135487027" target="_blank" rel="noopener">Preguntarle a Rosa</a>
-        </div>
-      </noscript>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="productos">
   <div class="container">
     <div class="sec-header reveal">
@@ -615,6 +590,33 @@
     </div>
   </div>
 </section>
+
+<!-- QUIZ "¿CUÁL ES PARA MÍ?".
+     Va DESPUÉS del grid a propósito: lo primero que hay que enseñar son
+     los productos. Quien baja hasta aquí es porque los vio y no se
+     decidió, y justo eso es lo que el test resuelve.
+     Todo el contenido lo pinta js/quiz.js. -->
+<section class="sec sec-cream" id="test">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="kicker">❀ Te ayudamos a elegir</span>
+      <h2 class="sec-title">¿Cuál es <em>para mí</em>?</h2>
+      <p class="sec-desc">Cuatro preguntas rápidas y te decimos qué le conviene a tu cabello. Es lo mismo que te preguntaría Rosa por WhatsApp.</p>
+    </div>
+    <div id="quiz" class="quiz-wrap reveal">
+      <!-- Sin JavaScript no hay test, pero sí queda el camino a Rosa -->
+      <noscript>
+        <div class="qz-card qz-final">
+          <div class="qz-ico">🌿</div>
+          <h3 class="qz-pregunta">Escríbele a Rosa</h3>
+          <p class="qz-pie">El test necesita JavaScript. Pero Rosa te atiende personalmente y te recomienda igual de bien.</p>
+          <a class="btn btn-wa" href="https://wa.me/573135487027" target="_blank" rel="noopener">Preguntarle a Rosa</a>
+        </div>
+      </noscript>
+    </div>
+  </div>
+</section>
+
 
 <!-- BENEFICIOS -->
 <section class="sec">
@@ -872,7 +874,7 @@
      La sección se esconde sola si no hay reseñas reales, y la nota media
      solo viaja a Google cuando ninguna es de ejemplo. La pinta
      js/resenas.js con los datos de js/resenas-datos.js. -->
-<section class="sec sec-cream" id="resenas-sec">
+<section class="sec" id="resenas-sec">
   <div class="container">
     <div class="sec-header reveal">
       <span class="kicker">❀ Lo que dicen</span>
@@ -916,7 +918,7 @@
 <!-- CALCULADORA "¿CUÁNTO ME DURA?".
      Un shampoo de $32.000 parece caro al lado de uno de supermercado,
      hasta que se ve lo que cuesta cada lavado. La pinta js/extras.js. -->
-<section class="sec" id="dura">
+<section class="sec sec-cream" id="dura">
   <div class="container">
     <div class="sec-header reveal">
       <span class="kicker">❀ Cuentas claras</span>
@@ -1261,19 +1263,19 @@
   <div class="cat-bar" id="catBar"></div>
 </div>
 
-<script src="js/interactions.js?v=20260920" defer></script>
-<script src="js/cart.js?v=20260920" defer></script>
-<script src="js/forms.js?v=20260920" defer></script>
-<script src="js/quiz.js?v=20260920" defer></script>
-<script src="js/filtros.js?v=20260920" defer></script>
-<script src="js/whatsapp.js?v=20260920" defer></script>
+<script src="js/interactions.js?v=20260921" defer></script>
+<script src="js/cart.js?v=20260921" defer></script>
+<script src="js/forms.js?v=20260921" defer></script>
+<script src="js/quiz.js?v=20260921" defer></script>
+<script src="js/filtros.js?v=20260921" defer></script>
+<script src="js/whatsapp.js?v=20260921" defer></script>
 <!-- Los pedidos recientes: pedidos.js son los datos, social.js el aviso -->
-<script src="js/pedidos.js?v=20260920" defer></script>
-<script src="js/social.js?v=20260920" defer></script>
-<script src="js/extras.js?v=20260920" defer></script>
-<script src="js/rutina.js?v=20260920" defer></script>
-<script src="js/resenas-datos.js?v=20260920" defer></script>
-<script src="js/resenas.js?v=20260920" defer></script>
-<script src="js/pwa.js?v=20260920" defer></script>
+<script src="js/pedidos.js?v=20260921" defer></script>
+<script src="js/social.js?v=20260921" defer></script>
+<script src="js/extras.js?v=20260921" defer></script>
+<script src="js/rutina.js?v=20260921" defer></script>
+<script src="js/resenas-datos.js?v=20260921" defer></script>
+<script src="js/resenas.js?v=20260921" defer></script>
+<script src="js/pwa.js?v=20260921" defer></script>
 </body>
 </html>

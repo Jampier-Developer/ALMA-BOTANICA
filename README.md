@@ -461,6 +461,7 @@ vivo. Si no cambia nada visible, no hace falta.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
+| **v1.0.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
 | **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video, y doce funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, calculadora de duración, reseñas, funcionamiento sin internet e instalable, comparador antes/después, rutina paso a paso, datos de entrega, ingredientes y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
 
 > Antes de la v1.0 el sitio no llevaba número. Lo publicado hasta el 8 de
