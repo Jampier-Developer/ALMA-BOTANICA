@@ -35,6 +35,11 @@
 /catalogo-alma-botanica.pdf
   Cache-Control: public, max-age=86400, must-revalidate
 
+# El service worker NUNCA se guarda en cache. Si se quedara pegado, los
+# navegadores seguirian usando el viejo y no habria forma de corregir nada.
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
 # El HTML se revalida siempre: es lo que hace que un cambio se vea al
 # instante, porque trae dentro los ?v= nuevos de css y js.
 /*.html

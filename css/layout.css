@@ -1678,3 +1678,37 @@ body.ck-abierto .ps-aviso{bottom:9.5rem}
   .cal-dato span{margin-top:0}
   .cmp-tirador span{width:32px;height:32px}
 }
+
+/* ═══════════════════════════════════════════════════
+   AVISO PARA INSTALAR LA PÁGINA COMO APP
+   ═══════════════════════════════════════════════════ */
+.pwa-aviso{
+  position:fixed;right:1.2rem;bottom:1.5rem;z-index:1000;
+  display:grid;grid-template-columns:auto 1fr;gap:.85rem;
+  align-items:center;
+  background:var(--white);border:1px solid var(--border-gold);
+  border-radius:var(--radius-md);padding:1rem;
+  box-shadow:var(--shadow-lg);max-width:340px;
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+.pwa-aviso.vis{opacity:1;transform:translateY(0);pointer-events:all}
+.pwa-logo{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--border-gold)}
+.pwa-t{font-family:var(--font-d);font-size:1rem;color:var(--text);margin-bottom:.15rem}
+.pwa-d{font-size:.78rem;color:var(--text-m);line-height:1.4}
+.pwa-btns{grid-column:1/-1;display:flex;gap:.5rem;margin-top:.3rem}
+.pwa-si{
+  flex:1;background:linear-gradient(135deg,var(--bronze),var(--bronze-deep));color:var(--white);
+  border-radius:var(--radius-full);padding:.5rem 1rem;
+  font-size:.76rem;font-weight:600;letter-spacing:.06em;
+}
+.pwa-no{
+  padding:.5rem .9rem;color:var(--text-m);
+  font-family:var(--font-m);font-size:.62rem;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+}
+@media(max-width:600px){
+  .pwa-aviso{left:.7rem;right:.7rem;max-width:none;bottom:1rem}
+}
+body.ck-abierto .pwa-aviso{bottom:9.5rem}
+@media(max-width:600px){ body.ck-abierto .pwa-aviso{bottom:13rem} }
