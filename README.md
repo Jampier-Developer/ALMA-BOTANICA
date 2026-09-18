@@ -314,6 +314,33 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 ---
 
+## 📕 El catálogo en PDF
+
+`catalogo-alma-botanica.pdf` (16 páginas, 5,7 MB) es el archivo que descarga
+la gente desde el botón "Catálogo" de la portada y desde `catalogo.html`.
+
+Lleva portada, la página de Rosa, una ficha por cada uno de los 12 productos
+con foto, descripción, beneficios y **precios de las 26 presentaciones**, y
+una última página con cómo pedir y los datos de contacto.
+
+**No se escribió a mano.** Se genera a partir del array `PRODUCTS[]` de
+`js/forms.js` y de las fotos de `img/`, con la misma paleta y las mismas
+tipografías del sitio. Por eso, cuando Rosa cambie un precio:
+
+1. Se actualiza el precio en `js/forms.js`, en la tarjeta de `index.html` y
+   en el JSON-LD del `<head>` (los tres sitios, como explica la sección de
+   productos).
+2. Se regenera el PDF y se reemplaza el archivo.
+
+La última página del PDF lleva la línea *"Precios vigentes a septiembre de
+2026… sujetos a cambio"*, que hay que actualizar al regenerarlo.
+
+> El PDF se sirve con caché de un día, no de un año como el resto de
+> archivos estáticos: así una versión nueva llega pronto sin que cada
+> visita tenga que descargar 5,7 MB.
+
+---
+
 ## ⚠️ Si editas CSS o JavaScript: sube la versión
 
 Los archivos de `css/` y `js/` se guardan en el navegador de quien visita

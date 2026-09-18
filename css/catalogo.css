@@ -254,38 +254,29 @@ body{
   max-width:420px;
 }
 
-/* Progress bar */
-.progress-wrap{
-  width:100%;max-width:320px;
-  display:flex;flex-direction:column;gap:.5rem;
+/* Botón de descarga del catálogo */
+.btn-download{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.95rem 2rem;
+  background:linear-gradient(135deg,var(--bronze),var(--bronze-deep));
+  color:#fff;border-radius:999px;
+  font-size:.82rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  box-shadow:0 6px 22px rgba(139,90,60,.34);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
 }
-.progress-label{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.72rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;
+.btn-download svg{flex-shrink:0}
+.dl-meta{
+  margin-top:.85rem;
+  font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
   color:var(--text-mid);
 }
-.progress-track{
-  width:100%;height:8px;
-  background:var(--sage-pale);
-  border-radius:999px;overflow:hidden;
+@media (hover:hover){
+  .btn-download:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(139,90,60,.42)}
 }
-.progress-bar{
-  height:100%;width:62%;
-  background:linear-gradient(90deg,var(--bronze),var(--sage),var(--gold));
-  background-size:200%;
-  border-radius:999px;
-  animation:gradient-shift 3s ease infinite;
-  position:relative;
-}
-.progress-bar::after{
-  content:'';
-  position:absolute;
-  right:0;top:0;bottom:0;
-  width:12px;
-  background:rgba(255,255,255,.55);
-  border-radius:999px;
-  animation:shimmer 1.5s ease infinite;
+@media(max-width:480px){
+  .btn-download{padding:.9rem 1.5rem;font-size:.76rem;letter-spacing:.08em}
 }
 
 /* Divider */
@@ -501,7 +492,6 @@ body{
 @keyframes ring-spin{to{transform:rotate(360deg)}}
 @keyframes gradient-shift{0%,100%{background-position:0%}50%{background-position:100%}}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
-@keyframes shimmer{0%,100%{opacity:0}50%{opacity:1}}
 @keyframes fade-in-up{to{opacity:1;transform:translateY(0)}}
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */

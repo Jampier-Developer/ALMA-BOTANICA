@@ -169,6 +169,13 @@
       /* Botón "Cómo llegar" del mapa */
       if (el.hasAttribute && el.hasAttribute('data-como-llegar')) {
         window.gtag('event', 'como_llegar_mapa', {});
+        return;
+      }
+
+      /* Descarga del catálogo en PDF desde catalogo.html.
+         La del modal de la portada la registra js/forms.js. */
+      if (el.hasAttribute && el.hasAttribute('data-descarga-catalogo')) {
+        window.gtag('event', 'catalogo_descarga', { origen: 'pagina_catalogo' });
       }
     });
   }

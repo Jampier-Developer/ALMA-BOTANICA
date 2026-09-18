@@ -24,6 +24,12 @@
 /js/*
   Cache-Control: public, max-age=31536000, immutable
 
+# El catalogo en PDF: se revalida cada dia. Asi, cuando se regenera por un
+# cambio de precios, la version nueva llega pronto sin volver a pedir 5,7 MB
+# en cada visita.
+/catalogo-alma-botanica.pdf
+  Cache-Control: public, max-age=86400, must-revalidate
+
 # El HTML se revalida siempre: es lo que hace que un cambio se vea al
 # instante, porque trae dentro los ?v= nuevos de css y js.
 /*.html

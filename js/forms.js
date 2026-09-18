@@ -362,7 +362,8 @@
     });
   });
 
-  // CATALOG FORM — redirige a página de catálogo en proceso
+  // CATALOG FORM — entrega el PDF del catálogo
+  const CATALOGO_PDF = 'catalogo-alma-botanica.pdf';
   const catalogForm = document.getElementById('catalogForm');
   const cmSubmit    = document.getElementById('cmSubmit');
   const cmBtnText   = document.getElementById('cmBtnText');
@@ -375,9 +376,36 @@
     if (cmBtnText) cmBtnText.style.display = 'none';
     if (cmBtnLoad) cmBtnLoad.style.display = 'inline';
     if (cmSubmit)  cmSubmit.disabled = true;
+
     setTimeout(() => {
-      window.location.href = 'catalogo.html?nombre=' + encodeURIComponent(name);
+      // Saludo con el nombre que escribió y paso al botón de descarga
+      const nombreEl = document.getElementById('cmSuccessName');
+      if (nombreEl) nombreEl.textContent = name;
+      catalogForm.style.display = 'none';
+      const ok = document.getElementById('cmSuccess');
+      if (ok) ok.style.display = 'block';
+      // Se deja el formulario como estaba para la próxima vez que se abra
+      if (cmBtnText) cmBtnText.style.display = '';
+      if (cmBtnLoad) cmBtnLoad.style.display = 'none';
+      if (cmSubmit)  cmSubmit.disabled = false;
+      catalogForm.reset();
     }, 380);
+  });
+
+  // Descarga del PDF. Se crea un <a download> al vuelo en vez de navegar,
+  // para que la persona no pierda la página en la que está.
+  document.getElementById('cmDownloadBtn')?.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = CATALOGO_PDF;
+    a.download = 'Catalogo-Alma-Botanica.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    const okMsg = document.getElementById('cmDownloadOk');
+    if (okMsg) okMsg.style.display = 'flex';
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'catalogo_descarga', { origen: 'modal' });
+    }
   });
 
   // BOTÓN AGREGAR AL CARRITO (una sola vez)
