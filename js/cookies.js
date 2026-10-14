@@ -305,7 +305,7 @@
           '<p class="ck-titulo">Usamos cookies</p>' +
           '<p class="ck-desc">' +
             'Nos ayudan a saber cómo se usa la página para mejorarla. ' +
-            'No se activa nada hasta que tú decidas. ' +
+            'No activamos la medición ni el mapa hasta que tú decidas. ' +
             'Puedes cambiar de opinión cuando quieras desde el pie de página. ' +
             '<a href="cookies.html">Ver política de cookies</a>.' +
           '</p>' +

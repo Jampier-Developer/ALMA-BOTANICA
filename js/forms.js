@@ -40,7 +40,11 @@
     m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); });
   });
   document.addEventListener('keydown', e => {
-    if(e.key === 'Escape'){ closeModal('productModal'); closeModal('catalogModal'); }
+    if(e.key === 'Escape'){
+      /* Si encima está la confirmación del carrito, Escape es para ella */
+      if(document.getElementById('cartConfirmOverlay')?.classList.contains('open')) return;
+      closeModal('productModal'); closeModal('catalogModal');
+    }
   });
   document.getElementById('modalClose')?.addEventListener('click',   () => closeModal('productModal'));
   document.getElementById('catalogClose')?.addEventListener('click', () => closeModal('catalogModal'));
@@ -130,8 +134,8 @@
         {
           name:'Tónico Bomba', price:'$25.000', icon:'💣',
           image:'img/Tonicos-Capilares/tonico%20capilar%203.webp',
-          desc:'Crecimiento y reparación en una sola fórmula intensiva. El tónico más potente de la línea: estimula el cuero cabelludo, fortalece la raíz y repara la fibra con cada aplicación. Sin enjuague.',
-          benefits:['Fórmula intensiva de crecimiento y reparación','Estimula el cuero cabelludo y la raíz','Fortalece y repara la fibra capilar','Resultados con uso constante']
+          desc:'Fórmula intensiva pensada para ayudar al crecimiento y reparar la fibra, en un solo tónico. El más potente de la línea: estimula el cuero cabelludo, fortalece la raíz y repara la fibra con cada aplicación. Sin enjuague.',
+          benefits:['Ayuda al crecimiento y repara a la vez','Estimula el cuero cabelludo y la raíz','Fortalece y repara la fibra capilar','Resultados con uso constante']
         },
       ]
     },
@@ -180,14 +184,14 @@
         {
           name:'Kit Romero', price:'$60.000', icon:'🌿',
           image:'img/Kits/Kit3.webp',
-          desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y ayudan a disminuir la caída. El romero activa la circulación del cuero cabelludo y fortalece el cabello desde la raíz.',
+          desc:'Kit de la línea Romero con varios productos que ayudan a estimular el crecimiento y a disminuir la caída. El romero activa la circulación del cuero cabelludo y fortalece el cabello desde la raíz.',
           benefits:['Ayuda a estimular el crecimiento capilar','Ayuda a disminuir la caída con uso constante','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
         },
         {
           name:'Kit Capilar Romero Premium', price:'$90.000', icon:'👑',
           image:'img/Kits/Kits4.webp',
           desc:'El kit más completo de la línea Romero. Incluye Shampoo Romero, Acondicionador Romero, Tónico Capilar y Tratamiento Capilar — todo lo que necesitas para una rutina capilar integral en un solo kit.',
-          benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo de la línea Romero']
+          benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa para fortalecer y reparar','El kit más completo de la línea Romero']
         },
         {
           name:'Kit Cebolla', price:'$64.000', icon:'🧅',

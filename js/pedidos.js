@@ -4,7 +4,7 @@
    Cómo se anota uno:
 
      { nombre:'Marcela', lugar:'Cartagena', producto:'un Kit Romero',
-       hace:120, imagen:'img/Kits/kit5.webp' }
+       hace:120, imagen:'img/Kits/Kit3.webp' }
 
      nombre   — solo el nombre de pila, nunca apellidos ni teléfono
      lugar    — el barrio o la ciudad
@@ -22,7 +22,7 @@
    Conviene repasarlo de vez en cuando: un pedido de "hace 3 días" que
    lleve un mes ahí se nota. */
 window.ALMA_PEDIDOS = [
-  { ejemplo:true, nombre:'Marcela',  lugar:'El Pozón',            producto:'un Kit Romero',           hace:95,  imagen:'img/Kits/kit5.webp' },
+  { ejemplo:true, nombre:'Marcela',  lugar:'El Pozón',            producto:'un Kit Romero',           hace:95,  imagen:'img/Kits/Kit3.webp' },
   { ejemplo:true, nombre:'Yuranis',  lugar:'Olaya Herrera',       producto:'un Shampoo de Romero',    hace:240, imagen:'img/Shampoos/shampoo%201.webp' },
   { ejemplo:true, nombre:'Katherine',lugar:'Cartagena',           producto:'un Tónico Capilar',       hace:420, imagen:'img/Tonicos-Capilares/tonico%20capilar%201.webp' },
   { ejemplo:true, nombre:'Dayana',   lugar:'Bocagrande',          producto:'la Mascarilla Nutritiva', hace:1380,imagen:'img/Mascarilla%20Nutritiva/Mascarilla%20Nutritiva1.webp' },

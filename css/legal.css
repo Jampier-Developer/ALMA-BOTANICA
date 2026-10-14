@@ -148,7 +148,10 @@
 }
 
 /* Secciones del documento */
-.legal-section{margin-bottom:2.75rem}
+/* El scroll-margin va en la sección, que es la que lleva el id (#s1…):
+   puesto solo en el h2 no servía y el título quedaba bajo la cabecera,
+   también al llegar desde el pie de la portada (ventas.html#s6). */
+.legal-section{margin-bottom:2.75rem;scroll-margin-top:calc(var(--nav-h) + 1rem)}
 .legal-section:last-of-type{margin-bottom:0}
 .legal-section h2{
   font-family:var(--font-d);font-weight:400;

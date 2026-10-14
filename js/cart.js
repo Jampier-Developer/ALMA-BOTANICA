@@ -38,11 +38,15 @@
     ov.classList.add('open');
   }
 
+  /* run: true = el botón de aceptar; false = el botón de cancelar;
+     'descartar' = Escape o clic fuera, que solo cierran. El botón de
+     cancelar a veces hace algo (en "¿Agregar uno más?" abre el carrito)
+     y eso no le debe pasar a quien solo quería quitarse la pregunta. */
   function closeConfirm(run) {
     const ov = document.getElementById('cartConfirmOverlay');
     if (ov) ov.classList.remove('open');
-    if (run  && typeof _confirmCb       === 'function') _confirmCb();
-    if (!run && typeof _confirmCancelCb === 'function') _confirmCancelCb();
+    if (run === true  && typeof _confirmCb       === 'function') _confirmCb();
+    if (run === false && typeof _confirmCancelCb === 'function') _confirmCancelCb();
     _confirmCb       = null;
     _confirmCancelCb = null;
   }
@@ -225,7 +229,13 @@
         }, 370);
       };
       link.addEventListener('click', go);
-      link.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      link.addEventListener('keydown', e => {
+        /* Los botones + y − viven dentro de este div: su Enter o su
+           Espacio sube hasta aquí y, sin este filtro, abría la ficha del
+           producto en vez de cambiar la cantidad. */
+        if (e.target !== link) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
     });
 
     body.querySelectorAll('.ci-dec').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); changeQty(b.dataset.id, -1); }));
@@ -282,9 +292,9 @@
       document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
     });
 
-    /* Aviso para js/extras.js: el pie se acaba de pintar de cero y hay
-       que volver a poner encima del botón los bloques de regalo y de
-       datos de entrega, que el innerHTML de arriba acaba de borrar. */
+    /* Aviso para js/extras.js: la lista y el pie se acaban de pintar de
+       cero y hay que volver a poner al final de la lista los bloques de
+       regalo y de datos de entrega, que el innerHTML de arriba borró. */
     try { document.dispatchEvent(new CustomEvent('alma:carrito-pintado')); } catch (_) {}
   }
 
@@ -388,13 +398,13 @@
     document.getElementById('cartConfirmOk')?.addEventListener('click', () => closeConfirm(true));
     document.getElementById('cartConfirmCancel')?.addEventListener('click', () => closeConfirm(false));
     document.getElementById('cartConfirmOverlay')?.addEventListener('click', e => {
-      if (e.target.id === 'cartConfirmOverlay') closeConfirm(false);
+      if (e.target.id === 'cartConfirmOverlay') closeConfirm('descartar');
     });
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         const confirmOpen = document.getElementById('cartConfirmOverlay')?.classList.contains('open');
-        if (confirmOpen) { closeConfirm(false); return; }
+        if (confirmOpen) { closeConfirm('descartar'); return; }
         if (document.getElementById('cartOverlay')?.classList.contains('open')) closeCart();
       }
     });

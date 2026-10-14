@@ -286,4 +286,6 @@ ${cover()}${about()}${P.map((p,i)=>product(p,i)).join('')}${order()}
 
 fs.writeFileSync(D+'/catalogo.html', html);
 console.log('catalogo.html generado:', (html.length/1024).toFixed(0), 'KB');
-console.log('paginas:', 2 + P.length + 1);
+/* Se cuentan las hojas de verdad: los productos con muchas presentaciones
+   (los kits) ocupan dos. */
+console.log('paginas:', (html.match(/<section class="pg[ "]/g) || []).length);

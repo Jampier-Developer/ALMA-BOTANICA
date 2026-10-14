@@ -63,7 +63,7 @@
 .form-input.err{border-color:#e04040;animation:shake .3s var(--ease)}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--nav-h);background:linear-gradient(160deg,var(--white) 0%,var(--sage-soft) 40%,var(--sage-pale) 100%);overflow:hidden;position:relative;z-index:1}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + 1rem);background:linear-gradient(160deg,var(--white) 0%,var(--sage-soft) 40%,var(--sage-pale) 100%);overflow:hidden;position:relative;z-index:1}
 .hero-bg-circles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hc{position:absolute;border-radius:50%;opacity:.25}
 .hc1{width:600px;height:600px;background:radial-gradient(circle,var(--sage-light),transparent);right:-100px;top:-100px}
@@ -681,8 +681,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* MOBILE MENU */
-.mob-menu{position:fixed;inset:0;z-index:90;background:rgba(255,250,251,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);padding-top:var(--nav-h)}
-.mob-menu.open{opacity:1;pointer-events:all}
+.mob-menu{position:fixed;inset:0;z-index:90;background:rgba(255,250,251,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.8rem;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s;padding-top:var(--nav-h)}
+/* visibility:hidden saca el menú cerrado del orden del tabulador (igual que el carrito) */
+.mob-menu.open{opacity:1;pointer-events:all;visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
 .mob-link{font-family:var(--font-d);font-size:2rem;color:var(--text);transition:color .2s;position:relative}
 .mob-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--sage);transition:width .3s var(--ease)}
 .mob-link:hover{color:var(--sage)}
@@ -913,6 +914,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   border:2px solid var(--bg);pointer-events:none;
   animation:cart-badge-in .3s var(--ease) both;
 }
+/* El [hidden] del navegador pierde contra el display:flex de arriba:
+   sin esto el círculo con un "0" se veía con el carrito vacío. */
+.cart-count[hidden]{display:none}
 @keyframes cart-badge-in{from{transform:scale(0)}to{transform:scale(1)}}
 
 /* ── Overlay + Drawer ── */
@@ -920,9 +924,14 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   position:fixed;inset:0;z-index:550;
   background:rgba(42,35,24,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
   display:flex;justify-content:flex-end;
-  opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
+  opacity:0;pointer-events:none;
+  /* visibility:hidden saca el carrito cerrado del orden del tabulador:
+     antes sus campos y el botón de enviar recibían el foco sin verse.
+     Se oculta cuando acaba el desvanecido, no antes. */
+  visibility:hidden;
+  transition:opacity .35s var(--ease),visibility 0s linear .35s;
 }
-.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-overlay.open{opacity:1;pointer-events:all;visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
 
 .cart-drawer{
   width:min(420px,100vw);height:100%;
@@ -1153,7 +1162,7 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   /* Drawer sube desde abajo en móvil */
   .cart-overlay{align-items:flex-end;justify-content:center}
   .cart-drawer{
-    width:100%;height:92dvh;height:92vh;
+    width:100%;height:92vh;height:92dvh;
     border-radius:var(--radius-lg) var(--radius-lg) 0 0;
     transform:translateY(110%);
     box-shadow:0 -8px 48px rgba(42,35,24,.18);
@@ -1538,6 +1547,9 @@ footer{background:var(--text);padding:5rem 0 0;position:relative;z-index:1}
   display:flex;align-items:center;justify-content:center;
   transition:background .2s,color .2s;
 }
+/* Mismo caso que .cart-count: sin esto el botón "borrar búsqueda" se veía
+   y recibía el foco con la búsqueda vacía. */
+.fl-limpiar[hidden]{display:none}
 .fl-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
 .fl-chip{
   display:inline-flex;align-items:center;gap:.35rem;

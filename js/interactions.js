@@ -226,7 +226,7 @@ document.querySelectorAll('[data-open-product]').forEach(el=>{
   var cta      = document.getElementById('annCta');
 
   var CLAVE = 'botanica_anuncio_visto';
-  var RESPALDO_MS = 6000;   /* por si el aviso de cookies nunca llega */
+  var RESPALDO_MS = 6000;   /* por si el aviso de cookies nunca llega (y el banner ya no está) */
   var ESPERA_VIDEO_MS = 5000;  /* si el video no carga, no se deja el modal colgado */
   var TOPE_MS = 90000;         /* techo absoluto: nunca se queda abierto más */
   var abierto = false, animando = null, arrancado = false;
@@ -371,7 +371,12 @@ document.querySelectorAll('[data-open-product]').forEach(el=>{
   function decidirArranque() {
     if (document.body.classList.contains('ck-abierto')) {
       document.addEventListener('alma:cookies-resueltas', arrancar, { once: true });
-      setTimeout(arrancar, RESPALDO_MS);
+      /* El respaldo nunca abre el anuncio encima del banner: si a los
+         6 s la persona todavía no ha decidido, se espera a que decida.
+         Antes lo abría igual y el video tapaba Aceptar y Rechazar. */
+      setTimeout(function () {
+        if (!document.body.classList.contains('ck-abierto')) arrancar();
+      }, RESPALDO_MS);
     } else {
       /* Sin banner, porque ya había decidido antes: se abre enseguida */
       setTimeout(arrancar, 700);

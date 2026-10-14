@@ -80,11 +80,18 @@
   }
 
   /* ══ 2 y 3. REGALO Y DATOS DE ENTREGA EN EL CARRITO ═══════════
-     Dos bloques que van justo encima del botón "Enviar pedido por
-     WhatsApp", porque lo que se escribe en ellos viaja dentro de ese
-     mensaje, que es donde Rosa lo lee.
+     Dos bloques que van al final de la lista de productos del carrito.
+     Lo que se escribe en ellos viaja dentro del mensaje de WhatsApp,
+     que es donde Rosa lo lee.
 
-     El carrito (js/cart.js) vuelve a pintar su pie cada vez que cambia
+     Van en el cuerpo del carrito (#cartBody), que es la parte que hace
+     scroll, y NO en el pie. El pie no se desplaza: con los dos bloques
+     dentro medía más de 600 px y en un celular de pantalla corta el
+     botón "Enviar pedido por WhatsApp" quedaba fuera de la pantalla, sin
+     forma de llegar a él. Así el pie solo lleva el total y el botón, que
+     se ven siempre.
+
+     El carrito (js/cart.js) vuelve a pintar la lista cada vez que cambia
      algo —una cantidad, un producto quitado— y al hacerlo borra lo que
      hubiera dentro. Por eso los bloques no se montan una sola vez: se
      vuelven a poner cada vez que cart.js avisa con 'alma:carrito-pintado',
@@ -102,7 +109,7 @@
       : null;
   }
 
-  function montarRegalo(pie) {
+  function montarRegalo(cuerpo) {
     var bloque = document.createElement('div');
     bloque.className = 'rg-bloque';
     bloque.innerHTML =
@@ -113,7 +120,7 @@
         '<label class="visually-hidden" for="rgNota">Dedicatoria</label>' +
         '<textarea id="rgNota" class="rg-input" rows="2" placeholder="Dedicatoria (opcional)" maxlength="160"></textarea>' +
       '</div>';
-    pie.parentNode.insertBefore(bloque, pie);
+    cuerpo.appendChild(bloque);
 
     var check = bloque.querySelector('#rgEs');
     var campos = bloque.querySelector('.rg-campos');
@@ -167,7 +174,7 @@
     window.ALMA_ENTREGA = (d.nombre || d.barrio || d.dir) ? d : null;
   }
 
-  function montarEntrega(pie) {
+  function montarEntrega(cuerpo) {
     var bloque = document.createElement('div');
     bloque.className = 'en-bloque';
     bloque.innerHTML =
@@ -179,7 +186,7 @@
       '<input type="text" id="enBarrio" class="en-input" placeholder="Tu barrio" maxlength="60" autocomplete="address-level3">' +
       '<label class="visually-hidden" for="enDir">Dirección</label>' +
       '<input type="text" id="enDir" class="en-input" placeholder="Dirección y punto de referencia" maxlength="120" autocomplete="street-address">';
-    pie.parentNode.insertBefore(bloque, pie);
+    cuerpo.appendChild(bloque);
 
     var campos = {
       nombre: bloque.querySelector('#enNombre'),
@@ -196,12 +203,12 @@
     publicarEntrega();
   }
 
-  /* cart.js avisa cada vez que pinta el pie con el botón de enviar */
+  /* cart.js avisa cada vez que pinta un carrito con productos */
   document.addEventListener('alma:carrito-pintado', function () {
-    var pie = document.getElementById('cartSendWa');
-    if (!pie || pie.parentNode.querySelector('.rg-bloque')) return;
-    montarRegalo(pie);
-    montarEntrega(pie);
+    var cuerpo = document.getElementById('cartBody');
+    if (!cuerpo || !document.getElementById('cartSendWa') || cuerpo.querySelector('.rg-bloque')) return;
+    montarRegalo(cuerpo);
+    montarEntrega(cuerpo);
   });
 
   if (document.readyState === 'loading') {

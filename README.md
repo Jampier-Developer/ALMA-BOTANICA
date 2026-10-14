@@ -28,7 +28,7 @@ catálogo en PDF regenerado.
 
 | | |
 |---|---|
-| **Carrito** | Los campos de entrega y de regalo salen siempre, se abra el carrito por donde se abra, y no se pierden al cambiar cantidades |
+| **Carrito** | Los campos de entrega y de regalo salen siempre, se abra el carrito por donde se abra, no se pierden al cambiar cantidades, y el botón de enviar se ve siempre, también en celulares pequeños. Con teclado, + y − cambian la cantidad |
 | **Textos de producto** | Sin promesas de efecto médico: son cosméticos (ver "Cosas que hay que recordar al editar") |
 | **Kits** | Un solo nombre, "Kits Completos", cada kit en singular y el precio "por kit" |
 | **Políticas** | La de cookies declara todo lo que se guarda en el navegador; envíos, FAQ y PDF dicen lo mismo (solo Cartagena) |
@@ -49,9 +49,10 @@ catálogo en PDF regenerado.
    | Garantía | ventas: plazo de garantía de los productos (1) |
    | Cambios | ventas: procedimiento, quién paga el transporte y productos abiertos (4) |
 
-2. **Qué trae cada kit.** Seis de los ocho kits dicen "varios productos" sin
-   decir cuáles, y el Cebolla Premium y el Aguacate Premium nombran un
-   shampoo y un tónico de su línea que no se venden por separado. Hay que
+2. **Qué trae cada kit.** Cinco de los ocho kits (Linaza, Nutritivo, Romero,
+   Cebolla y Aguacate) dicen "varios productos" sin decir cuáles. El Cebolla
+   Premium nombra un shampoo y un tónico de cebolla que no se venden por
+   separado, y el Aguacate Premium un tónico de aguacate que tampoco. Hay que
    confirmarlo con Rosa.
 3. **Otros datos de la portada:** los años de experiencia ("5+ años"), si hay
    punto físico para visitas y su dirección, si los productos tienen
@@ -152,7 +153,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 ### 🔍 SEO
 - `<title>` optimizado: nombre + cargo + ciudad + barrio del punto físico (`Cartagena de Indias, Barrio El Pozón`) — ayuda a la gente a ubicarse desde el resultado de búsqueda
 - `<meta description>` natural, 154 caracteres, con palabras clave locales
-- `<meta keywords>` con 14 términos clave capilares y de ubicación
+- `<meta keywords>` con 15 términos clave capilares y de ubicación
 - `<meta robots>` con directivas avanzadas: `max-snippet:-1`, `max-image-preview:large`
 - **Geo tags** de posicionamiento local: región, ciudad y coordenadas de Cartagena de Indias
 - `<link rel="canonical">` apuntando a la URL oficial
@@ -166,12 +167,12 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 
 ### ⚡ Rendimiento
 - Sin frameworks (sin jQuery, sin React, sin Three.js). La única librería de terceros es `pdf-lib`, y solo se descarga al pulsar el botón del catálogo
-- **Todas las imágenes en formato WebP** (29MB → 8.1MB, -72%) — sin `.jpeg`/`.jpg`/`.png` en el sitio
+- **Todas las fotos (`img/`) en formato WebP** (29 MB → 8,3 MB) — sin `.jpeg`/`.jpg` en el sitio; solo los iconos de pestaña y de app son PNG, porque Safari y los navegadores viejos no aceptan iconos WebP
 - Fuentes Google cargadas de forma no bloqueante (`preload` + `onload`)
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
 - 35 imágenes con `loading="lazy"`
 - Las 38 imágenes de la portada llevan `width` y `height` (todas menos las de los dos visores ampliados, que no tienen foto hasta que se abren) — el navegador reserva el espacio antes de que carguen y la página no da saltos al abrirse (CLS, que Google mide en Core Web Vitals)
-- Analytics y Hotjar con atributo `defer`
+- Analytics y ContentSquare no se cargan con la página: `js/cookies.js` los inyecta (`async`) solo si la persona acepta las cookies
 
 ### 🎨 Paleta e identidad visual
 - Colores tomados directamente del logo: **verde salvia** (acentos interactivos), **bronce** (texto de énfasis y botones), **dorado** (detalles premium, badge de Kits) y **marfil** (fondos)
@@ -221,7 +222,7 @@ En Colombia el consentimiento debe ser **previo, expreso e informado**: no vale 
 Por eso el sitio funciona así:
 
 1. La primera vez que alguien entra, aparece un banner abajo con dos botones: **Aceptar** y **Rechazar**, del mismo tamaño y con el mismo peso visual.
-2. **Hasta que no elija, no se carga nada**: ni Google Analytics, ni ContentSquare, ni el mapa de Google.
+2. **Hasta que no elija, no se carga la medición ni el mapa**: ni Google Analytics, ni ContentSquare, ni el mapa de Google.
 3. Si acepta, se activan en ese momento. Si rechaza, no se activa nada y el banner no vuelve a aparecer.
 4. La decisión se guarda en su propio navegador y puede cambiarla cuando quiera con el enlace **"Configuración de cookies"** que está en el pie de todas las páginas.
 
@@ -270,13 +271,13 @@ En Eventos aparecen estos nombres, que son los que de verdad importan porque mid
 
 ## 🧴 Productos
 
-El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 más nuevos aparecen primero con badge **🌿 Nuevo**.
+El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 más nuevos aparecen primero; el Termoprotector lleva además el distintivo **🌿 Nuevo**.
 
 | # | Producto | Precio | Contenido | Variantes |
 |---|---|---|---|---|
-| 1 | **Termoprotector** *(Nuevo)* | $28.000 | 250ml | — |
-| 2 | **Mascarilla Nutritiva** *(Nuevo)* | $25.000 | 120ml | — |
-| 3 | **Rescate Supremo** *(Nuevo)* | $40.000 | 500ml | — |
+| 1 | **Termoprotector** *(🌿 Nuevo)* | $28.000 | 250ml | — |
+| 2 | **Mascarilla Nutritiva** | $25.000 | 120ml | — |
+| 3 | **Rescate Supremo** | $40.000 | 500ml | — |
 | 4 | Shampoos | desde $32.000 | 500ml | Romero · Nutritivo · Aguacate |
 | 5 | Acondicionadores | desde $32.000 | 500ml | Romero · Nutritivo · Aguacate · Cebolla |
 | 6 | Tónicos Capilares | desde $15.000 | 120ml | Romero · 7 Aceites · Bomba |
@@ -355,7 +356,11 @@ ALMA-BOTANICA/
 │   ├── pwa.js              # Registra sw.js y ofrece instalar la página
 │   ├── analytics.js        # Google Analytics (lo carga cookies.js)
 │   ├── hotjar.js           # ContentSquare/Hotjar (lo carga cookies.js)
-│   └── catalogo.js         # Saludo personalizado en catalogo.html
+│   ├── catalogo.js         # Saludo personalizado en catalogo.html
+│   └── vendor/
+│       ├── pdf-lib.min.js  # Escribe el nombre en el PDF (lo pide forms.js
+│       │                   # solo al descargar el catálogo)
+│       └── LEEME.md
 │
 ├── video/
 │   └── anuncio-alma-botanica.mp4   # El del modal de bienvenida (1,5 MB)
@@ -369,9 +374,12 @@ ALMA-BOTANICA/
 │
 ├── _headers                # Cache-Control de Cloudflare Pages para css/ y js/
 ├── robots.txt              # Permite todo el rastreo, incluidos bots de IA
-├── sitemap.xml             # Solo la portada (el resto lleva noindex)
+├── sitemap.xml             # La portada y el catálogo (lo legal y la 404 llevan noindex)
 ├── llms.txt                # Resumen del negocio para asistentes de IA
 ├── site.webmanifest        # Iconos y datos de PWA
+├── favicon.ico, favicon.png, apple-touch-icon.png,
+│   icon-192.png, icon-512.png   # Iconos de pestaña y de app (PNG a propósito)
+├── googleb9bed816d05afe45.html  # Verificación de Search Console: NO borrar
 │
 └── img/
     ├── Shampoos/
@@ -483,7 +491,7 @@ historial de abajo cuenta qué trajo.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
-| **v1.3** | 14 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Además:** PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta, ids únicos en los comparadores y enlaces de Instagram sin rastreadores. |
+| **v1.3** | 14 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Además:** PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta (y el título de la sección ya no queda bajo la cabecera), ids únicos en los comparadores, enlaces de Instagram sin rastreadores, el contador del carrito ya no muestra un "0" con el carrito vacío, el carrito cerrado no recibe el foco del tabulador, Escape o un clic fuera de "¿Agregar uno más?" ya no abren el carrito, el anuncio en video ya no se abre encima del banner de cookies, y el distintivo de versión ya no queda bajo el menú. |
 | **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
 | **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
 | **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video y funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, reseñas, funcionamiento sin internet e instalable, comparador antes/después, datos de entrega y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
@@ -555,7 +563,7 @@ grep -oh '?v=[0-9]\+' *.html js/*.js sw.js | sort -u   # una sola línea
 grep -n "VERSION = " js/cookies.js sw.js                # la misma fecha
 ```
 
-### 2. Los precios viven en CUATRO sitios, más el PDF
+### 2. Los precios viven en CINCO sitios, más el PDF
 
 | Dónde | Qué es |
 |---|---|
@@ -563,6 +571,7 @@ grep -n "VERSION = " js/cookies.js sw.js                # la misma fecha
 | Las tarjetas de `index.html` (`.pc-price-amount`) | Lo que se ve en el grid |
 | El JSON-LD `hasOfferCatalog` del `<head>` | Lo que lee Google |
 | La tabla de `llms.txt` | Lo que leen los asistentes de IA |
+| La tabla "Productos" de este README | La documentación |
 
 Tienen que coincidir. El precio mínimo de los kits ("desde $60.000") sale
 además en la pregunta frecuente de los kits, que está dos veces (ver la
@@ -593,14 +602,19 @@ explicarlo en `privacidad.html` (sección 2). Hoy son: `botanica_cart_v1`,
 `alma_cookies_consent_v1`, `botanica_entrega_v1`, `botanica_instalar_no`,
 `botanica_anuncio_visto`, `botanica_avisos_off` y la copia de `sw.js`.
 
-### 6. El carrito repinta su pie entero
+### 6. El carrito se repinta entero, y su pie no se desplaza
 
-`js/cart.js` vuelve a pintar el pie del carrito cada vez que cambia algo, y
-eso borra lo que hubiera dentro. Por eso los bloques de regalo y de datos de
-entrega (`js/extras.js`) se montan de nuevo cada vez que `cart.js` lanza el
-evento `alma:carrito-pintado`, y lo escrito se guarda en memoria, no en el
-formulario. Cualquier cosa nueva que vaya en el pie del carrito tiene que
-seguir el mismo camino.
+`js/cart.js` vuelve a pintar la lista y el pie del carrito cada vez que
+cambia algo, y eso borra lo que hubiera dentro. Por eso los bloques de regalo
+y de datos de entrega (`js/extras.js`) se montan de nuevo cada vez que
+`cart.js` lanza el evento `alma:carrito-pintado`, y lo escrito se guarda en
+memoria, no en el formulario.
+
+Esos bloques van **al final de la lista** (`#cartBody`, que hace scroll) y
+**no en el pie**: el pie no se desplaza, y con ellos dentro el botón "Enviar
+pedido por WhatsApp" quedaba fuera de la pantalla en celulares de pantalla
+corta. Cualquier cosa nueva que se añada al carrito tiene que seguir el mismo
+camino, y hay que probarla a 320×568, 360×640 y 375×667.
 
 ---
 
@@ -752,8 +766,13 @@ Se dejan anotados porque son el tipo de cosa que vuelve a aparecer:
 - **Los campos de entrega y regalo desaparecían.** Se montaban solo al pulsar
   el icono del carrito y el pie se repinta en cada cambio: no salían desde
   "Ver carrito", se borraban al cambiar una cantidad y la casilla de regalo
-  volvía desmarcada mientras el pedido seguía yendo como regalo. Ver la regla 6
-  de "Cosas que hay que recordar al editar".
+  volvía desmarcada mientras el pedido seguía yendo como regalo. Y al
+  arreglarlo salió otro: puestos en el pie, que no se desplaza, empujaban el
+  botón de enviar fuera de la pantalla en celulares de 568 a 667 px de alto.
+  Ver la regla 6 de "Cosas que hay que recordar al editar".
+- **El anuncio en video tapaba el banner de cookies.** Un plazo de respaldo
+  de 6 s lo abría aunque la persona aún no hubiera decidido. Ahora el
+  respaldo solo actúa si el banner ya no está.
 - **`[hidden]` no escondía nada** en los campos del modo regalo, porque una clase
   con `display:flex` le gana al `[hidden]` del navegador.
 
