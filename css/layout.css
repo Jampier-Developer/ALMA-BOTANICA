@@ -1783,3 +1783,47 @@ body.ck-abierto .pwa-aviso{bottom:9.5rem}
   .rs-nota{font-size:2.4rem}
   .rs-card{padding:1.2rem 1.1rem}
 }
+
+/* ═══════════════════════════════════════════════════
+   CAPAS CERRADAS: NI SE TOCAN NI SE ENFOCAN
+   Las ventanas y avisos se esconden con opacity:0 para poder
+   desvanecerse, pero eso solo no basta:
+   - la foto activa de la ficha lleva pointer-events:auto, así que, ya
+     cerrada, seguía encima de la página tragándose los toques (se
+     quedaba muerta una franja del grid y del menú del celular);
+   - sus botones y campos seguían recibiendo el foco con el tabulador
+     sin verse (Enter sobre "Agregar al carrito" metía un producto).
+   visibility:hidden resuelve las dos cosas. Se aplica cuando termina el
+   desvanecido (el retardo es la misma duración) y se quita al instante
+   al abrir. Mismo patrón que .cart-overlay y .mob-menu.
+   ═══════════════════════════════════════════════════ */
+.modal-overlay{visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
+.modal-overlay.open{visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
+.lb-overlay{visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s}
+.lb-overlay.open{visibility:visible;transition:opacity .3s ease,visibility 0s}
+.rc-lightbox{visibility:hidden;transition:opacity .3s var(--ease),visibility 0s linear .3s}
+.rc-lightbox.open{visibility:visible;transition:opacity .3s var(--ease),visibility 0s}
+.cart-confirm-overlay{visibility:hidden;transition:opacity .22s var(--ease),visibility 0s linear .22s}
+.cart-confirm-overlay.open{visibility:visible;transition:opacity .22s var(--ease),visibility 0s}
+.ann-overlay{visibility:hidden;transition:opacity .45s var(--ease),visibility 0s linear .45s}
+.ann-overlay.open{visibility:visible;transition:opacity .45s var(--ease),visibility 0s}
+.cat-wrap{visibility:hidden;transition:transform .4s var(--ease),opacity .32s var(--ease),visibility 0s linear .4s}
+.cat-wrap.vis{visibility:visible;transition:transform .4s var(--ease),opacity .32s var(--ease),visibility 0s}
+.ps-aviso{visibility:hidden;transition:opacity .45s var(--ease),transform .45s var(--ease),visibility 0s linear .45s}
+.ps-aviso.vis{visibility:visible;transition:opacity .45s var(--ease),transform .45s var(--ease),visibility 0s}
+.pwa-aviso{visibility:hidden;transition:opacity .4s var(--ease),transform .4s var(--ease),visibility 0s linear .4s}
+.pwa-aviso.vis{visibility:visible;transition:opacity .4s var(--ease),transform .4s var(--ease),visibility 0s}
+/* El aviso oscuro de abajo es solo un mensaje: nunca debe tapar clics */
+#toast{pointer-events:none}
+@media (prefers-reduced-motion:reduce){
+  .ps-aviso{transition:opacity .3s ease,visibility 0s linear .3s}
+  .ps-aviso.vis{transition:opacity .3s ease,visibility 0s}
+  .ann-overlay,.ann-overlay.open{transition:none}
+}
+
+/* Safari de iPhone amplía la página al tocar un campo con letra de menos
+   de 16 px, y la deja ampliada y corrida de lado. En el celular, los
+   campos del buscador y del carrito van a 16 px. */
+@media(max-width:600px){
+  .fl-buscar input,.rg-input,.en-input{font-size:16px}
+}

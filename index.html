@@ -903,7 +903,8 @@
      esa dirección todavía no está confirmada y no se inventa.
      El iframe de Google pone cookies de terceros, así que NO se carga solo:
      js/cookies.js lo inyecta en el data-mapa cuando hay consentimiento, o
-     cuando la persona pulsa "Ver mapa" en el marcador de posición. -->
+     cuando la persona pulsa "Ver mapa" en el marcador de posición (eso
+     carga solo el mapa, sin tocar la decisión sobre la medición). -->
 <section class="sec sec-cream" id="ubicacion">
   <div class="container">
     <div class="sec-header reveal">
@@ -920,8 +921,8 @@
         <!-- Marcador de posición mientras no haya consentimiento de cookies -->
         <div class="mapa-ph">
           <span class="mapa-ph-icono" aria-hidden="true">📍</span>
-          <p class="mapa-ph-txt">El mapa lo carga Google y usa cookies de terceros.</p>
-          <button type="button" class="btn btn-primary btn-sm" data-cookie-settings>Ver mapa</button>
+          <p class="mapa-ph-txt">El mapa lo carga Google y usa cookies de terceros. Si pulsas «Ver mapa», se carga solo el mapa.</p>
+          <button type="button" class="btn btn-primary btn-sm" data-ver-mapa>Ver mapa</button>
         </div>
       </div>
 

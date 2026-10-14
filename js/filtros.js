@@ -36,6 +36,13 @@
     { id: 'dano',        icono: '💔', texto: 'Daño',        idx: [4, 7, 9, 10, 11] }
   ];
 
+  /* Minúsculas y sin tildes, en las dos puntas de la comparación: en el
+     celular casi nadie escribe "tónico" con tilde, y "tonico" tiene que
+     encontrar los tónicos igual. */
+  function plano(t) {
+    return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
   /* Texto sobre el que se busca: lo visible de la tarjeta más los
      nombres, descripciones y beneficios de sus variantes. */
   function textoDe(card) {
@@ -49,7 +56,7 @@
         return (v.name || '') + ' ' + (v.desc || '') + ' ' + (v.benefits || []).join(' ');
       }).join(' ');
     }
-    return t.toLowerCase();
+    return plano(t);
   }
 
   tarjetas.forEach(function (c) { c._busca = textoDe(c); });
@@ -80,7 +87,7 @@
   function aplicar() {
     var nec = NECESIDADES.filter(function (n) { return n.id === filtro; })[0];
     var indices = (nec && nec.idx) || null;
-    var busca = texto.trim().toLowerCase();
+    var busca = plano(texto.trim());
     var visibles = 0;
 
     tarjetas.forEach(function (c) {

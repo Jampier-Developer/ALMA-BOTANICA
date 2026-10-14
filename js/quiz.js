@@ -165,6 +165,9 @@
 
   function pintarResultado() {
     var recomendados = puntuar();
+    /* Para js/whatsapp.js: solo con el test terminado el botón flotante
+       dice "Hice el test". */
+    window.ALMA_TEST_HECHO = true;
 
     if (!recomendados.length) {
       raiz.innerHTML =
@@ -220,7 +223,10 @@
       respuestas[paso] = b.getAttribute('data-id');
       paso++;
       if (paso < PREGUNTAS.length) pintarPregunta(); else pintarResultado();
-      raiz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      /* Al principio de la tarjeta y por debajo del menú fijo. Centrarla
+         no servía con el resultado, que es más alto que la pantalla: el
+         título quedaba tapado o fuera de la vista. */
+      window.scrollTo({ top: raiz.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
       if (typeof window.gtag === 'function' && paso === PREGUNTAS.length) {
         window.gtag('event', 'quiz_completado', { respuestas: respuestas.join('|') });
       }

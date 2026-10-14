@@ -222,7 +222,7 @@ En Colombia el consentimiento debe ser **previo, expreso e informado**: no vale 
 Por eso el sitio funciona así:
 
 1. La primera vez que alguien entra, aparece un banner abajo con dos botones: **Aceptar** y **Rechazar**, del mismo tamaño y con el mismo peso visual.
-2. **Hasta que no elija, no se carga la medición ni el mapa**: ni Google Analytics, ni ContentSquare, ni el mapa de Google.
+2. **Hasta que no elija, no se carga la medición ni el mapa**: ni Google Analytics, ni ContentSquare, ni el mapa de Google. El botón «Ver mapa» de la sección de ubicación carga **solo el mapa**, como un sí puntual, sin guardar ninguna decisión ni activar la medición.
 3. Si acepta, se activan en ese momento. Si rechaza, no se activa nada y el banner no vuelve a aparecer.
 4. La decisión se guarda en su propio navegador y puede cambiarla cuando quiera con el enlace **"Configuración de cookies"** que está en el pie de todas las páginas.
 
@@ -252,7 +252,7 @@ Lo más útil de mirar:
 En Eventos aparecen estos nombres, que son los que de verdad importan porque miden ventas potenciales:
 
 - `whatsapp_flotante` — clics en el botón flotante de WhatsApp (el redondo de la esquina)
-- `pedido_whatsapp` — clics en "Pedir por WhatsApp" desde el carrito o desde un producto
+- `pedido_whatsapp` — clics en "Enviar pedido por WhatsApp" (carrito) o en "Pedir por WhatsApp" (ficha de un producto)
 - `whatsapp_enlace` — cualquier otro enlace a WhatsApp del sitio
 - `como_llegar_mapa` — clics en "Cómo llegar" en el mapa
 
@@ -304,7 +304,7 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 | **ContentSquare / Hotjar** | Mapas de calor y grabaciones de sesión |
 | **Marcellus** | Fuente de títulos (Google Fonts) |
 | **Poppins** | Fuente de cuerpo (Google Fonts) |
-| **WebP** | Formato de todas las imágenes del sitio |
+| **WebP** | Formato de todas las fotos del sitio (los iconos son PNG/ICO a propósito) |
 
 > Sin frameworks, sin npm, sin webpack, sin paso de compilación. Solo archivos estáticos.
 >
@@ -491,7 +491,7 @@ historial de abajo cuenta qué trajo.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
-| **v1.3** | 14 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Además:** PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta (y el título de la sección ya no queda bajo la cabecera), ids únicos en los comparadores, enlaces de Instagram sin rastreadores, el contador del carrito ya no muestra un "0" con el carrito vacío, el carrito cerrado no recibe el foco del tabulador, Escape o un clic fuera de "¿Agregar uno más?" ya no abren el carrito, el anuncio en video ya no se abre encima del banner de cookies, y el distintivo de versión ya no queda bajo el menú. |
+| **v1.3** | 14 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Ventanas:** la foto de una ficha ya cerrada seguía encima de la página y dejaba muerta una franja del grid y del menú del celular; ahora ninguna capa cerrada se toca ni se enfoca, el foco entra en cada ventana y vuelve al cerrar, Escape cierra solo la de arriba y el scroll de fondo no se suelta mientras quede una abierta. "Ver producto" desde el carrito abre la presentación que está en el carrito. **Además:** el buscador encuentra sin tildes ("tonico"), el test lleva al principio del resultado, el botón de WhatsApp ya no dice "Hice el test" sin haberlo hecho, «Ver mapa» carga solo el mapa, los nombres largos ya no se cortan a media palabra en la portada del PDF, la 404 funciona en cualquier dirección, los campos del celular no hacen zoom en iPhone, PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta (y el título de la sección ya no queda bajo la cabecera), ids únicos en los comparadores, enlaces de Instagram sin rastreadores, el contador del carrito ya no muestra un "0" con el carrito vacío, el carrito cerrado no recibe el foco del tabulador, Escape o un clic fuera de "¿Agregar uno más?" ya no abren el carrito, el anuncio en video ya no se abre encima del banner de cookies, y el distintivo de versión ya no queda bajo el menú. |
 | **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
 | **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
 | **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video y funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, reseñas, funcionamiento sin internet e instalable, comparador antes/después, datos de entrega y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
@@ -536,7 +536,7 @@ lleve un mes ahí se nota.
 
 ## ⚙️ Cosas que hay que recordar al editar
 
-Seis reglas que, si se olvidan, rompen algo sin avisar:
+Ocho reglas que, si se olvidan, rompen algo sin avisar:
 
 ### 1. Al tocar `css/` o `js/`: subir la versión (son tres números)
 
@@ -616,6 +616,35 @@ pedido por WhatsApp" quedaba fuera de la pantalla en celulares de pantalla
 corta. Cualquier cosa nueva que se añada al carrito tiene que seguir el mismo
 camino, y hay que probarla a 320×568, 360×640 y 375×667.
 
+
+### 7. Ventanas y avisos: se esconden con `visibility`, no solo con `opacity`
+
+Todas las capas que se abren y cierran (ficha de producto, catálogo,
+visores de fotos, carrito, su confirmación, anuncio, menú del celular,
+avisos y banner de cookies) se esconden con `opacity:0` **y**
+`visibility:hidden`, con el bloque "CAPAS CERRADAS" al final de
+`css/layout.css`. Solo con `opacity` la foto de la ficha cerrada seguía
+encima de la página tragándose los toques, y los botones invisibles
+seguían recibiendo el foco del tabulador. Una capa nueva tiene que entrar
+en ese bloque.
+
+Y en JavaScript se abren y cierran con `window.almaCapas` (al principio de
+`js/interactions.js`):
+
+- `almaCapas.abrir(capa, primero)` lleva el foco dentro y lo mantiene ahí
+  con Tab; `almaCapas.cerrar(capa)` se lo devuelve a quien lo tenía.
+- `almaCapas.ajustarScroll()` en vez de `document.body.style.overflow = ''`:
+  solo suelta el scroll de fondo cuando no queda ninguna capa abierta.
+  Si una capa nueva no está en su lista `ABIERTAS`, hay que añadirla.
+- Escape cierra solo la capa de arriba.
+
+### 8. La 404 usa rutas absolutas
+
+`404.html` lleva todas sus rutas desde la raíz (`/css/…`, `/img/…`, `/`).
+Cloudflare Pages la sirve en cualquier dirección que no existe, también
+dentro de carpetas inventadas (`/productos/algo`), y ahí una ruta relativa
+no llega. Por lo mismo, `js/cookies.js` y `js/pwa.js` usan rutas absolutas
+para lo que inyectan.
 ---
 
 ## 📕 El catálogo en PDF
@@ -773,6 +802,10 @@ Se dejan anotados porque son el tipo de cosa que vuelve a aparecer:
 - **El anuncio en video tapaba el banner de cookies.** Un plazo de respaldo
   de 6 s lo abría aunque la persona aún no hubiera decidido. Ahora el
   respaldo solo actúa si el banner ya no está.
+- **Una foto invisible tapaba la página.** La foto activa de la ficha lleva
+  `pointer-events:auto` y, con la ficha cerrada solo con `opacity:0`, seguía
+  encima del grid: tras abrir y cerrar cualquier producto, una franja de la
+  pantalla (y del menú del celular) dejaba de responder. Ver la regla 7.
 - **`[hidden]` no escondía nada** en los campos del modo regalo, porque una clase
   con `display:flex` le gana al `[hidden]` del navegador.
 

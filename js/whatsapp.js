@@ -25,10 +25,15 @@
     ubicacion:  'Hola Rosa! 👋 Quiero saber el horario y cómo hago para recibir mi pedido 🌿'
   };
 
+  /* Mientras el test no esté terminado, el mensaje no puede decir que
+     se hizo: basta con pasar por la sección para que cambie el botón. */
+  var TEST_SIN_TERMINAR = 'Hola Rosa! 👋 Estoy viendo el test de la página y quiero que me ayudes a elegir 🌿';
+
   var seccionActual = 'inicio';
 
   function texto() {
     var base = POR_SECCION[seccionActual] || POR_SECCION.inicio;
+    if (seccionActual === 'test' && !window.ALMA_TEST_HECHO) base = TEST_SIN_TERMINAR;
 
     /* Si ya tiene productos en el carrito, se lo dice a Rosa: es la
        persona con más intención de compra de toda la página. */

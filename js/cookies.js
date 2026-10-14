@@ -43,15 +43,16 @@
   var ACEPTADO = 'aceptado';
   var RECHAZADO = 'rechazado';
 
-  /* Rutas de los scripts de medición. Son relativas porque todas las
-     páginas que cargan este archivo están en la raíz del sitio.
+  /* Rutas de los scripts de medición. Son absolutas (empiezan por /)
+     porque la 404 se sirve en cualquier dirección, también dentro de
+     carpetas que no existen, y ahí una ruta relativa no llegaría.
 
      El ?v= tiene que coincidir con el que llevan los <link> y <script>
      del HTML: js/ se guarda en caché para siempre y la versión es lo
      único que hace que el navegador vuelva a pedir el archivo. */
   var VERSION = '20261014';
-  var SCRIPT_ANALYTICS = 'js/analytics.js?v=' + VERSION;
-  var SCRIPT_CONTENTSQUARE = 'js/hotjar.js?v=' + VERSION;
+  var SCRIPT_ANALYTICS = '/js/analytics.js?v=' + VERSION;
+  var SCRIPT_CONTENTSQUARE = '/js/hotjar.js?v=' + VERSION;
 
   /* ── Lectura y escritura de la decisión ─────────────────────────
      Todo va envuelto en try/catch: en navegación privada o con las
@@ -197,9 +198,12 @@
       'box-shadow:0 -6px 28px rgba(74,58,26,.14);',
       'padding:1rem 1.25rem calc(1rem + env(safe-area-inset-bottom,0px));',
       'font-family:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;',
-      'transform:translateY(110%);transition:transform .38s cubic-bezier(.2,.9,.3,1);',
+      /* visibility:hidden cuando ya está fuera de la pantalla: si no, sus
+         botones seguían recibiendo el foco del tabulador sin verse. */
+      'transform:translateY(110%);visibility:hidden;',
+      'transition:transform .38s cubic-bezier(.2,.9,.3,1),visibility 0s linear .38s;',
       '}',
-      '.ck-banner.ck-visible{transform:translateY(0)}',
+      '.ck-banner.ck-visible{transform:translateY(0);visibility:visible;transition:transform .38s cubic-bezier(.2,.9,.3,1),visibility 0s}',
 
       /* Distribución: texto a la izquierda, botones a la derecha */
       '.ck-inner{',
@@ -307,7 +311,7 @@
             'Nos ayudan a saber cómo se usa la página para mejorarla. ' +
             'No activamos la medición ni el mapa hasta que tú decidas. ' +
             'Puedes cambiar de opinión cuando quieras desde el pie de página. ' +
-            '<a href="cookies.html">Ver política de cookies</a>.' +
+            '<a href="/cookies.html">Ver política de cookies</a>.' +
           '</p>' +
         '</div>' +
         '<div class="ck-botones">' +
@@ -394,6 +398,17 @@
       botones[i].addEventListener('click', function (ev) {
         ev.preventDefault();
         mostrarBanner();
+      });
+    }
+    /* "Ver mapa" es un sí puntual para ese contenido: carga el mapa y
+       nada más. No guarda ninguna decisión ni activa la medición; para
+       eso está el banner. Antes este botón solo reabría el banner y para
+       ver el mapa había que aceptar también Analytics y ContentSquare. */
+    var mapas = document.querySelectorAll('[data-ver-mapa]');
+    for (var j = 0; j < mapas.length; j++) {
+      mapas[j].addEventListener('click', function (ev) {
+        ev.preventDefault();
+        activarMapa();
       });
     }
   }

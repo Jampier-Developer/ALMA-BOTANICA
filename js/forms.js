@@ -20,8 +20,15 @@
   }
 
   // MODALS
-  function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+  function openModal(id, primero){
+    const el = document.getElementById(id);
+    el.classList.add('open');
+    document.body.style.overflow='hidden';
+    if (window.almaCapas) window.almaCapas.abrir(el, primero);
+  }
   function closeModal(id){
+    const el = document.getElementById(id);
+    if (!el || !el.classList.contains('open')) return;
     if(id === 'productModal'){
       clearInterval(carouselInterval);
       document.querySelector('.modal-box')?.classList.remove('kit-modal');
@@ -29,11 +36,15 @@
       // Cierra el lightbox interno si quedó abierto
       const lbOv = document.getElementById('lbOverlay');
       const lbIm = document.getElementById('lbImg');
-      if(lbOv){ lbOv.classList.remove('open'); }
+      if(lbOv && lbOv.classList.contains('open')){
+        lbOv.classList.remove('open');
+        if (window.almaCapas) window.almaCapas.cerrar(lbOv);
+      }
       if(lbIm){ lbIm.style.transform=''; lbIm.style.cursor=''; }
     }
-    document.getElementById(id).classList.remove('open');
-    document.body.style.overflow='';
+    el.classList.remove('open');
+    if (window.almaCapas) { window.almaCapas.ajustarScroll(); window.almaCapas.cerrar(el); }
+    else document.body.style.overflow='';
   }
 
   document.querySelectorAll('.modal-overlay').forEach(m => {
@@ -41,8 +52,12 @@
   });
   document.addEventListener('keydown', e => {
     if(e.key === 'Escape'){
-      /* Si encima está la confirmación del carrito, Escape es para ella */
-      if(document.getElementById('cartConfirmOverlay')?.classList.contains('open')) return;
+      /* Escape cierra solo la capa de arriba. Si encima de la ficha está
+         el visor de fotos, la confirmación o el carrito, Escape es para
+         ellos (cada uno tiene su propio manejador). */
+      const encima = ['lbOverlay','cartConfirmOverlay','cartOverlay']
+        .some(id => document.getElementById(id)?.classList.contains('open'));
+      if(encima) return;
       closeModal('productModal'); closeModal('catalogModal');
     }
   });
@@ -55,7 +70,7 @@
       document.getElementById('cmSuccess').style.display  = 'none';
       document.getElementById('catalogForm').style.display = 'block';
       document.getElementById('cmDownloadOk').style.display = 'none';
-      openModal('catalogModal');
+      openModal('catalogModal', document.getElementById('cmName'));
     });
   });
 
@@ -270,105 +285,113 @@
   const svgPrev = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
   const svgNext = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 
+  /* Abre la ficha del producto idx. Si se pasa el nombre de una
+     variante (lo que guarda el carrito), la ficha abre en esa variante
+     y no en la primera: antes "Ver producto" desde el carrito enseñaba
+     otra presentación con otro precio. */
+  function abrirProducto(idx, varianteNombre) {
+    const p = PRODUCTS[idx];
+    if(!p) return;
+
+    document.getElementById('modalTag').textContent = p.tag;
+
+    const imgWrap = document.getElementById('modalImg');
+    clearInterval(carouselInterval);
+    carouselInterval = null;
+
+    const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
+    const imgs = hasVariants ? p.variants.map(v => v.image) : (p.images || []);
+    const multi = imgs.length > 1;
+    const inicio = hasVariants ? Math.max(0, p.variants.findIndex(v => v.name === varianteNombre)) : 0;
+
+    imgWrap.style.background = imgs.length > 0 ? '#fff' : p.bg;
+    imgWrap.style.position   = 'relative';
+    imgWrap.style.fontSize   = '';
+
+    imgWrap.innerHTML = imgs.length === 0
+    ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p><p class="mcp-sub">En proceso...</p></div>'
+    : '<div class="modal-carousel">'
+      + '<div class="mc-track">'
+      + imgs.map((src, i) => `<div class="mc-slide${i === inicio ? ' active' : ''}"><img src="${src}" alt="${hasVariants ? p.variants[i].name : p.name + ' — foto ' + (i + 1)}"></div>`).join('')
+      + '</div>'
+      + (multi
+          ? `<button class="mc-btn mc-prev" aria-label="Anterior">${svgPrev}</button>`
+            + `<button class="mc-btn mc-next" aria-label="Siguiente">${svgNext}</button>`
+            + '<div class="mc-dots">'
+            + imgs.map((_, i) => `<button class="mc-dot${i === inicio ? ' active' : ''}" data-slide="${i}" aria-label="Foto ${i + 1}"></button>`).join('')
+            + '</div>'
+          : '')
+      + '</div>';
+
+    function updateInfo(info) {
+      const icon = info.icon ? `<span class="modal-icon">${info.icon}</span>` : '';
+      document.getElementById('modalTitle').innerHTML = info.name + icon;
+      document.getElementById('modalDesc').textContent = info.desc;
+      document.getElementById('modalBenefits').innerHTML = info.benefits.map(b => `<li>${b}</li>`).join('');
+      document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--bronze)">${info.price}</span>`;
+      const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
+      document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+
+      // Actualizar datos del carrito con el producto/variante actual
+      const activeImg = document.querySelector('#modalImg .mc-slide.active img');
+      _cartCurrent = {
+        name:       info.name,
+        price:      info.price || '',
+        priceNum:   parsePriceNum(info.price || ''),
+        image:      activeImg ? (activeImg.getAttribute('src') || activeImg.src) : '',
+        tag:        p.tag || '',
+        productIdx: idx,
+      };
+      // Resetear botón si cambió de variante
+      const cartBtn = document.getElementById('modalAddCart');
+      const cartTxt = cartBtn?.querySelector('.cart-btn-text');
+      if(cartBtn){ cartBtn.classList.remove('added'); }
+      if(cartTxt){ cartTxt.textContent = 'Agregar al carrito'; }
+    }
+
+    updateInfo(hasVariants ? p.variants[inicio] : p);
+
+    // Brillo dorado en el modal solo para Kits
+    const modalBox = document.querySelector('.modal-box');
+    const kitWrap  = document.getElementById('kitModalWrap');
+    if(idx === 5){ modalBox?.classList.add('kit-modal'); kitWrap?.classList.add('kit-active'); }
+    else{ modalBox?.classList.remove('kit-modal'); kitWrap?.classList.remove('kit-active'); }
+
+    if (multi) {
+      let cur = inicio;
+      const slides  = imgWrap.querySelectorAll('.mc-slide');
+      const dotBtns = imgWrap.querySelectorAll('.mc-dot');
+      const carousel = imgWrap.querySelector('.modal-carousel');
+      const total    = slides.length;
+
+      function goTo(n) {
+        slides[cur].classList.remove('active');
+        cur = ((n % total) + total) % total;
+        slides[cur].classList.add('active');
+        dotBtns.forEach((d, i) => d.classList.toggle('active', i === cur));
+        if (hasVariants) updateInfo(p.variants[cur]);
+      }
+
+      imgWrap.querySelector('.mc-prev').addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
+      imgWrap.querySelector('.mc-next').addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
+      dotBtns.forEach(d => d.addEventListener('click', e => { e.stopPropagation(); goTo(+d.dataset.slide); }));
+
+      // Sin auto-play en modal — solo navegación manual
+      let mcTouchX = 0;
+      carousel.addEventListener('touchstart', e => { mcTouchX = e.touches[0].clientX; }, {passive:true});
+      carousel.addEventListener('touchend', e => {
+        const diff = mcTouchX - e.changedTouches[0].clientX;
+        if(Math.abs(diff) > 35) goTo(diff > 0 ? cur + 1 : cur - 1);
+      }, {passive:true});
+    }
+
+    openModal('productModal');
+  }
+
+  window.almaAbrirProducto = abrirProducto;
+
   document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const idx = parseInt(card.dataset.product);
-      const p = PRODUCTS[idx];
-      if(!p) return;
-
-      document.getElementById('modalTag').textContent = p.tag;
-
-      const imgWrap = document.getElementById('modalImg');
-      clearInterval(carouselInterval);
-      carouselInterval = null;
-
-      const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
-      const imgs = hasVariants ? p.variants.map(v => v.image) : (p.images || []);
-      const multi = imgs.length > 1;
-
-      imgWrap.style.background = imgs.length > 0 ? '#fff' : p.bg;
-      imgWrap.style.position   = 'relative';
-      imgWrap.style.fontSize   = '';
-
-      imgWrap.innerHTML = imgs.length === 0
-      ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p><p class="mcp-sub">En proceso...</p></div>'
-      : '<div class="modal-carousel">'
-        + '<div class="mc-track">'
-        + imgs.map((src, i) => `<div class="mc-slide${i === 0 ? ' active' : ''}"><img src="${src}" alt="foto ${i + 1}"></div>`).join('')
-        + '</div>'
-        + (multi
-            ? `<button class="mc-btn mc-prev" aria-label="Anterior">${svgPrev}</button>`
-              + `<button class="mc-btn mc-next" aria-label="Siguiente">${svgNext}</button>`
-              + '<div class="mc-dots">'
-              + imgs.map((_, i) => `<button class="mc-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Foto ${i + 1}"></button>`).join('')
-              + '</div>'
-            : '')
-        + '</div>';
-
-      function updateInfo(info) {
-        const icon = info.icon ? `<span class="modal-icon">${info.icon}</span>` : '';
-        document.getElementById('modalTitle').innerHTML = info.name + icon;
-        document.getElementById('modalDesc').textContent = info.desc;
-        document.getElementById('modalBenefits').innerHTML = info.benefits.map(b => `<li>${b}</li>`).join('');
-        document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--bronze)">${info.price}</span>`;
-        const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
-        document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
-
-        // Actualizar datos del carrito con el producto/variante actual
-        const activeImg = document.querySelector('#modalImg .mc-slide.active img');
-        _cartCurrent = {
-          name:       info.name,
-          price:      info.price || '',
-          priceNum:   parsePriceNum(info.price || ''),
-          image:      activeImg ? (activeImg.getAttribute('src') || activeImg.src) : '',
-          tag:        p.tag || '',
-          productIdx: idx,
-        };
-        // Resetear botón si cambió de variante
-        const cartBtn = document.getElementById('modalAddCart');
-        const cartTxt = cartBtn?.querySelector('.cart-btn-text');
-        if(cartBtn){ cartBtn.classList.remove('added'); }
-        if(cartTxt){ cartTxt.textContent = 'Agregar al carrito'; }
-      }
-
-      updateInfo(hasVariants ? p.variants[0] : p);
-
-      // Brillo dorado en el modal solo para Kits
-      const modalBox = document.querySelector('.modal-box');
-      const kitWrap  = document.getElementById('kitModalWrap');
-      if(idx === 5){ modalBox?.classList.add('kit-modal'); kitWrap?.classList.add('kit-active'); }
-      else{ modalBox?.classList.remove('kit-modal'); kitWrap?.classList.remove('kit-active'); }
-
-      if (multi) {
-        let cur = 0;
-        const slides  = imgWrap.querySelectorAll('.mc-slide');
-        const dotBtns = imgWrap.querySelectorAll('.mc-dot');
-        const carousel = imgWrap.querySelector('.modal-carousel');
-        const total    = slides.length;
-
-        function goTo(n) {
-          slides[cur].classList.remove('active');
-          cur = ((n % total) + total) % total;
-          slides[cur].classList.add('active');
-          dotBtns.forEach((d, i) => d.classList.toggle('active', i === cur));
-          if (hasVariants) updateInfo(p.variants[cur]);
-        }
-
-        imgWrap.querySelector('.mc-prev').addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
-        imgWrap.querySelector('.mc-next').addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
-        dotBtns.forEach(d => d.addEventListener('click', e => { e.stopPropagation(); goTo(+d.dataset.slide); }));
-
-        // Sin auto-play en modal — solo navegación manual
-        let mcTouchX = 0;
-        carousel.addEventListener('touchstart', e => { mcTouchX = e.touches[0].clientX; }, {passive:true});
-        carousel.addEventListener('touchend', e => {
-          const diff = mcTouchX - e.changedTouches[0].clientX;
-          if(Math.abs(diff) > 35) goTo(diff > 0 ? cur + 1 : cur - 1);
-        }, {passive:true});
-      }
-
-      openModal('productModal');
-    });
+    card.addEventListener('click', () => abrirProducto(parseInt(card.dataset.product, 10)));
   });
 
   // CATALOG FORM — entrega el PDF del catálogo
@@ -395,10 +418,22 @@
       .replace(/[^\x20-\x7E]/g, '')      // cualquier otro no-ASCII fuera
       .replace(/[\\/:*?"<>|]/g, '')      // lo que no admite un sistema de archivos
       .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 40)
       .trim();
+    limpio = recortarNombre(limpio, 44);
     return limpio ? limpio + ' - ' + base : base;
+  }
+
+  /* Recorta un nombre largo en un espacio, nunca a media palabra, y no
+     deja colgando al final un "de", "la", "del" o "y" que se quedó sin su
+     apellido ("María Fernanda Gutiérrez Rodríguez de la…"). */
+  function recortarNombre(texto, max) {
+    let t = texto;
+    if (t.length > max) {
+      const corte = t.lastIndexOf(' ', max);
+      t = t.slice(0, corte > 0 ? corte : max);
+      t = t.replace(/(\s+(de|del|la|las|los|y|e))+$/i, '');
+    }
+    return t.trim();
   }
   const catalogForm = document.getElementById('catalogForm');
   const cmSubmit    = document.getElementById('cmSubmit');
@@ -485,16 +520,28 @@
     /* Courier solo entiende Latin-1: si alguien escribe un emoji o un
        carácter de otro alfabeto, pdf-lib lanza y perderíamos la descarga
        entera por un adorno. Se limpia a lo que la fuente sí sabe pintar. */
-    const limpio = (nombre || '')
+    let limpio = (nombre || '')
       .replace(/[^ -~ -ÿ]/g, '')
       .replace(/\s+/g, ' ')
       .trim()
-      .slice(0, 28)
       .toUpperCase();
+    /* Dos nombres y dos apellidos es lo normal en Colombia: se deja
+       hasta 44 letras y, si hay que cortar, se corta en un espacio, nunca
+       a media palabra (antes salía "PARA MARÍA FERNANDA GUTIÉRREZ ROD"). */
+    limpio = recortarNombre(limpio, 44);
     if (!limpio) throw new Error('nombre vacío');
 
     const texto = 'PARA ' + limpio;
-    const tam = 11;
+    /* Si un nombre largo no cabe con holgura en la portada, la letra se
+       achica un poco en vez de salirse de la hoja. */
+    const ANCHO_MAX = 470;
+    const medida = t => {
+      let w = 0;
+      for (let i = 0; i < texto.length; i++) w += fuente.widthOfTextAtSize(texto[i], t) + (i < texto.length - 1 ? 2.6 : 0);
+      return w;
+    };
+    let tam = 11;
+    while (tam > 8 && medida(tam) > ANCHO_MAX) tam -= 0.5;
     const espaciado = 2.6;           /* el mismo aire entre letras de la portada */
     const dorado = PDFLib.rgb(0.910, 0.788, 0.478);   /* --gold-light #e8c97a */
     const y = 668;                   /* 22 pt por encima del logo */
@@ -650,11 +697,16 @@
       showImg(startIdx);
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
+      if (window.almaCapas) window.almaCapas.abrir(overlay, lbClose);
     }
 
     function closeLb(){
+      if (!overlay.classList.contains('open')) return;
       overlay.classList.remove('open');
-      document.body.style.overflow = '';
+      /* El visor se abre encima de la ficha: el scroll sigue bloqueado
+         mientras la ficha esté abierta. */
+      if (window.almaCapas) { window.almaCapas.ajustarScroll(); window.almaCapas.cerrar(overlay); }
+      else document.body.style.overflow = '';
       scale = 1;
       lbImg.style.transform = '';
       lbImg.style.cursor = '';

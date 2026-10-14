@@ -1,3 +1,91 @@
+/* ── CAPAS ABIERTAS: SCROLL DE FONDO Y FOCO ──────────────────────
+   La página tiene varias ventanas que se pueden abrir unas encima de
+   otras (la ficha de un producto, su visor de fotos, el carrito, la
+   confirmación del carrito, el menú del celular…). Antes cada una, al
+   cerrarse, devolvía el scroll de la página aunque quedara otra abierta
+   debajo, y el foco del teclado se quedaba detrás del velo.
+
+   window.almaCapas lo centraliza:
+   - ajustarScroll(): bloquea el scroll del fondo si queda alguna capa
+     abierta y lo suelta solo cuando no queda ninguna.
+   - abrir(capa, primero): recuerda quién tenía el foco, lo lleva dentro
+     de la capa y lo mantiene ahí con Tab mientras sea la de arriba.
+   - cerrar(capa): devuelve el foco a quien lo tenía (o a la capa que
+     quede debajo si ese elemento ya no existe).
+   Este archivo se carga antes que cart.js y forms.js, que lo usan. */
+window.almaCapas = (function () {
+  var ABIERTAS = '.modal-overlay.open, .cart-overlay.open, .cart-confirm-overlay.open, ' +
+                 '.lb-overlay.open, .rc-lightbox.open, .ann-overlay.open, .mob-menu.open';
+  var ENFOCABLES = 'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+  var pila = [];
+
+  function visible(el) {
+    if (!el || !document.contains(el) || !el.getClientRects().length) return false;
+    return getComputedStyle(el).visibility !== 'hidden';
+  }
+  function enfocables(capa) {
+    return [].slice.call(capa.querySelectorAll(ENFOCABLES)).filter(visible);
+  }
+  function enfocar(el) {
+    try { el.focus({ preventScroll: true }); } catch (_) { el.focus(); }
+  }
+
+  function ajustarScroll() {
+    document.body.style.overflow = document.querySelector(ABIERTAS) ? 'hidden' : '';
+  }
+
+  function abrir(capa, primero, opciones) {
+    if (!capa) return;
+    for (var i = pila.length - 1; i >= 0; i--) if (pila[i].capa === capa) pila.splice(i, 1);
+    pila.push({ capa: capa, origen: document.activeElement, atrapar: !(opciones && opciones.atrapar === false) });
+    /* Se espera un cuadro: la capa acaba de hacerse visible y, en el
+       carrito, su contenido se acaba de pintar. */
+    requestAnimationFrame(function () {
+      var destino = (primero && visible(primero)) ? primero : enfocables(capa)[0];
+      if (destino) enfocar(destino);
+    });
+  }
+
+  function cerrar(capa) {
+    var origen = null, pos = -1;
+    for (var i = pila.length - 1; i >= 0; i--) {
+      if (pila[i].capa === capa) { origen = pila[i].origen; pos = i; break; }
+    }
+    if (pos < 0) return;
+    pila.splice(pos, 1);
+    /* Si se cierra una capa que no es la de arriba (la confirmación que
+       abrió el carrito, por ejemplo), el foco no se toca: está en la de
+       arriba. Las capas que se abrieron desde ella heredan su origen. */
+    if (pos < pila.length) {
+      for (var j = pos; j < pila.length; j++) {
+        if (pila[j].origen && capa.contains(pila[j].origen)) pila[j].origen = origen;
+      }
+      return;
+    }
+    if (visible(origen)) { enfocar(origen); return; }
+    /* El botón de origen ya no está (se repintó o se cerró su capa):
+       el foco va a la capa que quede abierta debajo, si hay. */
+    var debajo = pila.length ? pila[pila.length - 1].capa : null;
+    var primero = debajo ? enfocables(debajo)[0] : null;
+    if (primero) enfocar(primero);
+  }
+
+  /* Tab y Mayús+Tab dan la vuelta dentro de la capa de arriba */
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || !pila.length) return;
+    var arriba = pila[pila.length - 1];
+    if (!arriba.atrapar || !arriba.capa.matches(ABIERTAS)) return;
+    var els = enfocables(arriba.capa);
+    if (!els.length) return;
+    var primero = els[0], ultimo = els[els.length - 1];
+    var dentro = arriba.capa.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === primero || !dentro)) { e.preventDefault(); enfocar(ultimo); }
+    else if (!e.shiftKey && (document.activeElement === ultimo || !dentro)) { e.preventDefault(); enfocar(primero); }
+  });
+
+  return { ajustarScroll: ajustarScroll, abrir: abrir, cerrar: cerrar };
+})();
+
 (function(){
   const progBar=document.getElementById('progBar');
   const nav=document.getElementById('mainNav');
@@ -6,17 +94,19 @@
   const hamburger=document.getElementById('hamburger');
   const mobMenu=document.getElementById('mobMenu');
   function toggleMenu(open){
+    const estaba=mobMenu.classList.contains('open');
     hamburger.classList.toggle('open',open);
     mobMenu.classList.toggle('open',open);
     hamburger.setAttribute('aria-expanded',open);
     mobMenu.setAttribute('aria-hidden',!open);
-    document.body.style.overflow=open?'hidden':'';
+    if(open){document.body.style.overflow='hidden';if(!estaba)almaCapas.abrir(mobMenu,null,{atrapar:false});}
+    else{almaCapas.ajustarScroll();if(estaba)almaCapas.cerrar(mobMenu);}
   }
   hamburger?.addEventListener('click',()=>toggleMenu(!hamburger.classList.contains('open')));
   document.querySelectorAll('.mob-link, #mobCatalogBtn').forEach(el=>{
     el.addEventListener('click',()=>toggleMenu(false));
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobMenu.classList.contains('open'))toggleMenu(false)});
 
   window.addEventListener('scroll',()=>{
     const max=document.documentElement.scrollHeight-window.innerHeight;
@@ -96,12 +186,15 @@
     if(lbNext) lbNext.style.display = single ? 'none' : '';
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
+    almaCapas.abrir(lightbox, lbClose);
   }
 
   function closeLb(){
     if(!lightbox) return;
+    if(!lightbox.classList.contains('open')) return;
     lightbox.classList.remove('open');
-    document.body.style.overflow = '';
+    almaCapas.ajustarScroll();
+    almaCapas.cerrar(lightbox);
     lbImages=[]; lbCurrent=0; lbScale=1;
     if(lbImg){ lbImg.style.transform=''; lbImg.style.cursor=''; }
   }
@@ -299,6 +392,7 @@ document.querySelectorAll('[data-open-product]').forEach(el=>{
     marcarVisto();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    window.almaCapas.abrir(overlay, cerrar);
     if (video) {
       video.muted = true;
       var intento = video.play();
@@ -333,7 +427,8 @@ document.querySelectorAll('[data-open-product]').forEach(el=>{
     if (relojCarga) clearTimeout(relojCarga);
     if (relojTope) clearTimeout(relojTope);
     overlay.classList.remove('open');
-    document.body.style.overflow = '';
+    window.almaCapas.ajustarScroll();
+    window.almaCapas.cerrar(overlay);
     if (video) { video.pause(); }
   }
 

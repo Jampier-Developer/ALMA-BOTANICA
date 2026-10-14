@@ -36,6 +36,8 @@
     if (okEl)     okEl.textContent     = okLabel;
     if (cancelEl) cancelEl.textContent = cancelLabel;
     ov.classList.add('open');
+    /* El foco va a "Cancelar": que un Enter de más no borre nada */
+    if (window.almaCapas) window.almaCapas.abrir(ov, cancelEl);
   }
 
   /* run: true = el botón de aceptar; false = el botón de cancelar;
@@ -45,10 +47,13 @@
   function closeConfirm(run) {
     const ov = document.getElementById('cartConfirmOverlay');
     if (ov) ov.classList.remove('open');
-    if (run === true  && typeof _confirmCb       === 'function') _confirmCb();
-    if (run === false && typeof _confirmCancelCb === 'function') _confirmCancelCb();
+    const cb = run === true ? _confirmCb : run === false ? _confirmCancelCb : null;
     _confirmCb       = null;
     _confirmCancelCb = null;
+    if (typeof cb === 'function') cb();
+    /* Después de la acción: si borró el producto, su botón ya no existe
+       y el foco pasa a la capa que quede abierta (el carrito). */
+    if (window.almaCapas && ov) window.almaCapas.cerrar(ov);
   }
 
   /* ── API PÚBLICA ─────────────────────────────────── */
@@ -225,7 +230,12 @@
             return;
           }
           card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(() => card.click(), 450);
+          const nombre = link.querySelector('.ci-name')?.textContent?.trim();
+          setTimeout(() => {
+            /* En la variante que está en el carrito, no en la primera */
+            if (typeof window.almaAbrirProducto === 'function') window.almaAbrirProducto(parseInt(idx, 10), nombre);
+            else card.click();
+          }, 450);
         }, 370);
       };
       link.addEventListener('click', go);
@@ -302,8 +312,14 @@
   function changeQty(id, delta) {
     const item = cart.find(c => c.id === id);
     if (!item) return;
+    /* renderCart rehace la lista y el botón con el foco desaparece: se
+       recuerda cuál era para devolvérselo y que con el teclado se pueda
+       pulsar + o − varias veces seguidas. */
+    const act = document.activeElement;
+    const clase = act && act.classList ? (act.classList.contains('ci-inc') ? 'ci-inc' : act.classList.contains('ci-dec') ? 'ci-dec' : '') : '';
     item.qty = Math.max(1, Math.min(99, item.qty + delta));
     save(); updateBadge(); renderCart();
+    if (clase) document.querySelector(`#cartBody .${clase}[data-id="${id}"]`)?.focus();
   }
 
   function removeItem(id) {
@@ -365,13 +381,17 @@
     ov.classList.add('open');
     document.body.style.overflow = 'hidden';
     renderCart();
+    if (window.almaCapas) window.almaCapas.abrir(ov, document.getElementById('cartClose'));
   }
 
   function closeCart() {
     const ov = document.getElementById('cartOverlay');
-    if (!ov) return;
+    if (!ov || !ov.classList.contains('open')) return;
     ov.classList.remove('open');
-    document.body.style.overflow = '';
+    /* Si se abrió desde la ficha de un producto, la ficha sigue abierta
+       debajo y el scroll de fondo tiene que seguir bloqueado. */
+    if (window.almaCapas) { window.almaCapas.ajustarScroll(); window.almaCapas.cerrar(ov); }
+    else document.body.style.overflow = '';
   }
 
   /* Exponer para forms.js */

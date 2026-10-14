@@ -30,7 +30,7 @@
     aviso.setAttribute('role', 'dialog');
     aviso.setAttribute('aria-label', 'Instalar Alma Botánica');
     aviso.innerHTML =
-      '<img class="pwa-logo" src="img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp" alt="" width="500" height="500">' +
+      '<img class="pwa-logo" src="/img/Img%20Logo/LOGO%20-%20ALMA%20BOTANICA.webp" alt="" width="500" height="500">' +
       '<div class="pwa-txt">' +
         '<p class="pwa-t">Tenla siempre a mano</p>' +
         '<p class="pwa-d">Instala Alma Botánica y ábrela como una app, incluso sin internet.</p>' +
