@@ -8,7 +8,7 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](/)
 
-**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 18 de septiembre de 2026, 14:53 (hora de Colombia)
+**🌐 URL en vivo:** [alma-botanica.store](https://alma-botanica.store/) · **Última actualización:** 14 de octubre de 2026 (hora de Colombia)
 
 ---
 
@@ -16,48 +16,57 @@
 
 > **Para quien retome esto más adelante (persona o sesión nueva): empieza por aquí.**
 
-**Última sesión de trabajo:** 17–18 de septiembre de 2026
-**Rama de esa sesión:** `claude/gifted-tesla-e6s1lj` · 21 commits, todos ya en `main`
-**Versión publicada al cerrar:** v1.2
-**Qué se hizo:** revisión completa del sitio, limpieza, el catálogo en PDF (que
-además lleva el nombre de quien lo descarga), el anuncio en video, doce
-funciones nuevas y el distintivo de versión.
+**Última sesión de trabajo:** 14 de octubre de 2026
+**Rama de esa sesión:** `claude/epic-lovelace-jl2sda`
+**Versión al cerrar:** v1.3 (ver el historial en "Versión de la página")
+**Qué se hizo:** revisión completa del sitio; página más corta; arreglo de
+tres fallos del carrito; textos de productos, kits, preguntas frecuentes y
+políticas puestos de acuerdo entre sí y con lo que el sitio hace de verdad;
+catálogo en PDF regenerado.
 
 ### ✅ Terminado y probado
 
 | | |
 |---|---|
-| **Limpieza** | CSS muerto, imagen huérfana, BOM, código de confetti, un conflicto de breakpoints a 768px |
-| **Rendimiento** | `width`/`height` en las 44 imágenes con medida (CLS), caché de un año versionada con `?v=` |
-| **Catálogo en PDF** | 16 páginas, 5,7 MB, generado desde los datos del sitio. El botón por fin lo entrega |
-| **Precios a la vista** | En las 12 tarjetas del grid, no solo dentro del modal |
-| **Anuncio en video** | Vuelve, con el video del 18/09. Una vez por visita, espera al banner de cookies |
-| **12 funciones nuevas** | Ver la tabla de "Qué puede hacer la página" |
+| **Carrito** | Los campos de entrega y de regalo salen siempre, se abra el carrito por donde se abra, y no se pierden al cambiar cantidades |
+| **Textos de producto** | Sin promesas de efecto médico: son cosméticos (ver "Cosas que hay que recordar al editar") |
+| **Kits** | Un solo nombre, "Kits Completos", cada kit en singular y el precio "por kit" |
+| **Políticas** | La de cookies declara todo lo que se guarda en el navegador; envíos, FAQ y PDF dicen lo mismo (solo Cartagena) |
+| **Catálogo en PDF** | 16 páginas, 5,7 MB, regenerado con los textos nuevos y vigencia de octubre de 2026 |
+| **Rendimiento** | `width`/`height` en las imágenes (CLS), caché de un año versionada con `?v=` |
 
 ### ⏳ Pendiente — hace falta que Rosa aporte datos
 
-1. **Los 4 datos que faltan.** Quedan **23 marcadores `{POR CONFIRMAR}`** en las
-   páginas legales (la portada ya está limpia). Los 23 se resuelven con solo
-   cuatro datos:
+1. **Los datos de las páginas legales.** Quedan **21 marcadores `{POR CONFIRMAR}`**
+   (la portada está limpia). Aparecen resaltados en amarillo a propósito:
 
    | Dato | Dónde aparece |
    |---|---|
-   | Cédula de Rosa | privacidad, términos y cookies (3 veces) |
-   | Un correo de contacto | 5 veces — obligatorio para habeas data (Ley 1581) |
-   | Horario de atención | `ventas.html` |
-   | Datos de envío | cobertura, transportadora, costo, tiempos, garantía y retracto — 13 veces en `ventas.html` |
+   | Cédula de Rosa | privacidad, términos, cookies y ventas (4 veces) |
+   | Un correo de contacto | 7 veces — obligatorio para habeas data (Ley 1581) |
+   | Plazos de conservación | privacidad: borrado de chats y de registros de pedidos (2) |
+   | Envíos | ventas: quién lleva el pedido, costo y tiempo de entrega (3) |
+   | Garantía | ventas: plazo de garantía de los productos (1) |
+   | Cambios | ventas: procedimiento, quién paga el transporte y productos abiertos (4) |
 
-2. **Pedidos reales** en `js/pedidos.js` → enciende el aviso de pedidos recientes.
-3. **Reseñas reales** en `js/resenas-datos.js` → enciende la sección de reseñas
+2. **Qué trae cada kit.** Seis de los ocho kits dicen "varios productos" sin
+   decir cuáles, y el Cebolla Premium y el Aguacate Premium nombran un
+   shampoo y un tónico de su línea que no se venden por separado. Hay que
+   confirmarlo con Rosa.
+3. **Otros datos de la portada:** los años de experiencia ("5+ años"), si hay
+   punto físico para visitas y su dirección, si los productos tienen
+   notificación sanitaria del INVIMA, si el TikTok es `@alma.botnica` o
+   `@alma.botanica`, y que los precios sigan vigentes.
+4. **Pedidos reales** en `js/pedidos.js` → enciende el aviso de pedidos recientes.
+5. **Reseñas reales** en `js/resenas-datos.js` → enciende la sección de reseñas
    y manda la nota media a Google.
 
-> Los puntos 2 y 3 hoy traen contenido de ejemplo que **no se le muestra a
+> Los puntos 4 y 5 hoy traen contenido de ejemplo que **no se le muestra a
 > nadie**. Ver "Contenido de ejemplo" más abajo.
 
 ### 💡 Ideas que quedaron fuera
 
-Ninguna pendiente: se propusieron doce y están las doce hechas. Si surgen
-nuevas, este es el sitio para anotarlas.
+Ninguna pendiente. Si surgen nuevas, este es el sitio para anotarlas.
 
 ---
 
@@ -150,7 +159,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Open Graph** completo para previsualizaciones en WhatsApp, Facebook e Instagram — imagen: logo de Alma Botánica
 - **Twitter Card** configurado
 - **JSON-LD** `WebSite` + `LocalBusiness` con dirección, teléfono, fundadora, `areaServed` y `knowsAbout`
-- **`sitemap.xml`** en la raíz solo con la portada — el resto de páginas llevan `noindex`
+- **`sitemap.xml`** en la raíz con la portada y el catálogo — las páginas legales y la 404 llevan `noindex`
 - **`robots.txt`** en la raíz permitiendo todo el rastreo
 - **Google Search Console** verificado y sitemap enviado el 25/06/2026
 - **JSON-LD productos** con precio (COP) y disponibilidad — permite a Google mostrar precios en resultados de búsqueda
@@ -161,7 +170,7 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - Fuentes Google cargadas de forma no bloqueante (`preload` + `onload`)
 - Imagen hero con `fetchpriority="high"` para mejorar el LCP
 - 35 imágenes con `loading="lazy"`
-- Las 37 imágenes de la portada llevan `width` y `height` — el navegador reserva el espacio antes de que carguen y la página no da saltos al abrirse (CLS, que Google mide en Core Web Vitals)
+- Las 38 imágenes de la portada llevan `width` y `height` (todas menos las de los dos visores ampliados, que no tienen foto hasta que se abren) — el navegador reserva el espacio antes de que carguen y la página no da saltos al abrirse (CLS, que Google mide en Core Web Vitals)
 - Analytics y Hotjar con atributo `defer`
 
 ### 🎨 Paleta e identidad visual
@@ -173,7 +182,6 @@ Sitio web de marketing y ventas de **Alma Botánica**, una marca de cosmética c
 - **Underline deslizante** en la navegación: línea que aparece de izquierda a derecha al pasar el cursor sobre los links (CSS puro, sin JavaScript)
 - **Borde dorado animado** exclusivo en la tarjeta de Kits Completos
 - **Reveal animations** al hacer scroll con `IntersectionObserver`
-- **Animación de salto** en el Termoprotector al navegar desde el modal promocional
 
 ### 🌿 Testimonio de Rosa
 - Sección entre "Nosotras" y "Resultados" con la foto antes/después de Rosa publicada en IG/FB
@@ -200,7 +208,9 @@ El sitio tiene cuatro documentos legales, redactados según la ley **colombiana*
 
 > ⚠️ **Estos textos deben ser revisados por un abogado antes de considerarse definitivos.** Son un estándar de trabajo profesional, no asesoría legal.
 
-> 📌 Hay **25 datos marcados como `{POR CONFIRMAR}`** dentro de las páginas (cédula, correo de habeas data, horarios, datos de envío). Aparecen resaltados en amarillo a propósito, para que nadie los pase por alto. Cuando Rosa los confirme, se reemplazan.
+> 📌 Hay **21 datos marcados como `{POR CONFIRMAR}`** dentro de las páginas (cédula, correo de habeas data, plazos, envío, garantía y cambios; el detalle está en "Estado del proyecto"). Aparecen resaltados en amarillo a propósito, para que nadie los pase por alto. Cuando Rosa los confirme, se reemplazan.
+>
+> Al revisarlas, que el abogado mire en especial la sección 3 de `cookies.html`: los datos técnicos (carrito, datos de entrega, la decisión sobre cookies, la copia para abrir sin internet) se guardan sin pasar por el banner, porque sin ellos esas funciones no existen; lo que mide o pone un tercero sí espera al "Aceptar".
 
 ---
 
@@ -214,6 +224,8 @@ Por eso el sitio funciona así:
 2. **Hasta que no elija, no se carga nada**: ni Google Analytics, ni ContentSquare, ni el mapa de Google.
 3. Si acepta, se activan en ese momento. Si rechaza, no se activa nada y el banner no vuelve a aparecer.
 4. La decisión se guarda en su propio navegador y puede cambiarla cuando quiera con el enlace **"Configuración de cookies"** que está en el pie de todas las páginas.
+
+Lo que el propio sitio guarda en el navegador para que funcionen el carrito, los datos de entrega, el aviso de instalar, el video y el modo sin internet **no** pasa por el banner: se queda en el dispositivo y está declarado, uno por uno, en la tabla de `cookies.html`.
 
 Todo eso vive en `js/cookies.js`. **Importante para quien edite el sitio:** `js/analytics.js` y `js/hotjar.js` ya no se enlazan en el `<head>`. Si alguien los vuelve a poner ahí, el sitio deja de cumplir la norma.
 
@@ -270,7 +282,7 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 | 6 | Tónicos Capilares | desde $15.000 | 120ml | Romero · 7 Aceites · Bomba |
 | 7 | Gel Fijador Hidratante | $13.000 | 300ml | — |
 | 8 | Tratamiento Capilar | $25.000 | 250ml | — |
-| 9 | Kit Rutina Completa 🌟 | desde $60.000 | 500ml | 8 variantes |
+| 9 | Kits Completos 🌟 | desde $60.000 | por kit | 8 kits: Cebolla Premium · Aguacate Premium · Linaza · Nutritivo · Romero · Romero Premium · Cebolla · Aguacate |
 | 10 | Crema para Peinar | $28.000 | 200ml | — |
 | 11 | Bio Repolarizador | $32.000 | 120ml | — |
 | 12 | Pree Poo | $25.000 | 250ml | — |
@@ -309,7 +321,7 @@ El sitio presenta **12 productos** organizados en un grid de 3 columnas. Los 3 m
 ALMA-BOTANICA/
 │
 ├── index.html              # Página principal (landing page)
-├── catalogo.html           # Página de catálogo (en construcción, noindex)
+├── catalogo.html           # Página del catálogo: descarga el PDF
 ├── privacidad.html         # Política de privacidad (noindex)
 ├── cookies.html            # Política de cookies (noindex)
 ├── terminos.html           # Términos y condiciones (noindex)
@@ -339,8 +351,7 @@ ALMA-BOTANICA/
 │   ├── pedidos.js          # ← LOS DATOS de esos pedidos (los pone Rosa)
 │   ├── resenas.js          # Sección de reseñas y su JSON-LD
 │   ├── resenas-datos.js    # ← LAS RESEÑAS (las pone Rosa)
-│   ├── rutina.js           # Rutina paso a paso y fichas de ingredientes
-│   ├── extras.js           # Comparador, calculadora, regalo y entrega
+│   ├── extras.js           # Comparador, regalo y datos de entrega
 │   ├── pwa.js              # Registra sw.js y ofrece instalar la página
 │   ├── analytics.js        # Google Analytics (lo carga cookies.js)
 │   ├── hotjar.js           # ContentSquare/Hotjar (lo carga cookies.js)
@@ -405,17 +416,14 @@ Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
 | | Qué hace | Dónde vive |
 |---|---|---|
 | **Test "¿cuál es para mí?"** | Cuatro preguntas y recomienda 2 o 3 productos con el motivo de cada uno | `js/quiz.js` |
-| **Buscador y filtros** | Busca por ingrediente y filtra por necesidad sin recargar | `js/filtros.js` |
+| **Buscador y filtros** | Busca por nombre o por activo (romero, aguacate…) y filtra por necesidad sin recargar | `js/filtros.js` |
 | **Pedidos recientes** | Aviso discreto de lo que otras personas acaban de pedir | `js/social.js` + `js/pedidos.js` |
 | **WhatsApp con contexto** | El mensaje cambia según la sección y avisa de lo que hay en el carrito | `js/whatsapp.js` |
-| **Calculadora de duración** | Cuánto dura un producto y a cuánto sale cada lavado | `js/extras.js` |
 | **Reseñas** | Con nota media y estrellas en Google cuando sean reales | `js/resenas.js` |
 | **Sin internet + instalable** | La página abre sin señal y se puede instalar como app | `sw.js` + `js/pwa.js` |
 | **Antes / después** | Barra que se arrastra para comparar las fotos de las clientas | `js/extras.js` |
-| **Rutina paso a paso** | Los siete pasos en orden, con el porqué de cada uno | `js/rutina.js` |
-| **Datos de entrega** | Nombre, barrio y dirección dentro del mensaje del pedido | `js/extras.js` |
-| **Ingredientes** | Seis fichas de los activos botánicos de la línea | `js/rutina.js` |
-| **Modo regalo** | Casilla, destinatario y dedicatoria, dentro del pedido | `js/extras.js` |
+| **Datos de entrega** | Nombre, barrio y dirección dentro del mensaje del pedido | `js/extras.js` + `js/cart.js` |
+| **Modo regalo** | Casilla, destinatario y dedicatoria, dentro del pedido | `js/extras.js` + `js/cart.js` |
 | **Anuncio en video** | Se abre una vez por visita y se cierra al acabar el video | `js/interactions.js` |
 
 > **Los pedidos recientes y las reseñas traen contenido de ejemplo.** No se
@@ -428,7 +436,7 @@ Además del catálogo, el carrito y el pedido por WhatsApp de siempre:
 ## 🏷️ Versión de la página
 
 En la portada, encima de la píldora de "100% Natural", hay un distintivo
-pequeño: **🌿 v1.2**. Sirve para saber de un vistazo qué versión está
+pequeño: **🌿 v1.3**. Sirve para saber de un vistazo qué versión está
 publicada, sin tener que mirar el repositorio.
 
 ### Dónde se cambia
@@ -436,8 +444,8 @@ publicada, sin tener que mirar el repositorio.
 **Un solo sitio.** En `index.html`, dentro de `.hero-content`:
 
 ```html
-<span class="version-pill" title="Versión publicada el 18 de septiembre de 2026">
-  <span aria-hidden="true">🌿</span> v1.2
+<span class="version-pill" title="Versión publicada el 14 de octubre de 2026">
+  <span aria-hidden="true">🌿</span> v1.3
 </span>
 ```
 
@@ -468,16 +476,17 @@ historial de abajo cuenta qué trajo.
 
 1. Cambiar el número **y la fecha del `title`** en `index.html`
 2. Añadir la fila al **historial de aquí abajo**, contando qué trajo
-3. Subir el `?v=` de CSS y JS, y la `VERSION` de `sw.js` (ver "Cosas que hay
-   que recordar al editar")
+3. Subir el `?v=` de CSS y JS, la `VERSION` de `sw.js` y la de
+   `js/cookies.js` (ver "Cosas que hay que recordar al editar")
 
 ### Historial de versiones
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
+| **v1.3** | 14 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Además:** PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta, ids únicos en los comparadores y enlaces de Instagram sin rastreadores. |
 | **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
 | **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
-| **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video, y doce funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, calculadora de duración, reseñas, funcionamiento sin internet e instalable, comparador antes/después, rutina paso a paso, datos de entrega, ingredientes y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
+| **v1.0** | 18 sep 2026 | Primera versión numerada. Catálogo en PDF de 16 páginas, precios visibles en el grid, anuncio en video y funciones nuevas: test de recomendación, buscador y filtros, pedidos recientes, WhatsApp con contexto, reseñas, funcionamiento sin internet e instalable, comparador antes/después, datos de entrega y modo regalo. Además: limpieza de código muerto, `width`/`height` en todas las imágenes y caché de un año versionada. |
 
 > Antes de la v1.0 el sitio no llevaba número. Lo publicado hasta el 8 de
 > septiembre de 2026 se puede considerar la v0.
@@ -519,34 +528,79 @@ lleve un mes ahí se nota.
 
 ## ⚙️ Cosas que hay que recordar al editar
 
-Tres reglas que, si se olvidan, rompen algo sin avisar:
+Seis reglas que, si se olvidan, rompen algo sin avisar:
 
-### 1. Al tocar `css/` o `js/`: subir el `?v=`
+### 1. Al tocar `css/` o `js/`: subir la versión (son tres números)
 
 ```bash
-sed -i 's/?v=[0-9]\{8\}/?v=20260920/g' *.html js/cookies.js
+V=20261014   # la fecha de hoy, AAAAMMDD
+sed -i "s/?v=[0-9]\{8\}/?v=$V/g" *.html js/*.js sw.js
+sed -i "s/VERSION = '[0-9]\{8\}'/VERSION = '$V'/" js/cookies.js
+sed -i "s/alma-v[0-9]\{8\}/alma-v$V/" sw.js
 ```
 
-Si no se sube, quien ya visitó el sitio sigue viendo la versión vieja durante
-un año. El `?v=` de `js/cookies.js` también cuenta: ese archivo inyecta
-analytics y hotjar por su cuenta y lleva su propia copia del número.
+- **El `?v=`** de los HTML: si no se sube, quien ya visitó el sitio sigue
+  viendo la versión vieja durante un año. También va en `js/forms.js` (la
+  librería del PDF) y en la lista de `sw.js`.
+- **La `VERSION` de `js/cookies.js`:** ese archivo inyecta Analytics y
+  ContentSquare por su cuenta y lleva su propia copia del número.
+- **La `VERSION` de `sw.js`:** el service worker guarda copia del sitio para
+  que funcione sin internet; si no se sube, sigue sirviendo los archivos
+  viejos aunque el `?v=` haya cambiado.
 
-### 2. Al tocar `css/` o `js/`: subir también la `VERSION` de `sw.js`
+Para comprobar que quedó parejo:
 
-Está en la primera línea del archivo. El service worker guarda copia del sitio
-para que funcione sin internet; si no se sube su versión, sigue sirviendo los
-archivos viejos aunque el `?v=` haya cambiado.
+```bash
+grep -oh '?v=[0-9]\+' *.html js/*.js sw.js | sort -u   # una sola línea
+grep -n "VERSION = " js/cookies.js sw.js                # la misma fecha
+```
 
-### 3. Los precios viven en TRES sitios
+### 2. Los precios viven en CUATRO sitios, más el PDF
 
 | Dónde | Qué es |
 |---|---|
-| `PRODUCTS[]` en `js/forms.js` | El detalle del modal y la fuente del resto |
+| `PRODUCTS[]` en `js/forms.js` | El detalle del modal y la fuente del resto (test, buscador, PDF) |
 | Las tarjetas de `index.html` (`.pc-price-amount`) | Lo que se ve en el grid |
 | El JSON-LD `hasOfferCatalog` del `<head>` | Lo que lee Google |
+| La tabla de `llms.txt` | Lo que leen los asistentes de IA |
 
-Tienen que coincidir. Después hay que **regenerar el PDF** (ver más abajo) y
-actualizar la línea de vigencia de su última página.
+Tienen que coincidir. El precio mínimo de los kits ("desde $60.000") sale
+además en la pregunta frecuente de los kits, que está dos veces (ver la
+regla 4). Después hay que **regenerar el PDF** (ver más abajo) y actualizar
+la línea de vigencia de su última página.
+
+### 3. Los textos de producto: cosméticos, no medicamentos
+
+Los productos son cosméticos. Los textos pueden decir que algo **ayuda a**
+fortalecer o a disminuir la caída, pero no prometer efectos de tratamiento
+ni apoyarse en estudios que no están citados: nada de "tan efectivo como el
+minoxidil", "estudios clínicos demuestran", "bloquea causas hormonales" o
+"crecimiento extremo". Los propios términos (`terminos.html`, sección 7)
+dicen que los productos no curan ni tratan nada; los textos de venta no
+pueden contradecirlos.
+
+### 4. La FAQ está dos veces
+
+Las preguntas frecuentes están en la sección `#faq` y en el JSON-LD
+`FAQPage` del `<head>`. Google exige que digan **exactamente** lo mismo: si
+se edita una, se edita la otra.
+
+### 5. Todo lo que se guarde en el navegador va declarado
+
+Si se añade algo que use `localStorage`, `sessionStorage` o cookies, hay que
+sumarlo a la tabla de `cookies.html` (sección 2) y, si es un dato personal,
+explicarlo en `privacidad.html` (sección 2). Hoy son: `botanica_cart_v1`,
+`alma_cookies_consent_v1`, `botanica_entrega_v1`, `botanica_instalar_no`,
+`botanica_anuncio_visto`, `botanica_avisos_off` y la copia de `sw.js`.
+
+### 6. El carrito repinta su pie entero
+
+`js/cart.js` vuelve a pintar el pie del carrito cada vez que cambia algo, y
+eso borra lo que hubiera dentro. Por eso los bloques de regalo y de datos de
+entrega (`js/extras.js`) se montan de nuevo cada vez que `cart.js` lanza el
+evento `alma:carrito-pintado`, y lo escrito se guarda en memoria, no en el
+formulario. Cualquier cosa nueva que vaya en el pie del carrito tiene que
+seguir el mismo camino.
 
 ---
 
@@ -590,15 +644,17 @@ detalle; perder la descarga, no.
 
 **No se escribió a mano.** Se genera a partir del array `PRODUCTS[]` de
 `js/forms.js` y de las fotos de `img/`, con la misma paleta y las mismas
-tipografías del sitio. Por eso, cuando Rosa cambie un precio:
+tipografías del sitio. Por eso, cuando Rosa cambie un precio o un texto de
+producto:
 
-1. Se actualiza el precio en `js/forms.js`, en la tarjeta de `index.html` y
-   en el JSON-LD del `<head>` (los tres sitios, como explica la sección de
-   productos).
-2. Se regenera el PDF y se reemplaza el archivo.
+1. Se actualiza en todos los sitios donde vive (ver "Cosas que hay que
+   recordar al editar", regla 2).
+2. Se regenera el PDF con los pasos de `tools/catalogo-pdf/README.md` y se
+   reemplaza el archivo.
 
-La última página del PDF lleva la línea *"Precios vigentes a septiembre de
-2026… sujetos a cambio"*, que hay que actualizar al regenerarlo.
+La última página del PDF lleva la línea *"Precios vigentes a octubre de
+2026… sujetos a cambio"*, que hay que actualizar al regenerarlo (está en la
+función `order()` de `tools/catalogo-pdf/build.js`).
 
 > El PDF se sirve con caché de un día, no de un año como el resto de
 > archivos estáticos: así una versión nueva llega pronto sin que cada
@@ -617,22 +673,10 @@ archivo de `css/` o `js/` y no subes el número, quien ya entró antes sigue
 viendo la versión vieja. No es que el cambio no se haya subido — es que su
 navegador no vuelve a pedir el archivo.
 
-Para subir la versión en todo el sitio de una sola vez:
-
-```bash
-# Cambia la fecha por la de hoy (formato AAAAMMDD)
-sed -i 's/?v=[0-9]\{8\}/?v=20260920/g' *.html js/cookies.js
-```
-
-Luego haz commit y push como siempre. Comprueba que quedó parejo con:
-
-```bash
-grep -oh '?v=[0-9]*' *.html js/cookies.js | sort -u
-# debe imprimir una sola línea
-```
-
-> El `?v=` de `js/cookies.js` también cuenta: ese archivo carga Analytics
-> y ContentSquare por su cuenta y lleva su propia copia del número.
+Los comandos para subirla de una sola vez, y para comprobar que quedó
+pareja, están en "Cosas que hay que recordar al editar", regla 1. Son
+**tres** números (el `?v=`, la `VERSION` de `js/cookies.js` y la de
+`sw.js`), no uno.
 
 ---
 
@@ -669,7 +713,7 @@ git push origin main
 
 ## 🧭 Cómo se comprueba que nada se rompió
 
-No hay tests automáticos en el repo, pero esta es la rutina que se siguió y que
+No hay tests automáticos en el repo, pero esta es la revisión que se siguió y que
 conviene repetir antes de cualquier push a `main`. Se hace con un navegador de
 verdad (Chromium + Playwright), no leyendo el código:
 
@@ -678,11 +722,11 @@ verdad (Chromium + Playwright), no leyendo el código:
 | **Responsive** | Las 7 páginas a 14 anchos distintos (320 → 1920px), buscando desbordes horizontales |
 | **Errores** | Consola del navegador y peticiones fallidas en cada combinación |
 | **Imágenes** | Que ninguna referencia apunte a un archivo que no existe, y que no sobre ninguna |
-| **Carrito** | Abrir producto → agregar → badge → drawer → total → mensaje de WhatsApp |
+| **Carrito** | Abrir producto → agregar → badge → drawer → total → mensaje de WhatsApp. Y abrir el carrito por los tres caminos (icono del menú, "Ver carrito" del aviso y la confirmación de "¿Agregar uno más?"), cambiar cantidades y comprobar que los campos de entrega y regalo siguen ahí con lo escrito |
 | **Cookies** | Que Analytics **no** cargue antes de aceptar (esto es lo que hace que el sitio cumpla la norma) |
 | **Sin internet** | Apagar la red y recargar: la página tiene que abrir |
 | **Contraste** | Relación de contraste del texto contra su fondo real (mínimo 4.5:1) |
-| **Teclado** | Que el test, los filtros, la calculadora y el comparador se usen sin ratón |
+| **Teclado** | Que el test, los filtros y el comparador se usen sin ratón |
 
 > **Ojo con el navegador de pruebas:** el Chromium de Playwright **no trae el
 > códec H.264**, así que el video del anuncio no se reproduce ahí. Eso no es un
@@ -705,6 +749,11 @@ Se dejan anotados porque son el tipo de cosa que vuelve a aparecer:
   enlaces: en esa franja se enseñan todos sin hamburguesa.
 - **El modal del video se quedaba colgado** si el video no cargaba: sin duración
   no hay evento `ended` ni cuenta atrás.
+- **Los campos de entrega y regalo desaparecían.** Se montaban solo al pulsar
+  el icono del carrito y el pie se repinta en cada cambio: no salían desde
+  "Ver carrito", se borraban al cambiar una cantidad y la casilla de regalo
+  volvía desmarcada mientras el pedido seguía yendo como regalo. Ver la regla 6
+  de "Cosas que hay que recordar al editar".
 - **`[hidden]` no escondía nada** en los campos del modo regalo, porque una clase
   con `display:flex` le gana al `[hidden]` del navegador.
 
@@ -723,6 +772,6 @@ Se dejan anotados porque son el tipo de cosa que vuelve a aparecer:
 
 <p align="center">
   Hecho con 🌿 para <strong>Alma Botánica</strong> · Cartagena de Indias, Colombia<br>
-  <sub>Este README se actualizó por última vez el <strong>18 de septiembre de 2026 a las 14:53</strong> (hora de Colombia).<br>
+  <sub>Este README se actualizó por última vez el <strong>14 de octubre de 2026</strong> (hora de Colombia).<br>
   Si vuelves a trabajar en el proyecto, empieza por «Estado del proyecto», arriba del todo.</sub>
 </p>

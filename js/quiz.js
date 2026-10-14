@@ -64,12 +64,12 @@
      (o a PRODUCTS[i] si el producto no tiene variantes) y dice por qué
      se recomienda, con el peso que suma cada respuesta. ── */
   var CATALOGO = [
-    { p: 0,  v: 0, por: 'El romero mejora la circulación del cuero cabelludo y frena la caída desde el lavado.',        suma: { caida: 5 } },
+    { p: 0,  v: 0, por: 'El romero activa la circulación del cuero cabelludo y ayuda a frenar la caída desde el lavado.', suma: { caida: 5 } },
     { p: 0,  v: 2, por: 'El aguacate devuelve la grasa buena que le falta al cabello seco o poroso.',                   suma: { resequedad: 4, seco: 3, poroso: 3, frizz: 2 } },
     { p: 0,  v: 1, por: 'Fórmula nutritiva para cabello debilitado por tintes o por la plancha.',                       suma: { dano: 4, tinte: 3, ambos: 3 } },
     { p: 1,  v: 3, por: 'La cebolla aporta el azufre con el que tu cabello fabrica queratina.',                         suma: { caida: 5 } },
     { p: 1,  v: 2, por: 'Sella la cutícula y controla el encrespamiento desde dentro.',                                 suma: { frizz: 5, resequedad: 3, poroso: 2 } },
-    { p: 2,  v: 0, por: 'Se aplica sin enjuagar y trabaja todo el día sobre el folículo. El más económico para probar.', suma: { caida: 4 } },
+    { p: 2,  v: 0, por: 'Se aplica sin enjuagar y trabaja todo el día sobre el cuero cabelludo. El más económico para probar.', suma: { caida: 4 } },
     { p: 2,  v: 2, por: 'El más potente de los tónicos: crecimiento y reparación a la vez.',                            suma: { caida: 3, dano: 2 } },
     { p: 3,  v: 0, por: 'Define sin efecto cartón y encima hidrata, gracias a la linaza.',                              suma: { rizos: 5 } },
     { p: 6,  v: 0, por: 'Desenreda y moldea sin dejar el cabello duro ni pesado.',                                      suma: { rizos: 4, frizz: 3 } },
@@ -80,11 +80,11 @@
     { p: 7,  v: 0, por: 'Reconstruye la fibra por dentro y baja el frizz de raíz.',                                     suma: { frizz: 4, dano: 3, poroso: 3 } },
     { p: 8,  v: 0, por: 'Se pone antes del shampoo para que el lavado no le quite la hidratación.',                     suma: { seco: 4, resequedad: 3, poroso: 3 } },
     /* Kits: solo entran si pidió rutina completa */
-    { p: 5,  v: 4, por: 'La rutina del romero completa, pensada para frenar la caída.',                                 suma: { rutina: 4, caida: 4, normal: 1, mixto: 1 } },
-    { p: 5,  v: 6, por: 'La rutina de la cebolla: lo más contundente contra la caída.',                                 suma: { rutina: 4, caida: 5 } },
+    { p: 5,  v: 4, por: 'La rutina del romero completa, pensada para ayudar a frenar la caída.',                       suma: { rutina: 4, caida: 4, normal: 1, mixto: 1 } },
+    { p: 5,  v: 6, por: 'La rutina de la cebolla, con el azufre que el cabello usa para fabricar queratina.',          suma: { rutina: 4, caida: 5 } },
     { p: 5,  v: 7, por: 'La rutina del aguacate, para cabello seco o poroso.',                                          suma: { rutina: 4, resequedad: 5, seco: 4, poroso: 3 } },
     { p: 5,  v: 2, por: 'La rutina de la linaza: definición y frizz bajo control.',                                     suma: { rutina: 4, rizos: 6, frizz: 3 } },
-    { p: 5,  v: 3, por: 'La rutina más completa de la línea, para cabello muy dañado.',                                 suma: { rutina: 4, dano: 6, ambos: 5, tinte: 3, calor: 2 } }
+    { p: 5,  v: 3, por: 'La rutina nutritiva, para cabello muy dañado por calor o química.',                           suma: { rutina: 4, dano: 6, ambos: 5, tinte: 3, calor: 2 } }
   ];
 
   var paso = 0;

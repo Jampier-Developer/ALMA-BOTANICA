@@ -24,14 +24,14 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap"></noscript>
 
 <!-- Orden de estilos: variables -> layout del sitio -> estilos de páginas legales -->
-<link rel="stylesheet" href="css/reset.css?v=20260922">
-<link rel="stylesheet" href="css/layout.css?v=20260922">
-<link rel="stylesheet" href="css/legal.css?v=20260922">
+<link rel="stylesheet" href="css/reset.css?v=20261014">
+<link rel="stylesheet" href="css/layout.css?v=20261014">
+<link rel="stylesheet" href="css/legal.css?v=20261014">
 
 <!-- Banner de cookies. Va con defer para no bloquear el renderizado.
      Analytics y ContentSquare NO se cargan aquí: los inyecta cookies.js
      únicamente si la persona acepta. -->
-<script src="js/cookies.js?v=20260922" defer></script>
+<script src="js/cookies.js?v=20261014" defer></script>
 </head>
 <body>
 
@@ -59,7 +59,7 @@
     <div class="legal-header">
       <span class="legal-kicker">Cookies y almacenamiento local</span>
       <h1 class="legal-title">Política de <em>cookies</em></h1>
-      <p class="legal-updated">Última actualización: 5 de septiembre de 2026</p>
+      <p class="legal-updated">Última actualización: 14 de octubre de 2026</p>
     </div>
 
     <!-- Índice de la página, para que se pueda saltar a la sección que interese -->
@@ -82,7 +82,7 @@
     <section class="legal-section" id="s1">
       <h2>1. Qué es una cookie</h2>
       <p>Una cookie es un archivo muy pequeño que un sitio web guarda en tu celular o computador cuando lo visitas. No es un programa ni un virus: es apenas un texto corto que sirve para recordar algo, por ejemplo si ya aceptaste un aviso o qué productos pusiste en tu carrito.</p>
-      <p>Además de las cookies, los navegadores tienen un espacio llamado <strong>almacenamiento local</strong> (<em>localStorage</em>). Funciona parecido, pero la información se queda guardada únicamente en tu propio navegador: no se envía a ningún servidor, ni nosotros la podemos leer desde acá. En este sitio usamos ese espacio para dos cosas muy puntuales, y las explicamos en la tabla de abajo.</p>
+      <p>Además de las cookies, los navegadores tienen un espacio llamado <strong>almacenamiento local</strong> (<em>localStorage</em>). Funciona parecido, pero la información se queda guardada únicamente en tu propio navegador: no se envía a ningún servidor, ni nosotros la podemos leer desde acá. En este sitio usamos ese espacio para unas pocas cosas muy puntuales, y las explicamos todas en la tabla de abajo.</p>
       <p>Algunas cookies las pone directamente nuestro sitio y otras las ponen empresas externas cuyas herramientas usamos, como Google. En esta política te contamos exactamente cuáles hay y para qué sirve cada una.</p>
     </section>
 
@@ -140,20 +140,57 @@
               <td>Alma Botánica</td>
               <td>Hasta que borres los datos del navegador</td>
             </tr>
+            <tr>
+              <td><code>botanica_entrega_v1</code></td>
+              <td><span class="legal-tag legal-tag-tecnica">Técnica</span></td>
+              <td>Recordar el nombre, el barrio y la dirección que escribiste en el carrito, para no pedírtelos otra vez. Solo le llegan a Rosa dentro del mensaje de WhatsApp, cuando tú decides enviarlo.</td>
+              <td>Alma Botánica</td>
+              <td>Hasta que borres los datos del navegador</td>
+            </tr>
+            <tr>
+              <td><code>botanica_instalar_no</code></td>
+              <td><span class="legal-tag legal-tag-tecnica">Técnica</span></td>
+              <td>Recordar que respondiste «Ahora no» al aviso de instalar la página, para no volver a mostrártelo.</td>
+              <td>Alma Botánica</td>
+              <td>Hasta que borres los datos del navegador</td>
+            </tr>
+            <tr>
+              <td><code>botanica_anuncio_visto</code></td>
+              <td><span class="legal-tag legal-tag-tecnica">Técnica</span></td>
+              <td>Recordar que ya viste el video de bienvenida, para no repetírtelo en la misma visita.</td>
+              <td>Alma Botánica</td>
+              <td>Hasta que cierres la pestaña</td>
+            </tr>
+            <tr>
+              <td><code>botanica_avisos_off</code></td>
+              <td><span class="legal-tag legal-tag-tecnica">Técnica</span></td>
+              <td>Recordar que cerraste el aviso de pedidos recientes, para no volver a mostrártelo en la misma visita.</td>
+              <td>Alma Botánica</td>
+              <td>Hasta que cierres la pestaña</td>
+            </tr>
+            <tr>
+              <td>Copia del sitio (<code>alma-v…</code>)</td>
+              <td><span class="legal-tag legal-tag-tecnica">Técnica</span></td>
+              <td>Guardar una copia de la página para que abra aunque te quedes sin internet.</td>
+              <td>Alma Botánica</td>
+              <td>Hasta la siguiente versión del sitio o hasta que borres los datos del navegador</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <div class="legal-note">
-        <p>Las dos últimas (<code>botanica_cart_v1</code> y <code>alma_cookies_consent_v1</code>) se guardan en el almacenamiento local de tu navegador y <strong>no viajan a ningún servidor</strong>. Se quedan en tu dispositivo: nosotros no las recibimos ni las podemos consultar.</p>
+        <p>Todas las de tipo <strong>Técnica</strong> las pone el propio sitio y se guardan en el almacenamiento de tu navegador: <strong>no viajan a ningún servidor</strong>, no sirven para medirte ni para seguirte, y nosotros no las recibimos ni las podemos consultar. Lo único que sale de tu dispositivo son los datos de entrega, y solo dentro del mensaje de WhatsApp que tú decides enviar.</p>
       </div>
 
       <p>Si en el futuro agregamos alguna herramienta nueva que use cookies, la sumamos a esta tabla antes de activarla y te la volvemos a preguntar en el banner.</p>
     </section>
 
     <!-- SECCIÓN 3 — Núcleo legal: la Resolución 32.126 de 2022 de la SIC exige
-         consentimiento previo, expreso e informado. Aquí se explica que en
-         Colombia no existen categorías exentas como en Europa. -->
+         consentimiento previo, expreso e informado. Aquí se explica qué pasa
+         por el banner (todo lo que mide o pone un tercero) y qué no (los
+         datos técnicos de las funciones que la persona usa). Tiene que
+         decir exactamente lo que hace js/cookies.js. -->
     <section class="legal-section" id="s3">
       <h2>3. Cómo pedimos tu consentimiento</h2>
       <p>En Colombia, la <strong>Resolución 32.126 de 2022</strong> de la Superintendencia de Industria y Comercio (SIC) fija cómo se deben pedir las cookies. Nosotros seguimos esas reglas al pie de la letra:</p>
@@ -163,8 +200,9 @@
         <li><strong>Informado:</strong> antes de decidir puedes leer esta página, donde está el detalle de cada cookie.</li>
       </ul>
 
-      <h3>No hay cookies exentas de pedirte permiso</h3>
-      <p>A diferencia de Europa, en Colombia <strong>no existen categorías de cookies que queden exentas</strong> de solicitar el consentimiento. Por eso te preguntamos también por las técnicas y no las activamos por defecto.</p>
+      <h3>Lo que se guarda sin pasar por el banner</h3>
+      <p>Lo único que el sitio guarda sin preguntarte son los datos técnicos de la tabla: los de las funciones que tú misma usas (el carrito, los datos de entrega que escribas, tu respuesta al aviso de instalar o al video, la copia para abrir sin internet) y tu propia decisión sobre las cookies. Se quedan en tu navegador y nosotras no los recibimos.</p>
+      <p>Todo lo que <strong>mide</strong> o lo que pone <strong>un tercero</strong> —Google Analytics, ContentSquare y el mapa de Google— solo se activa si aceptas.</p>
 
       <h3>Seguir navegando no es aceptar</h3>
       <p>El consentimiento tácito está <strong>prohibido</strong>. Que sigas bajando por la página, que hagas clic en un producto o que cierres el aviso <strong>no cuenta como aceptación</strong>. Solo cuenta un clic directo en el botón correspondiente.</p>
@@ -180,7 +218,7 @@
       <p>Puedes cambiar de opinión cuando quieras, y las veces que quieras. No tienes que escribirnos ni pedir permiso.</p>
       <ol>
         <li>Baja hasta el pie de cualquier página del sitio.</li>
-        <li>En la columna <strong>Legal</strong>, haz clic en <strong>Configuración de cookies</strong>.</li>
+        <li>En los enlaces legales del pie, haz clic en <strong>Configuración de cookies</strong>.</li>
         <li>Vuelve a elegir <strong>Aceptar</strong> o <strong>Rechazar</strong>.</li>
       </ol>
       <p>Si pasas de aceptar a rechazar, dejamos de cargar las herramientas de medición desde ese momento. Si ya se habían activado antes en esa misma visita, siguen funcionando hasta que recargues la página; a partir de la siguiente carga no vuelven a activarse. Para eliminar además las cookies que ya se hubieran guardado, sigue los pasos de la sección siguiente.</p>
@@ -198,7 +236,7 @@
         <li><strong>Edge</strong>: abre el menú, entra a Configuración, busca privacidad y usa la opción para elegir qué borrar en los datos de navegación.</li>
       </ul>
       <div class="legal-note">
-        <p>Ten en cuenta que si borras todos los datos del navegador también se borran <code>botanica_cart_v1</code> y <code>alma_cookies_consent_v1</code>. Es decir: se vacía tu carrito y el banner de cookies te vuelve a preguntar en la próxima visita. Es normal y no afecta tus pedidos ya hechos por WhatsApp.</p>
+        <p>Ten en cuenta que si borras todos los datos del navegador también se borran los datos técnicos de la tabla. Es decir: se vacía tu carrito, se olvidan los datos de entrega que hubieras escrito y el banner de cookies te vuelve a preguntar en la próxima visita. Es normal y no afecta tus pedidos ya hechos por WhatsApp.</p>
       </div>
     </section>
 
@@ -254,7 +292,7 @@
 
     <!-- Cierre del documento con acceso rapido a los otros textos legales -->
     <div class="legal-foot">
-      <p>Esta política de cookies está vigente desde el 5 de septiembre de 2026 y se aplica a todo el sitio alma-botanica.store. Si publicamos una versión nueva, la encontrarás siempre en esta misma dirección.</p>
+      <p>Esta política de cookies está vigente desde el 14 de octubre de 2026 y se aplica a todo el sitio alma-botanica.store. Si publicamos una versión nueva, la encontrarás siempre en esta misma dirección.</p>
       <nav class="legal-foot-links" aria-label="Documentos legales">
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html" aria-current="page">Cookies</a>
@@ -326,6 +364,6 @@
   </div>
 </footer>
 
-<script src="js/pwa.js?v=20260922" defer></script>
+<script src="js/pwa.js?v=20261014" defer></script>
 </body>
 </html>

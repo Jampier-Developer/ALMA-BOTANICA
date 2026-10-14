@@ -49,7 +49,7 @@
      El ?v= tiene que coincidir con el que llevan los <link> y <script>
      del HTML: js/ se guarda en caché para siempre y la versión es lo
      único que hace que el navegador vuelva a pedir el archivo. */
-  var VERSION = '20260918';
+  var VERSION = '20261014';
   var SCRIPT_ANALYTICS = 'js/analytics.js?v=' + VERSION;
   var SCRIPT_CONTENTSQUARE = 'js/hotjar.js?v=' + VERSION;
 

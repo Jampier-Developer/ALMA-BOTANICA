@@ -64,8 +64,8 @@
         {
           name:'Shampoo Romero', price:'$32.000', icon:'🌿',
           image:'img/Shampoos/shampoo%201.webp',
-          desc:'Con extracto de romero rico en ácido rosmarínico que mejora la circulación del cuero cabelludo. Estudios clínicos demuestran que el romero es tan efectivo como el minoxidil para estimular el crecimiento capilar.',
-          benefits:['Estimula la circulación del cuero cabelludo','Reduce la caída bloqueando causas hormonales','Limpieza profunda sin sulfatos agresivos','Apto para uso diario en todo tipo de cabello']
+          desc:'Con extracto de romero, rico en ácido rosmarínico, que activa la circulación del cuero cabelludo y fortalece el cabello desde la raíz. Limpia en profundidad sin sulfatos y, con el uso constante, ayuda a disminuir la caída.',
+          benefits:['Estimula la circulación del cuero cabelludo','Ayuda a disminuir la caída con uso constante','Limpieza profunda sin sulfatos agresivos','Apto para uso diario en todo tipo de cabello']
         },
         {
           name:'Shampoo Nutritivo', price:'$34.000', icon:'⭐',
@@ -88,8 +88,8 @@
         {
           name:'Acondicionador Romero', price:'$32.000', icon:'🌿',
           image:'img/acondicionador/acondicionador1.webp',
-          desc:'El romero mejora la circulación del cuero cabelludo y reduce activamente la caída. Sella la cutícula para un brillo duradero y suavidad inmediata sin residuos pesados.',
-          benefits:['Sella la cutícula para más brillo','Reduce la caída activamente','Desenreda sin dañar la fibra','Efecto antiestático duradero']
+          desc:'El romero activa la circulación del cuero cabelludo y ayuda a disminuir la caída. Sella la cutícula para un brillo duradero y suavidad inmediata sin residuos pesados.',
+          benefits:['Sella la cutícula para más brillo','Ayuda a disminuir la caída','Desenreda sin dañar la fibra','Efecto antiestático duradero']
         },
         {
           name:'Acondicionador Nutritivo', price:'$34.000', icon:'⭐',
@@ -106,8 +106,8 @@
         {
           name:'Acondicionador Cebolla', price:'$32.000', icon:'🧅',
           image:'img/acondicionador/Acondicionador4.webp',
-          desc:'El extracto de cebolla aporta compuestos sulfurados esenciales para la producción de queratina. Estudios clínicos demuestran que estimula el crecimiento y reduce la caída en pocas semanas de uso.',
-          benefits:['Frena la caída con compuestos sulfurados','Estimula la producción de queratina natural','Aporta densidad y volumen al cabello','Desenreda y suaviza sin residuos']
+          desc:'El extracto de cebolla aporta compuestos sulfurados esenciales para la producción de queratina. Ayuda a fortalecer el cabello y a disminuir la caída con el uso constante.',
+          benefits:['Ayuda a frenar la caída con compuestos sulfurados','Estimula la producción de queratina natural','Aporta densidad y volumen al cabello','Desenreda y suaviza sin residuos']
         },
       ]
     },
@@ -118,8 +118,8 @@
         {
           name:'Tónico Capilar Romero', price:'$15.000', icon:'🌿',
           image:'img/Tonicos-Capilares/tonico%20capilar%201.webp',
-          desc:'Aplicación directa en raíces 2-4 veces por semana. El romero contiene ácido rosmarínico que mejora la circulación del cuero cabelludo, activa los folículos y reduce la caída. No requiere enjuague.',
-          benefits:['Activa folículos pilosos inactivos','Reduce la caída estacional','Mejora la circulación del cuero cabelludo','Sin enjuague — absorción directa']
+          desc:'Aplicación directa en raíces 2-4 veces por semana. El romero contiene ácido rosmarínico, que activa la circulación del cuero cabelludo, fortalece la raíz y ayuda a disminuir la caída. No requiere enjuague.',
+          benefits:['Estimula el cuero cabelludo y la raíz','Ayuda a disminuir la caída','Activa la circulación del cuero cabelludo','Sin enjuague — absorción directa']
         },
         {
           name:'Tónico Capilar 7 Aceites', price:'$20.000', icon:'✨',
@@ -130,8 +130,8 @@
         {
           name:'Tónico Bomba', price:'$25.000', icon:'💣',
           image:'img/Tonicos-Capilares/tonico%20capilar%203.webp',
-          desc:'Crecimiento extremo y reparador en una sola fórmula. El tónico más potente de la línea — activa el ciclo capilar, aumenta el flujo sanguíneo al folículo y repara la fibra desde la primera aplicación. Sin enjuague.',
-          benefits:['Crecimiento extremo y reparación simultánea','Activa el ciclo capilar completo','Aumenta el flujo sanguíneo al folículo','Resultados visibles desde la primera semana']
+          desc:'Crecimiento y reparación en una sola fórmula intensiva. El tónico más potente de la línea: estimula el cuero cabelludo, fortalece la raíz y repara la fibra con cada aplicación. Sin enjuague.',
+          benefits:['Fórmula intensiva de crecimiento y reparación','Estimula el cuero cabelludo y la raíz','Fortalece y repara la fibra capilar','Resultados con uso constante']
         },
       ]
     },
@@ -150,14 +150,14 @@
       benefits:['Repara hebras dañadas por calor o química','9 aminoácidos esenciales de la quinoa','Nutre y protege con enzimas de sábila','Resultados visibles desde la 1ª aplicación']
     },
     {
-      name:'Kit Rutina Completa', tag:'Más vendido', size:'500 ml',
+      name:'Kits Completos', tag:'Más vendido', size:'por kit',
       bg:'linear-gradient(145deg,#fce4ec,#e8a0b5)',
       variants:[
         {
           name:'Kit Cebolla Premium', price:'$90.000', icon:'🧅',
           image:'img/Kits/Kits7.webp',
-          desc:'Kit completo de la línea Cebolla con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Los compuestos sulfurados del extracto de cebolla estimulan la producción natural de queratina y reducen la caída. Estudios clínicos respaldan su eficacia para el crecimiento capilar desde las primeras semanas de uso.',
-          benefits:['Frena la caída con compuestos sulfurados naturales','Estimula la producción de queratina y densidad','Aporta volumen, brillo y fortaleza desde la raíz','Incluye Mascarilla Nutritiva para nutrición profunda']
+          desc:'Kit completo de la línea Cebolla con Shampoo, Acondicionador, Tónico Capilar y Mascarilla Nutritiva. Los compuestos sulfurados del extracto de cebolla favorecen la producción natural de queratina y, con el uso constante, ayudan a disminuir la caída.',
+          benefits:['Ayuda a frenar la caída con compuestos sulfurados naturales','Estimula la producción de queratina y densidad','Aporta volumen, brillo y fortaleza desde la raíz','Incluye Mascarilla Nutritiva para nutrición profunda']
         },
         {
           name:'Kit Aguacate Premium', price:'$90.000', icon:'🥑',
@@ -166,37 +166,37 @@
           benefits:['Hidratación profunda con Omega-9 y vitaminas A, B, C y E','Restaura la barrera lipídica y elasticidad capilar','Controla el frizz y encrespamiento desde adentro','Incluye Mascarilla Nutritiva para nutrición profunda']
         },
         {
-          name:'Kits Linaza', price:'$75.000', icon:'✨',
+          name:'Kit Linaza', price:'$75.000', icon:'✨',
           image:'img/Kits/Kit1.webp',
           desc:'Kit de la línea Linaza con varios productos que definen, hidratan y fortalecen el cabello. El gel de linaza aporta Omega-3 y mucílagos que protegen la fibra capilar sin efecto cartón ni residuos.',
           benefits:['Define rizos y ondas sin efecto plástico','Hidratación sin peso con Omega-3','Protección antifrizz duradera','Apto para cabello rizado y muy rizado']
         },
         {
-          name:'Kits Nutritivo', price:'$130.000', icon:'⭐',
+          name:'Kit Nutritivo', price:'$130.000', icon:'⭐',
           image:'img/Kits/Kit2.webp',
           desc:'Kit de la línea Nutritiva con varios productos de nutrición profunda. Sus aminoácidos esenciales reparan y fortalecen la fibra capilar debilitada por calor, tintes o procesos químicos.',
           benefits:['Nutrición profunda con aminoácidos esenciales','Repara cabello dañado por calor o química','Fortalece y devuelve brillo natural','Compatible con cabello teñido o procesado']
         },
         {
-          name:'Kits Romero', price:'$60.000', icon:'🌿',
+          name:'Kit Romero', price:'$60.000', icon:'🌿',
           image:'img/Kits/Kit3.webp',
-          desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y reducen la caída. El romero mejora la circulación del cuero cabelludo con resultados clínicamente respaldados.',
-          benefits:['Estimula el crecimiento capilar','Reduce la caída desde la primera semana','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
+          desc:'Kit de la línea Romero con varios productos que estimulan el crecimiento y ayudan a disminuir la caída. El romero activa la circulación del cuero cabelludo y fortalece el cabello desde la raíz.',
+          benefits:['Ayuda a estimular el crecimiento capilar','Ayuda a disminuir la caída con uso constante','Limpieza profunda e hidratación balanceada','Ingredientes 100% naturales']
         },
         {
           name:'Kit Capilar Romero Premium', price:'$90.000', icon:'👑',
           image:'img/Kits/Kits4.webp',
-          desc:'El kit más completo de la línea. Incluye Shampoo Romero, Acondicionador Romero, Tónico Capilar y Tratamiento Capilar — todo lo que necesitas para una rutina capilar integral en un solo kit.',
-          benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo y valorado de la línea']
+          desc:'El kit más completo de la línea Romero. Incluye Shampoo Romero, Acondicionador Romero, Tónico Capilar y Tratamiento Capilar — todo lo que necesitas para una rutina capilar integral en un solo kit.',
+          benefits:['Incluye Shampoo Romero + Acondicionador Romero','Más Tónico Capilar + Tratamiento Capilar','Rutina completa de crecimiento y reparación','El kit más completo de la línea Romero']
         },
         {
-          name:'Kits Cebolla', price:'$64.000', icon:'🧅',
+          name:'Kit Cebolla', price:'$64.000', icon:'🧅',
           image:'img/Kits/kit5.webp',
-          desc:'Kit de la línea Cebolla con varios productos ricos en compuestos sulfurados que estimulan la queratina natural. Estudios clínicos demuestran que el extracto de cebolla reduce la caída en pocas semanas.',
-          benefits:['Estimula la producción de queratina natural','Frena la caída con compuestos sulfurados','Aporta densidad y volumen al cabello','Resultados visibles en pocas semanas']
+          desc:'Kit de la línea Cebolla con varios productos ricos en compuestos sulfurados, que favorecen la queratina natural y, con el uso constante, ayudan a disminuir la caída.',
+          benefits:['Estimula la producción de queratina natural','Ayuda a frenar la caída con compuestos sulfurados','Aporta densidad y volumen al cabello','Resultados con uso constante']
         },
         {
-          name:'Kits Aguacate', price:'$64.000', icon:'🥑',
+          name:'Kit Aguacate', price:'$64.000', icon:'🥑',
           image:'img/Kits/kit6.webp',
           desc:'Kit de la línea Aguacate con varios productos ricos en Omega-9, vitaminas A, B, C y E. Sus ácidos grasos penetran la fibra capilar restaurando la barrera lipídica del cabello más seco y poroso.',
           benefits:['Hidratación profunda con Omega-9 y vitaminas','Restaura la barrera lipídica capilar','Controla el frizz y encrespamiento','Ideal para cabello seco, poroso o muy dañado']
@@ -452,7 +452,7 @@
     if (_pdfLibCargando) return _pdfLibCargando;
     _pdfLibCargando = new Promise((ok, mal) => {
       const s = document.createElement('script');
-      s.src = 'js/vendor/pdf-lib.min.js?v=20260922';
+      s.src = 'js/vendor/pdf-lib.min.js?v=20261014';
       s.onload = () => window.PDFLib ? ok(window.PDFLib) : mal(new Error('sin PDFLib'));
       s.onerror = () => mal(new Error('no cargó'));
       document.head.appendChild(s);

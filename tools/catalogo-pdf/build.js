@@ -13,7 +13,7 @@ const INTRO = {
   'Shampoos':'Tres shampoos con un mismo principio: limpieza profunda sin sulfatos, sin sal y sin parabenos. Cambia el activo botánico, no la suavidad. Elige el que tu cabello necesita.',
   'Acondicionadores':'Cuatro acondicionadores que sellan la cutícula y desenredan sin dejar residuos pesados. Cada uno trabaja con un activo distinto para un tipo de cabello distinto.',
   'Tónicos Capilares':'El tónico es el paso que actúa directo sobre el cuero cabelludo. Se aplica sin enjuagar, después del lavado o sobre el cabello seco, y sigue trabajando durante el día.',
-  'Kit Rutina Completa':'La rutina completa en un solo pedido y a precio de kit. Ocho combinaciones pensadas para distintos tipos de cabello — desde la más sencilla hasta la más completa.',
+  'Kits Completos':'La rutina completa en un solo pedido y a precio de kit. Ocho combinaciones pensadas para distintos tipos de cabello — desde la más sencilla hasta la más completa.',
 };
 
 const leaf=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>`;
@@ -140,7 +140,7 @@ function order(){return `
   <div class="o-steps">
     <div class="o-step"><span class="o-n">1</span><p class="o-t">Elige tus productos</p><p class="o-d">Mira el catálogo y decide qué quieres. Si tienes dudas sobre cuál va mejor con tu cabello, pregúntale a Rosa: ella te asesora.</p></div>
     <div class="o-step"><span class="o-n">2</span><p class="o-t">Escríbele por WhatsApp</p><p class="o-d">Rosa atiende personalmente. Le dices qué quieres, ella confirma disponibilidad y el total de tu pedido.</p></div>
-    <div class="o-step"><span class="o-n">3</span><p class="o-t">Recibe y paga</p><p class="o-d">Entregamos a domicilio en Cartagena de Indias, contra entrega. Pagas cuando recibes — sin adelantos.</p></div>
+    <div class="o-step"><span class="o-n">3</span><p class="o-t">Recibe y paga</p><p class="o-d">Entregamos a domicilio en Cartagena de Indias. Pagas contra entrega, al recibir, o por Nequi o Bancolombia: lo acuerdas con Rosa.</p></div>
   </div>
   <div class="o-pay"><p class="o-pay-t">Medios de pago</p><p class="o-pay-d">Nequi · Bancolombia · Contra entrega</p></div>
   <div class="o-contact">
@@ -152,7 +152,7 @@ function order(){return `
     </div>
     <p class="o-addr">Barrio El Pozón · Cartagena de Indias · Bolívar · Colombia</p>
   </div>
-  <p class="o-legal">Precios vigentes a septiembre de 2026, expresados en pesos colombianos (COP) y sujetos a cambio sin previo aviso. Las fotografías son de los productos reales. Consulta las políticas de venta en alma-botanica.store/ventas</p>
+  <p class="o-legal">Precios vigentes a octubre de 2026, expresados en pesos colombianos (COP) y sujetos a cambio sin previo aviso. Las fotografías son de los productos reales. Consulta las políticas de venta en alma-botanica.store/ventas</p>
 </section>`;}
 
 const CSS = `

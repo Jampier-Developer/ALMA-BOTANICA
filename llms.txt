@@ -21,15 +21,18 @@ El sitio es un catálogo: muestra los productos con sus precios y arma el pedido
 pero la compra no se cierra en la web. El pedido se confirma por WhatsApp
 directamente con Rosa, que valida disponibilidad, precio total y forma de entrega.
 Medios de pago anunciados: Nequi, Bancolombia y contraentrega.
+Por ahora las entregas son solo a domicilio dentro de Cartagena de Indias.
 
 ## Secciones del sitio
 
 - [Inicio](https://alma-botanica.store/) — presentación de la marca
-- [Productos](https://alma-botanica.store/#productos) — los 12 productos de la línea
+- [Productos](https://alma-botanica.store/#productos) — los 12 productos de la línea, con buscador y filtros por necesidad
+- [¿Cuál es para mí?](https://alma-botanica.store/#test) — test de cuatro preguntas que recomienda productos
 - [Sobre Rosa Pérez](https://alma-botanica.store/#nosotras) — historia de la fundadora
 - [Resultados reales](https://alma-botanica.store/#resultados) — fotos antes y después de clientas
 - [Preguntas frecuentes](https://alma-botanica.store/#faq) — 10 preguntas sobre uso, envíos y productos
-- [Catálogo](https://alma-botanica.store/catalogo.html) — en construcción, pronto en PDF
+- [Ubicación](https://alma-botanica.store/#ubicacion) — Barrio El Pozón, Cartagena de Indias
+- [Catálogo](https://alma-botanica.store/catalogo) — catálogo completo en PDF (16 páginas, con fotos y precios de las 26 presentaciones)
 
 ## Línea de productos
 
@@ -40,7 +43,7 @@ Medios de pago anunciados: Nequi, Bancolombia y contraentrega.
 | Tónicos Capilares (Romero, 7 Aceites, Bomba) | 120 ml | desde $15.000 |
 | Gel Fijador Hidratante | 300 ml | $13.000 |
 | Tratamiento Capilar | 250 ml | $25.000 |
-| Kits Completos | varios | desde $60.000 |
+| Kits Completos (8 kits de las líneas Romero, Cebolla, Aguacate, Linaza y Nutritivo) | por kit | desde $60.000 |
 | Crema para Peinar | 200 ml | $28.000 |
 | Bio Repolarizador | 120 ml | $32.000 |
 | Pree Poo | 250 ml | $25.000 |

@@ -3,8 +3,8 @@
    propio:
 
    1. Comparador antes/después con barra deslizante
-   2. Calculadora "¿cuánto me dura?"
-   3. Modo regalo en el carrito
+   2. Modo regalo en el carrito
+   3. Datos de entrega en el carrito
 */
 (function () {
   'use strict';
@@ -19,7 +19,7 @@
   function montarComparadores() {
     var carruseles = [].slice.call(document.querySelectorAll('.rcard-carousel'));
 
-    carruseles.forEach(function (car) {
+    carruseles.forEach(function (car, n) {
       var imgs = [].slice.call(car.querySelectorAll('.rc-slide img'));
       if (imgs.length < 2) return;
 
@@ -42,6 +42,10 @@
       });
       if (!antes || !despues) return;
 
+      /* Un id distinto por comparador: hay tres en la página y la
+         etiqueta tiene que apuntar al suyo. */
+      var idRango = 'cmp-rango-' + (n + 1);
+
       function medidas(d) {
         return (d.w ? ' width="' + d.w + '"' : '') + (d.h ? ' height="' + d.h + '"' : '');
       }
@@ -55,8 +59,8 @@
           '<span class="cmp-etq cmp-etq-a">Antes</span>' +
           '<span class="cmp-etq cmp-etq-d">Después</span>' +
           '<div class="cmp-tirador" aria-hidden="true"><span></span></div>' +
-          '<label class="visually-hidden" for="' + (car.id || 'cmp') + '-rango">Deslizar para comparar el antes y el después</label>' +
-          '<input class="cmp-rango" id="' + (car.id || 'cmp') + '-rango" type="range" min="0" max="100" value="50" aria-label="Deslizar para comparar">' +
+          '<label class="visually-hidden" for="' + idRango + '">Deslizar para comparar el antes y el después</label>' +
+          '<input class="cmp-rango" id="' + idRango + '" type="range" min="0" max="100" value="50">' +
         '</div>';
 
       car.parentNode.insertBefore(caja, car);
@@ -75,185 +79,134 @@
     });
   }
 
-  /* ══ 2. CALCULADORA "¿CUÁNTO ME DURA?" ═════════════════════════
-     Un shampoo de $32.000 parece caro al lado de uno de supermercado,
-     hasta que se ve lo que cuesta cada lavado. Esto lo pone en números
-     sin prometer nada que no se pueda sostener. */
-  function montarCalculadora() {
-    var caja = document.getElementById('calculadora');
-    if (!caja) return;
+  /* ══ 2 y 3. REGALO Y DATOS DE ENTREGA EN EL CARRITO ═══════════
+     Dos bloques que van justo encima del botón "Enviar pedido por
+     WhatsApp", porque lo que se escribe en ellos viaja dentro de ese
+     mensaje, que es donde Rosa lo lee.
 
-    /* Mililitros por uso, con el largo del cabello de por medio.
-       Son cantidades de uso normal; se dice en la página que son
-       aproximadas, porque cada persona usa lo que usa. */
-    var POR_USO = { corto: 10, medio: 16, largo: 24 };
-    var PRODUCTOS = [
-      { nombre: 'Shampoo',              ml: 500, precio: 32000 },
-      { nombre: 'Acondicionador',       ml: 500, precio: 32000 },
-      { nombre: 'Tónico Capilar',       ml: 120, precio: 15000, porUso: 3 },
-      { nombre: 'Mascarilla Nutritiva', ml: 120, precio: 25000, cada: 7 },
-      { nombre: 'Tratamiento Capilar',  ml: 250, precio: 25000, cada: 7 }
-    ];
+     El carrito (js/cart.js) vuelve a pintar su pie cada vez que cambia
+     algo —una cantidad, un producto quitado— y al hacerlo borra lo que
+     hubiera dentro. Por eso los bloques no se montan una sola vez: se
+     vuelven a poner cada vez que cart.js avisa con 'alma:carrito-pintado',
+     y lo escrito vive aquí, en memoria, no en el formulario. Así da
+     igual por dónde se abra el carrito (el icono del menú, el "Ver
+     carrito" del aviso o el de la confirmación) y da igual cuántas veces
+     se repinte: la casilla y los campos salen siempre como se dejaron. */
 
-    var largo = 'medio', lavados = 3, producto = 0;
+  /* ── Regalo: casilla, destinatario y dedicatoria ── */
+  var regalo = { activo: false, para: '', nota: '' };
 
-    function pintar() {
-      var p = PRODUCTOS[producto];
-      var ml = p.porUso || POR_USO[largo];
-      var usosSemana = p.cada ? (7 / p.cada) : lavados;
-      var usos = Math.floor(p.ml / ml);
-      var semanas = usos / usosSemana;
-      var meses = semanas / 4.345;
-      var porUso = Math.round(p.precio / usos);
-
-      caja.querySelector('.cal-res').innerHTML =
-        '<div class="cal-dato"><strong>' + (meses >= 1 ? (Math.round(meses * 10) / 10).toString().replace('.', ',') : (Math.round(semanas * 10) / 10).toString().replace('.', ',')) + '</strong>' +
-          '<span>' + (meses >= 1 ? (Math.round(meses * 10) === 10 ? 'mes' : 'meses') : 'semanas') + ' de duración</span></div>' +
-        '<div class="cal-dato"><strong>' + usos + '</strong><span>usos aproximados</span></div>' +
-        '<div class="cal-dato cal-dato-destacado"><strong>$' + porUso.toLocaleString('es-CO').replace(/,/g, '.') + '</strong><span>por cada uso</span></div>';
-    }
-
-    caja.innerHTML =
-      '<div class="cal-card">' +
-        '<div class="cal-campos">' +
-          '<div class="cal-campo">' +
-            '<label for="calProd">Producto</label>' +
-            '<select id="calProd">' + PRODUCTOS.map(function (p, i) { return '<option value="' + i + '">' + p.nombre + ' · ' + p.ml + " ml</option>"; }).join('') + '</select>' +
-          '</div>' +
-          '<div class="cal-campo">' +
-            '<label for="calLargo">Largo de tu cabello</label>' +
-            '<select id="calLargo"><option value="corto">Corto</option><option value="medio" selected>Media melena</option><option value="largo">Largo</option></select>' +
-          '</div>' +
-          '<div class="cal-campo">' +
-            '<label for="calLav">Lavados por semana</label>' +
-            '<select id="calLav"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option><option value="7">A diario</option></select>' +
-          '</div>' +
-        '</div>' +
-        '<div class="cal-res"></div>' +
-        '<p class="cal-nota">Son cálculos aproximados: cada cabello y cada mano usan distinto. Sirven para hacerse una idea de lo que cuesta cada lavado.</p>' +
-      '</div>';
-
-    caja.querySelector('#calProd').addEventListener('change', function (e) { producto = +e.target.value; pintar(); });
-    caja.querySelector('#calLargo').addEventListener('change', function (e) { largo = e.target.value; pintar(); });
-    caja.querySelector('#calLav').addEventListener('change', function (e) { lavados = +e.target.value; pintar(); });
-    pintar();
+  function publicarRegalo() {
+    window.ALMA_REGALO = regalo.activo
+      ? { para: regalo.para.trim(), nota: regalo.nota.trim() }
+      : null;
   }
 
-  /* ══ 3. MODO REGALO ════════════════════════════════════════════
-     Una casilla en el carrito para avisar que el pedido es un regalo y
-     dejarle una dedicatoria. Va dentro del mensaje de WhatsApp, que es
-     donde Rosa lo va a leer. */
-  function montarRegalo() {
-    var drawer = document.getElementById('cartDrawer');
-    if (!drawer) return;
+  function montarRegalo(pie) {
+    var bloque = document.createElement('div');
+    bloque.className = 'rg-bloque';
+    bloque.innerHTML =
+      '<label class="rg-check"><input type="checkbox" id="rgEs"> <span>🎁 Es un regalo</span></label>' +
+      '<div class="rg-campos" hidden>' +
+        '<label class="visually-hidden" for="rgPara">Para quién es</label>' +
+        '<input type="text" id="rgPara" class="rg-input" placeholder="¿Para quién es?" maxlength="40">' +
+        '<label class="visually-hidden" for="rgNota">Dedicatoria</label>' +
+        '<textarea id="rgNota" class="rg-input" rows="2" placeholder="Dedicatoria (opcional)" maxlength="160"></textarea>' +
+      '</div>';
+    pie.parentNode.insertBefore(bloque, pie);
 
-    document.addEventListener('click', function (ev) {
-      if (!ev.target.closest('#cartBtn') && !ev.target.closest('.cart-btn')) return;
-      setTimeout(function () {
-        if (drawer.querySelector('.rg-bloque')) return;
-        var pie = drawer.querySelector('#cartSendWa');
-        if (!pie) return;
+    var check = bloque.querySelector('#rgEs');
+    var campos = bloque.querySelector('.rg-campos');
+    var para = bloque.querySelector('#rgPara');
+    var nota = bloque.querySelector('#rgNota');
 
-        var bloque = document.createElement('div');
-        bloque.className = 'rg-bloque';
-        bloque.innerHTML =
-          '<label class="rg-check"><input type="checkbox" id="rgEs"> <span>🎁 Es un regalo</span></label>' +
-          '<div class="rg-campos" hidden>' +
-            '<label class="visually-hidden" for="rgPara">Para quién es</label>' +
-            '<input type="text" id="rgPara" class="rg-input" placeholder="¿Para quién es?" maxlength="40">' +
-            '<label class="visually-hidden" for="rgNota">Dedicatoria</label>' +
-            '<textarea id="rgNota" class="rg-input" rows="2" placeholder="Dedicatoria (opcional)" maxlength="160"></textarea>' +
-          '</div>';
-        pie.parentNode.insertBefore(bloque, pie);
+    /* Se devuelve lo que ya había: si la casilla estaba marcada, sigue
+       marcada. Antes salía desmarcada pero el pedido seguía llegando a
+       Rosa como regalo. */
+    check.checked = regalo.activo;
+    campos.hidden = !regalo.activo;
+    para.value = regalo.para;
+    nota.value = regalo.nota;
 
-        var check = bloque.querySelector('#rgEs');
-        var campos = bloque.querySelector('.rg-campos');
-        check.addEventListener('change', function () {
-          campos.hidden = !check.checked;
-          window.ALMA_REGALO = check.checked ? datos() : null;
-        });
-        bloque.addEventListener('input', function () {
-          if (check.checked) window.ALMA_REGALO = datos();
-        });
-        function datos() {
-          return {
-            para: (bloque.querySelector('#rgPara').value || '').trim(),
-            nota: (bloque.querySelector('#rgNota').value || '').trim()
-          };
-        }
-      }, 120);
+    check.addEventListener('change', function () {
+      regalo.activo = check.checked;
+      campos.hidden = !check.checked;
+      publicarRegalo();
+    });
+    bloque.addEventListener('input', function () {
+      regalo.para = para.value;
+      regalo.nota = nota.value;
+      publicarRegalo();
     });
   }
 
-  /* ══ 4. DATOS DE ENTREGA ═══════════════════════════════════════
+  /* ── Entrega: nombre, barrio y dirección ──
      Antes, el pedido llegaba a Rosa sin saber a quién ni adónde, y ella
      tenía que pedir nombre, barrio y dirección en cuatro mensajes más.
      Con tres campos cortos, el pedido llega completo al primer mensaje.
 
      No se guarda nada en ningún servidor: lo que se escriba viaja
-     dentro del mensaje de WhatsApp y se queda en el navegador para no
-     tener que repetirlo la próxima vez. */
-  function montarEntrega() {
-    var drawer = document.getElementById('cartDrawer');
-    if (!drawer) return;
-    var CLAVE = 'botanica_entrega_v1';
-
-    document.addEventListener('click', function (ev) {
-      if (!ev.target.closest('#cartBtn') && !ev.target.closest('.cart-btn')) return;
-      setTimeout(function () {
-        if (drawer.querySelector('.en-bloque')) return;
-        var pie = drawer.querySelector('#cartSendWa');
-        if (!pie) return;
-
-        var guardado = {};
-        try { guardado = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (_) {}
-
-        var bloque = document.createElement('div');
-        bloque.className = 'en-bloque';
-        bloque.innerHTML =
-          '<p class="en-t">¿A dónde te lo llevamos?</p>' +
-          '<p class="en-d">Opcional, pero así Rosa no tiene que preguntártelo.</p>' +
-          '<label class="visually-hidden" for="enNombre">Tu nombre</label>' +
-          '<input type="text" id="enNombre" class="en-input" placeholder="Tu nombre" maxlength="50" autocomplete="name">' +
-          '<label class="visually-hidden" for="enBarrio">Tu barrio</label>' +
-          '<input type="text" id="enBarrio" class="en-input" placeholder="Tu barrio" maxlength="60" autocomplete="address-level3">' +
-          '<label class="visually-hidden" for="enDir">Dirección</label>' +
-          '<input type="text" id="enDir" class="en-input" placeholder="Dirección y punto de referencia" maxlength="120" autocomplete="street-address">';
-        pie.parentNode.insertBefore(bloque, pie);
-
-        ['Nombre', 'Barrio', 'Dir'].forEach(function (c) {
-          var el = bloque.querySelector('#en' + c);
-          if (guardado[c.toLowerCase()]) el.value = guardado[c.toLowerCase()];
-        });
-
-        function recoger() {
-          return {
-            nombre: bloque.querySelector('#enNombre').value.trim(),
-            barrio: bloque.querySelector('#enBarrio').value.trim(),
-            dir:    bloque.querySelector('#enDir').value.trim()
-          };
-        }
-        function volcar() {
-          var d = recoger();
-          window.ALMA_ENTREGA = (d.nombre || d.barrio || d.dir) ? d : null;
-          try { localStorage.setItem(CLAVE, JSON.stringify(d)); } catch (_) {}
-        }
-        bloque.addEventListener('input', volcar);
-        volcar();
-      }, 120);
+     dentro del mensaje de WhatsApp y se queda en el navegador
+     (botanica_entrega_v1) para no tener que repetirlo la próxima vez.
+     Está declarado en la política de cookies y en la de privacidad. */
+  var CLAVE_ENTREGA = 'botanica_entrega_v1';
+  var entrega = { nombre: '', barrio: '', dir: '' };
+  try {
+    var guardado = JSON.parse(localStorage.getItem(CLAVE_ENTREGA) || '{}');
+    ['nombre', 'barrio', 'dir'].forEach(function (k) {
+      if (typeof guardado[k] === 'string') entrega[k] = guardado[k];
     });
+  } catch (_) {}
+
+  function publicarEntrega() {
+    var d = {
+      nombre: entrega.nombre.trim(),
+      barrio: entrega.barrio.trim(),
+      dir: entrega.dir.trim()
+    };
+    window.ALMA_ENTREGA = (d.nombre || d.barrio || d.dir) ? d : null;
   }
 
-  function arrancar() {
-    montarComparadores();
-    montarCalculadora();
-    montarRegalo();
-    montarEntrega();
+  function montarEntrega(pie) {
+    var bloque = document.createElement('div');
+    bloque.className = 'en-bloque';
+    bloque.innerHTML =
+      '<p class="en-t">¿A dónde te lo llevamos?</p>' +
+      '<p class="en-d">Opcional, pero así Rosa no tiene que preguntártelo.</p>' +
+      '<label class="visually-hidden" for="enNombre">Tu nombre</label>' +
+      '<input type="text" id="enNombre" class="en-input" placeholder="Tu nombre" maxlength="50" autocomplete="name">' +
+      '<label class="visually-hidden" for="enBarrio">Tu barrio</label>' +
+      '<input type="text" id="enBarrio" class="en-input" placeholder="Tu barrio" maxlength="60" autocomplete="address-level3">' +
+      '<label class="visually-hidden" for="enDir">Dirección</label>' +
+      '<input type="text" id="enDir" class="en-input" placeholder="Dirección y punto de referencia" maxlength="120" autocomplete="street-address">';
+    pie.parentNode.insertBefore(bloque, pie);
+
+    var campos = {
+      nombre: bloque.querySelector('#enNombre'),
+      barrio: bloque.querySelector('#enBarrio'),
+      dir: bloque.querySelector('#enDir')
+    };
+    Object.keys(campos).forEach(function (k) { campos[k].value = entrega[k]; });
+
+    bloque.addEventListener('input', function () {
+      Object.keys(campos).forEach(function (k) { entrega[k] = campos[k].value; });
+      try { localStorage.setItem(CLAVE_ENTREGA, JSON.stringify(entrega)); } catch (_) {}
+      publicarEntrega();
+    });
+    publicarEntrega();
   }
+
+  /* cart.js avisa cada vez que pinta el pie con el botón de enviar */
+  document.addEventListener('alma:carrito-pintado', function () {
+    var pie = document.getElementById('cartSendWa');
+    if (!pie || pie.parentNode.querySelector('.rg-bloque')) return;
+    montarRegalo(pie);
+    montarEntrega(pie);
+  });
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', arrancar);
+    document.addEventListener('DOMContentLoaded', montarComparadores);
   } else {
-    arrancar();
+    montarComparadores();
   }
 })();

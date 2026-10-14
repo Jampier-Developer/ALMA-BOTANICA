@@ -14,12 +14,13 @@ privado. Si algún día estorba, se borra y el sitio sigue igual.
 
 ## Cuándo hay que volver a generarlo
 
-Cuando cambie un precio, se agregue un producto o se cambie una foto.
-Ojo: los precios viven en tres sitios y hay que tocarlos todos antes de
-regenerar (está explicado en el README de la raíz).
+Cuando cambie un precio, un texto de producto, se agregue un producto o
+se cambie una foto. Ojo: los precios viven en varios sitios y hay que
+tocarlos todos antes de regenerar (está explicado en el README de la
+raíz, en "Cosas que hay que recordar al editar").
 
 También conviene actualizar la línea de vigencia de la última página,
-que hoy dice *"Precios vigentes a septiembre de 2026"*. Está en la
+que hoy dice *"Precios vigentes a octubre de 2026"*. Está en la
 función `order()` de `build.js`.
 
 ## Cómo se genera
@@ -61,5 +62,5 @@ en PNG.
 
 Mide, página por página, hasta dónde llega el contenido y lo compara con
 el alto útil de la hoja. Si algo se sale, lo dice y nombra al culpable.
-Es lo que detectó que el Kit Rutina Completa, con sus 8 presentaciones,
-no cabía en una sola página — por eso ahora ocupa dos.
+Es lo que detectó que los Kits Completos, con sus 8 presentaciones,
+no cabían en una sola página — por eso ahora ocupan dos.

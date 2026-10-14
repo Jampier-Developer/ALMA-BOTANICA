@@ -281,6 +281,11 @@
       closeCart();
       document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
     });
+
+    /* Aviso para js/extras.js: el pie se acaba de pintar de cero y hay
+       que volver a poner encima del botón los bloques de regalo y de
+       datos de entrega, que el innerHTML de arriba acaba de borrar. */
+    try { document.dispatchEvent(new CustomEvent('alma:carrito-pintado')); } catch (_) {}
   }
 
   /* ── OPERACIONES ─────────────────────────────────── */
