@@ -39,10 +39,18 @@ window.almaCapas = (function () {
     for (var i = pila.length - 1; i >= 0; i--) if (pila[i].capa === capa) pila.splice(i, 1);
     pila.push({ capa: capa, origen: document.activeElement, atrapar: !(opciones && opciones.atrapar === false) });
     /* Se espera un cuadro: la capa acaba de hacerse visible y, en el
-       carrito, su contenido se acaba de pintar. */
-    requestAnimationFrame(function () {
+       carrito, su contenido se acaba de pintar. Si el navegador todavía
+       no deja enfocar (algún elemento tarda un cuadro más en hacerse
+       visible), se reintenta unas pocas veces. */
+    var intentos = 0;
+    requestAnimationFrame(function probar() {
+      if (!capa.matches(ABIERTAS)) return;          /* se cerró antes */
+      if (intentos > 0 && capa.contains(document.activeElement)) return;   /* ya está dentro */
       var destino = (primero && visible(primero)) ? primero : enfocables(capa)[0];
       if (destino) enfocar(destino);
+      if ((!destino || document.activeElement !== destino) && ++intentos < 6) {
+        setTimeout(probar, 50);
+      }
     });
   }
 

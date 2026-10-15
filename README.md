@@ -626,7 +626,9 @@ avisos y banner de cookies) se esconden con `opacity:0` **y**
 `css/layout.css`. Solo con `opacity` la foto de la ficha cerrada seguía
 encima de la página tragándose los toques, y los botones invisibles
 seguían recibiendo el foco del tabulador. Una capa nueva tiene que entrar
-en ese bloque.
+en ese bloque. Y ningún botón usa `transition:all`: animaba también esa
+`visibility` y, mientras duraba, el botón de una capa recién abierta no
+aceptaba el foco (y el de una recién cerrada, sí).
 
 Y en JavaScript se abren y cierran con `window.almaCapas` (al principio de
 `js/interactions.js`):
