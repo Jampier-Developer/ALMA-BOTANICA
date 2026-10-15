@@ -8,10 +8,15 @@
    window.almaCapas lo centraliza:
    - ajustarScroll(): bloquea el scroll del fondo si queda alguna capa
      abierta y lo suelta solo cuando no queda ninguna.
-   - abrir(capa, primero): recuerda quién tenía el foco, lo lleva dentro
-     de la capa y lo mantiene ahí con Tab mientras sea la de arriba.
+   - abrir(capa, primero, opciones): recuerda quién tenía el foco, lo
+     lleva dentro de la capa y lo mantiene ahí con Tab mientras sea la
+     de arriba. Opciones: incluir (elementos de fuera que también entran
+     en la vuelta del Tab, como la hamburguesa del menú) y respaldo
+     (adónde va el foco al cerrar si quien lo tenía ya no se ve).
    - cerrar(capa): devuelve el foco a quien lo tenía (o a la capa que
-     quede debajo si ese elemento ya no existe).
+     quede debajo, o al respaldo).
+   - arriba(): la capa abierta de más arriba, para que Escape cierre
+     solo esa.
    Este archivo se carga antes que cart.js y forms.js, que lo usan. */
 window.almaCapas = (function () {
   var ABIERTAS = '.modal-overlay.open, .cart-overlay.open, .cart-confirm-overlay.open, ' +
@@ -36,8 +41,20 @@ window.almaCapas = (function () {
 
   function abrir(capa, primero, opciones) {
     if (!capa) return;
-    for (var i = pila.length - 1; i >= 0; i--) if (pila[i].capa === capa) pila.splice(i, 1);
-    pila.push({ capa: capa, origen: document.activeElement, atrapar: !(opciones && opciones.atrapar === false) });
+    opciones = opciones || {};
+    /* Si la capa ya estaba abierta (la ficha que se vuelve a abrir desde
+       "Ver producto" del carrito), conserva su origen de verdad: el foco
+       de ahora está dentro de ella misma. */
+    var origen = document.activeElement;
+    for (var i = pila.length - 1; i >= 0; i--) {
+      if (pila[i].capa === capa) { origen = pila[i].origen; pila.splice(i, 1); }
+    }
+    pila.push({
+      capa: capa, origen: origen,
+      atrapar: opciones.atrapar !== false,
+      incluir: opciones.incluir || [],
+      respaldo: opciones.respaldo || null
+    });
     /* Se espera un cuadro: la capa acaba de hacerse visible y, en el
        carrito, su contenido se acaba de pintar. Si el navegador todavía
        no deja enfocar (algún elemento tarda un cuadro más en hacerse
@@ -55,12 +72,13 @@ window.almaCapas = (function () {
   }
 
   function cerrar(capa) {
-    var origen = null, pos = -1;
+    var entrada = null, pos = -1;
     for (var i = pila.length - 1; i >= 0; i--) {
-      if (pila[i].capa === capa) { origen = pila[i].origen; pos = i; break; }
+      if (pila[i].capa === capa) { entrada = pila[i]; pos = i; break; }
     }
     if (pos < 0) return;
     pila.splice(pos, 1);
+    var origen = entrada.origen;
     /* Si se cierra una capa que no es la de arriba (la confirmación que
        abrió el carrito, por ejemplo), el foco no se toca: está en la de
        arriba. Las capas que se abrieron desde ella heredan su origen. */
@@ -70,28 +88,38 @@ window.almaCapas = (function () {
       }
       return;
     }
-    if (visible(origen)) { enfocar(origen); return; }
-    /* El botón de origen ya no está (se repintó o se cerró su capa):
-       el foco va a la capa que quede abierta debajo, si hay. */
+    /* Un origen que está dentro de la propia capa no sirve: la capa se
+       oculta un instante después y el foco caería en <body>. */
+    if (visible(origen) && !capa.contains(origen)) { enfocar(origen); return; }
+    /* El botón de origen ya no está (se repintó o se escondió con su
+       aviso): el foco va a la capa que quede abierta debajo, si hay, y
+       si no, al respaldo que se dio al abrir. */
     var debajo = pila.length ? pila[pila.length - 1].capa : null;
-    var primero = debajo ? enfocables(debajo)[0] : null;
-    if (primero) enfocar(primero);
+    var destino = debajo ? enfocables(debajo)[0] : null;
+    if (!destino && visible(entrada.respaldo)) destino = entrada.respaldo;
+    if (destino) enfocar(destino);
+  }
+
+  function arriba() {
+    for (var i = pila.length - 1; i >= 0; i--) if (pila[i].capa.matches(ABIERTAS)) return pila[i].capa;
+    return null;
   }
 
   /* Tab y Mayús+Tab dan la vuelta dentro de la capa de arriba */
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Tab' || !pila.length) return;
-    var arriba = pila[pila.length - 1];
-    if (!arriba.atrapar || !arriba.capa.matches(ABIERTAS)) return;
-    var els = enfocables(arriba.capa);
+    var top = pila[pila.length - 1];
+    if (!top.atrapar || !top.capa.matches(ABIERTAS)) return;
+    var els = top.incluir.filter(visible).concat(enfocables(top.capa));
     if (!els.length) return;
     var primero = els[0], ultimo = els[els.length - 1];
-    var dentro = arriba.capa.contains(document.activeElement);
-    if (e.shiftKey && (document.activeElement === primero || !dentro)) { e.preventDefault(); enfocar(ultimo); }
-    else if (!e.shiftKey && (document.activeElement === ultimo || !dentro)) { e.preventDefault(); enfocar(primero); }
+    var act = document.activeElement;
+    var dentro = top.capa.contains(act) || top.incluir.indexOf(act) !== -1;
+    if (e.shiftKey && (act === primero || !dentro)) { e.preventDefault(); enfocar(ultimo); }
+    else if (!e.shiftKey && (act === ultimo || !dentro)) { e.preventDefault(); enfocar(primero); }
   });
 
-  return { ajustarScroll: ajustarScroll, abrir: abrir, cerrar: cerrar };
+  return { ajustarScroll: ajustarScroll, abrir: abrir, cerrar: cerrar, arriba: arriba };
 })();
 
 (function(){
@@ -107,14 +135,16 @@ window.almaCapas = (function () {
     mobMenu.classList.toggle('open',open);
     hamburger.setAttribute('aria-expanded',open);
     mobMenu.setAttribute('aria-hidden',!open);
-    if(open){document.body.style.overflow='hidden';if(!estaba)almaCapas.abrir(mobMenu,null,{atrapar:false});}
+    if(open){document.body.style.overflow='hidden';if(!estaba)almaCapas.abrir(mobMenu,null,{incluir:[hamburger]});}
     else{almaCapas.ajustarScroll();if(estaba)almaCapas.cerrar(mobMenu);}
   }
   hamburger?.addEventListener('click',()=>toggleMenu(!hamburger.classList.contains('open')));
   document.querySelectorAll('.mob-link, #mobCatalogBtn').forEach(el=>{
     el.addEventListener('click',()=>toggleMenu(false));
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobMenu.classList.contains('open'))toggleMenu(false)});
+  /* Escape cierra el menú solo si es la capa de arriba: si encima está
+     el carrito, Escape es para el carrito. */
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobMenu.classList.contains('open')&&almaCapas.arriba()===mobMenu)toggleMenu(false)});
 
   window.addEventListener('scroll',()=>{
     const max=document.documentElement.scrollHeight-window.innerHeight;
@@ -136,10 +166,23 @@ window.almaCapas = (function () {
     });
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  /* Enlaces internos: scroll suave por debajo del menú fijo, y el foco
+     va al destino (si no, "Saltar al contenido" no saltaba nada y el
+     siguiente Tab volvía al menú). Los enlaces de productos del pie
+     (data-open-product) no se desplazan: abren la ficha y nada más.
+     El href se lee al hacer clic: el de "Pedir por WhatsApp" empieza
+     siendo "#" y luego es una URL, que no es un selector válido. */
+  document.querySelectorAll('a[href^="#"]:not([data-open-product])').forEach(a=>{
     a.addEventListener('click',e=>{
-      const t=document.querySelector(a.getAttribute('href'));
-      if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'})}
+      const h=a.getAttribute('href');
+      if(!h||h.length<2||h[0]!=='#')return;
+      let t=null;
+      try{t=document.querySelector(h)}catch(_){return}
+      if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+      if(!t.hasAttribute('tabindex'))t.setAttribute('tabindex','-1');
+      try{t.focus({preventScroll:true})}catch(_){t.focus()}
     });
   });
 })();

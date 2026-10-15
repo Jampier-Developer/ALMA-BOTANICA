@@ -381,7 +381,9 @@
     ov.classList.add('open');
     document.body.style.overflow = 'hidden';
     renderCart();
-    if (window.almaCapas) window.almaCapas.abrir(ov, document.getElementById('cartClose'));
+    /* Respaldo: si se abrió desde un aviso que ya se escondió ("Ver
+       carrito"), al cerrar el foco vuelve al botón del carrito. */
+    if (window.almaCapas) window.almaCapas.abrir(ov, document.getElementById('cartClose'), { respaldo: document.getElementById('cartBtn') });
   }
 
   function closeCart() {

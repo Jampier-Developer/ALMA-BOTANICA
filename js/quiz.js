@@ -149,7 +149,7 @@
       '<div class="qz-card">' +
         puntos() +
         '<p class="qz-paso">Pregunta ' + (paso + 1) + ' de ' + PREGUNTAS.length + '</p>' +
-        '<h3 class="qz-pregunta">' + q.titulo + '</h3>' +
+        '<h3 class="qz-pregunta" tabindex="-1">' + q.titulo + '</h3>' +
         '<p class="qz-pie">' + q.pie + '</p>' +
         '<div class="qz-opciones">' +
           q.opciones.map(function (o) {
@@ -173,7 +173,7 @@
       raiz.innerHTML =
         '<div class="qz-card qz-final">' +
           '<div class="qz-ico">🌿</div>' +
-          '<h3 class="qz-pregunta">Mejor te lo dice Rosa</h3>' +
+          '<h3 class="qz-pregunta" tabindex="-1">Mejor te lo dice Rosa</h3>' +
           '<p class="qz-pie">Con lo que nos contaste, prefiere verlo ella misma. Escríbele y te arma la rutina exacta para tu cabello.</p>' +
           '<a class="btn btn-wa" href="https://wa.me/573135487027?text=' +
             encodeURIComponent('Hola Rosa! Hice el test de la página y me gustaría que me recomendaras qué usar 🌿') +
@@ -186,7 +186,7 @@
     raiz.innerHTML =
       '<div class="qz-card qz-final">' +
         '<div class="qz-ico">🌿</div>' +
-        '<h3 class="qz-pregunta">Esto es lo que te recomendamos</h3>' +
+        '<h3 class="qz-pregunta" tabindex="-1">Esto es lo que te recomendamos</h3>' +
         '<p class="qz-pie">Según lo que nos contaste. Si quieres afinar más, Rosa te atiende por WhatsApp.</p>' +
         '<div class="qz-res">' +
           recomendados.map(function (r, i) {
@@ -214,6 +214,15 @@
     raiz._recomendados = recomendados;
   }
 
+  /* El botón pulsado desaparece al pintar la siguiente pregunta: el foco
+     va al título nuevo, para no caer en <body> y para que un lector de
+     pantalla lea la pregunta. */
+  function enfocarTitulo() {
+    var t = raiz.querySelector('.qz-pregunta');
+    if (!t) return;
+    try { t.focus({ preventScroll: true }); } catch (_) { t.focus(); }
+  }
+
   /* ── Interacción ────────────────────────────────────────────── */
   raiz.addEventListener('click', function (ev) {
     var b = ev.target.closest('button, a');
@@ -227,6 +236,7 @@
          no servía con el resultado, que es más alto que la pantalla: el
          título quedaba tapado o fuera de la vista. */
       window.scrollTo({ top: raiz.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+      enfocarTitulo();
       if (typeof window.gtag === 'function' && paso === PREGUNTAS.length) {
         window.gtag('event', 'quiz_completado', { respuestas: respuestas.join('|') });
       }
@@ -236,12 +246,14 @@
     if (b.hasAttribute('data-atras')) {
       paso = Math.max(0, paso - 1);
       pintarPregunta();
+      enfocarTitulo();
       return;
     }
 
     if (b.hasAttribute('data-reiniciar')) {
       paso = 0; respuestas = [];
       pintarPregunta();
+      enfocarTitulo();
       return;
     }
 

@@ -139,6 +139,7 @@
         b.setAttribute('aria-pressed', act);
       });
       aplicar();
+      campo.focus();   /* el botón pulsado ya no existe */
       return;
     }
     if (ev.target.closest('#flLimpiar')) {

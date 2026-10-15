@@ -1830,3 +1830,15 @@ body.ck-abierto .pwa-aviso{bottom:9.5rem}
 @media(max-width:600px){
   .fl-buscar input,.rg-input,.en-input{font-size:16px}
 }
+
+/* ═══════════════════════════════════════════════════
+   FOCO DEL TECLADO
+   ═══════════════════════════════════════════════════ */
+/* Secciones, títulos y el <main> reciben el foco por código (tabindex=-1)
+   al saltar a ellos: no hace falta dibujarles un anillo. */
+main[tabindex="-1"]:focus,section[tabindex="-1"]:focus,.qz-pregunta:focus{outline:none}
+/* El input del comparador es invisible (va encima de la foto): el foco se
+   enseña en el tirador, que es lo que se ve moverse. */
+.cmp-marco:has(.cmp-rango:focus-visible) .cmp-tirador span{box-shadow:0 0 0 3px var(--white),0 0 0 6px var(--sage)}
+/* La foto activa de la ficha es un botón (Enter la amplía) */
+.mc-slide:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}

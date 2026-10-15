@@ -320,7 +320,13 @@
         '</div>' +
       '</div>';
 
-    document.body.appendChild(banner);
+    /* Justo después de "Saltar al contenido": así, con el teclado, el
+       banner es de lo primero que se alcanza con Tab. Antes iba al final
+       del <body> y para llegar a Rechazar hacían falta unos 90 Tab. Es
+       position:fixed, así que en pantalla se ve igual. */
+    var salto = document.querySelector('.skip-link');
+    if (salto && salto.parentNode === document.body) document.body.insertBefore(banner, salto.nextSibling);
+    else document.body.insertBefore(banner, document.body.firstChild);
 
     banner.querySelector('.ck-aceptar').addEventListener('click', function () {
       guardarDecision(ACEPTADO);
@@ -354,6 +360,11 @@
     document.body.style.paddingBottom = '';
   }
 
+  /* Quién tenía el foco cuando se reabrió el banner desde el pie, para
+     devolvérselo al decidir (si no, el foco volvía al principio de la
+     página y la persona perdía su sitio). */
+  var focoPrevio = null;
+
   function mostrarBanner() {
     construirBanner();
     document.body.classList.add('ck-abierto');
@@ -371,10 +382,19 @@
 
   function ocultarBanner() {
     if (!banner) return;
+    var teniaFoco = banner.contains(document.activeElement);
     banner.classList.remove('ck-visible');
     document.body.classList.remove('ck-abierto');
     limpiarEspacioInferior();
     window.removeEventListener('resize', ajustarEspacioInferior);
+    if (teniaFoco) {
+      var destino = (focoPrevio && document.contains(focoPrevio)) ? focoPrevio : document.getElementById('contenido');
+      if (destino) {
+        if (destino.id === 'contenido' && !destino.hasAttribute('tabindex')) destino.setAttribute('tabindex', '-1');
+        try { destino.focus({ preventScroll: true }); } catch (_) { destino.focus(); }
+      }
+    }
+    focoPrevio = null;
     avisarViaLibre();
   }
 
@@ -397,9 +417,21 @@
     for (var i = 0; i < botones.length; i++) {
       botones[i].addEventListener('click', function (ev) {
         ev.preventDefault();
+        focoPrevio = ev.currentTarget;
         mostrarBanner();
+        /* Reabierto a propósito: el foco va a "Rechazar", el primero de
+           los dos botones, para decidir sin tener que buscarlo. */
+        var rechazar = banner && banner.querySelector('.ck-rechazar');
+        if (rechazar) setTimeout(function () { try { rechazar.focus({ preventScroll: true }); } catch (_) { rechazar.focus(); } }, 60);
       });
     }
+    /* Escape cierra el banner reabierto sin cambiar la decisión que ya
+       había. En la primera visita no: ahí hay que decidir. */
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Escape' || !banner || !banner.classList.contains('ck-visible')) return;
+      if (leerDecision() === null) return;
+      ocultarBanner();
+    });
     /* "Ver mapa" es un sí puntual para ese contenido: carga el mapa y
        nada más. No guarda ninguna decisión ni activa la medición; para
        eso está el banner. Antes este botón solo reabría el banner y para
@@ -408,7 +440,11 @@
     for (var j = 0; j < mapas.length; j++) {
       mapas[j].addEventListener('click', function (ev) {
         ev.preventDefault();
+        var caja = ev.currentTarget.closest('[data-mapa]');
         activarMapa();
+        /* El botón desaparece con el marcador: el foco pasa al mapa */
+        var mapa = caja && caja.querySelector('iframe');
+        if (mapa) { try { mapa.focus({ preventScroll: true }); } catch (_) { mapa.focus(); } }
       });
     }
   }

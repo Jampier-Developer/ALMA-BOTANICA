@@ -312,7 +312,12 @@
     ? '<div class="mc-placeholder"><span class="mcp-icon">🛡️</span><p class="mcp-txt">Foto próximamente</p><p class="mcp-sub">En proceso...</p></div>'
     : '<div class="modal-carousel">'
       + '<div class="mc-track">'
-      + imgs.map((src, i) => `<div class="mc-slide${i === inicio ? ' active' : ''}"><img src="${src}" alt="${hasVariants ? p.variants[i].name : p.name + ' — foto ' + (i + 1)}"></div>`).join('')
+      + imgs.map((src, i) => {
+          const alt = hasVariants ? p.variants[i].name : p.name + ' — foto ' + (i + 1);
+          /* La foto activa es un botón: con Enter o Espacio se amplía,
+             igual que con un clic. Las demás no reciben el foco. */
+          return `<div class="mc-slide${i === inicio ? ' active' : ''}" role="button" tabindex="${i === inicio ? 0 : -1}" aria-label="Ampliar foto: ${alt}"><img src="${src}" alt="${alt}"></div>`;
+        }).join('')
       + '</div>'
       + (multi
           ? `<button class="mc-btn mc-prev" aria-label="Anterior">${svgPrev}</button>`
@@ -366,8 +371,10 @@
 
       function goTo(n) {
         slides[cur].classList.remove('active');
+        slides[cur].tabIndex = -1;
         cur = ((n % total) + total) % total;
         slides[cur].classList.add('active');
+        slides[cur].tabIndex = 0;
         dotBtns.forEach((d, i) => d.classList.toggle('active', i === cur));
         if (hasVariants) updateInfo(p.variants[cur]);
       }
@@ -456,6 +463,9 @@
       catalogForm.style.display = 'none';
       const ok = document.getElementById('cmSuccess');
       if (ok) ok.style.display = 'block';
+      /* El formulario se esconde con el foco dentro: se lleva al botón
+         de descarga, que es lo siguiente que hay que pulsar. */
+      document.getElementById('cmDownloadBtn')?.focus();
       // Se deja el formulario como estaba para la próxima vez que se abra
       if (cmBtnText) cmBtnText.style.display = '';
       if (cmBtnLoad) cmBtnLoad.style.display = 'none';
@@ -594,6 +604,8 @@
     } finally {
       btn.disabled = false;
       btn.innerHTML = original;
+      /* Mientras estuvo deshabilitado perdió el foco: se le devuelve */
+      btn.focus();
     }
   });
 
@@ -719,12 +731,23 @@
     }
 
     // Abrir al hacer clic en imagen — solo si el modal ya está abierto
+    function abrirDesde(img) {
+      const allImgs = Array.from(document.querySelectorAll('#modalImg .mc-slide img'));
+      const idx = allImgs.indexOf(img);
+      openLb(allImgs.length ? allImgs : [img], Math.max(0, idx));
+    }
     document.getElementById('modalImg')?.addEventListener('click', e => {
       if(!document.getElementById('productModal')?.classList.contains('open')) return;
       if(e.target.tagName !== 'IMG') return;
-      const allImgs = Array.from(document.querySelectorAll('#modalImg .mc-slide img'));
-      const idx = allImgs.indexOf(e.target);
-      openLb(allImgs.length ? allImgs : [e.target], Math.max(0, idx));
+      abrirDesde(e.target);
+    });
+    // …y con el teclado, desde la foto activa (que es un botón)
+    document.getElementById('modalImg')?.addEventListener('keydown', e => {
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      const slide = e.target.closest && e.target.closest('.mc-slide');
+      if(!slide || !slide.querySelector('img')) return;
+      e.preventDefault();
+      abrirDesde(slide.querySelector('img'));
     });
 
     // Navegar
