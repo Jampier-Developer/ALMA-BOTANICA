@@ -65,8 +65,10 @@
                '</article>';
       }).join('') +
     '</div>' +
-    '<p class="rs-pedir">¿Ya probaste los productos? <a href="https://wa.me/573135487027?text=' +
-      encodeURIComponent('Hola Rosa! 🌿 Quiero dejarles mi reseña sobre los productos.') +
+    '<p class="rs-pedir">¿Ya probaste los productos? <a href="' +
+      /* Sin saludo: js/wa.js le pone delante el "Vengo de la página web" */
+      (window.ALMA_WA ? window.ALMA_WA.enlace('Quiero dejarles mi reseña sobre los productos.')
+        : 'https://wa.me/573135487027?text=' + encodeURIComponent('Quiero dejarles mi reseña sobre los productos.')) +
       '" target="_blank" rel="noopener">Cuéntanos tu experiencia</a></p>';
 
   /* La nota media a Google — SOLO si todas las reseñas son reales */

@@ -5,29 +5,30 @@
 
    Ahora el mensaje cambia según la sección que se esté mirando, y si hay
    algo en el carrito lo menciona. Rosa abre el chat sabiendo ya de qué
-   va, y la persona no tiene que explicarse. */
+   va, y la persona no tiene que explicarse.
+
+   Los textos de aquí van SIN saludo: el "¡Hola Rosa! 🌿 Vengo de la
+   página web de Alma Botánica." lo pone js/wa.js delante de todos. */
 (function () {
   'use strict';
 
   var boton = document.querySelector('.wa-btn');
   if (!boton) return;
 
-  var WA = '573135487027';
-
   var POR_SECCION = {
-    inicio:     'Hola Rosa! 👋 Estaba viendo la página y quiero saber más de los productos 🌿',
-    test:       'Hola Rosa! 👋 Hice el test de la página y quiero que me confirmes qué me conviene 🌿',
-    productos:  'Hola Rosa! 👋 Estaba viendo los productos y tengo una duda 🌿',
-    nosotras:   'Hola Rosa! 👋 Me encantó conocer tu historia. Quiero probar tus productos 🌿',
-    resultados: 'Hola Rosa! 👋 Vi los resultados de tus clientas y quiero saber qué me recomiendas a mí 🌿',
-    faq:        'Hola Rosa! 👋 Tengo una pregunta que no encontré en las frecuentes 🌿',
-    'resenas-sec': 'Hola Rosa! 👋 Vi las reseñas y quiero probar los productos 🌿',
-    ubicacion:  'Hola Rosa! 👋 Quiero saber el horario y cómo hago para recibir mi pedido 🌿'
+    inicio:     'Quiero saber más de los productos.',
+    test:       'Hice el test y quiero que me confirmes qué me conviene.',
+    productos:  'Estaba viendo los productos y tengo una duda.',
+    nosotras:   'Me encantó conocer tu historia y quiero probar tus productos.',
+    resultados: 'Vi los resultados de tus clientas y quiero saber qué me recomiendas a mí.',
+    faq:        'Tengo una pregunta que no encontré en las preguntas frecuentes.',
+    'resenas-sec': 'Vi las reseñas y quiero probar los productos.',
+    ubicacion:  'Quiero saber el horario y cómo hago para recibir mi pedido.'
   };
 
   /* Mientras el test no esté terminado, el mensaje no puede decir que
      se hizo: basta con pasar por la sección para que cambie el botón. */
-  var TEST_SIN_TERMINAR = 'Hola Rosa! 👋 Estoy viendo el test de la página y quiero que me ayudes a elegir 🌿';
+  var TEST_SIN_TERMINAR = 'Estoy viendo el test y quiero que me ayudes a elegir.';
 
   var seccionActual = 'inicio';
 
@@ -45,7 +46,9 @@
   }
 
   function refrescar() {
-    boton.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(texto());
+    boton.href = window.ALMA_WA
+      ? window.ALMA_WA.enlace(texto())
+      : 'https://wa.me/573135487027?text=' + encodeURIComponent(texto());
   }
 
   /* Qué sección se está mirando. Se usa IntersectionObserver, que es lo

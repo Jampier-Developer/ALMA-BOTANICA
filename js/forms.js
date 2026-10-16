@@ -334,8 +334,12 @@
       document.getElementById('modalDesc').textContent = info.desc;
       document.getElementById('modalBenefits').innerHTML = info.benefits.map(b => `<li>${b}</li>`).join('');
       document.getElementById('modalPrice').innerHTML = `<span style="font-size:1.6rem;font-weight:700;color:var(--bronze)">${info.price}</span>`;
-      const waMsg = encodeURIComponent(`🌿 *Alma Botánica* — Rosa Pérez\n\nHola Rosa! Me interesa ${info.name}. ¿Me puedes contar más detalles y disponibilidad?`);
-      document.getElementById('modalWa').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+      /* Sin saludo: js/wa.js le pone delante "¡Hola Rosa! 🌿 Vengo de la
+         página web de Alma Botánica." */
+      const waTexto = `Me interesa *${info.name}* (${info.price}). ¿Me cuentas más detalles y si está disponible?`;
+      document.getElementById('modalWa').href = window.ALMA_WA
+        ? window.ALMA_WA.enlace(waTexto)
+        : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waTexto)}`;
 
       // Actualizar datos del carrito con el producto/variante actual
       const activeImg = document.querySelector('#modalImg .mc-slide.active img');
@@ -501,7 +505,7 @@
     if (_pdfLibCargando) return _pdfLibCargando;
     _pdfLibCargando = new Promise((ok, mal) => {
       const s = document.createElement('script');
-      s.src = 'js/vendor/pdf-lib.min.js?v=20261014';
+      s.src = 'js/vendor/pdf-lib.min.js?v=20261015';
       s.onload = () => window.PDFLib ? ok(window.PDFLib) : mal(new Error('sin PDFLib'));
       s.onerror = () => mal(new Error('no cargó'));
       document.head.appendChild(s);

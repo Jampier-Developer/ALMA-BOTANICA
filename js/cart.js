@@ -359,8 +359,10 @@
       if (regalo.nota) lineasRegalo.push(`  Dedicatoria: "${regalo.nota}"`);
     }
 
+    /* Sin saludo: js/wa.js le pone delante "¡Hola Rosa! 🌿 Vengo de la
+       página web de Alma Botánica." */
     const msg = [
-      '¡Hola Rosa! 🌿 Me interesan estos productos de *Alma Botánica*:',
+      'Me interesan estos productos:',
       '',
       '🛒 *Mi pedido:*',
       ...lines,
@@ -368,9 +370,10 @@
       ...lineasRegalo,
       ...lineasEntrega,
       '',
-      '¿Están disponibles? ¿Me confirmas disponibilidad y formas de pago? ¡Muchas gracias! 😊',
+      '¿Me confirmas disponibilidad y formas de pago? ¡Muchas gracias! 😊',
     ].join('\n');
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    const url = window.ALMA_WA ? window.ALMA_WA.enlace(msg) : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener');
   }
 
   /* ── DRAWER ──────────────────────────────────────── */

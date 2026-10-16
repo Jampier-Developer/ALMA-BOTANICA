@@ -90,6 +90,14 @@
   var paso = 0;
   var respuestas = [];
 
+  /* Enlace a WhatsApp. El texto va sin saludo: js/wa.js le pone delante
+     "¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica." */
+  function enlaceWa(texto) {
+    return window.ALMA_WA
+      ? window.ALMA_WA.enlace(texto)
+      : 'https://wa.me/573135487027?text=' + encodeURIComponent(texto);
+  }
+
   /* Los datos del producto salen de forms.js, no se copian aquí */
   function producto(e) {
     var lista = window.ALMA_PRODUCTS;
@@ -175,8 +183,7 @@
           '<div class="qz-ico">🌿</div>' +
           '<h3 class="qz-pregunta" tabindex="-1">Mejor te lo dice Rosa</h3>' +
           '<p class="qz-pie">Con lo que nos contaste, prefiere verlo ella misma. Escríbele y te arma la rutina exacta para tu cabello.</p>' +
-          '<a class="btn btn-wa" href="https://wa.me/573135487027?text=' +
-            encodeURIComponent('Hola Rosa! Hice el test de la página y me gustaría que me recomendaras qué usar 🌿') +
+          '<a class="btn btn-wa" href="' + enlaceWa('Hice el test y me gustaría que me recomendaras qué usar.') +
             '" target="_blank" rel="noopener">Preguntarle a Rosa</a>' +
           '<button type="button" class="qz-atras" data-reiniciar>Hacer el test otra vez</button>' +
         '</div>';
@@ -204,8 +211,7 @@
           }).join('') +
         '</div>' +
         '<div class="qz-final-btns">' +
-          '<a class="btn btn-wa" href="https://wa.me/573135487027?text=' +
-            encodeURIComponent('Hola Rosa! Hice el test y me salió: ' + recomendados.map(function (r) { return r.nombre; }).join(', ') + '. ¿Me confirmas si es lo mejor para mi cabello? 🌿') +
+          '<a class="btn btn-wa" href="' + enlaceWa('Hice el test y me salió: ' + recomendados.map(function (r) { return r.nombre; }).join(', ') + '. ¿Me confirmas si es lo mejor para mi cabello?') +
             '" target="_blank" rel="noopener">Consultarlo con Rosa</a>' +
           '<button type="button" class="qz-atras" data-reiniciar>Hacer el test otra vez</button>' +
         '</div>' +
