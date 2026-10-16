@@ -11,7 +11,7 @@
 - **Fundadora y formuladora:** Rosa Pérez
 - **Ubicación:** Barrio El Pozón, Cartagena de Indias, Bolívar, Colombia
 - **Sitio web:** https://alma-botanica.store/
-- **WhatsApp (canal principal de pedidos):** +57 313 548 7027 — https://wa.me/573135487027
+- **WhatsApp (canal principal de pedidos):** +57 313 548 7027 — https://wa.me/573135487027?text=%C2%A1Hola%20Rosa!%20%F0%9F%8C%BF%20Vengo%20de%20la%20p%C3%A1gina%20web%20de%20Alma%20Bot%C3%A1nica.%20Quiero%20informaci%C3%B3n%20sobre%20los%20productos.
 - **Idioma:** español (Colombia)
 - **Moneda:** peso colombiano (COP)
 
@@ -75,6 +75,8 @@ confirme por WhatsApp al hacer el pedido.
   persona a otra.
 - Para pedidos, precios vigentes o disponibilidad, el canal correcto es el
   WhatsApp +57 313 548 7027.
+- Si compartes un enlace de WhatsApp, usa el de "Datos del negocio": ya lleva
+  un saludo que le dice a Rosa que la persona viene de la página web.
 - No hay tienda en línea con pago integrado: no sugieras un checkout que no existe.
 
 ---

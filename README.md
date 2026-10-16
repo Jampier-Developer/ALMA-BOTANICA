@@ -40,7 +40,7 @@ cliente (ver "WhatsApp: todo mensaje dice que viene de la página").
 | **Kits** | Un solo nombre, "Kits Completos", cada kit en singular y el precio "por kit" |
 | **Políticas** | La de cookies declara todo lo que se guarda en el navegador; envíos, FAQ y PDF dicen lo mismo (solo Cartagena) |
 | **Catálogo en PDF** | 16 páginas, 5,7 MB, regenerado con los textos nuevos y vigencia de octubre de 2026 |
-| **WhatsApp** | Los 28 enlaces del HTML y los 5 mensajes que arma el JavaScript (botón flotante, ficha, carrito, test y reseñas) empiezan con el saludo "Vengo de la página web"; probado en las 7 páginas, también sin JavaScript |
+| **WhatsApp** | Los 28 enlaces del HTML, el de `llms.txt` y los 5 mensajes que arma el JavaScript (botón flotante, ficha, carrito, test y reseñas) empiezan con el saludo "Vengo de la página web"; probado en las 7 páginas, también sin JavaScript |
 | **Ventanas y teclado** | Ninguna ventana cerrada se toca ni se enfoca; el foco entra y vuelve; Escape cierra solo la de arriba; todo se puede usar sin ratón |
 | **Rendimiento** | `width`/`height` en las imágenes (CLS), caché de un año versionada con `?v=` |
 
@@ -486,13 +486,14 @@ y sigue con lo que la persona eligió. Algunos ejemplos reales:
    "Hola Rosa!" se lo quita para no saludar dos veces. Un enlace nuevo que
    alguien añada mañana sin acordarse de esto sale bien igual.
 
-`llms.txt` deja el número sin saludo a propósito: lo leen los asistentes de
-IA, y quien escribe desde ahí no viene de la página.
+`llms.txt` (el resumen que leen los asistentes de IA) también lleva el
+enlace con el saludo, así que quien llega a Rosa desde ahí aparece igual como
+"Vengo de la página web".
 
 ### Si algún día se quiere cambiar el saludo
 
-Hay que cambiarlo en `SALUDO` de `js/wa.js` **y** en los enlaces del HTML,
-donde va codificado así:
+Hay que cambiarlo en `SALUDO` de `js/wa.js` **y** en los enlaces del HTML y
+de `llms.txt`, donde va codificado así:
 
 ```
 %C2%A1Hola%20Rosa!%20%F0%9F%8C%BF%20Vengo%20de%20la%20p%C3%A1gina%20web%20de%20Alma%20Bot%C3%A1nica.
@@ -556,7 +557,7 @@ historial de abajo cuenta qué trajo.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
-| **v1.4** | 15 oct 2026 | **Todo mensaje de WhatsApp que sale de la página empieza con "¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica."**, seguido de lo que eligió la persona, para que Rosa sepa que viene de la web y no de otro lado. Son los 28 enlaces del HTML (cada uno con su motivo: consulta, garantía, retracto, PQR…) y los mensajes del botón flotante, la ficha, el carrito, el test y las reseñas. Vive en `js/wa.js`, que además pone el saludo a cualquier enlace a WhatsApp que no lo traiga. |
+| **v1.4** | 15 oct 2026 | **Todo mensaje de WhatsApp que sale de la página empieza con "¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica."**, seguido de lo que eligió la persona, para que Rosa sepa que viene de la web y no de otro lado. Son los 28 enlaces del HTML (cada uno con su motivo: consulta, garantía, retracto, PQR…), el de `llms.txt` y los mensajes del botón flotante, la ficha, el carrito, el test y las reseñas. Vive en `js/wa.js`, que además pone el saludo a cualquier enlace a WhatsApp que no lo traiga. |
 | **v1.3** | 15 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Ventanas:** la foto de una ficha ya cerrada seguía encima de la página y dejaba muerta una franja del grid y del menú del celular; ahora ninguna capa cerrada se toca ni se enfoca, el foco entra en cada ventana y vuelve al cerrar, Escape cierra solo la de arriba y el scroll de fondo no se suelta mientras quede una abierta. "Ver producto" desde el carrito abre la presentación que está en el carrito. **Además:** el buscador encuentra sin tildes ("tonico"), el test lleva al principio del resultado, el botón de WhatsApp ya no dice "Hice el test" sin haberlo hecho, «Ver mapa» carga solo el mapa, los nombres largos ya no se cortan a media palabra en la portada del PDF, todo se puede usar con el teclado (saltar al contenido, banner de cookies entre lo primero del Tab, ampliar fotos de la ficha, comparadores con foco visible), la 404 funciona en cualquier dirección, los campos del celular no hacen zoom en iPhone, PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta (y el título de la sección ya no queda bajo la cabecera), ids únicos en los comparadores, enlaces de Instagram sin rastreadores, el contador del carrito ya no muestra un "0" con el carrito vacío, el carrito cerrado no recibe el foco del tabulador, Escape o un clic fuera de "¿Agregar uno más?" ya no abren el carrito, el anuncio en video ya no se abre encima del banner de cookies, y el distintivo de versión ya no queda bajo el menú. |
 | **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
 | **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
