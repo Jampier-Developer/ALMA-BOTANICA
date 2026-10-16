@@ -263,7 +263,7 @@ En Eventos aparecen estos nombres, que son los que de verdad importan porque mid
 
 - `whatsapp_flotante` — clics en el botón flotante de WhatsApp (el redondo de la esquina)
 - `pedido_whatsapp` — clics en "Enviar pedido por WhatsApp" (carrito) o en "Pedir por WhatsApp" (ficha de un producto)
-- `whatsapp_enlace` — cualquier otro enlace a WhatsApp del sitio
+- `whatsapp_enlace` — cualquier otro enlace a WhatsApp del sitio. Lleva el motivo (lo que escribió la página después del saludo, por ejemplo "Mi pedido llegó con un problema…") y la página desde la que se pulsó
 - `como_llegar_mapa` — clics en "Cómo llegar" en el mapa
 
 > Ojo: solo se mide a quienes **aceptaron las cookies**. Los números reales de visitas siempre son un poco más altos que lo que muestra Analytics.
@@ -467,7 +467,7 @@ y sigue con lo que la persona eligió. Algunos ejemplos reales:
 |---|---|
 | Botón flotante (en "Productos") | …Vengo de la página web de Alma Botánica. Estaba viendo los productos y tengo una duda. |
 | "Pedir por WhatsApp" en una ficha | …Vengo de la página web de Alma Botánica. Me interesa *Kit Nutritivo* ($130.000). ¿Me cuentas más detalles y si está disponible? |
-| Carrito | …Vengo de la página web de Alma Botánica. Me interesan estos productos: 🛒 *Mi pedido:* … (con regalo y datos de entrega si los puso) |
+| Carrito | …Vengo de la página web de Alma Botánica. Me interesan estos productos: 🛒 *Mi pedido:* … 🤔 *Entonces serían: $90.000, ¿verdad?* (con regalo y datos de entrega si los puso) |
 | Test terminado | …Vengo de la página web de Alma Botánica. Hice el test y me salió: Shampoo Romero, … ¿Me confirmas si es lo mejor para mi cabello? |
 | Políticas de venta (garantía) | …Vengo de la página web de Alma Botánica. Mi pedido llegó con un problema y quiero reportarlo. |
 | Pie de cualquier página | …Vengo de la página web de Alma Botánica. Quiero hacerte una consulta. |
@@ -475,9 +475,11 @@ y sigue con lo que la persona eligió. Algunos ejemplos reales:
 ### Cómo está hecho (para que no se escape ninguno)
 
 1. **`js/wa.js` es el único sitio donde vive el saludo.** Se carga en las 7
-   páginas, antes que cualquier otro script. `ALMA_WA.enlace(texto)` arma el
+   páginas, antes que los demás scripts con defer. `ALMA_WA.enlace(texto)` arma el
    enlace con el saludo delante; lo usan el botón flotante, la ficha, el
-   carrito, el test y las reseñas. Sus textos van **sin** saludo.
+   carrito, el test y las reseñas. Sus textos van **sin** saludo, y cada uno
+   tiene un plan B con el saludo escrito por si `js/wa.js` no llegara a
+   cargar.
 2. **Los enlaces escritos en el HTML ya llevan el saludo dentro** (son 28),
    cada uno con su motivo: así funciona igual sin JavaScript.
 3. **Red de seguridad:** `js/wa.js` revisa todos los enlaces a WhatsApp de la
@@ -501,7 +503,10 @@ de `llms.txt`, donde va codificado así:
 
 Se cambia de golpe con un `sed` que reemplace esa cadena por la nueva,
 codificada igual (`encodeURIComponent` en la consola del navegador la da).
-Ojo: `js/wa.js` reconoce un mensaje que ya tiene el saludo buscando el texto
+Además está escrito, sin codificar, en los planes B de `js/whatsapp.js`,
+`js/forms.js`, `js/cart.js`, `js/quiz.js` y `js/resenas.js`: un
+`grep -rn "Vengo de la página web" js/` los encuentra todos. Ojo:
+`js/wa.js` reconoce un mensaje que ya tiene el saludo buscando el texto
 `MARCA` ("Vengo de la página web de Alma Botánica"); si cambia la frase,
 también cambia eso. Después, subir la versión (regla 1).
 
@@ -557,7 +562,7 @@ historial de abajo cuenta qué trajo.
 
 | Versión | Fecha | Qué trajo |
 |---|---|---|
-| **v1.4** | 15 oct 2026 | **Todo mensaje de WhatsApp que sale de la página empieza con "¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica."**, seguido de lo que eligió la persona, para que Rosa sepa que viene de la web y no de otro lado. Son los 28 enlaces del HTML (cada uno con su motivo: consulta, garantía, retracto, PQR…), el de `llms.txt` y los mensajes del botón flotante, la ficha, el carrito, el test y las reseñas. Vive en `js/wa.js`, que además pone el saludo a cualquier enlace a WhatsApp que no lo traiga. |
+| **v1.4** | 15 oct 2026 | **Todo mensaje de WhatsApp que sale de la página empieza con "¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica."**, seguido de lo que eligió la persona, para que Rosa sepa que viene de la web y no de otro lado. Son los 28 enlaces del HTML (cada uno con su motivo: consulta, garantía, retracto, PQR…), el de `llms.txt` y los mensajes del botón flotante, la ficha, el carrito, el test y las reseñas. Vive en `js/wa.js`, que además pone el saludo a cualquier enlace a WhatsApp que no lo traiga. Ajustes del mismo día, tras una revisión independiente: planes B con el saludo por si `js/wa.js` no carga, el quitado de un "Hola Rosa" repetido ya no corta nombres como "Hola Rosa Pérez", y en Analytics el evento `whatsapp_enlace` manda el motivo y la página en vez de la URL entera. El total del carrito ya no dice "más o menos": ahora es "Entonces serían: $X, ¿verdad?". |
 | **v1.3** | 15 oct 2026 | **Página más corta y enfocada en los productos.** **Carrito:** los campos de "¿A dónde te lo llevamos?" y "Es un regalo" no salían si el carrito se abría desde "Ver carrito"; se borraban al cambiar una cantidad; y la casilla de regalo salía desmarcada aunque el pedido seguía llegando a Rosa como regalo. Ahora salen siempre y conservan lo escrito. **Textos:** sin promesas de efecto médico (minoxidil, "estudios clínicos demuestran", "crecimiento extremo"); los kits con un solo nombre, en singular y "por kit" en vez de "500 ml"; FAQ de kits y de envíos al día; en la portada, una garantía que existe (la legal) y fuera el "Cancela cuando quieras". **Legal:** la política de cookies declara todo lo que se guarda en el navegador, privacidad explica los datos de entrega y el nombre del catálogo, y ventas dice lo mismo que la FAQ (solo Cartagena). **Ventanas:** la foto de una ficha ya cerrada seguía encima de la página y dejaba muerta una franja del grid y del menú del celular; ahora ninguna capa cerrada se toca ni se enfoca, el foco entra en cada ventana y vuelve al cerrar, Escape cierra solo la de arriba y el scroll de fondo no se suelta mientras quede una abierta. "Ver producto" desde el carrito abre la presentación que está en el carrito. **Además:** el buscador encuentra sin tildes ("tonico"), el test lleva al principio del resultado, el botón de WhatsApp ya no dice "Hice el test" sin haberlo hecho, «Ver mapa» carga solo el mapa, los nombres largos ya no se cortan a media palabra en la portada del PDF, todo se puede usar con el teclado (saltar al contenido, banner de cookies entre lo primero del Tab, ampliar fotos de la ficha, comparadores con foco visible), la 404 funciona en cualquier dirección, los campos del celular no hacen zoom en iPhone, PDF regenerado con vigencia de octubre, Cambios/Garantía/PQR del pie llevan a las políticas de venta (y el título de la sección ya no queda bajo la cabecera), ids únicos en los comparadores, enlaces de Instagram sin rastreadores, el contador del carrito ya no muestra un "0" con el carrito vacío, el carrito cerrado no recibe el foco del tabulador, Escape o un clic fuera de "¿Agregar uno más?" ya no abren el carrito, el anuncio en video ya no se abre encima del banner de cookies, y el distintivo de versión ya no queda bajo el menú. |
 | **v1.2** | 18 sep 2026 | **El catálogo lleva el nombre de quien lo descarga**, en el archivo y en la portada del PDF. Además: la ficha de datos del mapa agrupaba mal (la etiqueta quedaba a 14px del grupo de arriba y a 18px de su propio dato, así que "Horarios" parecía pertenecer a la dirección); y los nombres de producto se salían del borde de la tarjeta en pantallas de 320 a 390px — "Acondicionadores" es una sola palabra y no cabía. |
 | **v1.1** | 18 sep 2026 | El test "¿cuál es para mí?" pasa de estar **encima** del grid a estar **debajo**: lo primero que hay que enseñar son los productos, y quien baja hasta el test es porque los vio y no se decidió. De paso se arregla la alternancia de fondos, que había quedado con tres secciones crema seguidas al añadir las nuevas. |
@@ -728,9 +733,12 @@ para lo que inyectan.
 Cualquier enlace o mensaje nuevo a WhatsApp se arma con
 `ALMA_WA.enlace('lo que quiere la persona')`, **sin** escribir "Hola Rosa"
 (lo pone `js/wa.js`). Si es un enlace escrito a mano en el HTML, se copia el
-formato de los que ya hay, con el saludo dentro. Y toda página nueva carga
-`js/wa.js` en el `<head>`, antes que los demás scripts. Ver "WhatsApp: todo
-mensaje dice que viene de la página".
+formato de los que ya hay, con el saludo dentro. Toda página nueva carga
+`js/wa.js` en el `<head>`, antes que los demás scripts con `defer`. Un script
+**sin** `defer` (como `js/catalogo.js`) se ejecuta antes y no puede usar
+`ALMA_WA` al cargar: que lo use dentro de un clic o después de
+`DOMContentLoaded`. Ver "WhatsApp: todo mensaje dice que viene de la
+página".
 
 ---
 

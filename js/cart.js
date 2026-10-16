@@ -336,7 +336,7 @@
       return `  ♦ *${i.name}*${qty} — ${i.price}${sub}`;
     });
     const total    = getTotal();
-    const totalLine = total > 0 ? `\n🤔 *Entonces serían más o menos ${fmtCOP(total)}, ¿verdad?*` : '';
+    const totalLine = total > 0 ? `\n🤔 *Entonces serían: ${fmtCOP(total)}, ¿verdad?*` : '';
     /* Datos de entrega: los pone el formulario del carrito
        (js/extras.js). Van al final del mensaje para que Rosa los tenga
        sin tener que pedirlos en cuatro mensajes más. */
@@ -372,7 +372,8 @@
       '',
       '¿Me confirmas disponibilidad y formas de pago? ¡Muchas gracias! 😊',
     ].join('\n');
-    const url = window.ALMA_WA ? window.ALMA_WA.enlace(msg) : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    /* Plan B por si js/wa.js no llegó: el saludo va igual */
+    const url = window.ALMA_WA ? window.ALMA_WA.enlace(msg) : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica. ' + msg)}`;
     window.open(url, '_blank', 'noopener');
   }
 

@@ -339,7 +339,7 @@
       const waTexto = `Me interesa *${info.name}* (${info.price}). ¿Me cuentas más detalles y si está disponible?`;
       document.getElementById('modalWa').href = window.ALMA_WA
         ? window.ALMA_WA.enlace(waTexto)
-        : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waTexto)}`;
+        : `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica. ' + waTexto)}`;   /* plan B si no llegó js/wa.js */
 
       // Actualizar datos del carrito con el producto/variante actual
       const activeImg = document.querySelector('#modalImg .mc-slide.active img');
@@ -505,7 +505,7 @@
     if (_pdfLibCargando) return _pdfLibCargando;
     _pdfLibCargando = new Promise((ok, mal) => {
       const s = document.createElement('script');
-      s.src = 'js/vendor/pdf-lib.min.js?v=20261015';
+      s.src = 'js/vendor/pdf-lib.min.js?v=20261016';
       s.onload = () => window.PDFLib ? ok(window.PDFLib) : mal(new Error('sin PDFLib'));
       s.onerror = () => mal(new Error('no cargó'));
       document.head.appendChild(s);

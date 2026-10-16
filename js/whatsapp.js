@@ -46,9 +46,10 @@
   }
 
   function refrescar() {
+    /* Plan B por si js/wa.js no llegó: el saludo va igual */
     boton.href = window.ALMA_WA
       ? window.ALMA_WA.enlace(texto())
-      : 'https://wa.me/573135487027?text=' + encodeURIComponent(texto());
+      : 'https://wa.me/573135487027?text=' + encodeURIComponent('¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica. ' + texto());
   }
 
   /* Qué sección se está mirando. Se usa IntersectionObserver, que es lo

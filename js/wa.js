@@ -21,10 +21,14 @@
      sin acordarse de esto. Lo mismo con window.open.
 
    Los enlaces escritos a mano en el HTML ya llevan el saludo dentro,
-   para que funcionen igual sin JavaScript. Si se cambia el saludo, hay
-   que cambiarlo aquí y en esos enlaces (el README explica cómo).
+   para que funcionen igual sin JavaScript, y los scripts que arman
+   mensajes tienen un plan B con el saludo por si este archivo no llega.
+   Si se cambia el saludo, hay que cambiarlo en todos esos sitios (el
+   README explica cómo).
 
-   Se carga en todas las páginas y antes que los demás scripts. */
+   Se carga en el <head> de todas las páginas, antes que los demás
+   scripts con defer. Un script SIN defer que se ejecute antes de que
+   acabe la página (como js/catalogo.js) no puede contar con ALMA_WA. */
 (function () {
   'use strict';
 
@@ -34,9 +38,11 @@
   var MARCA = 'Vengo de la página web de Alma Botánica';
 
   /* Si un texto viejo empieza con su propio "Hola Rosa!", se le quita
-     para no saludar dos veces. */
+     para no saludar dos veces. Solo cuando detrás viene puntuación, un
+     emoji o nada: "Hola Rosa Pérez, …" o "Hola Rosalía" se dejan como
+     están, porque cortar ahí dejaría el apellido suelto. */
   function sinSaludoPropio(t) {
-    return t.replace(/^\s*[¡!]?\s*hola\s+rosa\b[\s!¡,.:👋🌿]*/iu, '');
+    return t.replace(/^\s*[¡!]?\s*hola\s+rosa(?=\s*(?:[!¡,.:👋🌿]|$))[\s!¡,.:👋🌿\u{1F3FB}-\u{1F3FF}]*/iu, '');
   }
 
   function conSaludo(texto) {
@@ -48,6 +54,16 @@
 
   function enlace(texto) {
     return 'https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(conSaludo(texto));
+  }
+
+  /* Lo que la persona quiere, sin el saludo: para Analytics, donde todos
+     los mensajes empezarían igual y se cortarían antes de llegar al
+     motivo (GA4 guarda hasta 100 caracteres por dato). */
+  function motivo(direccion) {
+    var t = '';
+    try { t = new URL(direccion, location.href).searchParams.get('text') || ''; } catch (_) { return ''; }
+    if (t.indexOf(SALUDO) === 0) t = t.slice(SALUDO.length);
+    return t.trim().slice(0, 100);
   }
 
   function esWhatsApp(url) {
@@ -93,7 +109,8 @@
     saludo: SALUDO,
     conSaludo: conSaludo,
     enlace: enlace,
-    normalizarUrl: normalizarUrl
+    normalizarUrl: normalizarUrl,
+    motivo: motivo
   };
 
   /* window.open: el carrito abre WhatsApp así */

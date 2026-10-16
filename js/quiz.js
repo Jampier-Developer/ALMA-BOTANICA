@@ -95,7 +95,7 @@
   function enlaceWa(texto) {
     return window.ALMA_WA
       ? window.ALMA_WA.enlace(texto)
-      : 'https://wa.me/573135487027?text=' + encodeURIComponent(texto);
+      : 'https://wa.me/573135487027?text=' + encodeURIComponent('¡Hola Rosa! 🌿 Vengo de la página web de Alma Botánica. ' + texto);   /* plan B si no llegó js/wa.js */
   }
 
   /* Los datos del producto salen de forms.js, no se copian aquí */

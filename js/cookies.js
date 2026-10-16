@@ -50,7 +50,7 @@
      El ?v= tiene que coincidir con el que llevan los <link> y <script>
      del HTML: js/ se guarda en caché para siempre y la versión es lo
      único que hace que el navegador vuelva a pedir el archivo. */
-  var VERSION = '20261015';
+  var VERSION = '20261016';
   var SCRIPT_ANALYTICS = '/js/analytics.js?v=' + VERSION;
   var SCRIPT_CONTENTSQUARE = '/js/hotjar.js?v=' + VERSION;
 
@@ -154,10 +154,16 @@
         return;
       }
 
-      /* Cualquier otro enlace a WhatsApp (footer, políticas, testimonios) */
+      /* Cualquier otro enlace a WhatsApp (footer, políticas, testimonios).
+         Se manda el motivo (el texto sin el saludo, hasta 100 caracteres)
+         y la página: con la URL entera todos empezaban igual y Analytics
+         los cortaba antes de llegar a lo que los distingue. */
       var href = el.getAttribute && el.getAttribute('href');
       if (href && href.indexOf('wa.me') !== -1) {
-        window.gtag('event', 'whatsapp_enlace', { destino: href });
+        window.gtag('event', 'whatsapp_enlace', {
+          destino: window.ALMA_WA ? window.ALMA_WA.motivo(href) : href.slice(0, 100),
+          pagina: location.pathname
+        });
         return;
       }
 
